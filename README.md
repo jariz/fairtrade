@@ -155,5 +155,5 @@ app/views/modules/{model_alias}
 ### Templates
 Alle pagina templates zowel voor front-end als admin worden opgeslagen in:
 ```
-app/views/templates;
+app/views/templates
 ```
