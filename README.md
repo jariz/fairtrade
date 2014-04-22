@@ -8,7 +8,6 @@ Alle Javascript bestanden die horen bij de core worden opgeslagen in:
 
 ```
 public/js
-
 ```
 ### Stylesheets
 
@@ -16,7 +15,6 @@ Alle Stylesheets die horen bij de core worden opgeslagen in:
 
 ```
 public/css
-
 ```
 
 ### Images
@@ -25,7 +23,6 @@ Alle images die horen bij de template van de website worden opgeslagen in:
 
 ```
 public/images
-
 ```
 
 
@@ -35,7 +32,6 @@ Alle images die de gebruikers uploaden worden opgeslagen in:
 
 ```
 public/uploads
-
 ```
 
 Elk type plaatje heeft zijn eigen sub directory:
@@ -44,14 +40,12 @@ Elk type plaatje heeft zijn eigen sub directory:
 
 ```
 public/uploads/news
-
 ```
 
 **Concepten artikel plaatjes**
 
 ```
 public/uploads/concepts
-
 ```
 
 
@@ -59,7 +53,6 @@ public/uploads/concepts
 
 ```
 public/uploads/logos
-
 ```
 
 
@@ -68,7 +61,6 @@ Front-end plugins zoals jQuery worden opgelsagen in:
 
 ```
 public/plugins/{plugin_name}
-
 ```
 
 
@@ -80,7 +72,6 @@ Alle Controllers voor de normale pagina's zijn te vinden in:
 
 ```
 app/controllers/Front
-
 ```
 
 
@@ -88,7 +79,6 @@ Alle Controllers voor de admin pagina's zijn te vinden in:
 
 ```
 app/controllers/Admin
-
 ```
 
 ## Namespaces
@@ -101,7 +91,6 @@ De bestanden worden opgeslagen in:
 
 ```
 app/lib/Fairtrade
-
 ```
 
 ### Front
@@ -112,7 +101,6 @@ De bestanden worden opgeslagen in:
 
 ```
 app/controllers/Front
-
 ```
 
 
@@ -124,7 +112,6 @@ De bestanden worden opgeslagen in:
 
 ```
 app/controllers/Admin
-
 ```
 
 
@@ -136,5 +123,4 @@ De bestanden worden opgeslagen in:
 
 ```
 app/models/Model
-
 ```
