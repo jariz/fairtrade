@@ -9,3 +9,6 @@ Thumbs.db
 app/config/database.php
 *.iml
 .idea/
+public/uploads/concepts/*
+public/uploads/news/*
+public/uploads/logos/*
