@@ -12,3 +12,4 @@ app/config/database.php
 public/uploads/concepts/*
 public/uploads/news/*
 public/uploads/logos/*
+_ide_helper.php
