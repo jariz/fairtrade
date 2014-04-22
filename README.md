@@ -124,3 +124,36 @@ De bestanden worden opgeslagen in:
 ```
 app/models/Model
 ```
+
+
+## Views
+
+### Front
+Alle front-end pagina's worden opgeslagen in:
+```
+app/views/front
+```
+
+### Admin
+Alle admin pagina's worden opgeslagen in:
+```
+app/views/admin
+```
+
+### includes
+Alle veel gebruikte views worden opgeslagen in:
+```
+app/views/includes
+```
+
+### Modules
+Alle views voor modules worden opgeslagen in:
+```
+app/views/modules/{model_alias}
+```
+
+### Templates
+Alle pagina templates zowel voor front-end als admin worden opgeslagen in:
+```
+app/views/templates;
+```
