@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Post extends Eloquent {
+class Post extends \Eloquent {
 
 	protected $table = 'news';
 	public $timestamps = true;
