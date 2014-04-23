@@ -1,5 +1,36 @@
 # Project Documentatie
 
+## Database Configuratie
+
+Standaard mist het configuratie bestand voor de database, de template hiervan staat in:
+
+```
+app/config/default/database.php
+```
+
+De content hiervan moet gekopieërd worden naar een nieuw bestand
+
+```
+app/config/database.php
+```
+
+
+In het nieuwe bestand moet de configuratie worden aangepast naar wat voor jouw machine van toepassing is. De configuratie staat op lijn 55-64:
+
+```php
+        'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',  /* <--- Jouw host hier */
+            'database'  => 'database',  /* <--- Jouw Database naam hier */
+            'username'  => 'root',  /* <--- Jouw gebruikersnaam hier */
+            'password'  => '',  /* <--- Jouw wachtwoord hier */
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),
+
+```
+
 ## Assets
 
 ### Javascript bestanden
