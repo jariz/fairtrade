@@ -1,5 +1,13 @@
 # Project Documentatie
 
+## Composer
+
+Voordat je wat kan doen, moeten alle dependencies worden gedownload met composer via de command line:
+
+```
+composer update
+```
+
 ## Database Configuratie
 
 Standaard mist het configuratie bestand voor de database, de template hiervan staat in:
