@@ -31,6 +31,27 @@ In het nieuwe bestand moet de configuratie worden aangepast naar wat voor jouw m
 
 ```
 
+## Migration & Seeders
+
+Nadat de configuratie voor de database is gedaan, kan de volgende command worden uitgevoerd in de Root van het project, om alle tabellen aan te maken en test data toe te voegen:
+
+```
+php artisan migrate --seed
+```
+
+Alleen migrations
+
+```
+php artisan migrate
+```
+
+Alleen seeders
+
+```
+php artisan db:seed
+```
+
+
 ## Assets
 
 ### Javascript bestanden
