@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Module extends Eloquent {
+class Module extends \Eloquent {
 
 	protected $table = 'modules';
 	public $timestamps = false;
