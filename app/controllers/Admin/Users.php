@@ -20,7 +20,7 @@ class Users extends CrudController {
             "Wachtwoord" => array(
                 "name" => "password",
                 "type" => "password",
-                "rules" => "required",
+                "rules" => "",
                 "hideInOverview" => true
             ),
             "Naam" => array(
@@ -32,11 +32,11 @@ class Users extends CrudController {
                 "name" => "admin",
                 "type" => "radio",
                 "options" => array(
-                    "Ja",
-                    "Nee"
+                    "Ja" => 1,
+                    "Nee" => 0
                 ),
                 "boolean" => true,
-                "rules" => "required|in:Ja,Nee"
+                "rules" => "required|in:0,1"
             ),
             "IP adres" => array(
                 "name" => "ip",

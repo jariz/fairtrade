@@ -49,6 +49,8 @@
             @endforeach
         </tbody>
     </table>
-    {{$data->links()}}
+    <div class="pagination-center">
+        {{$data->links()}}
+    </div>
 </div>
 @stop
