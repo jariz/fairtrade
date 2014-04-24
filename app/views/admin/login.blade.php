@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fairtrade - Login</title>
+    <title>Login - Fairtrade Amsterdam</title>
     <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div class="container container-login">
+    <img src="{{url('images/logo-big.png')}}">
     <div class="panel panel-warning panel-login">
         <div class="panel-heading">
-            Fairtrade - Login
+            Fairtrade Amsterdam - Login
         </div>
         <div class="panel-body">
-
             @if($errors->any())
             <div class="alert alert-danger">
                 <ul>

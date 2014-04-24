@@ -1,7 +1,11 @@
-.container{
+.container-login {
+  padding-top:150px;
+  >img {
+    display:block;
+    margin:0 auto;
+  }
   >.panel-login {
     max-width: 600px;
     margin:0 auto;
-    margin-top:150px;
   }
 }
