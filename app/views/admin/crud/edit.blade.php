@@ -23,6 +23,10 @@
             {{Form::label($field["name"]."_".$value, $option)}}
             </p>
             @endforeach
+            @elseif($field["type"] == "wysiwyg")
+            {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"ckeditor"))}}
+            @elseif($field["type"] == "file")
+            {{Form::file($field["name"])}}
             @endif
         </div>
     </div>
@@ -30,4 +34,8 @@
     <button type="submit" class="btn btn-success pull-right">Save</button>
     {{Form::close()}}
 </div>
+@stop
+
+@section('scripts')
+<script src="{{url('plugins/ckeditor/ckeditor.js')}}"></script>
 @stop

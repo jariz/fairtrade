@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container container-layout moar-padding">
-    <div class="pull-right">
-        <a class="btn btn-success" href="{{URL::route($route.'-add')}}">Voeg nieuwe {{strtolower($singular)}} toe</a>
-    </div>
+
+    <a class="btn btn-success pull-right" href="{{URL::route($route.'-add')}}">Aanmaken</a>
+    <h2>{{$plural}}</h2>
     <table class="table table-striped">
         <thead>
         <tr>

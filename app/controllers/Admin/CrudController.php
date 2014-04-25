@@ -20,6 +20,9 @@ class CrudController extends AdminController
         return array();
     }
 
+    /**
+     * @var \Eloquent The model name
+     */
     protected $model;
     protected $plural;
     protected $singular;
@@ -126,7 +129,13 @@ class CrudController extends AdminController
 
             return \Redirect::to(\URL::route($this->route));
         }
+    }
 
-
+    public function delete() {
+        $model = $this->model;
+        $id = intval(\Input::get("id"));
+        $entry = $model::findOrFail($id);
+        $entry->delete();
+        return \Redirect::back();
     }
 }
