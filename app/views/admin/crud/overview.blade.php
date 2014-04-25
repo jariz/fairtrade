@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container container-layout moar-padding">
-    <div class="pull-right">
-        <a class="btn btn-success" href="{{URL::route($route.'-add')}}">Voeg nieuwe {{strtolower($singular)}} toe</a>
-    </div>
+
+    <a class="btn btn-success pull-right" href="{{URL::route($route.'-add')}}">Aanmaken</a>
+    <h2>{{$plural}}</h2>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -13,6 +13,14 @@
                 {{$column}}
             </th>
             @endforeach
+            @if($timestamps)
+            <th>
+                Aangemaakt op
+            </th>
+            <th>
+                Aangepast op
+            </th>
+            @endif
             <th>
                 Acties
             </th>
@@ -34,10 +42,18 @@
                 </span>
                 @endif
                 @else
-                {{$row->$column["name"]}}
+                {{{$row->$column["name"]}}}
                 @endif
             </td>
             @endforeach
+                @if($timestamps)
+                <td>
+                    {{$row->created_formatted}}
+                </td>
+                <td>
+                    {{$row->updated_formatted}}
+                </td>
+                @endif
                 <td>
                     {{Form::open(array('route'=>$route.'-delete'))}}
                     {{Form::hidden('id', $row->id)}}

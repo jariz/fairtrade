@@ -5,6 +5,7 @@
     <title>{{$title}} - Fairtrade Amsterdam Beheer</title>
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet">
+    @yield("scripts")
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -15,13 +16,13 @@
                     <a href="{{url('dashboard/users')}}">Gebruikers</a>
                 </li>
                 <li>
-                    <a href="{{url('dashboard/users')}}">Gebruikers</a>
+                    <a href="{{url('dashboard/news')}}">Nieuws</a>
                 </li>
                 <li>
-                    <a href="{{url('dashboard/users')}}">Gebruikers</a>
+                    <a href="{{url('dashboard/concepts')}}">Concepten</a>
                 </li>
                 <li>
-                    <a href="{{url('dashboard/users')}}">Gebruikers</a>
+                    <a href="{{url('dashboard/pages')}}">Pagina's</a>
                 </li>
             </ul>
         </div>

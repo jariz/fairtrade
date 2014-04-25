@@ -20,10 +20,14 @@ class CrudController extends AdminController
         return array();
     }
 
+    /**
+     * @var \Eloquent The model name
+     */
     protected $model;
     protected $plural;
     protected $singular;
     protected $route;
+    protected $timestamps = false;
 
     /**
      * Give a overview of all entries
@@ -46,7 +50,8 @@ class CrudController extends AdminController
             ->with("singular", $this->singular)
             ->with("plural", $this->plural)
             ->with("route", $this->route)
-            ->with("data", $data);
+            ->with("data", $data)
+            ->with("timestamps", $this->timestamps);
     }
 
     /**
@@ -126,7 +131,13 @@ class CrudController extends AdminController
 
             return \Redirect::to(\URL::route($this->route));
         }
+    }
 
-
+    public function delete() {
+        $model = $this->model;
+        $id = intval(\Input::get("id"));
+        $entry = $model::findOrFail($id);
+        $entry->delete();
+        return \Redirect::back();
     }
 }
