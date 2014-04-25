@@ -2,6 +2,11 @@
 
 namespace Admin;
 
+/**
+ * Class News
+ * @package Admin
+ * @author Jari Zwarts
+ */
 class News extends CrudController {
     protected function getFields() {
         return array(

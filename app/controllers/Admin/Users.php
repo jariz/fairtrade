@@ -8,7 +8,11 @@
 
 namespace Admin;
 
-
+/**
+ * Class Users
+ * @package Admin
+ * @author Jari Zwarts
+ */
 class Users extends CrudController {
     protected function getFields() {
         return array(

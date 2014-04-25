@@ -7,7 +7,9 @@ Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\whereto
 
 $crudControllers = array(
     "users" => "\\Admin\\Users",
-    "news" => "\\Admin\\News"
+    "news" => "\\Admin\\News",
+    "events" => "\\Admin\\Events",
+    "concepts" => "\\Admin\\Concepts"
 );
 
 foreach($crudControllers as $route => $controller) {

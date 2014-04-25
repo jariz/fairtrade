@@ -18,7 +18,7 @@ class Date{
 	 * Set the input which needs to be formatted
 	 * @author  Dmitri Chebotarev
 	 * @param  string $date - Timestamp
-	 * @return object - returns itself for method chaining
+	 * @return Date - returns itself for method chaining
 	 */
 	public static function input( $date ){
 		return new self( $date );
