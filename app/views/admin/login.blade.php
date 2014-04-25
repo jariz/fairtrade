@@ -13,17 +13,7 @@
             Fairtrade Amsterdam - Login
         </div>
         <div class="panel-body">
-            @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>
-                        {{$error}}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('includes.errors')
 
             {{Form::open(array('route'=>'dashboard.do-login', 'class'=>'form-horizontal'))}}
             <div class="form-group">

@@ -9,3 +9,18 @@
     margin:0 auto;
   }
 }
+
+.container-layout {
+  &.moar-padding {
+    margin-top:70px;
+  }
+  padding-top:50px;
+}
+
+table a.btn, .table a.btn {
+  text-decoration: none;
+}
+
+.pagination-center {
+  text-align:center;
+}

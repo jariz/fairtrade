@@ -44,6 +44,6 @@ class Login extends \Controller {
         //else, redirect user to dashboard.
         if($errors->any())
             return \View::make("admin.login")->with("errors", $errors);
-        else return array("we did it" => "yay!");
+        else return \Redirect::intended("dashboard");
     }
 } 

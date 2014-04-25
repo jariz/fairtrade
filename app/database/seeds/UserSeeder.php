@@ -29,7 +29,7 @@ class UserSeeder extends Seeder {
                 "password" => Hash::make(str_random(6)),
                 "name" => studly_case(IpsumGenerator::getWord()) . " " . studly_case(IpsumGenerator::getWord()),
                 "admin" => mt_rand(0,1),
-                "ip" => mt_rand(100,999).".".mt_rand(10,99).".".mt_rand(10,99).".".mt_rand(10,99).".".mt_rand(10,99),
+                "ip" => mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99),
                 "reset_code" => str_random()
             ));
     }
