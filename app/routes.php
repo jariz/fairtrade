@@ -8,3 +8,9 @@ Route::get("dashboard/users/add", array("as" => "dashboard.users-add", "uses" =>
 Route::get("dashboard/users/edit/{id}", array("as" => "dashboard.users-edit", "uses" => "\\Admin\\Users@showEdit"));
 Route::post("dashboard/users/delete", array("as" => "dashboard.users-delete", "uses" => "\\Admin\\Users@delete"));
 Route::post("dashboard/users/edit", array("as" => "dashboard.users-doedit", "uses" => "\\Admin\\Users@edit"));
+
+Route::get('test/helper', function(){
+
+	return Model\Post::find(1)->created_formatted;
+
+});
