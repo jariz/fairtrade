@@ -13,6 +13,14 @@
                 {{$column}}
             </th>
             @endforeach
+            @if($timestamps)
+            <th>
+                Aangemaakt op
+            </th>
+            <th>
+                Aangepast op
+            </th>
+            @endif
             <th>
                 Acties
             </th>
@@ -34,10 +42,18 @@
                 </span>
                 @endif
                 @else
-                {{$row->$column["name"]}}
+                {{{$row->$column["name"]}}}
                 @endif
             </td>
             @endforeach
+                @if($timestamps)
+                <td>
+                    {{$row->created_formatted}}
+                </td>
+                <td>
+                    {{$row->updated_formatted}}
+                </td>
+                @endif
                 <td>
                     {{Form::open(array('route'=>$route.'-delete'))}}
                     {{Form::hidden('id', $row->id)}}

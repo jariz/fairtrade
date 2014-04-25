@@ -27,6 +27,7 @@ class CrudController extends AdminController
     protected $plural;
     protected $singular;
     protected $route;
+    protected $timestamps = false;
 
     /**
      * Give a overview of all entries
@@ -49,7 +50,8 @@ class CrudController extends AdminController
             ->with("singular", $this->singular)
             ->with("plural", $this->plural)
             ->with("route", $this->route)
-            ->with("data", $data);
+            ->with("data", $data)
+            ->with("timestamps", $this->timestamps);
     }
 
     /**

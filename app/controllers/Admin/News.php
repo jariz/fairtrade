@@ -29,4 +29,5 @@ class News extends CrudController {
     protected $singular = "Nieuws artikel";
     protected $plural = "Nieuws artikelen";
     protected $route = "dashboard.news";
+    protected $timestamps = true;
 }
