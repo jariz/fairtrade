@@ -13,3 +13,8 @@ public/uploads/concepts/*
 public/uploads/news/*
 public/uploads/logos/*
 _ide_helper.php
+
+# sass
+public/.sass-cache/
+public/css/screen.css
+public/css/admin/screen.css
