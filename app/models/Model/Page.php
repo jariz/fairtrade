@@ -8,4 +8,8 @@ class Page extends \Eloquent {
 	public $timestamps = true;
 	protected $softDelete = false;
 
+
+	public function scopeWhereSlug($query, $slug){
+		return $query->where('slug', '=', $slug)->first();
+	}
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Fairtrade;
 
 class Date{
@@ -25,6 +24,13 @@ class Date{
 	}
 
 
+
+	/**
+	 * Create php DateTime object from the input date
+	 * @author  Dmitri Chebotarev
+	 * @param  string $input_format - the format of the input date
+	 * @return \DateTime
+	 */
 	public function createDateObject($input_format = 'Y-m-d H:i:s'){
 
 		$dateObject = \DateTime::createFromFormat( $input_format, $this->date );
@@ -37,6 +43,12 @@ class Date{
 		return $dateObject;
 	}
 
+	/**
+	 * Format the date to a better readable format for humans
+	 * @author  Dmitri Chebotarev
+	 * @param  string $length - Display month, can be either Full or Short
+	 * @return [type][description]
+	 */
 	public function forHuman( $length = 'full' ){
 
 		$object = $this->createDateObject( self::FORMAT_DB );
@@ -53,6 +65,12 @@ class Date{
 		return $data['day']. ' '.$data['month'] .' ' .$data['year'].' '.$data['time'];
 	}
 
+	/**
+	 * Convert DateTime object to array to modify the values
+	 * @author  Dmitri Chebotarev
+	 * @param  \DateTime $object
+	 * @return mixed - returns array with values. On fail returns boolean false.
+	 */
 	public function getValues( $object ){
 		if( !$object ){
 			return false;
@@ -70,11 +88,26 @@ class Date{
 	}
 
 
+	/**
+	 * Convert the input date to a timestamp usable in DB.
+	 * NOTE: Input date format must match FORMAT_USER constant
+	 * @author  Dmitri Chebotarev
+	 * @return string - Formatted date
+	 */
 	public function forDatabase(){
 		$object = $this->createDateObject( self::FORMAT_USER );
 		return $object->format( self::FORMAT_DB );
 	}
 
+
+	/**
+	 * Get the month name by integer
+	 * @author  Dmitri Chebotarev
+	 * @param  string  $month          - Month number
+	 * @param  boolean $short          - Display month short (true or false)
+	 * @param  boolean $capital_letter - First letter of month capital (true or false)
+	 * @return string - Month name in Dutch
+	 */
 	public static function getMonthName($month, $short = false, $capital_letter = false){
 
 		// Voorste 0 weghalen

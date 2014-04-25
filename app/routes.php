@@ -4,7 +4,6 @@ Route::get("dashboard/login", array("as" => "dashboard.login", "uses" => "\\Admi
 Route::post("dashboard/login", array("as" => "dashboard.do-login", "uses" => "\\Admin\\Login@run", "before" => "csrf"));
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
 
-
 $crudControllers = array(
     "users" => "\\Admin\\Users",
     "news" => "\\Admin\\News"
@@ -17,3 +16,7 @@ foreach($crudControllers as $route => $controller) {
     Route::post("dashboard/{$route}/delete", array("as" => "dashboard.{$route}-delete", "uses" => "{$controller}@delete"));
     Route::post("dashboard/{$route}/edit", array("as" => "dashboard.{$route}-doedit", "uses" => "{$controller}@edit"));
 }
+
+
+/** -- FRONT END Pagina's **/
+// Hier komt een Catch all route
