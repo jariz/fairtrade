@@ -8,12 +8,18 @@
 
 namespace Admin;
 
-
+/**
+ * Class CrudController
+ * Automates the Creating, Reading, Updating and Deleting of models.
+ * @package Admin
+ * @author Jari Zwarts
+ */
 class CrudController extends AdminController
 {
 
     /**
      * Should be overridden by the extender.
+     * @author Jari Zwarts
      */
     protected function getFields()
     {
@@ -22,6 +28,7 @@ class CrudController extends AdminController
 
     /**
      * @var \Eloquent The model name
+     * @author Jari Zwarts
      */
     protected $model;
     protected $plural;
@@ -31,6 +38,7 @@ class CrudController extends AdminController
 
     /**
      * Give a overview of all entries
+     * @author Jari Zwarts
      */
     public function overview()
     {
@@ -58,6 +66,7 @@ class CrudController extends AdminController
      * Show the edit/add form.
      * @param null $id If id is null, we're assuming you want to add a user.
      * @return \Illuminate\View\View
+     * @author Jari Zwarts
      */
     public function showEdit($id = null)
     {
@@ -65,7 +74,11 @@ class CrudController extends AdminController
         $fields = $this->getFields();
         $model = $this->model;
         $keys = array();
-        \View::share("title", "Pas ".strtolower($this->singular)." aan");
+
+        if($editing)
+            \View::share("title", "Pas ".strtolower($this->singular)." aan");
+        else \View::share("title", "Maak ".strtolower($this->singular)." aan");
+
         foreach ($fields as $field) $keys[] = $field["name"];
 
         return \View::make("admin.crud.edit")
@@ -77,6 +90,7 @@ class CrudController extends AdminController
 
     /**
      * Do the actual adding/editing.
+     * @author Jari Zwarts
      */
     public function edit()
     {
@@ -133,6 +147,11 @@ class CrudController extends AdminController
         }
     }
 
+    /**
+     * Delete an item. Will throw an error if the input contains a incorrect id.
+     * @return \Illuminate\Http\RedirectResponse
+     * @author Jari Zwarts
+     */
     public function delete() {
         $model = $this->model;
         $id = intval(\Input::get("id"));

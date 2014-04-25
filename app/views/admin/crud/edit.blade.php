@@ -27,6 +27,11 @@
             {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"ckeditor"))}}
             @elseif($field["type"] == "file")
             {{Form::file($field["name"])}}
+            @elseif($field["type"] == "date")
+            <div class='input-group datepicker' data-date-format="DD-MM-YYYY HH:MM:SS">
+                {{Form::text($field["name"], \Fairtrade\Date::input($data[$field["name"]])->forHuman(), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </div>
             @endif
         </div>
     </div>
@@ -37,5 +42,9 @@
 @stop
 
 @section('scripts')
+<script src="{{url('plugins/moment/moment.min.js')}}"></script>
+<script src="{{url('plugins/bs-datepicker/locales/bootstrap-datetimepicker.nl.js')}}"></script>
 <script src="{{url('plugins/ckeditor/ckeditor.js')}}"></script>
+<script src="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.js')}}"></script>
+<link href="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
 @stop
