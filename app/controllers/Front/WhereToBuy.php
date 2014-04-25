@@ -1,6 +1,7 @@
 <?php
 
 namespace Front;
+use Model;
 
 class WhereToBuy extends \Controller {
 
@@ -19,7 +20,14 @@ class WhereToBuy extends \Controller {
 
 	protected function show()
 	{
-		return \View::make("front.wheretobuy")->with('title', '');
+		$companies = Model\Company::all();
+		//print_r($companies);
+		
+		return \View::make("front.wheretobuy")->with(array(
+				'title' => 'Waar te koop',
+				'companies' => $companies,
+			)
+		);
 	}
 
 }
