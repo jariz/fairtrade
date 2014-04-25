@@ -8,7 +8,11 @@
 
 namespace Admin;
 
-
+/**
+ * Class AdminController
+ * Does common procedures for admin tasks.
+ * @package Admin
+ */
 class AdminController extends \Controller {
     public function __construct() {
         \View::share("title", "!GEEN TITEL!");

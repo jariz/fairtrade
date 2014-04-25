@@ -8,6 +8,7 @@
 
 use Model\Event;
 use Fairtrade\IpsumGenerator;
+use Fairtrade\Date;
 class EventSeeder extends Seeder {
 
     public function run() {
@@ -17,7 +18,7 @@ class EventSeeder extends Seeder {
                 "title" => IpsumGenerator::generateParagraphs(1, mt_rand(3,6), false),
                 "location" => IpsumGenerator::getWord(true)."straat ".mt_rand(10,99),
                 "description" => IpsumGenerator::generateParagraphs(),
-                "date" => time() + mt_rand(1000, 9999)
+                "date" => Date::input(date("d-m-Y H:i:s", time() + mt_rand(1000,9999)))->forDatabase()
             ));
         }
     }

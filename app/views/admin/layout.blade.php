@@ -5,7 +5,11 @@
     <title>{{$title}} - Fairtrade Amsterdam Beheer</title>
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet">
+    <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('plugins/bs/bootstrap.min.js')}}"></script>
+
     @yield("scripts")
+    <script src="{{url('js/admin.js')}}"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,6 +21,9 @@
                 </li>
                 <li>
                     <a href="{{url('dashboard/news')}}">Nieuws</a>
+                </li>
+                <li>
+                    <a href="{{url('dashboard/events')}}">Evenementen</a>
                 </li>
                 <li>
                     <a href="{{url('dashboard/concepts')}}">Concepten</a>

@@ -14,6 +14,7 @@ class IpsumGenerator {
      * @param null $wordsPerParagraph Amounts of words within each paragraph. If passed null, will be changed in a random value from 7 till 25
      * @param bool $ptags Add paragraph tags.
      * @return string
+     * @author Jari Zwarts
      */
     public static function generateParagraphs($amount=4, $wordsPerParagraph=null, $ptags=true) {
         self::initWords();
@@ -43,6 +44,7 @@ class IpsumGenerator {
 
     /**
      * Returns a random lorem ipsum dummy word.
+     * @author Jari Zwarts
      */
     public static function getWord($capitalize=false) {
         self::initWords();
