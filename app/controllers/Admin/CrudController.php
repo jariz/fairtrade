@@ -22,24 +22,23 @@ class CrudController extends AdminController
      * Should return a array with all required fields.
      * The key is the label, the value is a array with the following required keys:<br>
      * <ul>
-     * <li><strong>name</strong>: The column in the table. (string)</li>
-     * <li><strong>rules</strong>: The validation rules as described in the laravel validator docs. Can be an empty string, but is still required. (string)</li>
-     * <li><strong>type</strong>: The type of field to display. (string)<br>Can be one of the following:
+     * <li><b>name</b>: The column in the table. (string)</li>
+     * <li><b>rules</b>: The validation rules as described in the laravel validator docs. Can be an empty string, but is still required. (string)</li>
+     * <li><b>type</b>: The type of field to display. (string)<br>Can be one of the following:
      * <ul>
-     * <li><strong>text</strong>: A input with the text type</li>
-     * <li><strong>password</strong>: A input with the password type. will be ignored unless it's filled in.</li>
-     * <li><strong>radio</strong>: A set of radio boxes. Requires the optional key 'options' as described below.</li>
-     * <li><strong>wysiwyg</strong>: 'What you see is what you get' HTML editor.</li>
-     * <li><strong>file</strong>: A file input.</li>
-     * <li><strong>date</strong>: A text field with a datepicker which allows for easy date choosing.</li>
+     * <li><b>text</b>: A input with the text type</li>
+     * <li><b>password</b>: A input with the password type. will be ignored unless it's filled in.</li>
+     * <li><b>radio</b>: A set of radio boxes. Requires the optional key 'options' as described below.</li>
+     * <li><b>wysiwyg</b>: 'What you see is what you get' HTML editor.</li>
+     * <li><b>file</b>: A file input.</li>
+     * <li><b>date</b>: A text field with a datepicker which allows for easy date choosing.</li>
      * </ul>
-     * </li>
      * </ul>
      * Optional keys:
      * <ul>
-     * <li><strong>hideInOverview</strong>: Whether to show the field on the overview page. (boolean)</li>
-     * <li><strong>options</strong>: An array for fields with multiple values such as the radio type. The index is the value, the value is the label. (array) <br>Example: <code>[0 => 'No', 1 => 'Yes']</code></li>
-     * <li><strong>boolean</strong>: Whether to show the field as a boolean in the overview. Expects the field's value to be either 0 or 1. (boolean)</li>
+     * <li><b>hideInOverview</b>: Whether to show the field on the overview page. (boolean)</li>
+     * <li><b>options</b>: An array for fields with multiple values such as the radio type. The index is the value, the value is the label. (array) <br>Example: <pre>[0 => 'No', 1 => 'Yes']</pre></li>
+     * <li><b>boolean</b>: Whether to show the field as a boolean in the overview. Expects the field's value to be either 0 or 1. (boolean)</li>
      * </ul>
      * @author Jari Zwarts
      */
