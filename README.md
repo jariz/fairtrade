@@ -59,6 +59,14 @@ Alleen seeders
 php artisan db:seed
 ```
 
+## Autocompletion  
+
+Eventueel als je een IDE met autocompletion heb en hier gebruik van wilt maken, draai:
+
+```
+php artisan ide-helper:generate
+```
+
 
 ## Assets
 
