@@ -32,16 +32,16 @@ class Users extends CrudController {
                 "type" => "text",
                 "rules" => ""
             ),
-            "Administrator" => array(
-                "name" => "admin",
-                "type" => "radio",
-                "options" => array(
-                    "Ja" => 1,
-                    "Nee" => 0
-                ),
-                "boolean" => true,
-                "rules" => "required|in:0,1"
-            ),
+//            "Administrator" => array(
+//                "name" => "admin",
+//                "type" => "radio",
+//                "options" => array(
+//                    "Ja" => 1,
+//                    "Nee" => 0
+//                ),
+//                "boolean" => true,
+//                "rules" => "required|in:0,1"
+//            ),
             "IP adres" => array(
                 "name" => "ip",
                 "type" => "text",

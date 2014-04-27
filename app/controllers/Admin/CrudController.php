@@ -18,7 +18,29 @@ class CrudController extends AdminController
 {
 
     /**
-     * Should be overridden by the extender.
+     * MUST be overridden by the extender.
+     * Should return a array with all required fields.
+     * The key is the label, the value is a array with the following required keys:<br>
+     * <ul>
+     * <li><strong>name</strong>: The column in the table. (string)</li>
+     * <li><strong>rules</strong>: The validation rules as described in the laravel validator docs. Can be an empty string, but is still required. (string)</li>
+     * <li><strong>type</strong>: The type of field to display. (string)<br>Can be one of the following:
+     * <ul>
+     * <li><strong>text</strong>: A input with the text type</li>
+     * <li><strong>password</strong>: A input with the password type. will be ignored unless it's filled in.</li>
+     * <li><strong>radio</strong>: A set of radio boxes. Requires the optional key 'options' as described below.</li>
+     * <li><strong>wysiwyg</strong>: 'What you see is what you get' HTML editor.</li>
+     * <li><strong>file</strong>: A file input.</li>
+     * <li><strong>date</strong>: A text field with a datepicker which allows for easy date choosing.</li>
+     * </ul>
+     * </li>
+     * </ul>
+     * Optional keys:
+     * <ul>
+     * <li><strong>hideInOverview</strong>: Whether to show the field on the overview page. (boolean)</li>
+     * <li><strong>options</strong>: An array for fields with multiple values such as the radio type. The index is the value, the value is the label. (array) <br>Example: <code>[0 => 'No', 1 => 'Yes']</code></li>
+     * <li><strong>boolean</strong>: Whether to show the field as a boolean in the overview. Expects the field's value to be either 0 or 1. (boolean)</li>
+     * </ul>
      * @author Jari Zwarts
      */
     protected function getFields()
@@ -27,13 +49,33 @@ class CrudController extends AdminController
     }
 
     /**
-     * @var \Eloquent The model name
-     * @author Jari Zwarts
+     * The model name (for example '\\Model\\User'). Must be overridden.
+     * @var string
      */
     protected $model;
+
+    /**
+     * Plural form of the CRUD entry (for example 'Users'). Must be overridden.
+     * @var string
+     */
     protected $plural;
+
+    /**
+     * Singular form of the CRUD entry (for example 'User'). Must be overridden.
+     * @var string
+     */
     protected $singular;
+
+    /**
+     * The route you assigned in routes.php (for example 'dashboard.users'). Must be overridden.
+     * @var string
+     */
     protected $route;
+
+    /**
+     * Whether to display the timestamps (created_formatted, updated_formatted). Doesn't need to be overridden
+     * @var bool
+     */
     protected $timestamps = false;
 
     /**
@@ -43,6 +85,8 @@ class CrudController extends AdminController
     public function overview()
     {
         \View::share("title", $this->plural." overzicht");
+
+        //get all fields, filter out the ones that we aren't supposed to display in the overview.
         $fields_ = $this->getFields();
         $fields = array();
         foreach ($fields_ as $key => $field) {
@@ -50,8 +94,27 @@ class CrudController extends AdminController
                 continue;
             $fields[$key] = $field;
         }
+
         $model = $this->model;
-        $data = $model::paginate(15);
+
+        if(\Input::has("q")) {
+            //Apparently, we're not only showing a overview, we're also searching for a certain value within one of the columns
+            //So, let's build a query that filters the data.
+            $data = new $model;
+            /* @var $data \Eloquent */
+            foreach($fields as $field) {
+                //search trough all fields that are allowed to display in the overview.
+                if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
+                    continue;
+                $data = $data->orWhere($field["name"], "LIKE", "%".\Input::get("q")."%");
+            }
+            //force query to give unique results
+            $data = $data->distinct()
+            //get the data
+                ->paginate(15);
+        } else
+            //display the data without any filters
+            $data = $model::paginate(15);
 
         return \View::make("admin.crud.overview")
             ->with("columns", $fields)
@@ -59,7 +122,8 @@ class CrudController extends AdminController
             ->with("plural", $this->plural)
             ->with("route", $this->route)
             ->with("data", $data)
-            ->with("timestamps", $this->timestamps);
+            ->with("timestamps", $this->timestamps)
+            ->with("searchQuery", \Input::get("q"));
     }
 
     /**
