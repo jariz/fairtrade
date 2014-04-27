@@ -17,7 +17,8 @@ class NewsSeeder extends Seeder {
             Post::create(array(
                 "title" => IpsumGenerator::generateParagraphs(1, mt_rand(3,7), false),
                 "content" => IpsumGenerator::generateParagraphs(),
-                "image" => ""
+                "image" => "",
+                "published" => mt_rand(0, 1),
             ));
     }
 } 

@@ -17,7 +17,13 @@ class PageSeeder extends Seeder {
                 "title" => IpsumGenerator::generateParagraphs(1, 4, false),
                 "slug" => IpsumGenerator::getWord(),
                 "content" => IpsumGenerator::generateParagraphs(),
-                "published" => mt_rand(0,1)
+                "published" => mt_rand(0,1),
+                "special" => 0,
+                "view" => NULL,
+                "heading" => IpsumGenerator::generateParagraphs(1, 4, false),
+                "menu_title" => IpsumGenerator::getWord(),
+                "order" => 0,
+                "parent" => 0
             ));
 
         }

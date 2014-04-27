@@ -2,9 +2,9 @@
 
 namespace Model;
 
-class Module extends \Eloquent {
+class CompanyCategory extends \Eloquent {
 
-	protected $table = 'modules';
+	protected $table = 'companies_categories';
 	public $timestamps = false;
 	protected $softDelete = false;
 

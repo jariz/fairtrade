@@ -17,7 +17,8 @@ class ConceptSeeder extends Seeder {
                 "title" => IpsumGenerator::generateParagraphs(1, mt_rand(2,6), false),
                 "content" => IpsumGenerator::generateParagraphs(),
                 "published" => 1,
-                "featured" => 0
+                "featured" => 0,
+                "company_id" => 0,
             ));
 
         }
