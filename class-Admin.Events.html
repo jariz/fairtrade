@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Admin\Events</title>
+
+	<script type="text/javascript" src="resources/combined.js?68452513"></script>
+	<script type="text/javascript" src="elementlist.js?1372973121"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Admin.html">Admin</a>
+						</li>
+				<li><a href="namespace-Fairtrade.html">Fairtrade<span></span></a>
+						<ul>
+				<li><a href="namespace-Fairtrade.Upload.html">Upload</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Front.html">Front</a>
+						</li>
+				<li><a href="namespace-Model.html">Model</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Admin.AdminController.html">AdminController</a></li>
+				<li><a href="class-Admin.Concepts.html">Concepts</a></li>
+				<li><a href="class-Admin.CrudController.html">CrudController</a></li>
+				<li><a href="class-Admin.Dashboard.html">Dashboard</a></li>
+				<li class="active"><a href="class-Admin.Events.html">Events</a></li>
+				<li><a href="class-Admin.Login.html">Login</a></li>
+				<li><a href="class-Admin.News.html">News</a></li>
+				<li><a href="class-Admin.Users.html">Users</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Admin.html" title="Summary of Admin"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Events</h1>
+
+
+	<div class="description">
+	
+<p>Class Events</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+Controller
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-Admin.AdminController.html"><span>Admin\AdminController</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-Admin.CrudController.html"><span>Admin\CrudController</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Admin\Events</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Admin.html">Admin</a><br />
+		<b>Package:</b> Admin<br />
+
+				<b>Author:</b>
+				Jari Zwarts<br />
+		<b>Located at</b> <a href="source-class-Admin.Events.html#5-35" title="Go to source code">controllers/Admin/Events.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getFields" id="_getFields">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFields">#</a>
+		<code><a href="source-class-Admin.Events.html#11-29" title="Go to source code">getFields</a>( )</code>
+
+		<div class="description short">
+			MUST be overridden by the extender. Should return a array with all required
+fields. The key is the label, the value is a array with the following required
+keys:<br />
+
+<ul>
+	<li><b>name</b>: The column in the table. (string)</li>
+
+	<li><b>rules</b>: The validation rules as described in the laravel validator
+	docs. Can be an empty string, but is still required. (string)</li>
+
+	<li><b>type</b>: The type of field to display. (string)<br />
+	Can be one of the following:
+		<ul>
+			<li><b>text</b>: A input with the text type</li>
+
+			<li><b>password</b>: A input with the password type. will be ignored unless it's
+			filled in.</li>
+
+			<li><b>radio</b>: A set of radio boxes. Requires the optional key 'options' as
+			described below.</li>
+
+			<li><b>wysiwyg</b>: 'What you see is what you get' HTML editor.</li>
+
+			<li><b>file</b>: A file input.</li>
+
+			<li><b>date</b>: A text field with a datepicker which allows for easy date
+			choosing.</li>
+		</ul>
+	</li>
+</ul>
+ Optional keys:
+<ul>
+	<li><b>hideInOverview</b>: Whether to show the field on the overview page.
+	(boolean)</li>
+
+	<li><b>options</b>: An array for fields with multiple values such as the radio
+	type. The index is the value, the value is the label. (array)<br />
+	Example:
+		<pre>[0 =&gt; 'No', 1 =&gt; 'Yes']</pre>
+		/li&gt;</li>
+
+	<li><b>boolean</b>: Whether to show the field as a boolean in the overview.
+	Expects the field's value to be either 0 or 1. (boolean)</li>
+</ul>
+
+		</div>
+
+		<div class="description detailed hidden">
+			MUST be overridden by the extender. Should return a array with all required
+fields. The key is the label, the value is a array with the following required
+keys:<br />
+
+<ul>
+	<li><b>name</b>: The column in the table. (string)</li>
+
+	<li><b>rules</b>: The validation rules as described in the laravel validator
+	docs. Can be an empty string, but is still required. (string)</li>
+
+	<li><b>type</b>: The type of field to display. (string)<br />
+	Can be one of the following:
+		<ul>
+			<li><b>text</b>: A input with the text type</li>
+
+			<li><b>password</b>: A input with the password type. will be ignored unless it's
+			filled in.</li>
+
+			<li><b>radio</b>: A set of radio boxes. Requires the optional key 'options' as
+			described below.</li>
+
+			<li><b>wysiwyg</b>: 'What you see is what you get' HTML editor.</li>
+
+			<li><b>file</b>: A file input.</li>
+
+			<li><b>date</b>: A text field with a datepicker which allows for easy date
+			choosing.</li>
+		</ul>
+	</li>
+</ul>
+ Optional keys:
+<ul>
+	<li><b>hideInOverview</b>: Whether to show the field on the overview page.
+	(boolean)</li>
+
+	<li><b>options</b>: An array for fields with multiple values such as the radio
+	type. The index is the value, the value is the label. (array)<br />
+	Example:
+		<pre>[0 =&gt; 'No', 1 =&gt; 'Yes']</pre>
+		/li&gt;</li>
+
+	<li><b>boolean</b>: Whether to show the field as a boolean in the overview.
+	Expects the field's value to be either 0 or 1. (boolean)</li>
+</ul>
+
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						Jari Zwarts<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Admin.CrudController.html#_getFields">Admin\CrudController::getFields()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Admin.CrudController.html#methods">Admin\CrudController</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Admin.CrudController.html#_delete">delete()</a>, 
+			<a href="class-Admin.CrudController.html#_edit">edit()</a>, 
+			<a href="class-Admin.CrudController.html#_overview">overview()</a>, 
+			<a href="class-Admin.CrudController.html#_showEdit">showEdit()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Admin.AdminController.html#methods">Admin\AdminController</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Admin.AdminController.html#___construct">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="model" id="$model">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Admin.Events.html#31" title="Go to source code"><var>$model</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">&quot;\\Model\\Event&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#$model" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>The model name (for example '\\Model\\User'). Must be overridden.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The model name (for example '\\Model\\User'). Must be overridden.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="singular" id="$singular">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Admin.Events.html#32" title="Go to source code"><var>$singular</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">&quot;Evenement&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#$singular" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Singular form of the CRUD entry (for example 'User'). Must be overridden.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Singular form of the CRUD entry (for example 'User'). Must be overridden.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="plural" id="$plural">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Admin.Events.html#33" title="Go to source code"><var>$plural</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">&quot;Evenementen&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#$plural" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Plural form of the CRUD entry (for example 'Users'). Must be overridden.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Plural form of the CRUD entry (for example 'Users'). Must be overridden.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="route" id="$route">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Admin.Events.html#34" title="Go to source code"><var>$route</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">&quot;dashboard.events&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#$route" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>The route you assigned in routes.php (for example 'dashboard.users'). Must be
+overridden.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The route you assigned in routes.php (for example 'dashboard.users'). Must be
+overridden.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Admin.CrudController.html#properties">Admin\CrudController</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Admin.CrudController.html#$timestamps"><var>$timestamps</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

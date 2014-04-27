@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Fairtrade\IpsumGenerator</title>
+
+	<script type="text/javascript" src="resources/combined.js?68452513"></script>
+	<script type="text/javascript" src="elementlist.js?1372973121"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-Admin.html">Admin</a>
+						</li>
+				<li class="active"><a href="namespace-Fairtrade.html">Fairtrade<span></span></a>
+						<ul>
+				<li><a href="namespace-Fairtrade.Upload.html">Upload</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Front.html">Front</a>
+						</li>
+				<li><a href="namespace-Model.html">Model</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Fairtrade.Date.html">Date</a></li>
+				<li class="active"><a href="class-Fairtrade.IpsumGenerator.html">IpsumGenerator</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Fairtrade.html" title="Summary of Fairtrade"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class IpsumGenerator</h1>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Fairtrade.html">Fairtrade</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Fairtrade.IpsumGenerator.html#9-59" title="Go to source code">lib/Fairtrade/IpsumGenerator.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="generateParagraphs" id="_generateParagraphs">
+
+		<td class="attributes"><code>
+			 public static
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_generateParagraphs">#</a>
+		<code><a href="source-class-Fairtrade.IpsumGenerator.html#11-43" title="Go to source code">generateParagraphs</a>( <span>integer <var>$amount</var> = <span class="php-num">4</span></span>, <span>null <var>$wordsPerParagraph</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$ptags</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Generate a dummy text paragraphs (for seeding)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Generate a dummy text paragraphs (for seeding)</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$amount</var></dt>
+					<dd><code>integer</code><br>$amount Amount of paragraphs to generate</dd>
+					<dt><var>$wordsPerParagraph</var></dt>
+					<dd><code>null</code><br>$wordsPerParagraph Amounts of words within each paragraph. If passed null, will
+be changed in a random value from 7 till 25</dd>
+					<dt><var>$ptags</var></dt>
+					<dd><code>boolean</code><br>$ptags Add paragraph tags.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						Jari Zwarts<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWord" id="_getWord">
+
+		<td class="attributes"><code>
+			 public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWord">#</a>
+		<code><a href="source-class-Fairtrade.IpsumGenerator.html#45-54" title="Go to source code">getWord</a>( <span>mixed <var>$capitalize</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Returns a random lorem ipsum dummy word.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns a random lorem ipsum dummy word.</p>
+
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						Jari Zwarts<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="initWords" id="_initWords">
+
+		<td class="attributes"><code>
+			 public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_initWords">#</a>
+		<code><a href="source-class-Fairtrade.IpsumGenerator.html#56-58" title="Go to source code">initWords</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="words" id="$words">
+		<td class="attributes"><code>
+			public static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Fairtrade.IpsumGenerator.html#10" title="Go to source code"><var>$words</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$words" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
