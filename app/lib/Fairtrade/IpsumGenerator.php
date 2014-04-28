@@ -9,9 +9,9 @@ namespace Fairtrade;
 class IpsumGenerator {
     static $words = null;
     /**
-     * Generate a dummy text paragraphs (for seeding)
+     * Generate dummy text paragraphs (for seeding)
      * @param int $amount Amount of paragraphs to generate
-     * @param null $wordsPerParagraph Amounts of words within each paragraph. If passed null, will be changed in a random value from 7 till 25
+     * @param int|null $wordsPerParagraph Amounts of words within each paragraph. If passed null, will be changed in a random value from 7 till 25
      * @param bool $ptags Add paragraph tags.
      * @return string
      * @author Jari Zwarts

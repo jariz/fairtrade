@@ -7,6 +7,7 @@
  */
 
 namespace Admin;
+use Illuminate\Support\MessageBag;
 
 /**
  * Class CrudController
@@ -30,7 +31,7 @@ class CrudController extends AdminController
      * <li><b>password</b>: A input with the password type. will be ignored unless it's filled in.</li>
      * <li><b>radio</b>: A set of radio boxes. Requires the optional key 'options' as described below.</li>
      * <li><b>wysiwyg</b>: 'What you see is what you get' HTML editor.</li>
-     * <li><b>file</b>: A file input.</li>
+     * <li><b>file</b>: A file input. Requires a upload class name to be set.</li>
      * <li><b>date</b>: A text field with a datepicker which allows for easy date choosing.</li>
      * </ul>
      * </ul>
@@ -76,6 +77,12 @@ class CrudController extends AdminController
      * @var bool
      */
     protected $timestamps = false;
+
+    /**
+     * The name of the upload class that will handle file uploads trough the file field.
+     * @var string
+     */
+    protected $upload = "\\Fairtrade\\Upload";
 
     /**
      * Give a overview of all entries
@@ -199,6 +206,19 @@ class CrudController extends AdminController
                         //if password field is empty, don't change it.
                         if (empty($input[$name]))
                             continue;
+                        break;
+                    case "file":
+                        $upload = $this->upload;
+                        $upload = new $upload($name);
+                        /* @var $upload \Fairtrade\Upload\Upload */
+                        $filename = \Str::random(20).".".\File::extension(\Input::get($name));
+                        $upload->setFileName($filename);
+                        if(!$upload->upload()) {
+                            \View::share("errors", new MessageBag(array($upload->error())));
+                            return $this->showEdit(\Input::get("id"));
+                        } else {
+                            $input[$name] = $filename;
+                        }
                         break;
                 }
 
