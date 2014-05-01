@@ -2,12 +2,13 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>{{$title}} - Fairtrade Amsterdam Beheer</title>
-    <link href="{{url('css/screen.css')}}" rel="stylesheet">
-    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
+    <title>{{$title}} - Fairtrade Amsterdam</title>
+    <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     @yield("scripts")
 </head>
 <body>
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 </body>
 </html>

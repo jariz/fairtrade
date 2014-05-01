@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>{{$title}} - Fairtrade Amsterdam Beheer</title>
+    <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
-    <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet">
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{url('plugins/bs/bootstrap.min.js')}}"></script>
 

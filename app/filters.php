@@ -22,6 +22,10 @@ App::after(function($request, $response)
 	//
 });
 
+App::missing(function(){
+    return View::make('front.errors.404');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
