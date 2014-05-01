@@ -31,4 +31,4 @@ foreach($crudControllers as $route => $controller) {
 
 
 /** -- FRONT END Pagina's **/
-// Hier komt een Catch all route
+Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
