@@ -6,6 +6,7 @@
             @if($page->published == 0)
                 <div class="alert alert-warning alert-dismissable">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                   <span class="glyphicon glyphicon-exclamation-sign"></span>
                   <strong>Let op: </strong> Deze pagina is niet gepubliceerd, en is daarom niet zichtbaar voor bezoekers
                 </div>
             @endif
