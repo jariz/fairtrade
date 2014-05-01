@@ -1,9 +1,9 @@
 <?php
 /**
  * JARIZ.PRO
- * Date: 22/04/2014
- * Time: 15:21
- * Author: JariZ
+ * Date 22/04/2014
+ * Time 1521
+ * Author JariZ
  */
 
 return array(
@@ -191,7 +191,7 @@ return array(
         "dictumst",
         "primis",
         "cubilia",
-        "curae;",
+        "curae",
         "habitant",
         "senectus",
         "netus",
@@ -263,7 +263,7 @@ return array(
         "ex",
         "ea",
         "commodi",
-        "consequatur?",
+        "consequatur",
         "autem",
         "eum",
         "iure",
@@ -276,7 +276,7 @@ return array(
         "illum",
         "fugiat",
         "quo",
-        "pariatur?",
+        "pariatur",
         "vero",
         "accusamus",
         "iusto",
@@ -375,7 +375,7 @@ return array(
         "typi",
         "habent",
         "claritatem",
-        "insitam;",
+        "insitam",
         "usus",
         "legentis",
         "iis",
@@ -1296,7 +1296,7 @@ return array(
         "impiorum",
         "contignitate",
         "continuo",
-        "operę;",
+        "opere",
         "inconvenientia",
         "crifninae",
         "cubiculo",
@@ -2351,7 +2351,7 @@ return array(
         "versus",
         "fioniam",
         "verius",
-        "dicendo:",
+        "dicendo",
         "restigia",
         "vestimenta",
         "vestimentorum",

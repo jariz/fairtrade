@@ -31,6 +31,7 @@ class News extends CrudController {
     }
 
     protected $model = "\\Model\\Post";
+    protected $upload = "\\Fairtrade\\Upload\\News";
     protected $singular = "Nieuws artikel";
     protected $plural = "Nieuws artikelen";
     protected $route = "dashboard.news";

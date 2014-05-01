@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container container-layout moar-padding">
-    {{Form::open(array('route'=>$post_route, 'class'=>'form-horizontal'))}}
+    {{Form::open(array('route'=>$post_route, 'class'=>'form-horizontal', 'files'=>true))}}
     @include('includes.errors')
     @if(!is_null($id))
     {{Form::hidden('id', $id)}}

@@ -15,7 +15,7 @@
     margin-top:70px;
   }
   padding-top:50px;
-  >h2 {
+  h2 {
     margin-top:0;
   }
 }
@@ -26,4 +26,10 @@ table a.btn, .table a.btn {
 
 .pagination-center {
   text-align:center;
+}
+
+.input-group {
+  .form-control.search {
+//    width:100px;
+  }
 }

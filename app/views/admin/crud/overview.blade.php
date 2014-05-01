@@ -2,9 +2,19 @@
 
 @section('content')
 <div class="container container-layout moar-padding">
+    <div class="pull-right">
+        {{Form::open(['class'=>'row', 'method' => 'get', 'route' => $route])}}
+        <a class="btn btn-success col-lg-2 pull-right" href="{{URL::route($route.'-add')}}"><i class="glyphicon glyphicon-plus-sign"></i> Aanmaken</a>
+        <div class="input-group col-lg-4 pull-right" style="margin-right:10px;">
+            {{Form::text('q', \Input::get('q'), ['class'=>'form-control search', 'placeholder'=>'Zoeken...'])}}
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+        </div>
+        <h2 class="pull-left">{{$plural}}</h2>
+        {{Form::close()}}
+    </div>
 
-    <a class="btn btn-success pull-right" href="{{URL::route($route.'-add')}}">Aanmaken</a>
-    <h2>{{$plural}}</h2>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -27,6 +37,13 @@
         </tr>
         </thead>
         <tbody>
+        @if(count($data) == 0)
+        <tr>
+            <td colspan="{{count($columns)+1+($timestamps ? 2 : 0)}}" class="text-center text-danger">
+                Geen resultaten gevonden
+            </td>
+        </tr>
+        @endif
             @foreach($data as $row)
             <tr>
             @foreach($columns as $column)
@@ -57,8 +74,8 @@
                 <td>
                     {{Form::open(array('route'=>$route.'-delete'))}}
                     {{Form::hidden('id', $row->id)}}
-                    <a href="{{URL::route($route.'-edit', array('id'=>$row->id))}}" class="btn btn-sm btn-warning">Edit</a>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <a href="{{URL::route($route.'-edit', array('id'=>$row->id))}}" class="btn btn-sm btn-warning glyphicon glyphicon-edit"></a>
+                    <button type="submit" class="btn btn-danger btn-sm glyphicon glyphicon-trash"></button>
                     {{Form::close()}}
                 </td>
             </tr>
