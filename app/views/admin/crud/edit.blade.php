@@ -32,7 +32,16 @@
                 {{Form::text($field["name"], \Fairtrade\Date::input($data[$field["name"]])->forHuman(), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
             </div>
+            @elseif($field['type'] === 'text-with-prepend')
+                <div class="input-group">
+                  <span class="input-group-addon">{{$field['prepend']}}</span>
+                  {{Form::text($field["name"], $data[$field["name"]], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
+                </div>
+            @elseif($field['type'] === 'checkbox')
+                <?php $checked = ( $data[ $field['name'] ] == 1) ? true : false ?>
+               {{ Form::checkbox($field['name'], 1, $checked) }}
             @endif
+
         </div>
     </div>
     @endforeach

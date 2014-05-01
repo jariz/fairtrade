@@ -8,7 +8,9 @@ $crudControllers = array(
     "users" => "\\Admin\\Users",
     "news" => "\\Admin\\News",
     "events" => "\\Admin\\Events",
-    "concepts" => "\\Admin\\Concepts"
+    "concepts" => "\\Admin\\Concepts",
+    "pages" => "\\Admin\\Pages"
+
 );
 
 foreach($crudControllers as $route => $controller) {
