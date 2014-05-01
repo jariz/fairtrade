@@ -16,21 +16,11 @@
         <div class="container">
             <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
             <ul class="nav navbar-nav pull-right">
-                <li>
-                    <a href="{{url('dashboard/users')}}">Gebruikers</a>
+                @foreach(Config::get("fairtrade.admin_nav") as $label => $route)
+                <li @if(Route::getCurrentRoute()->getAction()["as"] == $route) class="active" @endif>
+                    <a href="{{URL::route($route)}}">{{$label}}</a>
                 </li>
-                <li>
-                    <a href="{{url('dashboard/news')}}">Nieuws</a>
-                </li>
-                <li>
-                    <a href="{{url('dashboard/events')}}">Evenementen</a>
-                </li>
-                <li>
-                    <a href="{{url('dashboard/concepts')}}">Concepten</a>
-                </li>
-                <li>
-                    <a href="{{url('dashboard/pages')}}">Pagina's</a>
-                </li>
+                @endforeach
             </ul>
         </div>
     </nav>
