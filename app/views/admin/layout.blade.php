@@ -16,11 +16,15 @@
         <div class="container">
             <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
             <ul class="nav navbar-nav pull-right">
-                @foreach(Config::get("fairtrade.admin_nav") as $label => $route)
-                <li @if(Route::getCurrentRoute()->getAction()["as"] == $route) class="active" @endif>
-                    <a href="{{URL::route($route)}}">{{$label}}</a>
-                </li>
-                @endforeach
+
+              <?php $admin_nav = Config::get("fairtrade.admin_nav"); ?>
+                @if( is_array($admin_nav ) )
+                    @foreach($admin_nav as $label => $route)
+                    <li @if(Route::getCurrentRoute()->getAction()["as"] == $route) class="active" @endif>
+                        <a href="{{URL::route($route)}}">{{$label}}</a>
+                    </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     </nav>
