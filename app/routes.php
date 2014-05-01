@@ -1,8 +1,14 @@
 <?php
+//Admin
 Route::get("dashboard", array("as" => "dashboard", "uses" => "\\Admin\\Dashboard@show"));
 Route::get("dashboard/login", array("as" => "dashboard.login", "uses" => "\\Admin\\Login@show"));
 Route::post("dashboard/login", array("as" => "dashboard.do-login", "uses" => "\\Admin\\Login@run", "before" => "csrf"));
+
+//Front
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
+Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\company@apply"));
+
+Route::put('add', 'Company@add');
 
 $crudControllers = array(
     "users" => "\\Admin\\Users",

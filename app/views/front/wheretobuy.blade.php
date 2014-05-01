@@ -12,11 +12,9 @@
 		Zoek: <input type="text" name="place" id="add_place_input" placeholder="Geef een locatie op" autocomplete="off">
 		<input type="submit" value="Zoeken" id="add_place_button">
 	</form>
-	
+
     <h1>Alle bedrijven</h1>
     @foreach ($companies as $company)
         {{ $company->name }} - {{ $company->adres }} <br />
     @endforeach
 @stop
-
-

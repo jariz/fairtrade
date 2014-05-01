@@ -1,4 +1,10 @@
 <?php
+/**
+ * Wies Kueter
+ * Date: 01/05/2014
+ * Time: 14:28
+ * Author: Wies Kueter
+ */
 
 namespace Front;
 use Model;
@@ -20,8 +26,8 @@ class WhereToBuy extends \Controller {
 
 	protected function show()
 	{
+		// Query all companies fromd database
 		$companies = Model\Company::all();
-		//print_r($companies);
 		
 		return \View::make("front.wheretobuy")->with(array(
 				'title' => 'Waar te koop',
