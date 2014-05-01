@@ -1,4 +1,7 @@
 <?php
+Route::get('test', function(){
+
+});
 //Admin
 Route::get("dashboard", array("as" => "dashboard", "uses" => "\\Admin\\Dashboard@show"));
 Route::get("dashboard/login", array("as" => "dashboard.login", "uses" => "\\Admin\\Login@show"));
