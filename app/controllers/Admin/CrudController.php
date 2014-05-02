@@ -151,23 +151,21 @@ class CrudController extends AdminController
             $data = $model::findOrFail($id)->toArray();
             \View::share("title", "Pas ".strtolower($this->singular)." aan");
         }
-        else{
-            $data = \Input::only($keys);
-            \View::share("title", "Maak ".strtolower($this->singular)." aan");
-        }
+
+
 
         foreach ($fields as $key => $field){
 
-            if( array_key_exists('hide_if', $field)){
+            if( $editing && array_key_exists('hide_if', $field)){
                 foreach($field['hide_if'] as $col => $value){
-                    if( $data[$col] == $value){
+                    if( array_key_exists($col, $data) && $data[$col] == $value){
                         unset($fields[$key]);
                         break;
                     }
                 }
             }
 
-            if( $field['type'] == 'json'){
+            if( $editing && $field['type'] == 'json'){
                 $meta = json_decode($data[$field['name']]);
                 if( is_null( $meta) ){
                     continue;
@@ -187,11 +185,16 @@ class CrudController extends AdminController
             $keys[] = $field["name"];
         }
 
+        if(!$editing){
+            $data = \Input::only($keys);
+            \View::share("title", "Maak ".strtolower($this->singular)." aan");
+        }
+
         return \View::make("admin.crud.edit")
-            ->with('title', 'test')
             ->with("fields", $fields)
             ->with("data", $data)
             ->with("post_route", $this->route . "-doedit")
+            ->with('editing', $editing)
             ->with("id", $id);
     }
 
@@ -217,7 +220,7 @@ class CrudController extends AdminController
         else $data = new $model;
         foreach ($fields as $field){
 
-            if( $field['type'] == 'json'){
+            if( $editing && $field['type'] == 'json'){
 
                 if( !array_key_exists($field['name'], $dataArray)){
                     continue;

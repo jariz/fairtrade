@@ -35,7 +35,7 @@
                 <?php $checked = ( $data[ $field['name'] ] == 1) ? true : false ?>
                {{ Form::checkbox($field['name'], 1, $checked) }}
 
-            @elseif($field['type'] == 'json')
+            @elseif($editing && $field['type'] == 'json')
                 <h2>{{$name}}</h2>
             @endif
 
