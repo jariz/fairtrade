@@ -22,14 +22,24 @@ class Pages extends CrudController {
             "Inhoud" => [
                 "name" => "content",
                 "type" => "wysiwyg",
+                "hide_if" => ['special' => 1],
                 "rules" => "",
                 "hideInOverview" => true
             ],
 
-            "Publiceren" => [
+            "Gepubliceerd" => [
                 "name" => "published",
                 "type" => "checkbox",
-                "rules" => ""
+                "rules" => "",
+                "boolean" => true
+            ],
+
+            "Aanpasbare gedeelte" => [
+                "name" => "meta",
+                "type" => "json",
+                "rules" => "",
+                "hideInOverview" => true,
+                "hide_if" => ['special' => 0]
             ]
 
         );

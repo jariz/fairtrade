@@ -13,19 +13,17 @@ class DynamicPage extends BaseController{
 
     /**
      * Instance Eloquent model of the current page
+     * @author Dmitri Chebotarev
      * @var Model\Page
      */
     private $page;
 
     /**
      * @param string $slug - The slug of the current page, must exist in pages table
+     * @author Dmitri Chebotarev
      * @return View
      */
-    public function get( $slug = NULL ){
-
-        if (is_null($slug) ){
-            return $this->notFound();
-        }
+    public function get( $slug = 'home' ){
 
         $this->page = Model\Page::whereSlug( $slug );
 
@@ -37,11 +35,16 @@ class DynamicPage extends BaseController{
             return $this->notFound();
         }
 
+        if( $this->page->special == 1){
+            return $this->renderSpecial();
+        }
+
         return $this->render();
     }
 
     /**
      * Show 404 error
+     * @author Dmitri Chebotarev
      * @return View
      */
     private function notFound(){
@@ -50,11 +53,38 @@ class DynamicPage extends BaseController{
 
     /**
      * Render the current page
+     * @author Dmitri Chebotarev
      * @return View
      */
     private function render(){
        return View::make('front.dynamic')
                 ->with('title', $this->page->title)
                ->with('page', $this->page);
+    }
+
+    /**
+     * Render a 'Special' page
+     * @author Dmitri Chebotarev
+     * @return View
+     */
+    private function renderSpecial(){
+
+        if( !View::exists($this->page->view) ){
+            return $this->notFound();
+        }
+
+        $view = View::make( $this->page->view )
+            ->with('title', $this->page->title);
+
+
+        $metaData = json_decode( $this->page->meta);
+
+        if( !is_null($metaData) ){
+
+            foreach($metaData as $key => $data ){
+              $view->with($key, $data->value);
+            }
+        }
+        return $view;
     }
 } 

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login - Fairtrade Amsterdam</title>
-    <link href="{{url('css/admin/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
 </head>
 <body>
