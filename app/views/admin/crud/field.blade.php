@@ -1,5 +1,9 @@
  <div class="form-group">
+        @if($field['type'] != 'json')
         {{Form::label($field["name"], $name, array('class'=>'col-sm-2 control-label'))}}
+        @else
+            <div class="col-sm-2"></div>
+        @endif
         <div class="col-sm-10">
             @if($field["type"] == "text")
             {{Form::text($field["name"], $data[$field["name"]], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
@@ -30,6 +34,9 @@
             @elseif($field['type'] === 'checkbox')
                 <?php $checked = ( $data[ $field['name'] ] == 1) ? true : false ?>
                {{ Form::checkbox($field['name'], 1, $checked) }}
+
+            @elseif($field['type'] == 'json')
+                <h2>{{$name}}</h2>
             @endif
 
         </div>

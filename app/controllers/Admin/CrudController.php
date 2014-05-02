@@ -169,9 +169,9 @@ class CrudController extends AdminController
                     $json_field = (array)$json_field;
                     $name = $json_field['name'] = '__json__'.$key;
 
-                    $fields[] = $json_field;
+                    $fields[$json_field['label']] = $json_field;
                     $data[$name] = $json_field['value'];
-
+                    $keys[] = $name;
                 }
             }
 
@@ -244,7 +244,8 @@ class CrudController extends AdminController
 
                $json[$name] = [
                   'value' =>  $input[$field_name],
-                   'type' => $fields[$field_name]['type']
+                  'type' => $fields[$field_name]['type'],
+                  'label' => $fields[$field_name]['label']
                ];
                 unset($fields[$field_name]);
                 unset($input[$field_name]);

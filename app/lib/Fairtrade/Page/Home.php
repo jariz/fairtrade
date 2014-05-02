@@ -16,7 +16,8 @@ class Home extends Page{
     protected $meta = [
         'dynamic' => [
             'value' => 'Dit is een dynamische value',
-            'type' => 'wysiwyg'
+            'type' => 'wysiwyg',
+            'label' => 'Dynamische blok'
         ]
     ];
 }
