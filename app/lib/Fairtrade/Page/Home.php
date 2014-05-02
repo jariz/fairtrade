@@ -5,7 +5,7 @@ namespace Fairtrade\Page;
 class Home extends Page{
 
     public $title = 'Homepage';
-    public $slug = 'home';
+    public $slug = '/';
     public $published = 1;
     public $view = 'front.special.homepage';
     public $heading = 'Homepage';

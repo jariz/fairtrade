@@ -37,6 +37,13 @@
 
             @elseif($editing && $field['type'] == 'json')
                 <h2>{{$name}}</h2>
+
+            @elseif($field['type'] == 'select')
+                <select name="{{$field['name']}}" class="form-control">
+                    @foreach($field['options'] as $option)
+                        <option @if($editing && $data[$field['name']] == $option['id']) selected @endif value="{{$option['id']}}">{{$option['title']}}</option>
+                    @endforeach
+                </select>
             @endif
 
         </div>
