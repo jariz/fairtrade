@@ -12,7 +12,7 @@ Route::get("dashboard/settings", array("as" => "dashboard.settings", "uses" => "
 //Front
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
-Route::post("company@add", "\\Front\\Company@add");
+Route::post("add", "\\Front\\Company@add");
 
 $crudControllers = array(
     "users" => "\\Admin\\Users",
