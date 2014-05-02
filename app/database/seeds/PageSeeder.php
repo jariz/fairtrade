@@ -11,8 +11,18 @@ use Fairtrade\IpsumGenerator;
 class PageSeeder extends Seeder {
 
     public function run() {
-        Page::truncate();
-        for ($i = 1; $i <= 5; $i++) {
+        $last = 0;
+
+        /* Get Last order INT */
+        $data = Page::where('parent', '=', 0)->orderBy('order', 'DESC')
+                ->first();
+
+        if($data->exists()){
+            $last = $data['order'] + 1;
+        }
+
+
+        for ($i = $last; $i <= ($last + 5); $i++) {
             Page::create(array(
                 "title" => IpsumGenerator::generateParagraphs(1, 4, false),
                 "slug" => IpsumGenerator::getWord(),
@@ -22,7 +32,8 @@ class PageSeeder extends Seeder {
                 "view" => NULL,
                 "heading" => IpsumGenerator::generateParagraphs(1, 4, false),
                 "menu_title" => IpsumGenerator::getWord(),
-                "order" => 0,
+                "show_in_nav" => mt_rand(0,1),
+                "order" => $i,
                 "parent" => 0
             ));
 

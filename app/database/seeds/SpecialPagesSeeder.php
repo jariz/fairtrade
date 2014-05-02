@@ -9,11 +9,16 @@
 class SpecialPagesSeeder extends Seeder {
 
     public function run(){
+
+        Model\Page::truncate();
         $namespace = "Fairtrade\\Page\\";
 
         /* Classes uit de $namespace */
         $pages = [
             'Home',
+            'News',
+            'Events',
+            'Contact'
         ];
 
         foreach( $pages as $page ){
@@ -22,15 +27,17 @@ class SpecialPagesSeeder extends Seeder {
             $object     = new $class;
             $pageModel  = new Model\Page;
 
-            $pageModel->title       = $object->title;
-            $pageModel->slug        = $object->slug;
-            $pageModel->published   = $object->published;
-            $pageModel->view        = $object->view;
-            $pageModel->heading     = $object->heading;
-            $pageModel->menu_title  = $object->menu_title;
-            $pageModel->order       = $object->order;
-            $pageModel->parent      = $object->parent;
-            $pageModel->special     = 1;
+            $properties = get_object_vars($object);
+
+            if(array_key_exists('meta', $properties)){
+                unset($properties['meta']);
+            }
+
+
+            foreach($properties as $key => $value){
+                $pageModel->$key = $value;
+            }
+
             $pageModel->meta        = $object->meta();
             $pageModel->save();
 

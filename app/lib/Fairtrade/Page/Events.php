@@ -2,15 +2,15 @@
 
 namespace Fairtrade\Page;
 
-class Home extends Page{
+class Events extends Page{
 
-    public $title = 'Homepage';
-    public $slug = '/';
+    public $title = 'Evenementen';
+    public $slug = 'evenementen';
     public $published = 1;
-    public $view = 'front.special.homepage';
-    public $heading = 'Homepage';
-    public $menu_title = 'home';
-    public $order = 0;
+    public $view = 'front.special.events';
+    public $heading = 'Evenementen';
+    public $menu_title = 'evenementen';
+    public $order = 2;
     public $parent = 0;
     public $show_in_nav = 1;
 
