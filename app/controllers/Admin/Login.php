@@ -46,4 +46,13 @@ class Login extends \Controller {
             return \View::make("admin.login")->with("errors", $errors);
         else return \Redirect::intended("dashboard");
     }
+
+    /**
+     * Destroy the session and go back to the homepage.
+     */
+    public function destroy($csrf) {
+        if($csrf != \Session::token()) \App::abort(403);
+        \Auth::logout();
+        return \Redirect::intended();
+    }
 } 

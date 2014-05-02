@@ -27,10 +27,11 @@ class Pages extends CrudController {
                 "hideInOverview" => true
             ],
 
-            "Publiceren" => [
+            "Gepubliceerd" => [
                 "name" => "published",
                 "type" => "checkbox",
-                "rules" => ""
+                "rules" => "",
+                "boolean" => true
             ],
 
             "Aanpasbare gedeelte" => [

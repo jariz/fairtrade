@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Page extends \Eloquent {
+class Page extends FormattedTimestamps {
 
 	protected $table = 'pages';
 	public $timestamps = true;
