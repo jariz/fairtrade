@@ -22,6 +22,7 @@ class Pages extends CrudController {
             "Inhoud" => [
                 "name" => "content",
                 "type" => "wysiwyg",
+                "hide_if" => ['special' => 1],
                 "rules" => "",
                 "hideInOverview" => true
             ],
@@ -37,6 +38,7 @@ class Pages extends CrudController {
                 "type" => "json",
                 "rules" => "",
                 "hideInOverview" => true,
+                "hide_if" => ['special' => 0]
             ]
 
         );

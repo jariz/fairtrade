@@ -156,7 +156,16 @@ class CrudController extends AdminController
             \View::share("title", "Maak ".strtolower($this->singular)." aan");
         }
 
-        foreach ($fields as $field){
+        foreach ($fields as $key => $field){
+
+            if( array_key_exists('hide_if', $field)){
+                foreach($field['hide_if'] as $col => $value){
+                    if( $data[$col] == $value){
+                        unset($fields[$key]);
+                        break;
+                    }
+                }
+            }
 
             if( $field['type'] == 'json'){
                 $meta = json_decode($data[$field['name']]);
