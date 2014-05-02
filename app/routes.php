@@ -7,10 +7,7 @@ Route::post("dashboard/login", array("as" => "dashboard.do-login", "uses" => "\\
 //Front
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
-
-
-// Post requests
-//Route::post('add', '\\Front\\company@add');
+Route::post("company@add", "\\Front\\Company@add");
 
 $crudControllers = array(
     "users" => "\\Admin\\Users",

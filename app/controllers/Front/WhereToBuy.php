@@ -26,7 +26,7 @@ class WhereToBuy extends \Controller {
 
 	protected function show()
 	{
-		// Query all companies fromd database
+		// Query all companies from database
 		$companies = Model\Company::all();
 		
 		return \View::make("front.wheretobuy")->with(array(
