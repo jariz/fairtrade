@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+	1: Account aanmaken - <strong>2: Bedrijfsgegevens</strong> - 3: Betalings gegevens
 	<h1>Bedrijf aanmelden</h1>
 	{{ Form::open(array('method' => 'post', 'action' => '\\Front\\Company@add', 'files' => true)) }}
 		{{ Form::label('name', 'Bedrijfsnaam: ') }}
@@ -16,7 +17,7 @@
 		{{ Form::file('logo') }} <br />
 
 		{{ Form::label('address', 'Straat: ') }}
-		{{ Form::text('address') }} <br />
+		{{ Form::text('address', null, array('class' => '')) }} <br />
 
 		{{ Form::label('postal_code', 'Postcode: ') }}
 		{{ Form::text('postal_code') }} <br />
@@ -28,15 +29,12 @@
 		{{ Form::textarea('description') }} <br/ >
 
 		<h2>Contact gegevens</h2>
-		{{ Form::label('email', 'E-mail: ') }}
-		{{ Form::text('email') }} <br />
-
-		{{ Form::label('telefoonnummer', 'Telefoonnummer: ') }}
-		{{ Form::text('telefoonnummer') }} <br />
+		{{ Form::label('contact_info', 'Contact informatie:') }} <br />
+		{{ Form::textarea('contact_info') }} <br />
 
 		{{ Form::label('url', 'Website: ') }}
 		{{ Form::text('url') }} <br />
 
-		{{ Form::submit('Bedrijf aanmelden' ) }}
+		{{ Form::submit('Bedrijf aanmelden', array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 @stop

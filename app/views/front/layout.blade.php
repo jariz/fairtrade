@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{$title}} - Fairtrade Amsterdam</title>
     <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('css/front/style.css')}}" rel="stylesheet">
     @yield("scripts")
 </head>
 <body>
