@@ -30,6 +30,13 @@ class Pages extends CrudController {
                 "name" => "published",
                 "type" => "checkbox",
                 "rules" => ""
+            ],
+
+            "Aanpasbare gedeelte" => [
+                "name" => "meta",
+                "type" => "json",
+                "rules" => "",
+                "hideInOverview" => true,
             ]
 
         );

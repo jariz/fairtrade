@@ -144,16 +144,44 @@ class CrudController extends AdminController
         $fields = $this->getFields();
         $model = $this->model;
         $keys = array();
+        $data = array();
 
-        if($editing)
+
+        if($editing){
+            $data = $model::findOrFail($id)->toArray();
             \View::share("title", "Pas ".strtolower($this->singular)." aan");
-        else \View::share("title", "Maak ".strtolower($this->singular)." aan");
+        }
+        else{
+            $data = \Input::only($keys);
+            \View::share("title", "Maak ".strtolower($this->singular)." aan");
+        }
 
-        foreach ($fields as $field) $keys[] = $field["name"];
+        foreach ($fields as $field){
+
+            if( $field['type'] == 'json'){
+                $meta = json_decode($data[$field['name']]);
+                if( is_null( $meta) ){
+                    continue;
+                }
+
+                foreach( (array)$meta as $key => $json_field){
+
+                    $json_field = (array)$json_field;
+                    $name = $json_field['name'] = '__json__'.$key;
+
+                    $fields[] = $json_field;
+                    $data[$name] = $json_field['value'];
+
+                }
+            }
+
+            $keys[] = $field["name"];
+        }
 
         return \View::make("admin.crud.edit")
+            ->with('title', 'test')
             ->with("fields", $fields)
-            ->with("data", !$editing ? \Input::only($keys) : $model::findOrFail($id)->toArray())
+            ->with("data", $data)
             ->with("post_route", $this->route . "-doedit")
             ->with("id", $id);
     }
@@ -173,14 +201,69 @@ class CrudController extends AdminController
 
         //build the input
         $keys = array("id");
-        foreach ($fields as $field) $keys[] = $field["name"];
+        if ($editing){
+            $data = $model::findOrFail(\Input::get("id"));
+            $dataArray = $data->toArray();
+        }
+        else $data = new $model;
+        foreach ($fields as $field){
+
+            if( $field['type'] == 'json'){
+
+                if( !array_key_exists($field['name'], $dataArray)){
+                    continue;
+                }
+
+//                dd($data[$field['name']]);
+                $meta = json_decode($data[$field['name']]);
+                if( is_null( $meta) ){
+
+                    continue;
+                }
+
+                foreach( (array)$meta as $key => $json_field){
+
+                    $json_field = (array)$json_field;
+                    $name = $json_field['name'] = '__json__'.$key;
+
+                    $fields[$name] = $json_field;
+                    $data[$name] = $json_field['value'];
+                    $keys[] = $name;
+
+                }
+            }
+            $keys[] = $field["name"];
+        }
         $input = \Input::only($keys);
+
+        $json = array();
+
+        foreach($input as $field_name => $value){
+            if(str_contains($field_name, '__json__')){
+                $name = str_replace('__json__', '', $field_name);
+
+               $json[$name] = [
+                  'value' =>  $input[$field_name],
+                   'type' => $fields[$field_name]['type']
+               ];
+                unset($fields[$field_name]);
+                unset($input[$field_name]);
+                unset($data[$field_name]);
+            }
+        }
+
 
         //build the rules
         $rules = array();
         foreach ($fields as $field) {
+
+            if($field['type'] == 'json'){
+                $input[$field['name']] = json_encode($json);
+            }
+
             $rules[$field["name"]] = $field["rules"];
         }
+
         if ($editing) {
             $m = new $model;
             $rules["id"] = "required|numeric|exists:" . $m->getTable() . ",id";
@@ -194,8 +277,7 @@ class CrudController extends AdminController
             return $this->showEdit(\Input::get("id"));
         } else {
 
-            if ($editing) $data = $model::findOrFail(\Input::get("id"));
-            else $data = new $model;
+
 
             foreach ($fields as $field) {
                 $name = $field["name"];
