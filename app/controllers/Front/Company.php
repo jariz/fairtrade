@@ -12,7 +12,7 @@ use Input;
 use Validator;
 use Redirect;
 
-class Company extends \Controller 
+class Company extends BaseController 
 {
 	/**
 	 * Controller to apply a new company
@@ -86,5 +86,30 @@ class Company extends \Controller
 		} else{
 			// Store in database
 		}
+	}
+
+	protected function AjaxGetCompanies()
+	{
+		/* Query all companies from database */
+		$company = new Model\Company;
+		$companies = $company->all();
+		
+		/* Prepare array to return as json object */
+		$company_array = array();
+
+		/* Add companies to json object */
+		foreach($companies as $company)
+		{
+			$lat_lng = explode(',', $company['geo_location']);
+
+			$company_array[] = array(
+				'description' => 'test',//$company['description'],
+				'lat' => floatval($lat_lng[0]),
+				'lng' => floatval($lat_lng[1]),
+				'geo_location' => $company['geo_location']
+			);
+		}
+
+		echo json_encode($company_array);
 	}
 }

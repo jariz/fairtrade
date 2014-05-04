@@ -9,7 +9,7 @@
 namespace Front;
 use Model;
 
-class WhereToBuy extends \Controller 
+class WhereToBuy extends BaseController 
 {
 	/**
 	 * Setup the layout used by the controller.

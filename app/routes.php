@@ -14,6 +14,7 @@ Route::post("dashboard/settings", array("as" => "dashboard.do-settings", "uses" 
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
 Route::post("add", "\\Front\\Company@add");
+Route::get("ajaxGetCompanies", "\\Front\\Company@AjaxGetCompanies");
 
 $crudControllers = Config::get("fairtrade.crud");
 
