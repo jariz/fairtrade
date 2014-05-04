@@ -32,31 +32,38 @@ $(function ()
     });
 
     // List of all companies
-    var companies = [
-        ['Albert Heijn', 'Haarlemmerdijk 1 1013 JZ Amsterdam'],
-        ['Damrak', 'Damrak, Amsterdam'],
-    ];
+    var companies = [];
+
+    var geo_location;
+
+    $.each($('#all_companies tr td'), function() { 
+        geo_location = $(this).data('geo-location');
+        companies.push('Test', geo_location);
+    });
 
     // Loop through all companies and add them to map
-    for (i = 0; i < companies.length; i++)
-    {
-        geocoder.geocode({
-            "address": companies[i][1]
-        }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                //map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    position: results[0].geometry.location,
-                    map: map,
-                    animation: google.maps.Animation.DROP,
-                    //icon: marker_places
-                });
-                infowindow.open(map, marker);
-            } else {
-                console.log("Er is iets fout gegaan: " + status);
-            }
-        });
-    }
+	$.ajax({
+		type: 'get',
+		dataTpye: 'json',
+		url: 'http://localhost/fairtrade/public/ajaxGetCompanies',
+		data: 'no-data',
+		success: function(data)
+		{
+			var obj = jQuery.parseJSON(data);
+
+			$.each(obj, function(key, value) 
+			{
+				console.log(value.geo_location);
+		        var marker = new google.maps.Marker({
+		            position: new google.maps.LatLng(value.lat, value.lng),
+		            map: map,
+		            animation: google.maps.Animation.DROP,
+		            //icon: marker_places
+		        });
+		        infowindow.open(map, marker);
+			});
+		}
+	});
 
     // Suggestions for a new place
     var defaultBounds = new google.maps.LatLngBounds(
@@ -95,5 +102,4 @@ $(function ()
             document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-
 });

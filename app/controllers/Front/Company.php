@@ -1,8 +1,8 @@
 <?php
 /**
  * Wies Kueter
- * Date: 01/05/2014
- * Time: 14:28
+ * Date: 02/05/2014
+ * Time: 18:05
  * Author: Wies Kueter
  */
 
@@ -12,8 +12,8 @@ use Input;
 use Validator;
 use Redirect;
 
-class Company extends \Controller {
-
+class Company extends BaseController 
+{
 	/**
 	 * Controller to apply a new company
 	 *
@@ -28,10 +28,12 @@ class Company extends \Controller {
 
 	protected function add()
 	{
-		$company = new Company;
+		$company = new Model\Company;
 
 		$inputs = Input::all();
 		//dd($inputs);
+
+		$geo_location = '';
 		
 		/* Convert the address to a geo location with the Googele Maps API */
 		$address = str_replace(' ', '%20', Input::get('postal_code') .'%20'. Input::get('address'));
@@ -39,17 +41,17 @@ class Company extends \Controller {
 		$jsonData = file_get_contents($url);
 		$data = json_decode($jsonData);
 
-		$lat = $data->results[0]->geometry->location->lat;
-		$lng = $data->results[0]->geometry->location->lng;
-
-		$geo_location = $lat .', '. $lng;
+		if(isset($data->results[0]->geometry->location)) {
+			$lat = $data->results[0]->geometry->location->lat;
+			$lng = $data->results[0]->geometry->location->lng;
+			$geo_location = $lat .', '. $lng;
+		}
 
 		/* Loop through all fields */
 		$fields = array(
 			'name', 
 			'description', 
 			'url', 
-			'logo', 
 			'business_hours',
 			'address', 
 			'postal_code', 
@@ -57,33 +59,57 @@ class Company extends \Controller {
 			'contact_info'
 		);
 
+		/* Add new company to database */
 		foreach($fields as $field)
 		{
-			echo Input::get($field) .'<br />';
+			$company->{$field} = Input::get($field);
 		}
 
-		/* Add new company to database */
-		$company->name = 'Test';
-		//echo $geo_location;
+		$company->geo_location = $geo_location;
 		$company->save();
 
 		/* Form validation */
-		
-		/* $rules = array(
-			'first_name' => 'required',
-			'last_name' => 'required',
-			'email' => 'email|required',
-			'password' => 'required|min:5',
-			'confirmation' => 'same:password', 
+		$rules = array(
+			//'first_name' => 'required',
+			//'last_name' => 'required',
+			//'email' => 'email|required',
+			//'password' => 'required|min:5',
+			//'confirmation' => 'same:password', 
 		);
 
 		$validation = Validator::make($inputs, $rules);
 
 		if($validation->fails())
 		{
-			//return Redirect::to('/')->with_errors($validation->errors);
+			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
+			return Redirect::back()->withErrors($validation->messages())->withInput();
 		} else{
 			// Store in database
-		} */
+		}
+	}
+
+	protected function AjaxGetCompanies()
+	{
+		/* Query all companies from database */
+		$company = new Model\Company;
+		$companies = $company->all();
+		
+		/* Prepare array to return as json object */
+		$company_array = array();
+
+		/* Add companies to json object */
+		foreach($companies as $company)
+		{
+			$lat_lng = explode(',', $company['geo_location']);
+
+			$company_array[] = array(
+				'description' => 'test',//$company['description'],
+				'lat' => floatval($lat_lng[0]),
+				'lng' => floatval($lat_lng[1]),
+				'geo_location' => $company['geo_location']
+			);
+		}
+
+		echo json_encode($company_array);
 	}
 }

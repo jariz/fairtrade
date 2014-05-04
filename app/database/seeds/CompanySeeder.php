@@ -13,11 +13,38 @@ class CompanySeeder extends Seeder {
     public function run() {
         $this->letters = str_split($this->letters);
 
-
-
         Company::truncate();
-        for ($i = 1; $i <= Config::get("seeding.amount"); $i++) {
 
+        Company::create(array(
+            "name" => "Albert Heijn Nieuwmarkt",
+            "description" => IpsumGenerator::generateParagraphs(),
+            "url" => "http://".IpsumGenerator::getWord().".com/",
+            "user_id" => 1,
+            "logo" => "",
+            "accepted" => mt_rand(0, 1),
+            "address" => "Nieuwmarkt 18",
+            "city" => "Amsterdam",
+            "postal_code" => "1012 CR",
+            "geo_location" => "52.3702160, 4.8951680",
+            "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
+        ));
+
+        Company::create(array(
+            "name" => "Albert Heijn Prins Hendrikkade",
+            "description" => IpsumGenerator::generateParagraphs(),
+            "url" => "http://".IpsumGenerator::getWord().".com/",
+            "user_id" => 1,
+            "logo" => "",
+            "accepted" => mt_rand(0, 1),
+            "address" => "Prins Hendrikkade 20",
+            "city" => "Amsterdam",
+            "postal_code" => "1012 TL",
+            "geo_location" => "52.3785610,4.8961850",
+            "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
+        ));
+
+        /*for ($i = 1; $i <= Config::get("seeding.amount"); $i++) 
+        {
             // Generate Postal code
             $postal_code = mt_rand(1000, 9999);
 
@@ -40,6 +67,6 @@ class CompanySeeder extends Seeder {
                 "postal_code" => $postal_code,
                 "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
             ));
-        }
+        }*/
     }
 } 

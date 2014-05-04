@@ -14,7 +14,11 @@
 	</form>
 
     <h1>Alle bedrijven</h1>
-    @foreach ($companies as $company)
-        {{ $company->name }} - {{ $company->adres }} <br />
-    @endforeach
+    <table id="all_companies">
+	    @foreach ($companies as $company)
+	    	<tr>
+	        	<td data-geo-location="{{ $company->geo_location }}">{{ $company->name }}</td>
+	        </tr>
+	    @endforeach
+    </table>
 @stop

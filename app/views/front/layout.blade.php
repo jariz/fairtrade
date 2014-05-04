@@ -5,6 +5,7 @@
     <title>{{$title}} - Fairtrade Amsterdam</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('css/front/style.css')}}" rel="stylesheet">
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
     @yield("scripts")
 </head>
