@@ -17,7 +17,7 @@
             <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
             <ul class="nav navbar-nav pull-right">
                 
-              <?php $admin_nav = Config::get("fairtrade.admin_nav"); $curr_route = Route::getCurrentRoute()->getAction()["as"]; ?>
+              <?php $admin_nav = Config::get("fairtrade.admin_nav"); $action = Route::getCurrentRoute()->getAction(); $curr_route = $action["as"]; ?>
                 @if( is_array($admin_nav ) )
                     @foreach($admin_nav as $label => $route)
                     @if(\Fairtrade\User::can($route))

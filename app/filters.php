@@ -49,7 +49,8 @@ Route::filter('auth.basic', function()
 });
 
 Route::filter("haspermission", function() {
-    if(!\Fairtrade\User::can(Route::getCurrentRoute()->getAction()["as"])) {
+    $action = Route::getCurrentRoute()->getAction();
+    if(!\Fairtrade\User::can($action["as"])) {
         App::abort(403, "Access denied!");
     }
 });
