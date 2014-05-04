@@ -13,19 +13,33 @@ class UserSeeder extends Seeder {
 
         User::truncate();
 
-            
 
-            $user = new User;
-            $user->email = 'admin@fairtrade.org';
-            $user->password = Hash::make("123321");
-            $user->name = "Admin Istrator";
-            $user->ip = "127.0.0.1";
-            $user->reset_code = str_random();
-            $user->role_id = 1;
-            $user->subscription_start = null;
-            $user->subscription_end = null;
-            $user->save();
-        
+        $user = new User;
+        $user->email = 'admin@fairtrade.org';
+        $user->password = Hash::make("123321");
+        $user->name = "Admin Istrator";
+        $user->ip = "127.0.0.1";
+        $user->reset_code = str_random();
+        $user->role_id = 1;
+        $user->save();
+
+        $user = new User;
+        $user->email = 'ondernemer@fairtrade.org';
+        $user->password = Hash::make("123321");
+        $user->name = "Ondernemer";
+        $user->ip = "127.0.0.1";
+        $user->reset_code = str_random();
+        $user->role_id = 2;
+        $user->save();
+
+        $user = new User;
+        $user->email = 'redacteur@fairtrade.org';
+        $user->password = Hash::make("123321");
+        $user->name = "Redacteur";
+        $user->ip = "127.0.0.1";
+        $user->reset_code = str_random();
+        $user->role_id = 3;
+        $user->save();
 
         for ($i = 1; $i <= Config::get("seeding.amount"); $i++) {
 

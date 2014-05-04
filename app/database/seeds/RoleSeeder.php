@@ -28,7 +28,17 @@ class RoleSeeder extends Seeder {
 
             $role->save();
 
+            //build default crud permissions
             $permissions = $this->build($type);
+
+            //add 'special' permissions that aren't part of the normal crud procedure
+            switch($type) {
+                case "admin":
+                    $permissions[] = "dashboard.companies-approve";
+                    $permissions[] = "dashboard.concepts-approve";
+                    break;
+            }
+
             foreach($permissions as $permission_name) {
                 $permission = Permission::firstOrCreate([
                     "alias" => $permission_name
@@ -57,7 +67,8 @@ class RoleSeeder extends Seeder {
                 return true; //admin can do everything
             case "business":
                 switch($route) {
-                    case "company":
+                    case "companies":
+                    case "concepts":
                         return true;
                     default:
                         return false;

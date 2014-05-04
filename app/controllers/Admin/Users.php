@@ -17,12 +17,14 @@ class Users extends CrudController {
     protected function getFields() {
 
         $roles = [];
+        $in = "";
         foreach(\Model\Role::all() as $role) {
             /* @var $role \Model\Role */
             $roles[] = [
                 "id" => $role->id,
                 "title" => $role->name
             ];
+            $in .= ",".$role->id;
         }
 
         return array(
@@ -46,7 +48,7 @@ class Users extends CrudController {
                 "name" => "role_id",
                 "type" => "select",
                 "options" => $roles,
-                "rules" => "required"
+                "rules" => "required|in:".$in
             ),
             "IP adres" => array(
                 "name" => "ip",

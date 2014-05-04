@@ -15,8 +15,8 @@ Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\whereto
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
 Route::post("add", "\\Front\\Company@add");
 
+//standard crud procedures
 $crudControllers = Config::get("fairtrade.crud");
-
 foreach($crudControllers as $route => $controller) {
     Route::get("dashboard/{$route}", array("as" => "dashboard.{$route}", "uses" => "{$controller}@overview", "before"=>"haspermission"));
     Route::get("dashboard/{$route}/add", array("as" => "dashboard.{$route}-add", "uses" => "{$controller}@showEdit", "before"=>"haspermission"));
@@ -24,6 +24,10 @@ foreach($crudControllers as $route => $controller) {
     Route::post("dashboard/{$route}/delete", array("as" => "dashboard.{$route}-delete", "uses" => "{$controller}@delete", "before"=>"haspermission"));
     Route::post("dashboard/{$route}/edit", array("as" => "dashboard.{$route}-doedit", "uses" => "{$controller}@edit", "before"=>"haspermission"));
 }
+
+//custom crud routes
+Route::post("dashboard/companies/approve", array("as" => "dashboard.companies-approve", "uses" => "\\Admin\\Companies@approve", "before" => "haspermission"));
+Route::post("dashboard/concepts/approve", array("as" => "dashboard.concepts-approve", "uses" => "\\Admin\\Concepts@approve", "before" => "haspermission"));
 
 
 /** -- FRONT END Pagina's **/

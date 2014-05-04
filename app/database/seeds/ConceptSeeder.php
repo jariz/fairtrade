@@ -16,9 +16,9 @@ class ConceptSeeder extends Seeder {
             Concept::create(array(
                 "title" => IpsumGenerator::generateParagraphs(1, mt_rand(2,6), false),
                 "content" => IpsumGenerator::generateParagraphs(),
-                "published" => 1,
-                "featured" => 0,
-                "company_id" => 0,
+                "accepted" => mt_rand(0,1),
+                "featured" => mt_rand(0,1),
+                "company_id" => \Model\Company::orderBy(DB::raw("RAND()"), "DESC")->first()->id,
             ));
 
         }

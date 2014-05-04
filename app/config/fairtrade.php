@@ -6,7 +6,8 @@ return array(
         "Nieuws" => "dashboard.news",
         "Evenementen" => "dashboard.events",
         "Concepten" => "dashboard.concepts",
-        "Pagina's" => "dashboard.pages"
+        "Pagina's" => "dashboard.pages",
+        "Bedrijven" => "dashboard.companies"
     ),
 
     "crud" => array(
@@ -14,6 +15,7 @@ return array(
         "news" => "\\Admin\\News",
         "events" => "\\Admin\\Events",
         "concepts" => "\\Admin\\Concepts",
-        "pages" => "\\Admin\\Pages"
+        "pages" => "\\Admin\\Pages",
+        "companies" => "\\Admin\\Companies"
     )
 );

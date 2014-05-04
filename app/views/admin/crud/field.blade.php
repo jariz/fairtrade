@@ -1,4 +1,5 @@
- <div class="form-group">
+@if(!isset($field["hideInEdit"]) || !$field["hideInEdit"])
+<div class="form-group">
         @if($field['type'] != 'json')
         {{Form::label($field["name"], $name, array('class'=>'col-sm-2 control-label'))}}
         @else
@@ -19,6 +20,8 @@
             @endforeach
             @elseif($field["type"] == "wysiwyg")
             {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"ckeditor"))}}
+            @elseif($field["type"] == "textarea")
+            {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"form-control"))}}
             @elseif($field["type"] == "file")
             {{Form::file($field["name"])}}
             @elseif($field["type"] == "date")
@@ -48,3 +51,4 @@
 
         </div>
     </div>
+@endif

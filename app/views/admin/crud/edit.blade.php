@@ -2,6 +2,23 @@
 
 @section('content')
 <div class="container container-layout moar-padding">
+
+    @if(\Fairtrade\User::can("{$route}-approve") && $editing && isset($data["accepted"]) && $data["accepted"] != 1)
+    <div class="alert alert-warning">
+        <h4><i class="glyphicon glyphicon-warning-sign"></i> Dit {{strtolower($singular)}} is nog niet goedgekeurd</h4>
+        <p>Wilt u dit {{strtolower($singular)}} nu goedkeuren?</p>
+            {{Form::open(['route'=>$route.'-approve'])}}
+            {{Form::hidden('id', $id)}}
+            <p style="margin-top:10px;">{{Form::submit("Goedkeuren", ["class"=>"btn btn-primary"])}}</p>
+            {{Form::close()}}
+    </div>
+    @elseif(!\Fairtrade\User::can("{$route}-approve") && $editing && isset($data["accepted"]) && $data["accepted"] != 1)
+    <div class="alert alert-warning">
+        <h4><i class="glyphicon glyphicon-warning-sign"></i> Nog niet goedgekeurd</h4>
+        <p>Dit {{strtolower($singular)}} is nog niet goedgekeurd. U zal moeten wachten totdat een beheerder dit doet.</p>
+    </div>
+    @endif
+
     {{Form::open(array('route'=>$post_route, 'class'=>'form-horizontal', 'files'=>true))}}
     <fieldset>
         <legend>{{$singular}} @if($editing) aanpassen @else aanmaken @endif</legend>

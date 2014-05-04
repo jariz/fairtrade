@@ -98,7 +98,13 @@ return array(
         "email" => "E-mail",
         "new_password" => "Nieuw wachtwoord",
         "new_password_confirm" => "Nieuw wachtwoord (herhalen)",
-        "current_password" => "Huidig wachtwoord"
+        "current_password" => "Huidig wachtwoord",
+        "name" => "Naam",
+        "logo" => "Logo",
+        "title" => "Titel",
+        "location" => "Locatie",
+        "date" => "Datum",
+        "url" => "Website"
     ),
 
 );

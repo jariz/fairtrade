@@ -88,7 +88,7 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview()
+    public function overview($filter=null)
     {
         \View::share("title", $this->plural." overzicht");
 
@@ -108,19 +108,37 @@ class CrudController extends AdminController
             //So, let's build a query that filters the data.
             $data = new $model;
             /* @var $data \Eloquent */
-            foreach($fields as $field) {
-                //search trough all fields that are allowed to display in the overview.
-                if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
-                    continue;
-                $data = $data->orWhere($field["name"], "LIKE", "%".\Input::get("q")."%");
-            }
+
+            //use nasty hack because of scope problems :(
+            $GLOBALS["fields"] = $fields;
+
+            $data = $data->whereNested(function($query) {
+                foreach($GLOBALS["fields"] as $field) {
+                    //search trough all fields that are allowed to display in the overview.
+                    if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
+                        continue;
+                    $query->orWhere($field["name"], "LIKE", "%".\Input::get("q")."%");
+                }
+            });
+
+            //don't forget to apply filter
+            if(!is_null($filter))
+                $data = $data->whereRaw($filter);
+
             //force query to give unique results
             $data = $data->distinct()
             //get the data
                 ->paginate(15);
-        } else
-            //display the data without any filters
-            $data = $model::paginate(15);
+        } else {
+            $data = new $model;
+            /* @var $data \Eloquent */
+
+            if(!is_null($filter))
+                $data = $data->whereRaw($filter);;
+
+            $data = $data->paginate(15);
+        }
+
 
         return \View::make("admin.crud.overview")
             ->with("columns", $fields)
@@ -196,7 +214,8 @@ class CrudController extends AdminController
             ->with("post_route", $this->route . "-doedit")
             ->with('editing', $editing)
             ->with("id", $id)
-            ->with("singular", $this->singular);
+            ->with("singular", $this->singular)
+            ->with("route", $this->route);
     }
 
     /**
@@ -295,13 +314,14 @@ class CrudController extends AdminController
 
             foreach ($fields as $field) {
                 $name = $field["name"];
+                $abort = false;
 
                 //check for exceptions in data
                 switch ($field["type"]) {
                     case "password";
                         //if password field is empty, don't change it.
-                        if (empty($input[$name]))
-                            continue;
+                        if (empty($input[$name]) && $editing)
+                            $abort = true;
                         break;
                     case "file":
                         $upload = $this->upload;
@@ -310,15 +330,19 @@ class CrudController extends AdminController
                         $filename = \Str::random(20).".".\File::extension(\Input::get($name));
                         $upload->setFileName($filename);
                         if(!$upload->upload()) {
-                            \View::share("errors", new MessageBag(array($upload->error())));
-                            return $this->showEdit(\Input::get("id"));
+                            if($editing && $upload->error() == "Er is geen bestand geupload") {
+                                $abort = true;
+                            } else {
+                                \View::share("errors", new MessageBag(array($upload->error())));
+                                return $this->showEdit(\Input::get("id"));
+                            }
                         } else {
                             $input[$name] = $filename;
                         }
                         break;
                 }
 
-                $data->$name = $input[$name];
+                if(!$abort) $data->$name = $input[$name];
             }
             $data->save();
 
