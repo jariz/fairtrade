@@ -48,6 +48,12 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter("haspermission", function() {
+    if(!\Fairtrade\User::can(Route::getCurrentRoute()->getAction()["as"])) {
+        App::abort(403, "Access denied!");
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

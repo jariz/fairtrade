@@ -17,12 +17,14 @@
             <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
             <ul class="nav navbar-nav pull-right">
                 
-              <?php $admin_nav = Config::get("fairtrade.admin_nav"); ?>
+              <?php $admin_nav = Config::get("fairtrade.admin_nav"); $curr_route = Route::getCurrentRoute()->getAction()["as"]; ?>
                 @if( is_array($admin_nav ) )
                     @foreach($admin_nav as $label => $route)
-                    <li @if(Route::getCurrentRoute()->getAction()["as"] == $route) class="active" @endif>
+                    @if(\Fairtrade\User::can($route))
+                    <li @if(substr($curr_route, 0, strlen($route)) == $route) class="active" @endif>
                         <a href="{{URL::route($route)}}">{{$label}}</a>
                     </li>
+                    @endif
                     @endforeach
                 @endif
 

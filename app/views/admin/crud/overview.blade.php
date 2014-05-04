@@ -59,7 +59,12 @@
                 </span>
                 @endif
                 @else
+                <?php $formatted = $column["name"]."_formatted"; ?>
+                @if($row->$formatted)
+                {{{$row->$formatted}}}
+                @else
                 {{{$row->$column["name"]}}}
+                @endif
                 @endif
             </td>
             @endforeach
