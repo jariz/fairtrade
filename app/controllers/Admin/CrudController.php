@@ -195,7 +195,8 @@ class CrudController extends AdminController
             ->with("data", $data)
             ->with("post_route", $this->route . "-doedit")
             ->with('editing', $editing)
-            ->with("id", $id);
+            ->with("id", $id)
+            ->with("singular", $this->singular);
     }
 
     /**

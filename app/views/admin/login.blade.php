@@ -13,6 +13,13 @@
             Fairtrade Amsterdam - Login
         </div>
         <div class="panel-body">
+            @if(Session::has("relogin"))
+            <div class="alert alert-success">
+                <h4>Log opnieuw in</h4>
+                Uw nieuwe gebruikersinstellingen zijn succesvol opgeslagen.<br>
+                Log aub opnieuw in met deze nieuwe gegevens
+            </div>
+            @endif
             @include('includes.errors')
 
             {{Form::open(array('route'=>'dashboard.do-login', 'class'=>'form-horizontal'))}}

@@ -3,14 +3,17 @@
 @section('content')
 <div class="container container-layout moar-padding">
     {{Form::open(array('route'=>$post_route, 'class'=>'form-horizontal', 'files'=>true))}}
-    @include('includes.errors')
-    @if(!is_null($id))
-    {{Form::hidden('id', $id)}}
-    @endif
-    @foreach($fields as $name => $field)
+    <fieldset>
+        <legend>{{$singular}} @if($editing) aanpassen @else aanmaken @endif</legend>
+        @include('includes.errors')
+        @if(!is_null($id))
+        {{Form::hidden('id', $id)}}
+        @endif
+        @foreach($fields as $name => $field)
         @include('admin.crud.field')
-    @endforeach
-    <button type="submit" class="btn btn-success pull-right">Save</button>
+        @endforeach
+        <button type="submit" class="btn btn-success pull-right">Save</button>
+    </fieldset>
     {{Form::close()}}
 </div>
 @stop

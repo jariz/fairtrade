@@ -15,6 +15,16 @@ namespace Admin;
  */
 class Users extends CrudController {
     protected function getFields() {
+
+        $roles = [];
+        foreach(\Model\Role::all() as $role) {
+            /* @var $role \Model\Role */
+            $roles[] = [
+                "id" => $role->id,
+                "title" => $role->name
+            ];
+        }
+
         return array(
             "E-mail" => array(
                 "name" => "email",
@@ -32,16 +42,12 @@ class Users extends CrudController {
                 "type" => "text",
                 "rules" => ""
             ),
-//            "Administrator" => array(
-//                "name" => "admin",
-//                "type" => "radio",
-//                "options" => array(
-//                    "Ja" => 1,
-//                    "Nee" => 0
-//                ),
-//                "boolean" => true,
-//                "rules" => "required|in:0,1"
-//            ),
+            "Rol" => array(
+                "name" => "role_id",
+                "type" => "select",
+                "options" => $roles,
+                "rules" => "required"
+            ),
             "IP adres" => array(
                 "name" => "ip",
                 "type" => "text",

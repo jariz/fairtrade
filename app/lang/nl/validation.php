@@ -95,7 +95,10 @@ return array(
 
     'attributes' => array(
         "password" => "Wachtwoord",
-        "email" => "E-mail"
+        "email" => "E-mail",
+        "new_password" => "Nieuw wachtwoord",
+        "new_password_confirm" => "Nieuw wachtwoord (herhalen)",
+        "current_password" => "Huidig wachtwoord"
     ),
 
 );
