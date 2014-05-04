@@ -273,8 +273,8 @@ class CrudController extends AdminController
             if($field['type'] == 'json'){
                 $input[$field['name']] = json_encode($json);
             }
-
-            $rules[$field["name"]] = $field["rules"];
+            if(array_key_exists('rules', $field))
+                $rules[$field["name"]] = $field["rules"];
         }
 
         if ($editing) {

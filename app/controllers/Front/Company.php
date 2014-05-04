@@ -12,8 +12,8 @@ use Input;
 use Validator;
 use Redirect;
 
-class Company extends \Controller {
-
+class Company extends \Controller 
+{
 	/**
 	 * Controller to apply a new company
 	 *
@@ -74,7 +74,7 @@ class Company extends \Controller {
 			//'last_name' => 'required',
 			//'email' => 'email|required',
 			//'password' => 'required|min:5',
-			'confirmation' => 'same:password', 
+			//'confirmation' => 'same:password', 
 		);
 
 		$validation = Validator::make($inputs, $rules);
