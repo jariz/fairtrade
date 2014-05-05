@@ -51,7 +51,7 @@
 	                    <ul>
 	                        <li><a href="#">Algemene voorwaarden</a></li>
 	                        <li><a href="#">Sitemap</a></li>
-	                        <li><a href="#">Inloggen</a></li>
+	                        <li><a href="{{URL::to('dashboard')}}">Inloggen</a></li>
 	                    </ul>
 	                </div>
 	            </div>
