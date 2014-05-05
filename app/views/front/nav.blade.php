@@ -12,8 +12,8 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="menu" id="">
-      <ul class="nav navbar-nav">
+    <div class="menu">
+      <ul>
         @foreach($menuData as $menuItem)
             @if( !isset($menuItem['sub_menu'] ) || count($menuItem['sub_menu']) == 0 )
                 <li @if(Request::is($menuItem['slug'])) class="active" @endif><a href="{{URL::to($menuItem['slug'])}}">{{$menuItem['menu_title']}}</a></li>
