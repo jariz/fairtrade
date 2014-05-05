@@ -43,6 +43,34 @@ class CompanySeeder extends Seeder {
             "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
         ));
 
+        Company::create(array(
+            "name" => "Albert Heijn Prins Jodenbreestraat",
+            "description" => IpsumGenerator::generateParagraphs(),
+            "url" => "http://".IpsumGenerator::getWord().".com/",
+            "user_id" => 1,
+            "logo" => "",
+            "accepted" => mt_rand(0, 1),
+            "address" => "Jodenbreestraat 21",
+            "city" => "Amsterdam",
+            "postal_code" => "1011 NH",
+            "geo_location" => "52.3692770,4.9028070",
+            "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
+        ));
+
+        Company::create(array(
+            "name" => "Albert Heijn Prins Jodenbreestraat",
+            "description" => IpsumGenerator::generateParagraphs(),
+            "url" => "http://".IpsumGenerator::getWord().".com/",
+            "user_id" => 1,
+            "logo" => "",
+            "accepted" => mt_rand(0, 1),
+            "address" => "Nieuwezijds Voorburgwal 226",
+            "city" => "Amsterdam",
+            "postal_code" => "1012 RR",
+            "geo_location" => "52.3726670,4.8907350",
+            "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
+        ));
+
         /*for ($i = 1; $i <= Config::get("seeding.amount"); $i++) 
         {
             // Generate Postal code

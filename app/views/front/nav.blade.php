@@ -12,7 +12,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse menu" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         @foreach($menuData as $menuItem)
             @if( !isset($menuItem['sub_menu'] ) || count($menuItem['sub_menu']) == 0 )
@@ -31,7 +31,6 @@
             @endif
         @endforeach
       </ul>
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
