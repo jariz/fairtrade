@@ -11,7 +11,7 @@ Route::get("dashboard/settings", array("as" => "dashboard.settings", "uses" => "
 Route::post("dashboard/settings", array("as" => "dashboard.do-settings", "uses" => "\\Admin\\Settings@run", "before" => "csrf"));
 
 //Front
-Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\wheretobuy@show"));
+Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
 Route::post("add", "\\Front\\Company@add");
 Route::get("ajaxGetCompanies", "\\Front\\Company@AjaxGetCompanies");
