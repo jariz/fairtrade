@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header container">
+        <div class="navbar-header container" style="margin: 0 auto;display: block;float: none;"> <!-- TODO deze navbar is gehacked nu, moet weer normaal worden gemaakt -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>

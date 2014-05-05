@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="container container-login">
-    <img src="{{url('images/logo-big.png')}}">
-    <div class="panel panel-warning panel-login">
+    <img src="{{url('images/logo.png')}}" style="margin-bottom: 20px;">
+    <div class="panel panel-primary panel-login">
         <div class="panel-heading">
             Fairtrade Amsterdam - Login
         </div>
