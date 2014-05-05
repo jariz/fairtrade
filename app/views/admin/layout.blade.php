@@ -13,29 +13,46 @@
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
-            <ul class="nav navbar-nav pull-right">
-                
-              <?php $admin_nav = Config::get("fairtrade.admin_nav"); $action = Route::getCurrentRoute()->getAction(); $curr_route = $action["as"]; ?>
-                @if( is_array($admin_nav ) )
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{URL::route('dashboard')}}">Fairtrade Beheer</a>
+            </a>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <?php $admin_nav = Config::get("fairtrade.admin_nav");
+                    $action = Route::getCurrentRoute()->getAction();
+                    $curr_route = $action["as"]; ?>
+                    @if( is_array($admin_nav ) )
                     @foreach($admin_nav as $label => $route)
                     @if(\Fairtrade\User::can($route))
-                    <li @if(substr($curr_route, 0, strlen($route)) == $route) class="active" @endif>
-                        <a href="{{URL::route($route)}}">{{$label}}</a>
+                    <li
+                    @if(substr($curr_route, 0, strlen($route)) == $route) class="active" @endif>
+                    <a href="{{URL::route($route)}}">{{$label}}</a>
                     </li>
                     @endif
                     @endforeach
-                @endif
+                    @endif
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> {{Auth::user()->email}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{URL::route('dashboard.logout', [Session::token()])}}"><i class="glyphicon glyphicon-log-out"></i> Uitloggen</a></li>
-                        <li><a href="{{URL::route('dashboard.settings')}}"><i class="glyphicon glyphicon-wrench"></i> Gebruiker instellingen </a></li>
-                    </ul>
-                </li>
-            </ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="glyphicon glyphicon-user"></i> {{Auth::user()->email}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{URL::route('dashboard.logout', [Session::token()])}}"><i
+                                        class="glyphicon glyphicon-log-out"></i> Uitloggen</a></li>
+                            <li><a href="{{URL::route('dashboard.settings')}}"><i
+                                        class="glyphicon glyphicon-wrench"></i> Gebruiker instellingen </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

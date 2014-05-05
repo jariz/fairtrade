@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('admin.layout')
 
 @section('content')
 <div class="container container-layout moar-padding">

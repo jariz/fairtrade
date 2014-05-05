@@ -84,6 +84,41 @@ class CrudController extends AdminController
      */
     protected $upload = "\\Fairtrade\\Upload";
 
+
+    /**
+     * Returns a new instance of the crud's model
+     * @author Jari Zwarts
+     * @returns \Eloquent
+     */
+    public function model() {
+        return new $this->model;
+    }
+
+    /**
+     * Return a array with meta data about the CrudController
+     * @author Jari Zwarts
+     * @return array
+     */
+    public function meta() {
+        return array(
+            "plural" => $this->plural,
+            "singular" => $this->singular,
+            "upload" => $this->upload,
+            "timestamps" => $this->timestamps,
+            "route" => $this->route,
+            "model " => $this->model
+        );
+    }
+
+    /**
+     * Get all fields in the crud controller
+     * @author Jari Zwarts
+     * @returns array
+     */
+    public function fields() {
+        return $this->getFields();
+    }
+
     /**
      * Give a overview of all entries
      * @author Jari Zwarts
@@ -134,7 +169,7 @@ class CrudController extends AdminController
             /* @var $data \Eloquent */
 
             if(!is_null($filter))
-                $data = $data->whereRaw($filter);;
+                $data = $data->whereRaw($filter);
 
             $data = $data->paginate(15);
         }

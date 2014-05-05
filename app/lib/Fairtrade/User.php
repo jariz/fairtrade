@@ -23,12 +23,19 @@ class User {
         return false;
     }
 
+    static $permissionCache = [];
+
     /**
      * Returns whether the current user has the specified permission.
      * @param $alias string The permission you want to check
      * @return bool
      */
     public static function can($alias) {
+        if(isset(self::$permissionCache[$alias])) {
+            $result = self::$permissionCache[$alias];
+            \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> ".($result ? "Yes" : "Nope")." (cached)");
+            return $result;
+        }
         //sanity check
         if(!\Auth::check()) {
             \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> Nope. (not logged in?!)");
@@ -51,6 +58,7 @@ class User {
 
         //return whether the role_permission was found (which means we have the permission yes/no)
         \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> ".($rolepermission != false ? "Yes." : "Nope (role_permission not found)"));
+        self::$permissionCache[$alias] = $rolepermission != false;
         return $rolepermission != false;
     }
 

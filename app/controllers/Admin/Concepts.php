@@ -50,7 +50,7 @@ class Concepts extends CrudController {
                 )
             ),
             "Uitgelicht" => array(
-                "name" => "",
+                "name" => "featured",
                 "boolean" => true,
                 "type" => "radio",
                 "options" => array(
