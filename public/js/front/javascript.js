@@ -39,7 +39,7 @@ $(function ()
 		$.ajax({
 			type: 'get',
 			dataTpye: 'json',
-			url: 'http://localhost/fairtrade/public/ajaxGetCompanies',
+			url: 'ajaxGetCompanies',
 			data: 'no-data',
 			success: function(data)
 			{
