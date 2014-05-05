@@ -18,7 +18,7 @@
 	    <div class="header">
 		    <!-- LOGO -->
 		    <div class="logo">
-		        <a href="#">
+		        <a href="{{url('/')}}">
 		            <img src="images/logo.png" alt="Logo Fairtrade Amsterdam">
 		        </a>
 		    </div>
@@ -36,7 +36,7 @@
 	    <div class="footer">
 	        <div class="inner-footer">
 	            <div class="logo_footer">
-	                <a href="#">
+	                <a href="{{url('/')}}">
 	                    <img src="images/logo.png" alt="Logo Fairtrade Amsterdam">
 	                </a>
 	            </div>

@@ -5,11 +5,11 @@ namespace Fairtrade\Page;
 class Home extends Page{
 
     public $title = 'Homepage';
-    public $slug = '/';
+    public $slug = 'home';
     public $published = 1;
     public $view = 'front.special.homepage';
     public $heading = 'Homepage';
-    public $menu_title = 'home';
+    public $menu_title = 'Hoofdpagina';
     public $order = 0;
     public $parent = 0;
     public $show_in_nav = 1;

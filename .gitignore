@@ -19,3 +19,4 @@ public/.sass-cache/
 public/css/screen.css
 public/css/admin/screen.css
 .vagrant
+app/storage/debugbar/*.json

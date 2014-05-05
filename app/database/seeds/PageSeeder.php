@@ -22,7 +22,7 @@ class PageSeeder extends Seeder {
         }
 
 
-        for ($i = $last; $i <= ($last + 5); $i++) {
+        for ($i = $last; $i <= ($last + 2); $i++) {
             Page::create(array(
                 "title" => IpsumGenerator::generateParagraphs(1, 4, false),
                 "slug" => IpsumGenerator::getWord(),
@@ -31,7 +31,7 @@ class PageSeeder extends Seeder {
                 "special" => 0,
                 "view" => NULL,
                 "heading" => IpsumGenerator::generateParagraphs(1, 4, false),
-                "menu_title" => IpsumGenerator::getWord(),
+                "menu_title" => IpsumGenerator::getWord(true),
                 "show_in_nav" => mt_rand(0,1),
                 "order" => $i,
                 "parent" => 0
