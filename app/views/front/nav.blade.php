@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -12,7 +12,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse menu" id="bs-example-navbar-collapse-1">
+    <div class="menu" id="">
       <ul class="nav navbar-nav">
         @foreach($menuData as $menuItem)
             @if( !isset($menuItem['sub_menu'] ) || count($menuItem['sub_menu']) == 0 )
