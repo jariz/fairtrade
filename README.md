@@ -65,6 +65,7 @@ Eventueel als je een IDE met autocompletion heb en hier gebruik van wilt maken, 
 
 ```
 php artisan ide-helper:generate
+php artisan ide-helper:models
 ```
 
 
