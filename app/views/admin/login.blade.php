@@ -39,7 +39,7 @@
                 <div class="col-sm-offset-3 col-sm-9">
                    <div class="checkbox">
                        <label class="control-label">
-                         <input type="checkbox"> Ingelogd blijven
+                         <input type="checkbox" name="remember-me" value="1" id="remember-me"> Ingelogd blijven
                        </label>
                      </div>
                 </div>
