@@ -34,10 +34,17 @@ class Login extends \Controller {
             "password" => "required"
         ));
 
+
+        $rememberMe = false;
+        if( \Input::get('remember-me') == 1){
+               $rememberMe = true;
+        }
+
+
         //does the validator pass? if yes, attempt to authenticate the user, else, add error messages to our error bag.
         if($validator->fails())
             $errors->merge($validator->errors());
-        else if(!\Auth::attempt($input))
+        else if(!\Auth::attempt($input, $rememberMe))
             $errors->add("authfailed", "Gebruiksgegevens zijn incorrect.");
 
         //are there are errors? if so, display the login form again, with the errors, respectfully.
