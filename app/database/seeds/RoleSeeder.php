@@ -95,6 +95,8 @@ class RoleSeeder extends Seeder {
             "dashboard.{$route}-edit",
             "dashboard.{$route}-delete",
             "dashboard.{$route}-doedit",
+            "dashboard.{$route}-dorestore",
+            "dashboard.{$route}-trash"
         );
     }
 } 

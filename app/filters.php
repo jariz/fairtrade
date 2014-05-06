@@ -23,7 +23,7 @@ App::after(function($request, $response)
 });
 
 App::missing(function(){
-    return App::make('Front\error')->notFound();
+    return App::make('Front\Error')->notFound();
 });
 
 /*

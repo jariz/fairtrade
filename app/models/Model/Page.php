@@ -6,7 +6,7 @@ class Page extends FormattedTimestamps {
 
 	protected $table = 'pages';
 	public $timestamps = true;
-	protected $softDelete = false;
+    protected $softDelete = true;
 
 
 	public function scopeWhereSlug($query, $slug){

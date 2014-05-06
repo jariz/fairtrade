@@ -1,6 +1,11 @@
 
 $(document).ready(function() {
-    $('.datepicker').datetimepicker({
-        language: "nl"
-    });
+    if("datetimepicker" in $('.datepicker'))
+        $('.datepicker').datetimepicker({
+            language: "nl"
+        });
+
+    setTimeout(function() {
+        $(".alert-floating").addClass("in");
+    }, 200)
 })

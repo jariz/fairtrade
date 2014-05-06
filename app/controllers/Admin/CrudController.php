@@ -123,7 +123,7 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview($filter=null)
+    public function overview($filter=null, $trash=false)
     {
         \View::share("title", $this->plural." overzicht");
 
@@ -159,6 +159,9 @@ class CrudController extends AdminController
             //don't forget to apply filter
             if(!is_null($filter))
                 $data = $data->whereRaw($filter);
+            //trash?
+            if($trash)
+                $data = $data->onlyTrashed();
 
             //force query to give unique results
             $data = $data->distinct()
@@ -171,6 +174,10 @@ class CrudController extends AdminController
             if(!is_null($filter))
                 $data = $data->whereRaw($filter);
 
+            //trash?
+            if($trash)
+                $data = $data->onlyTrashed();
+
             $data = $data->paginate(15);
         }
 
@@ -182,7 +189,16 @@ class CrudController extends AdminController
             ->with("route", $this->route)
             ->with("data", $data)
             ->with("timestamps", $this->timestamps)
-            ->with("searchQuery", \Input::get("q"));
+            ->with("searchQuery", \Input::get("q"))
+            ->with("trash", $trash);
+    }
+
+    /**
+     * Display the overview, but only with trashed items
+     * @author Jari Zwarts
+     */
+    public function trash() {
+        return $this->overview(null, true);
     }
 
     /**
@@ -395,6 +411,20 @@ class CrudController extends AdminController
         $id = intval(\Input::get("id"));
         $entry = $model::findOrFail($id);
         $entry->delete();
+        return \Redirect::back()->with("restore_id", $entry->id);
+    }
+
+    /**
+     * Restore a deleted item. Will throw an error if the input contains a incorrect id.
+     * @return \Illuminate\Http\RedirectResponse
+     * @author Jari Zwarts
+     */
+    public function restore() {
+        $model = $this->model;
+        /* @var $model \Eloquent */
+        $id = intval(\Input::get("id"));
+        $entry = $model::withTrashed()->findOrFail($id);
+        $entry->restore();
         return \Redirect::back();
     }
 }
