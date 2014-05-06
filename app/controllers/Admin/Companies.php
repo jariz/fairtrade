@@ -94,7 +94,7 @@ class Companies extends CrudController {
         return parent::delete();
     }
 
-    public function overview($filter=null)
+    public function overview($filter=null, $trash=false)
     {
         if(!\Fairtrade\User::can("dashboard.companies-approve")) {
             return parent::overview("user_id = ".\Auth::user()->id);

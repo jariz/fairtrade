@@ -115,7 +115,7 @@ class Concepts extends CrudController {
         else return false;
     }
 
-    public function overview($filter=null)
+    public function overview($filter=null, $trash=false)
     {
         if($check = $this->checkHasCompanies())
             return $check;
