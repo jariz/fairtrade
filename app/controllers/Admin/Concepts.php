@@ -121,8 +121,8 @@ class Concepts extends CrudController {
             return $check;
 
         if(!\Fairtrade\User::can("dashboard.concepts-approve")) {
-            return parent::overview("user_id = ".\Auth::user()->id);
-        } else return parent::overview();
+            return parent::overview("user_id = ".\Auth::user()->id, $trash);
+        } else return parent::overview(null, $trash);
     }
 
     public function approve() {
