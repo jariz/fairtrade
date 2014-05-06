@@ -41,4 +41,11 @@
 <script src="{{url('plugins/ckeditor/ckeditor.js')}}"></script>
 <script src="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.js')}}"></script>
 <link href="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datetimepicker({
+            language: "nl"
+        });
+    })
+</script>
 @stop
