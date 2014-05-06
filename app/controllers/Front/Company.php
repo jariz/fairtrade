@@ -16,7 +16,7 @@ class Company extends BaseController
 {
     protected function registerAccount()
     {
-        return /View::make("front.company.registerAccount");
+        return \View::make("front.company.registerAccount");
     }
 
 	/**
@@ -101,8 +101,8 @@ class Company extends BaseController
 	protected function AjaxGetCompanies()
 	{
 		/* Query all companies from database */
-		$company = new Model\Company;
-		$companies = $company->all();
+		$companyModel = new Model\Company;
+		$companies = $companyModel::where('accepted', '=', 1)->get();
 		
 		/* Prepare array to return as json object */
 		$company_array = array();
@@ -120,12 +120,24 @@ class Company extends BaseController
 
 			$company_array[] = array(
 				'description' => 'test',//$company['description'],
+                'accepted' => $company['accepted'],
 				'lat' => $lat,
 				'lng' => $lng,
 				'geo_location' => $company['geo_location']
 			);
 		}
 
-		echo json_encode($company_array);
+        if(isset($_GET['type']))
+        {
+            if($_GET['type'] === 'location')
+            {
+                echo json_encode($company_array);
+            } else
+                if($_GET['type'] === 'company' && isset($_GET['id']))
+            {
+                $company = $companyModel::where('id', '=', $_GET['id'])->get();
+                return json_encode(array('test'));
+            }
+        }
 	}
 }
