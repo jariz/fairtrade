@@ -36,9 +36,12 @@
                 </div>
             </div>
             <div class="form-group">
-                {{Form::label('remember-me', 'Ingelogd blijven', ['class' => 'col-sm-3 control-label'])}}
-                <div class="col-sm-9">
-                    <input type="checkbox" name="remember-me" value="1" id="remember-me"/>
+                <div class="col-sm-offset-3 col-sm-9">
+                   <div class="checkbox">
+                       <label class="control-label">
+                         <input type="checkbox"> Ingelogd blijven
+                       </label>
+                     </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-success pull-right">Log in</button>
