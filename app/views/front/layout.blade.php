@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head lang="nl">
-    <meta charset="UTF-8">
-    <title>{{$title}} - Fairtrade Amsterdam</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('css/front/normalize.css')}}" rel="stylesheet">
-    <link href="{{url('css/front/style.css')}}" rel="stylesheet">
-    <link href="{{url('css/front/main.css')}}" rel="stylesheet">
-    @yield("scripts")
-</head>
+    <head lang="nl">
+        <meta charset="UTF-8">
+        <title>{{$title}} - Fairtrade Amsterdam</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{url('css/front/normalize.css')}}" rel="stylesheet">
+        <link href="{{url('css/front/style.css')}}" rel="stylesheet">
+        <link href="{{url('css/front/main.css')}}" rel="stylesheet">
+        @yield("scripts")
+    </head>
 	<body>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

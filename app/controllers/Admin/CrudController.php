@@ -123,7 +123,7 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview($filter=null, $trash=false)
+    public function overview($filter=null, $trash=false, $view="admin.crud.overview" )
     {
         \View::share("title", $this->plural." overzicht");
 
@@ -182,7 +182,7 @@ class CrudController extends AdminController
         }
 
 
-        return \View::make("admin.crud.overview")
+        return \View::make($view)
             ->with("columns", $fields)
             ->with("singular", $this->singular)
             ->with("plural", $this->plural)

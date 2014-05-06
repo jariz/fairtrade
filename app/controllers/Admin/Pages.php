@@ -5,6 +5,11 @@ use Model\Page;
 
 class Pages extends CrudController {
 
+
+    public function reorder(){
+        return parent::overview(null, false, 'admin.crud.reorder');
+    }
+
     protected function getFields() {
 
 
@@ -84,5 +89,7 @@ class Pages extends CrudController {
     protected $singular = "Pagina";
     protected $plural = "Pagina's";
     protected $route = "dashboard.pages";
+    protected $reorder = true;
+    protected $parentElements = true;
     protected $timestamps = true;
 } 
