@@ -1,4 +1,4 @@
-$(function () 
+$(function ()
 {
 	if($('#gmaps').length != 0)
 	{
@@ -47,13 +47,16 @@ $(function ()
 
 				$.each(obj, function(key, value) 
 				{
-			        var marker = new google.maps.Marker({
-			            position: new google.maps.LatLng(value.lat, value.lng),
-			            map: map,
-			            animation: google.maps.Animation.DROP,
-			            //icon: marker_places
-			        });
-			        infowindow.open(map, marker);
+                    if(value.lat != '')
+                    {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(value.lat, value.lng),
+                            map: map,
+                            animation: google.maps.Animation.DROP,
+                            //icon: marker_places
+                        });
+                        infowindow.open(map, marker);
+                    }
 				});
 			}
 		});
@@ -96,5 +99,4 @@ $(function ()
 	        }
 	    }		
 	}
- 
 });

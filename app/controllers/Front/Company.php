@@ -22,7 +22,7 @@ class Company extends BaseController
 	protected function apply()
 	{
 		return \View::make("front.applycompany")->with(array(
-			'title' => 'Bedrijf aanmelden',
+			'title' => 'Bedrijf aanmelden'
 		));
 	}
 
@@ -100,12 +100,19 @@ class Company extends BaseController
 		/* Add companies to json object */
 		foreach($companies as $company)
 		{
-			$lat_lng = explode(',', $company['geo_location']);
+            if($company['geo_location'] != '')
+            {
+                $lat_lng = explode(',', $company['geo_location']);
+
+                $lat = ($lat_lng[0] != '' ? floatval($lat_lng[0]) : '');
+                $lng = ($lat_lng[1] != '' ? floatval($lat_lng[1]) : '');
+            }
+
 
 			$company_array[] = array(
 				'description' => 'test',//$company['description'],
-				'lat' => floatval($lat_lng[0]),
-				'lng' => floatval($lat_lng[1]),
+				'lat' => $lat,
+				'lng' => $lng,
 				'geo_location' => $company['geo_location']
 			);
 		}
