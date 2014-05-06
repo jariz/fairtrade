@@ -12,7 +12,10 @@ Route::post("dashboard/settings", array("as" => "dashboard.do-settings", "uses" 
 
 //Front
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
-Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
+Route::get("bedrijf-aanmelden/", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
+
 Route::post("add", "\\Front\\Company@add");
 Route::get("ajaxGetCompanies", "\\Front\\Company@AjaxGetCompanies");
 

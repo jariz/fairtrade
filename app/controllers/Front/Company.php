@@ -14,14 +14,19 @@ use Redirect;
 
 class Company extends BaseController 
 {
+    protected function registerAccount()
+    {
+        return /View::make("front.company.registerAccount");
+    }
+
 	/**
 	 * Controller to apply a new company
 	 *
 	 * @return void
 	 */
-	protected function apply()
+	protected function details()
 	{
-		return \View::make("front.applycompany")->with(array(
+		return \View::make("front.company.applycompany")->with(array(
 			'title' => 'Bedrijf aanmelden'
 		));
 	}
@@ -88,6 +93,11 @@ class Company extends BaseController
 		}
 	}
 
+    protected function payment()
+    {
+
+    }
+
 	protected function AjaxGetCompanies()
 	{
 		/* Query all companies from database */
@@ -107,7 +117,6 @@ class Company extends BaseController
                 $lat = ($lat_lng[0] != '' ? floatval($lat_lng[0]) : '');
                 $lng = ($lat_lng[1] != '' ? floatval($lat_lng[1]) : '');
             }
-
 
 			$company_array[] = array(
 				'description' => 'test',//$company['description'],
