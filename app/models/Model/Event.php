@@ -6,6 +6,6 @@ class Event extends \Eloquent {
 
 	protected $table = 'events';
 	public $timestamps = true;
-	protected $softDelete = false;
+    protected $softDelete = true;
 
 }

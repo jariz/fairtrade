@@ -17,6 +17,7 @@
   padding-top:50px;
   h2 {
     margin-top:0;
+    margin-left: 20px;
   }
 }
 
@@ -26,4 +27,29 @@ table a.btn, .table a.btn {
 
 .pagination-center {
   text-align:center;
+}
+
+.alert.alert-floating {
+  border-top: 1px solid #727272;
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  bottom: -70px;
+  margin: 0;
+  z-index: 99999;
+  -webkit-transition: bottom 0.15s linear;
+  transition: bottom 0.15s linear;
+  &.in {
+    bottom:0;
+  }
+
+  p {
+    margin:0;
+    display: inline-block;
+    padding: 6px;
+  }
+  form {
+    display: inline-block;
+    float: right;
+  }
 }

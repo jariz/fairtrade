@@ -24,6 +24,8 @@ foreach($crudControllers as $route => $controller) {
     Route::get("dashboard/{$route}/edit/{id}", array("as" => "dashboard.{$route}-edit", "uses" => "{$controller}@showEdit", "before"=>"haspermission"));
     Route::post("dashboard/{$route}/delete", array("as" => "dashboard.{$route}-delete", "uses" => "{$controller}@delete", "before"=>"haspermission"));
     Route::post("dashboard/{$route}/edit", array("as" => "dashboard.{$route}-doedit", "uses" => "{$controller}@edit", "before"=>"haspermission"));
+    Route::post("dashboard/{$route}/restore", array("as" => "dashboard.{$route}-dorestore", "uses" => "{$controller}@restore", "before"=>"haspermission"));
+    Route::get("dashboard/{$route}/trash", array("as" => "dashboard.{$route}-trash", "uses" => "{$controller}@trash", "before"=>"haspermission"));
 }
 
 //custom crud routes

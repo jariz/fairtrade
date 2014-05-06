@@ -15,6 +15,11 @@
         {{Form::close()}}
     </div>
 
+    <ul class="nav nav-tabs">
+        <li @if(!$trash) class="active" @endif ><a href="{{URL::route($route)}}"><i class="glyphicon glyphicon-list"></i> Overzicht</a></li>
+        <li @if($trash) class="active" @endif ><a href="{{URL::route($route.'-trash')}}"><i class="glyphicon glyphicon-trash"></i> Prullenbak</a></li>
+    </ul>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -77,11 +82,18 @@
                 </td>
                 @endif
                 <td>
+                    @if(!$trash)
                     {{Form::open(array('route'=>$route.'-delete'))}}
                     {{Form::hidden('id', $row->id)}}
                     <a href="{{URL::route($route.'-edit', array('id'=>$row->id))}}" class="btn btn-sm btn-warning glyphicon glyphicon-edit"></a>
                     <button type="submit" class="btn btn-danger btn-sm glyphicon glyphicon-trash"></button>
                     {{Form::close()}}
+                    @else
+                    {{Form::open(array('route'=>$route.'-dorestore'))}}
+                    {{Form::hidden('id', $row->id)}}
+                    <button type="submit" class="btn btn-success btn-sm glyphicon glyphicon-check"></button>
+                    {{Form::close()}}
+                    @endif
                 </td>
             </tr>
             @endforeach
@@ -91,4 +103,16 @@
         {{$data->links()}}
     </div>
 </div>
+
+@if(\Session::has("restore_id"))
+<div class="alert alert-danger alert-floating">
+    <div class="container">
+        <p><i class="glyphicon glyphicon-warning-sign"></i> U heeft een {{strtolower($singular)}} verwijdert</p>
+        {{Form::open(['route'=>$route.'-dorestore'])}}
+        {{Form::hidden('id', Session::get("restore_id"))}}
+        {{Form::submit('Ongedaan maken', ['class'=>'btn btn-success pull-right btn-sm'])}}
+        {{Form::close()}}
+    </div>
+</div>
+@endif
 @stop

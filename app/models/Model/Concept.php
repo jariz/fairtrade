@@ -6,7 +6,7 @@ class Concept extends \Eloquent {
 
 	protected $table = 'concepts';
 	public $timestamps = true;
-	protected $softDelete = false;
+    protected $softDelete = true;
 
     public static function boot() {
         parent::boot();
