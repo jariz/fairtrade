@@ -118,28 +118,38 @@ class Company extends BaseController
                 foreach($companies as $company)
                 {
                     $company_locations[] = array(
-                        'description' => 'test',//$company['description'],
+                        'description' => $company['description'],
                         'lat' => $company['lat'],
                         'lng' => $company['lng'],
                     );
                 }
                 return json_encode($company_locations);
             } else
-                if($_GET['type'] === 'company' && isset($_GET['id']))
+                if(Input::get('type') === 'company' && Input::get('id'))
             {
-                $companyObject = $companyModel::where('id', '=', $_GET['id'])->get();
-                $company_details = array(
-                    'name' => $companyModel['name'],
-                    'description' => $companyModel['description'],
-                    'logo' => $companyModel['logo'],
-                    'address' => $companyModel['address'],
-                    'postal_code' => $companyModel['postal_code'],
-                    'city' => $companyModel['city'],
-                    'lat' => $companyModel['lat'],
-                    'lng' => $companyModel['lng'],
-                    'contact_info' => $companyModel['contact_info'],
-                    'business_hours' => $companyModel['business_hours']
-                );
+                $companyObject = $companyModel::find(Input::get('id'));
+                $companyFields = Input::get('fields');
+                if($companyFields)
+                {
+                    $companyFields = explode(',', $companyFields);
+                    foreach($companyFields as $companyField)
+                    {
+                        $company_details[$companyField] = $companyObject->{$companyField};
+                    }
+                } else{
+                    $company_details = array(
+                        'name' => $companyObject->name,
+                        'description' => $companyObject->description,
+                        'logo' => $companyObject->logo,
+                        'address' => $companyObject->address,
+                        'postal_code' => $companyObject->postal_code,
+                        'city' => $companyObject->city,
+                        'lat' => $companyObject->lat,
+                        'lng' => $companyObject->lng,
+                        'contact_info' => $companyObject->contact_info,
+                        'business_hours' => $companyObject->business_hours
+                    );
+                }
                 return json_encode($company_details);
             }
         }
