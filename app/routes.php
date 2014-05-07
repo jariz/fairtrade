@@ -17,7 +17,7 @@ Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "
 Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
 
 Route::post("add", "\\Front\\Company@add");
-Route::get("ajaxGetCompanies", "\\Front\\Company@AjaxGetCompanies");
+Route::get("getcompanies", "\\Front\\Company@AjaxGetCompanies");
 
 //standard crud procedures
 $crudControllers = Config::get("fairtrade.crud");
