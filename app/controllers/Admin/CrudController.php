@@ -391,7 +391,7 @@ class CrudController extends AdminController
                 }
 
                 if(!$abort) $data->$name = $input[$name];
-            }
+            };
             $data->save();
 
             return \Redirect::to(\URL::route($this->route));
@@ -420,7 +420,7 @@ class CrudController extends AdminController
         $model = $this->model;
         /* @var $model \Eloquent */
         $id = intval(\Input::get("id"));
-        $entry = $model::withTrashed()->findOrFail($id);
+        $entry = $model::onlyTrashed()->findOrFail($id);
         $entry->restore();
         return \Redirect::back();
     }

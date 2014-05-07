@@ -6,9 +6,10 @@
  * Author: JariZ
  */
 
-use Fairtrade\IpsumGenerator;
-use Model\Company;
-class CompanySeeder extends Seeder {
+namespace System;
+use \Fairtrade\IpsumGenerator;
+use \Model\Company;
+class CompanySeeder extends \Seeder {
     private $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     public function run() {
         $this->letters = str_split($this->letters);

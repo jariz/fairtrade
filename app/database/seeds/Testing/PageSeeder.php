@@ -5,10 +5,10 @@
  * Time: 16:33
  * Author: JariZ
  */
-
-use Model\Page;
-use Fairtrade\IpsumGenerator;
-class PageSeeder extends Seeder {
+namespace Testing;
+use \Model\Page;
+use \Fairtrade\IpsumGenerator;
+class PageSeeder extends \Seeder {
 
     public function run() {
         $last = 0;
