@@ -128,8 +128,11 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview($filter=null, $trash=false, $view="admin.crud.overview")
+    public function overview($filter=null, $trash=false, $view=false)
     {
+        if(!$view)
+           $view = "admin.crud.overview";
+
         \View::share("title", $this->plural." overzicht");
 
         //get all fields, filter out the ones that we aren't supposed to display in the overview.

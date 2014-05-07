@@ -116,14 +116,14 @@ class Concepts extends CrudController {
         else return false;
     }
 
-    public function overview($filter=null, $trash=false)
+    public function overview($filter=null, $trash=false, $view=false)
     {
         if($check = $this->checkHasCompanies())
             return $check;
 
         if(!\Fairtrade\User::can("dashboard.concepts-approve")) {
             return parent::overview("user_id = ".\Auth::user()->id, $trash);
-        } else return parent::overview(null, $trash);
+        } else return parent::overview(null, $trash, $view);
     }
 
     public function approve() {
