@@ -6,9 +6,10 @@
  * Author: JariZ
  */
 
-use Fairtrade\IpsumGenerator;
-use Model\Company;
-class CompanySeeder extends Seeder {
+namespace System;
+use \Fairtrade\IpsumGenerator;
+use \Model\Company;
+class CompanySeeder extends \Seeder {
     private $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     public function run() {
         $this->letters = str_split($this->letters);
@@ -25,7 +26,8 @@ class CompanySeeder extends Seeder {
             "address" => "Nieuwmarkt 18",
             "city" => "Amsterdam",
             "postal_code" => "1012 CR",
-            "geo_location" => "52.3702160, 4.8951680",
+            "lat" => "52.3702160",
+            "lng" => "4.8951680",
             "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
         ));
 
@@ -35,11 +37,12 @@ class CompanySeeder extends Seeder {
             "url" => "http://".IpsumGenerator::getWord().".com/",
             "user_id" => 1,
             "logo" => "",
-            "accepted" => mt_rand(0, 1),
+            "accepted" => 1,
             "address" => "Prins Hendrikkade 20",
             "city" => "Amsterdam",
             "postal_code" => "1012 TL",
-            "geo_location" => "52.3785610,4.8961850",
+            "lat" => "52.3785610",
+            "lng" => "4.8961850",
             "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
         ));
 
@@ -53,7 +56,8 @@ class CompanySeeder extends Seeder {
             "address" => "Jodenbreestraat 21",
             "city" => "Amsterdam",
             "postal_code" => "1011 NH",
-            "geo_location" => "52.3692770,4.9028070",
+            "lat" => "52.3692770",
+            "lng" => "4.9028070",
             "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
         ));
 
@@ -67,7 +71,8 @@ class CompanySeeder extends Seeder {
             "address" => "Nieuwezijds Voorburgwal 226",
             "city" => "Amsterdam",
             "postal_code" => "1012 RR",
-            "geo_location" => "52.3726670,4.8907350",
+            "lat" => "52.3726670",
+            "lng" => "4.8907350",
             "contact_info" => IpsumGenerator::generateParagraphs(mt_rand(2, 4), mt_rand(30, 50), false),
         ));
 

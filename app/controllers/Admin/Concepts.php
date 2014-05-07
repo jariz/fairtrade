@@ -13,6 +13,7 @@ class Concepts extends CrudController {
 
     protected function getFields() {
         $companies = array();
+
         $in = "";
         foreach(\Fairtrade\User::can("dashboard.companies-approve") ? Company::get() : Company::where("user_id", "=", \Auth::user()->id)->get() as $company) {
             $companies[] = [

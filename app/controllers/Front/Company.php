@@ -70,7 +70,9 @@ class Company extends BaseController
 			$company->{$field} = Input::get($field);
 		}
 
-		$company->geo_location = $geo_location;
+		$company->lat = $lat;
+        $company->lng = $lng;
+
 		$company->save();
 
 		/* Form validation */
@@ -102,41 +104,53 @@ class Company extends BaseController
 	{
 		/* Query all companies from database */
 		$companyModel = new Model\Company;
-		$companies = $companyModel::where('accepted', '=', 1)->get();
-		
-		/* Prepare array to return as json object */
-		$company_array = array();
-
-		/* Add companies to json object */
-		foreach($companies as $company)
-		{
-            if($company['geo_location'] != '')
-            {
-                $lat_lng = explode(',', $company['geo_location']);
-
-                $lat = ($lat_lng[0] != '' ? floatval($lat_lng[0]) : '');
-                $lng = ($lat_lng[1] != '' ? floatval($lat_lng[1]) : '');
-            }
-
-			$company_array[] = array(
-				'description' => 'test',//$company['description'],
-                'accepted' => $company['accepted'],
-				'lat' => $lat,
-				'lng' => $lng,
-				'geo_location' => $company['geo_location']
-			);
-		}
 
         if(isset($_GET['type']))
         {
-            if($_GET['type'] === 'location')
+            if($_GET['type'] === 'locations')
             {
-                echo json_encode($company_array);
+                $companies = $companyModel::where('accepted', '=', 1)->get();
+
+                /* Prepare array to return as json object */
+                $company_locations = array();
+
+                /* Add companies to json object */
+                foreach($companies as $company)
+                {
+                    $company_locations[] = array(
+                        'description' => $company['description'],
+                        'lat' => $company['lat'],
+                        'lng' => $company['lng'],
+                    );
+                }
+                return json_encode($company_locations);
             } else
-                if($_GET['type'] === 'company' && isset($_GET['id']))
+                if(Input::get('type') === 'company' && Input::get('id'))
             {
-                $company = $companyModel::where('id', '=', $_GET['id'])->get();
-                return json_encode(array('test'));
+                $companyObject = $companyModel::find(Input::get('id'));
+                $companyFields = Input::get('fields');
+                if($companyFields)
+                {
+                    $companyFields = explode(',', $companyFields);
+                    foreach($companyFields as $companyField)
+                    {
+                        $company_details[$companyField] = $companyObject->{$companyField};
+                    }
+                } else{
+                    $company_details = array(
+                        'name' => $companyObject->name,
+                        'description' => $companyObject->description,
+                        'logo' => $companyObject->logo,
+                        'address' => $companyObject->address,
+                        'postal_code' => $companyObject->postal_code,
+                        'city' => $companyObject->city,
+                        'lat' => $companyObject->lat,
+                        'lng' => $companyObject->lng,
+                        'contact_info' => $companyObject->contact_info,
+                        'business_hours' => $companyObject->business_hours
+                    );
+                }
+                return json_encode($company_details);
             }
         }
 	}

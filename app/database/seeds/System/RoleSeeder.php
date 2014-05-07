@@ -1,12 +1,13 @@
 <?php
-use Model\Permission, Model\Role, Model\RolePermission;
+namespace System;
+use \Model\Permission, \Model\Role, \Model\RolePermission;
 
 /**
  * RoleSeeder fills the following table with default settings:
  * roles, role_permissions, permissions
  * @author Jari Zwarts
  */
-class RoleSeeder extends Seeder {
+class RoleSeeder extends \Seeder {
     public function run() {
 
         Role::truncate();
@@ -54,7 +55,7 @@ class RoleSeeder extends Seeder {
 
     function build($type) {
         $permissions = [];
-        foreach(Config::get("fairtrade.crud") as $route => $controller) {
+        foreach(\Config::get("fairtrade.crud") as $route => $controller) {
             if($this->can($type, $route))
                 $permissions = array_merge($permissions, $this->buildRoute($route));
         }

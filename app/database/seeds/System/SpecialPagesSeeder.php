@@ -5,12 +5,12 @@
  * Date: 5/1/14
  * Time: 8:17 PM
  */
-
-class SpecialPagesSeeder extends Seeder {
+namespace System;
+class SpecialPagesSeeder extends \Seeder {
 
     public function run(){
 
-        Model\Page::truncate();
+        \Model\Page::truncate();
         $namespace = "Fairtrade\\Page\\";
 
         /* Classes uit de $namespace */
@@ -25,7 +25,7 @@ class SpecialPagesSeeder extends Seeder {
 
             $class      = $namespace.$page;
             $object     = new $class;
-            $pageModel  = new Model\Page;
+            $pageModel  = new \Model\Page;
 
             $properties = get_object_vars($object);
 
