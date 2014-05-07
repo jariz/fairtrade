@@ -84,6 +84,11 @@ class CrudController extends AdminController
      */
     protected $upload = "\\Fairtrade\\Upload";
 
+    /**
+     * Indicates if the Model has a order functionality
+     * @var bool
+     */
+    protected $reorder = false;
 
     /**
      * Returns a new instance of the crud's model
@@ -123,7 +128,7 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview($filter=null, $trash=false, $view="admin.crud.overview" )
+    public function overview($filter=null, $trash=false, $view="admin.crud.overview")
     {
         \View::share("title", $this->plural." overzicht");
 
@@ -144,10 +149,7 @@ class CrudController extends AdminController
             $data = new $model;
             /* @var $data \Eloquent */
 
-            //use nasty hack because of scope problems :(
-            $GLOBALS["fields"] = $fields;
-
-            $data = $data->whereNested(function($query) {
+            $data = $data->whereNested(function($query) use ($fields) {
                 foreach($GLOBALS["fields"] as $field) {
                     //search trough all fields that are allowed to display in the overview.
                     if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
@@ -159,6 +161,8 @@ class CrudController extends AdminController
             //don't forget to apply filter
             if(!is_null($filter))
                 $data = $data->whereRaw($filter);
+
+
             //trash?
             if($trash)
                 $data = $data->onlyTrashed();
@@ -188,6 +192,7 @@ class CrudController extends AdminController
             ->with("plural", $this->plural)
             ->with("route", $this->route)
             ->with("data", $data)
+            ->with("reorder", $this->reorder)
             ->with("timestamps", $this->timestamps)
             ->with("searchQuery", \Input::get("q"))
             ->with("trash", $trash);

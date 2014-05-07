@@ -85,6 +85,32 @@ class Pages extends CrudController {
         );
     }
 
+    public function saveOrder() {
+
+        $orderData = \Input::get('data');
+
+        if( !is_array($orderData ) ) {
+           return \Response::json([
+                'success' => 0,
+                'message' => 'data is missing'
+           ]);
+        }
+
+        foreach( $orderData as $item ) {
+            $page = Page::find($item['id']);
+
+
+            if( !$page->exists() )
+                continue;
+
+
+            $page->order = $item['order'];
+            $page->save();
+        }
+
+        return \Response::json(['success' => 1]);
+    }
+
     protected $model = "\\Model\\Page";
     protected $singular = "Pagina";
     protected $plural = "Pagina's";

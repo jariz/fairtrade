@@ -3,6 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>{{$title}} - Fairtrade Amsterdam Beheer</title>
+    <base href="{{URL::to('/')}}">
+    <link href="{{url('plugins/font-awesome-4.0.3/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/admin/screen.css')}}" rel="stylesheet">
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>

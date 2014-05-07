@@ -5,12 +5,15 @@
 
         <h2>{{$plural}} heordenen</h2>
         <div class="form-group">
-            <button class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Opslaan</button>
+            <a class="btn btn-primary" href="{{URL::route('dashboard.pages')}}"><i class="fa fa-arrow-left"></i> Terug naar overzicht</a>
+            <button data-toggle="tooltip" data-placement="right" title="De wijzigingen zijn opgeslagen." data-func="save" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Opslaan</button>
         </div>
 
 
-
-    <table class="table table-striped">
+    <div class="form-group load-message">
+        <p class="text-center"><i class="fa fa-spinner fa-spin"></i> Bezig met het laden van de pagina's</p>
+    </div>
+    <table id="table" class="table table-striped hide">
         <thead>
         <tr>
             <th>Acties</th>
@@ -33,10 +36,10 @@
         </tr>
         @endif
             @foreach($data as $row)
-            <tr>
+            <tr data-id="{{$row['id']}}" data-order="{{$row['order']}}">
             <td>
-                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-arrow-up"></span></button>
-                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                <button data-func="up" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                <button data-func="down" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-arrow-down"></span></button>
             </td>
             @foreach($columns as $column)
             <td>
@@ -80,4 +83,8 @@
     </div>
 </div>
 @endif
+@stop
+
+@section('scripts')
+    <script src="{{url('js/order-table.js')}}"></script>
 @stop

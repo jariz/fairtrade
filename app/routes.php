@@ -12,7 +12,10 @@ Route::post("dashboard/settings", array("as" => "dashboard.do-settings", "uses" 
 
 //Front
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
-Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@apply"));
+Route::get("bedrijf-aanmelden/", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
+
 Route::post("add", "\\Front\\Company@add");
 Route::get("ajaxGetCompanies", "\\Front\\Company@AjaxGetCompanies");
 
@@ -33,6 +36,7 @@ foreach($crudControllers as $route => $controller) {
 Route::post("dashboard/companies/approve", array("as" => "dashboard.companies-approve", "uses" => "\\Admin\\Companies@approve", "before" => "haspermission"));
 Route::post("dashboard/concepts/approve", array("as" => "dashboard.concepts-approve", "uses" => "\\Admin\\Concepts@approve", "before" => "haspermission"));
 Route::get("dashboard/pages/reorder",["as" => "dashboard.pages-reorder", "uses" => "\\Admin\\Pages@reorder"]);
+Route::post("dashboard/pages/reorder",["as" => "dashboard.pages-post-reorder", "uses" => "\\Admin\\Pages@saveOrder"]);
 
 /** -- FRONT END Pagina's **/
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

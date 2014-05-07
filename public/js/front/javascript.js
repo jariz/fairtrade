@@ -47,7 +47,7 @@ $(function ()
 
 				$.each(obj, function(key, value) 
 				{
-                    if(value.lat != '')
+                    if(value.lat != '' && value.accepted === 1)
                     {
                         var marker = new google.maps.Marker({
                             position: new google.maps.LatLng(value.lat, value.lng),
