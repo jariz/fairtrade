@@ -5,6 +5,9 @@
     <div class="pull-right">
         {{Form::open(['class'=>'row', 'method' => 'get', 'route' => $route])}}
         <a class="btn btn-success col-lg-2 pull-right" href="{{URL::route($route.'-add')}}"><i class="glyphicon glyphicon-plus-sign"></i> Aanmaken</a>
+        @if($reorder)
+            <a style="margin-right:10px;" class="btn btn-info col-lg-2 pull-right" href="{{URL::route('dashboard.pages-reorder')}}"><i class="fa fa-list-ol"></i> Ordenen</a>
+        @endif
         <div class="input-group col-lg-4 pull-right" style="margin-right:10px;">
             {{Form::text('q', \Input::get('q'), ['class'=>'form-control search', 'placeholder'=>'Zoeken...'])}}
             <span class="input-group-btn">

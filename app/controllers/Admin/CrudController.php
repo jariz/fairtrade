@@ -84,6 +84,11 @@ class CrudController extends AdminController
      */
     protected $upload = "\\Fairtrade\\Upload";
 
+    /**
+     * Indicates if the Model has a order functionality
+     * @var bool
+     */
+    protected $reorder = false;
 
     /**
      * Returns a new instance of the crud's model
@@ -123,8 +128,11 @@ class CrudController extends AdminController
      * Give a overview of all entries
      * @author Jari Zwarts
      */
-    public function overview($filter=null, $trash=false)
+    public function overview($filter=null, $trash=false, $view=false)
     {
+        if(!$view)
+           $view = "admin.crud.overview";
+
         \View::share("title", $this->plural." overzicht");
 
         //get all fields, filter out the ones that we aren't supposed to display in the overview.
@@ -156,6 +164,8 @@ class CrudController extends AdminController
             //don't forget to apply filter
             if(!is_null($filter))
                 $data = $data->whereRaw($filter);
+
+
             //trash?
             if($trash)
                 $data = $data->onlyTrashed();
@@ -179,12 +189,13 @@ class CrudController extends AdminController
         }
 
 
-        return \View::make("admin.crud.overview")
+        return \View::make($view)
             ->with("columns", $fields)
             ->with("singular", $this->singular)
             ->with("plural", $this->plural)
             ->with("route", $this->route)
             ->with("data", $data)
+            ->with("reorder", $this->reorder)
             ->with("timestamps", $this->timestamps)
             ->with("searchQuery", \Input::get("q"))
             ->with("trash", $trash);
@@ -391,7 +402,7 @@ class CrudController extends AdminController
                 }
 
                 if(!$abort) $data->$name = $input[$name];
-            }
+            };
             $data->save();
 
             return \Redirect::to(\URL::route($this->route));
@@ -420,7 +431,7 @@ class CrudController extends AdminController
         $model = $this->model;
         /* @var $model \Eloquent */
         $id = intval(\Input::get("id"));
-        $entry = $model::withTrashed()->findOrFail($id);
+        $entry = $model::onlyTrashed()->findOrFail($id);
         $entry->restore();
         return \Redirect::back();
     }

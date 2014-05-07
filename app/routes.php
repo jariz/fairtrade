@@ -29,12 +29,14 @@ foreach($crudControllers as $route => $controller) {
     Route::post("dashboard/{$route}/edit", array("as" => "dashboard.{$route}-doedit", "uses" => "{$controller}@edit", "before"=>"haspermission"));
     Route::post("dashboard/{$route}/restore", array("as" => "dashboard.{$route}-dorestore", "uses" => "{$controller}@restore", "before"=>"haspermission"));
     Route::get("dashboard/{$route}/trash", array("as" => "dashboard.{$route}-trash", "uses" => "{$controller}@trash", "before"=>"haspermission"));
+
 }
 
 //custom crud routes
 Route::post("dashboard/companies/approve", array("as" => "dashboard.companies-approve", "uses" => "\\Admin\\Companies@approve", "before" => "haspermission"));
 Route::post("dashboard/concepts/approve", array("as" => "dashboard.concepts-approve", "uses" => "\\Admin\\Concepts@approve", "before" => "haspermission"));
-
+Route::get("dashboard/pages/reorder",["as" => "dashboard.pages-reorder", "uses" => "\\Admin\\Pages@reorder"]);
+Route::post("dashboard/pages/reorder",["as" => "dashboard.pages-post-reorder", "uses" => "\\Admin\\Pages@saveOrder"]);
 
 /** -- FRONT END Pagina's **/
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

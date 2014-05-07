@@ -11,14 +11,18 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call("UserSeeder");
-        $this->call("NewsSeeder");
-        $this->call("CompanySeeder");
-        $this->call("EventSeeder");
-        $this->call("ConceptSeeder");
-        $this->call('SpecialPagesSeeder');
-        $this->call("PageSeeder");
-        $this->call("RoleSeeder");
+        $answer = $this->command->choice("Wil je daar ook testing data bij?", ["Ja", "Nee"], "Nee");
+
+        $this->call("\\System\\CompanySeeder");
+        $this->call("\\System\\SpecialPagesSeeder");
+        $this->call("\\System\\RoleSeeder");
+        if($answer == 1) {
+            $this->call("\\Testing\\UserSeeder");
+            $this->call("\\Testing\\NewsSeeder");
+            $this->call("\\Testing\\EventSeeder");
+            $this->call("\\Testing\\ConceptSeeder");
+            $this->call("\\Testing\\PageSeeder");
+        }
 	}
 
 }
