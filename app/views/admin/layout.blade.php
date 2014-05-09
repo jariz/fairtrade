@@ -45,12 +45,12 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="glyphicon glyphicon-user"></i> {{Auth::user()->email}} <b class="caret"></b></a>
+                                class="glyphicon glyphicon-user"></i> {{Auth::user()->name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{URL::route('dashboard.logout', [Session::token()])}}"><i
-                                        class="glyphicon glyphicon-log-out"></i> Uitloggen</a></li>
                             <li><a href="{{URL::route('dashboard.settings')}}"><i
                                         class="glyphicon glyphicon-wrench"></i> Gebruiker instellingen </a></li>
+                            <li><a href="{{URL::route('dashboard.logout', [Session::token()])}}"><i
+                                        class="glyphicon glyphicon-log-out"></i> Uitloggen</a></li>
                         </ul>
                     </li>
                 </ul>
