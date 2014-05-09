@@ -49,11 +49,6 @@ class Users extends CrudController {
                 "type" => "select",
                 "options" => $roles,
                 "rules" => "required|in:".$in
-            ),
-            "IP adres" => array(
-                "name" => "ip",
-                "type" => "text",
-                "rules" => "ip"
             )
         );
     }
