@@ -33,7 +33,7 @@ class Upload{
 	 * @author Dmitri Chebotarev
 	 * @var string
 	 */
-	private $error = '';
+	private $error = NULL;
 
 	/**
 	 * Holds the new filename of the upload file
@@ -98,6 +98,8 @@ class Upload{
 		'unknown'      => 'Er is een onbekende fout opgetreden'
 
 	];
+
+    private $error_code = false;
 
 	/**
 	 * Init the upload class with the input name as string
@@ -279,7 +281,7 @@ class Upload{
 	 * @author Dmitri Chebotarev
 	 */
 	protected function errorCode( $error_code ){
-
+        $this->error_code = $error_code;
 		switch ($error_code) {
 
 			case self::ERROR_FILE_MISSING:
@@ -349,8 +351,8 @@ class Upload{
 		}
 
 		$file = Input::file($this->input);
-
-		if( $file->move($this->path, $this->filename.'.'.$this->ext)){
+        $this->filename = $this->filename.'.'.$this->ext;
+		if( $file->move($this->path, $this->filename)){
 			return true;
 		}
 
@@ -358,6 +360,30 @@ class Upload{
 		return false;
 		
 	}
+
+    /**
+     * Get the filename
+     */
+    public function getFilename(){
+        return $this->filename;
+    }
+
+    /**
+     *
+     */
+    public function missing(){
+        return $this->error_code === self::ERROR_FILE_MISSING;
+    }
+
+    public function hasErrors(){
+        return $this->error !== NULL;
+    }
+
+    public function getPath(){
+        return $this->path;
+    }
+
+
 
 
 

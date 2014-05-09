@@ -153,7 +153,7 @@ class CrudController extends AdminController
             /* @var $data \Eloquent */
 
             $data = $data->whereNested(function($query) use ($fields) {
-                foreach($GLOBALS["fields"] as $field) {
+                foreach($fields as $field) {
                     //search trough all fields that are allowed to display in the overview.
                     if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
                         continue;
@@ -383,20 +383,39 @@ class CrudController extends AdminController
                             $abort = true;
                         break;
                     case "file":
-                        $upload = $this->upload;
-                        $upload = new $upload($name);
+                        if( array_key_exists('uploader', $field) ){
+                            $class = "\\Fairtrade\\Upload\\".$field['uploader'];
+                            $upload = new $class($name);
+                        }
+                        else{
+
+                            $upload = $this->upload;
+                            $upload = new $upload($name);
+                        }
                         /* @var $upload \Fairtrade\Upload\Upload */
-                        $filename = \Str::random(20).".".\File::extension(\Input::get($name));
-                        $upload->setFileName($filename);
+
                         if(!$upload->upload()) {
-                            if($editing && $upload->error() == "Er is geen bestand geupload") {
+
+                            if( !array_key_exists('required', $field)){
+                                $field['required'] = false;
+                            }
+
+                            if(  $field['required'] === true && $upload->hasErrors() ){
                                 $abort = true;
-                            } else {
+                            }
+
+                            if( $upload->hasErrors() && $upload->missing()){
+                                $abort = true;
+                            }
+
+                            if( $upload->hasErrors() && !$upload->missing()){
                                 \View::share("errors", new MessageBag(array($upload->error())));
                                 return $this->showEdit(\Input::get("id"));
                             }
+
+
                         } else {
-                            $input[$name] = $filename;
+                            $input[$name] = $upload->getFilename();
                         }
                         break;
                 }

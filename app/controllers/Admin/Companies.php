@@ -37,8 +37,19 @@ class Companies extends CrudController {
                 "name" => "logo",
                 "type" => "file",
                 "hideInOverview" => true,
-                "rules" => ""
+                "rules" => "",
+                "uploader" => "Logo",
+                "required" => false,
             ),
+
+            "Foto Onderneming" =>[
+                "name" => "photo",
+                "type" => "file",
+                "hideInOverview" => true,
+                "uploader" => "Company",
+                "required" => false,
+            ],
+
             "Goedgekeurd" => array(
                 "name" => "accepted",
                 "boolean" => true,

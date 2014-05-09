@@ -1,6 +1,6 @@
 <?php
 Route::get('test', function(){
-
+    dd('lala');
 });
 //Admin
 Route::get("dashboard", array("as" => "dashboard", "uses" => "\\Admin\\Dashboard@show"));

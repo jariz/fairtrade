@@ -23,7 +23,23 @@
             @elseif($field["type"] == "textarea")
             {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"form-control"))}}
             @elseif($field["type"] == "file")
-            {{Form::file($field["name"])}}
+             @if($editing && !empty($data[$field['name']]) )
+
+                <?php
+                      $uploader = 'Upload';
+                      if( array_key_exists( 'uploader', $field ) ){
+                         $uploader = $field['uploader'];
+                      }
+
+                      $class = "\\Fairtrade\\Upload\\".$uploader;
+                      $upload = new $class($field['name']);
+                ?>
+
+                <img src="{{URL::asset($upload->getPath().'/'.$data[$field['name']])}}" />
+             @endif
+                 {{Form::file($field["name"])}}
+
+
             @elseif($field["type"] == "date")
             <div class='input-group datepicker' data-date-format="DD-MM-YYYY HH:MM:SS">
                 {{Form::text($field["name"], \Fairtrade\Date::input($data[$field["name"]])->forHuman(), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
