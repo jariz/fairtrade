@@ -79,6 +79,12 @@ class CrudController extends AdminController
     protected $timestamps = false;
 
     /**
+     * Array with relationships the model has
+     * @var array
+     */
+    protected $with = false;
+
+    /**
      * The name of the upload class that will handle file uploads trough the file field.
      * @var string
      */
@@ -145,48 +151,40 @@ class CrudController extends AdminController
         }
 
         $model = $this->model;
+        $data = new $model;
 
         if(\Input::has("q")) {
             //Apparently, we're not only showing a overview, we're also searching for a certain value within one of the columns
             //So, let's build a query that filters the data.
-            $data = new $model;
             /* @var $data \Eloquent */
 
-            $data = $data->whereNested(function($query) use ($fields) {
-                foreach($fields as $field) {
+            $data = $data->whereNested(function ($query) use ($fields) {
+                foreach ($fields as $field) {
                     //search trough all fields that are allowed to display in the overview.
                     if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
                         continue;
-                    $query->orWhere($field["name"], "LIKE", "%".\Input::get("q")."%");
+                    $query->orWhere($field["name"], "LIKE", "%" . \Input::get("q") . "%");
                 }
             });
-
-            //don't forget to apply filter
-            if(!is_null($filter))
-                $data = $data->whereRaw($filter);
-
-
-            //trash?
-            if($trash)
-                $data = $data->onlyTrashed();
-
-            //force query to give unique results
-            $data = $data->distinct()
-            //get the data
-                ->paginate(15);
-        } else {
-            $data = new $model;
-            /* @var $data \Eloquent */
-
-            if(!is_null($filter))
-                $data = $data->whereRaw($filter);
-
-            //trash?
-            if($trash)
-                $data = $data->onlyTrashed();
-
-            $data = $data->paginate(15);
         }
+
+
+        //don't forget to apply filter
+        if (!is_null($filter))
+            $data = $data->whereRaw($filter);
+
+        if ($this->with)
+            $data->with($this->with);
+
+
+        //trash?
+        if ($trash)
+            $data = $data->onlyTrashed();
+
+        //force query to give unique results
+        $data = $data->distinct()
+            //get the data
+            ->paginate(15);
 
 
         return \View::make($view)
@@ -198,7 +196,8 @@ class CrudController extends AdminController
             ->with("reorder", $this->reorder)
             ->with("timestamps", $this->timestamps)
             ->with("searchQuery", \Input::get("q"))
-            ->with("trash", $trash);
+            ->with("trash", $trash)
+            ->with("with", $this->with);
     }
 
     /**

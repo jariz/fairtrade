@@ -39,7 +39,8 @@ class Concepts extends CrudController {
                 "name" => "company_id",
                 "type" => "select",
                 "rules" => "required|in:".$in,
-                "options" => $companies
+                "options" => $companies,
+                "property" => "name"
             ),
             "Goedgekeurd" => array(
                 "name" => "accepted",
@@ -137,4 +138,5 @@ class Concepts extends CrudController {
     protected $singular = "Concept";
     protected $plural = "Concepten";
     protected $route = "dashboard.concepts";
+    protected $with = "company";
 }

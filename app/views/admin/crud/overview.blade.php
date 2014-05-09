@@ -67,12 +67,10 @@
                 </span>
                 @endif
                 @else
-                <?php $formatted = $column["name"]."_formatted"; ?>
-                @if($row->$formatted)
-                {{{$row->$formatted}}}
-                @else
-                {{{$row->$column["name"]}}}
+                @if( $with != false && array_key_exists( 'property', $column))
+                {{{$row->$with->$column['property']}}}
                 @endif
+                {{{$row->$column["name"]}}}
                 @endif
             </td>
             @endforeach
