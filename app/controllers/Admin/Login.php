@@ -1,7 +1,10 @@
 <?php
 
 namespace Admin;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Mail\Message;
 use Illuminate\Support\MessageBag;
+use Model\User;
 
 class Login extends \Controller {
 
@@ -52,6 +55,93 @@ class Login extends \Controller {
         if($errors->any())
             return \View::make("admin.login")->with("errors", $errors);
         else return \Redirect::intended("dashboard");
+    }
+
+    public function changePassword() {
+        $validator = \Validator::make(
+            \Input::only(["password", "id", "reset_code"]),
+            [
+                "id" => "required|email|in:users,id",
+                "reset_code" => "required|email|in:users,reset_code",
+                "passsword" => "required"
+            ]
+        );
+
+        if($validator->fails()) {
+            $user = User::find(intval(\Input::get("id")));
+            if(!$user) {
+                //we don't know what id this user is, so we're just gonna show the login page here.
+                return \View::make("admin.login")->withErrors($validator->errors());
+            } else {
+                return \View::make("admin.forgot")->with("user", $user)->withErrors($validator->errors());
+            }
+        } else {
+            $user = User::findOrFail(intval(\Input::get("id")));
+            $user->password = \Hash::make(\Input::get("password"));
+            return \Redirect::route("dashboard.login")->with("relog", true);
+        }
+    }
+
+    public function forgot($code, $id) {
+        try {
+            $user = User::whereResetCode($code)->whereId($id)->firstOrFail();
+        } catch(ModelNotFoundException $e) {
+            \App::abort(403);
+        }
+
+        return \View::make("admin.forgot", [
+            "user" => $user
+        ]);
+    }
+
+    public function doForgot() {
+        //create mbag
+        $errors = new MessageBag();
+
+        //create validator
+        $validator = \Validator::make(
+            \Input::only(array("email")),
+            [
+                "email" => "required|email|exists:users,email"
+            ]
+        );
+
+        //does the validator pass? if yes send emails, if no, add error message to bag
+        if($validator->fails()) {
+            $errors = $validator->errors();
+        } else {
+            //get user
+            $user = User::whereEmail(\Input::get("email"))->firstOrFail();
+
+            //generate unique reset code
+            $resetcode = \Str::random(20);
+
+            //set reset code
+            $user->reset_code = $resetcode;
+            $user->save();
+
+            //build & send mail
+            return \View::make(
+//            \Mail::send(
+            "emails.forgot", [
+                "link" => \URL::route("dashboard.forgot", [
+                        "id" => $user->id,
+                        "code" => $resetcode
+                    ]),
+                "logo" => url("images/small_logo.png"),
+                "name" => $user->name
+            ]
+//            , function(Message $message) use($user) {
+//                $message->to($user->email);
+//                $message->subject("Wachtwoord reset - Fairtrade Amsterdam");
+//            });
+
+            );
+
+            return \View::make("admin.login", ["forgot" => true, "mailsend" => true]);
+        }
+
+        return \View::make("admin.login", ["forgot" => true])->withErrors($errors);
     }
 
     /**
