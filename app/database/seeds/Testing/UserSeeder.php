@@ -18,7 +18,7 @@ class UserSeeder extends \Seeder {
         $user->email = 'admin@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "@- Istrator";
-        $user->ip = "127.0.0.1";
+//        $user->ip = "127.0.0.1";
         $user->reset_code = str_random();
         $user->role_id = 1;
         $user->save();
@@ -27,7 +27,7 @@ class UserSeeder extends \Seeder {
         $user->email = 'ondernemer@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "Ondernemer";
-        $user->ip = "127.0.0.1";
+//        $user->ip = "127.0.0.1";
         $user->reset_code = str_random();
         $user->role_id = 2;
         $user->save();
@@ -36,7 +36,7 @@ class UserSeeder extends \Seeder {
         $user->email = 'redacteur@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "Redacteur";
-        $user->ip = "127.0.0.1";
+//        $user->ip = "127.0.0.1";
         $user->reset_code = str_random();
         $user->role_id = 3;
         $user->save();
@@ -53,7 +53,7 @@ class UserSeeder extends \Seeder {
             $user->email = IpsumGenerator::getWord(). IpsumGenerator::getWord() . '@fairtrade.org';
             $user->password = \Hash::make(str_random(6));
             $user->name = studly_case(IpsumGenerator::getWord()) . " " . studly_case(IpsumGenerator::getWord());
-            $user->ip = mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99);
+//            $user->ip = mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99).".".mt_rand(1,99);
             $user->reset_code = str_random();
             $user->role_id = mt_rand(1, 3);
             $user->subscription_start = $start;
