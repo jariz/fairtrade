@@ -22,6 +22,23 @@ class Companies extends CrudController {
                 "rules" => "",
                 "hideInOverview" => true
             ),
+            "Adres" => array(
+                "name" => "address",
+                "type" => "text"
+            ),
+            "Postcode" => array(
+                "name" => "postal_code",
+                "type" => "text"
+            ),
+            "Stad" => array(
+                "name" => "city",
+                "type" => "text"
+            ),
+            "Contact informatie" => array(
+                "name" => "contact_info",
+                "type" => "textarea",
+                "hideInOverview" => true
+            ),
             "Openingstijden" => array(
                 "name" => "business_hours",
                 "hideInOverview" => true,

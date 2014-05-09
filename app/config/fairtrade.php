@@ -5,9 +5,10 @@ return array(
         "Gebruikers" => "dashboard.users",
         "Nieuws" => "dashboard.news",
         "Evenementen" => "dashboard.events",
-        "Concepten" => "dashboard.concepts",
+        "Activiteiten" => "dashboard.concepts",
         "Pagina's" => "dashboard.pages",
-        "Bedrijven" => "dashboard.companies"
+        "Bedrijven" => "dashboard.companies",
+        "Categorieen" => "dashboard.categories"
     ),
 
     "crud" => array(
@@ -16,6 +17,7 @@ return array(
         "events" => "\\Admin\\Events",
         "concepts" => "\\Admin\\Concepts",
         "pages" => "\\Admin\\Pages",
-        "companies" => "\\Admin\\Companies"
+        "companies" => "\\Admin\\Companies",
+        "categories" => "\\Admin\\Categories"
     )
 );

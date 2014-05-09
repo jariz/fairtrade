@@ -23,10 +23,7 @@ class Concept extends \Eloquent {
         });
     }
 
-    public function getCompanyIdFormattedAttribute() {
-        $company = Company::find($this->company_id);
-        if(!$company)
-            return "Onbekend";
-        else return $company->name;
+    public function company() {
+        return $this->belongsTo('Model\Company', 'company_id', 'id');
     }
 }

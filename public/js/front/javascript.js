@@ -39,7 +39,7 @@ $(function ()
 		$.ajax({
 			type: 'get',
 			dataTpye: 'json',
-			url: 'ajaxGetCompanies',
+			url: 'api/companies',
 			data: 'type=locations',
 			success: function(data)
 			{
