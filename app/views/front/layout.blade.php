@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{$title}} - Fairtrade Amsterdam</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{$seo_description}}">
     <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/front/style.css')}}" rel="stylesheet">
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>

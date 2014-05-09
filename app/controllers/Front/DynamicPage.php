@@ -59,7 +59,8 @@ class DynamicPage extends BaseController{
     private function render(){
        return View::make('front.dynamic')
                 ->with('title', $this->page->title)
-               ->with('page', $this->page);
+                ->with('seo_description', $this->page->seo_description)
+                ->with('page', $this->page);
     }
 
     /**
@@ -74,7 +75,8 @@ class DynamicPage extends BaseController{
         }
 
         $view = View::make( $this->page->view )
-            ->with('title', $this->page->title);
+            ->with('title', $this->page->title)
+            ->with('seo_description', $this->page->seo_description);
 
 
         $metaData = json_decode( $this->page->meta);
