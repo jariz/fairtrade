@@ -153,7 +153,7 @@ class CrudController extends AdminController
             /* @var $data \Eloquent */
 
             $data = $data->whereNested(function($query) use ($fields) {
-                foreach($GLOBALS["fields"] as $field) {
+                foreach($fields as $field) {
                     //search trough all fields that are allowed to display in the overview.
                     if (isset($field["hideInOverview"]) && $field["hideInOverview"] === true)
                         continue;
