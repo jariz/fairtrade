@@ -17,7 +17,7 @@ class Upload{
 	 * @var array
 	 */
 	protected $max_dimensions = [
-		'width'  => NULL, 
+		'width'  => NULL,
 		'height' => NULL
 	];
 
@@ -101,6 +101,24 @@ class Upload{
 
     private $error_code = false;
 
+    /*
+     * indicates if thumbnail must be created
+     * @author Dmitri Chebotarev
+     * @var bool
+     */
+    private $thumbnail = false;
+
+
+    /**
+     * Set the dimensions of the Thumbnail
+     * @author Dmitri Chebotarev
+     * @var array
+     */
+    private $thumbnailDimensions = [
+         'width' => NULL,
+         'height' => NULL
+    ];
+
 	/**
 	 * Init the upload class with the input name as string
 	 * @param string $input_name - Name of the input field
@@ -160,7 +178,7 @@ class Upload{
 
 		// Laravel Validation
 		$file = Input::file( $this->input );
-		$rules = [ $this->input => 'image|mimes:jpeg,bmp,png' ];
+		$rules = [ $this->input => 'image|mimes:jpeg,gif,png' ];
 		
 		$messages = [
 			$this->input.'.image' => 'Het bestand dat u probeerde te uploaden is geen geldige afbeelding',
@@ -353,8 +371,16 @@ class Upload{
 		$file = Input::file($this->input);
         $this->filename = $this->filename.'.'.$this->ext;
 		if( $file->move($this->path, $this->filename)){
+
+            if( $this->thumbnail === true ){
+                $this->createThumbnail();
+            }
+
 			return true;
 		}
+
+
+
 
 		$this->errorCode(self::ERROR_UNKNOWN);
 		return false;
@@ -381,6 +407,33 @@ class Upload{
 
     public function getPath(){
         return $this->path;
+    }
+
+    public function setThumbnail($width = NULL, $height = NULL){
+        $this->thumbnail = true;
+        $this->thumbnailDimensions = [
+            'width'     => $width,
+            'height'    => $height
+        ];
+    }
+
+    private function createThumbnail(){
+
+        // Create Intervention Image instance
+        $image = Image::make( $this->getPath(). '/'. $this->filename );
+
+        // Create resized image
+        $image->grab( $this->thumbnailDimensions['width'], $this->thumbnailDimensions['height']);
+
+        // Save in sub-directory
+
+        $subDir = $this->getPath() . '/t/';
+
+        if( !File::isDirectory($subDir))
+            File::makeDirectory($subDir);
+
+        $image->save($subDir. $this->filename );
+
     }
 
 

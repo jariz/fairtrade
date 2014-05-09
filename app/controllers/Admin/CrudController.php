@@ -392,6 +392,21 @@ class CrudController extends AdminController
                             $upload = $this->upload;
                             $upload = new $upload($name);
                         }
+
+                        // Checks if thumbnail needs to be created
+                        if( array_key_exists('thumbnail', $field) ){
+
+                               // Check if width property is set
+                            if( !array_key_exists('width', $field['thumbnail']) )
+                                $field['thumbnail']['width'] = NULL;
+
+                            // Check if height property is set
+                            if( !array_key_exists('height', $field['thumbnail']) )
+                                $field['thumbnail']['height'] = NULL;
+
+                            $upload->setThumbnail( $field['thumbnail']['width'], $field['thumbnail']['height']);
+                        }
+
                         /* @var $upload \Fairtrade\Upload\Upload */
 
                         if(!$upload->upload()) {
