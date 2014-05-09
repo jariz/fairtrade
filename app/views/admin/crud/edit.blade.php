@@ -40,12 +40,23 @@
 <script src="{{url('plugins/bs-datepicker/locales/bootstrap-datetimepicker.nl.js')}}"></script>
 <script src="{{url('plugins/ckeditor/ckeditor.js')}}"></script>
 <script src="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.js')}}"></script>
+<link rel="stylesheet" href="{{url('plugins/fancybox/jquery.fancybox.css?v=2.1.5')}}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{url('plugins/fancybox/jquery.fancybox.pack.js?v=2.1.5')}}"></script>
 <link href="{{url('plugins/bs-datepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
 <script>
+
+(function($){
     $(document).ready(function() {
-        $('.datepicker').datetimepicker({
-            language: "nl"
-        });
+
+             if( $.isFunction( $.fn.datetimepicker ) ){
+
+                $('.datepicker').datetimepicker({
+                    language: "nl"
+                });
+            }
+
+        $('.fancybox').fancybox();
     })
+})(jQuery);
 </script>
 @stop

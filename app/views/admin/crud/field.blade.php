@@ -34,15 +34,16 @@
                       $class = "\\Fairtrade\\Upload\\".$uploader;
                       $upload = new $class($field['name']);
 
-                      $preview = $upload->getPath().'/'.$data[$field['name']];
+                      $preview = $original = $upload->getPath().'/'.$data[$field['name']];
                       $thumbnail = $upload->getPath().'/t/'.$data[$field['name']];
                       if( File::exists($thumbnail) ){
                         $preview = $thumbnail;
                       }
 
                 ?>
-              <p><strong>Huidige afbeelding: </string></p>
-                <img class="img-responsive img-thumbnail admin-thumbnail" src="{{URL::asset($preview)}}" />
+              <p><strong>Huidige afbeelding: (Klik op de afbeelding om het te bekijken) </string></p>
+              <a class="fancybox" href="{{$original}}"><img class="img-responsive img-thumbnail admin-thumbnail" src="{{$preview}}" alt="" /></a>
+
                 <p class="help-block">Als er een nieuw bestand wordt gekozen, wordt de huidige overschreven.</p>
              @endif
                  {{Form::file($field["name"])}}
