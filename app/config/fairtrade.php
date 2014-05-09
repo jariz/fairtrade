@@ -5,7 +5,7 @@ return array(
         "Gebruikers" => "dashboard.users",
         "Nieuws" => "dashboard.news",
         "Evenementen" => "dashboard.events",
-        "Concepten" => "dashboard.concepts",
+        "Activiteiten" => "dashboard.concepts",
         "Pagina's" => "dashboard.pages",
         "Bedrijven" => "dashboard.companies",
         "Categorieen" => "dashboard.categories"

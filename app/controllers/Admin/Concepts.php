@@ -135,8 +135,8 @@ class Concepts extends CrudController {
     }
 
     protected $model = "\\Model\\Concept";
-    protected $singular = "Concept";
-    protected $plural = "Concepten";
+    protected $singular = "Activiteit";
+    protected $plural = "Activiteiten";
     protected $route = "dashboard.concepts";
     protected $with = "company";
 }
