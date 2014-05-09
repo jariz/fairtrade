@@ -39,6 +39,14 @@ class Companies extends CrudController {
                 "hideInOverview" => true,
                 "rules" => ""
             ),
+
+            "Foto Onderneming" =>[
+                "name" => "photo",
+                "type" => "file",
+                "hideInOverview" => true,
+                "rules" => ""
+            ],
+
             "Goedgekeurd" => array(
                 "name" => "accepted",
                 "boolean" => true,
