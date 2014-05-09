@@ -12,6 +12,7 @@ namespace Fairtrade\Page;
 class Page {
 
     protected $meta = NULL;
+    public $special = 1;
 
     /**
      * Creates JSON string from meta data array

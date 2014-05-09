@@ -13,6 +13,7 @@ class News extends Page{
     public $order = 1;
     public $parent = 0;
     public $show_in_nav = 1;
+    public $data_source = 'News';
 
     protected $meta = [
         'dynamic' => [
@@ -21,4 +22,6 @@ class News extends Page{
             'label' => 'Dynamische blok'
         ]
     ];
+
+
 }

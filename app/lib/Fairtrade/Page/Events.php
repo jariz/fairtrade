@@ -13,6 +13,7 @@ class Events extends Page{
     public $order = 2;
     public $parent = 0;
     public $show_in_nav = 1;
+    public $data_source = 'Events';
 
     protected $meta = [
         'dynamic' => [

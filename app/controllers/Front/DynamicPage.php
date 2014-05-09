@@ -79,6 +79,7 @@ class DynamicPage extends BaseController{
             ->with('seo_description', $this->page->seo_description);
 
 
+
         $metaData = json_decode( $this->page->meta);
 
         if( !is_null($metaData) ){
@@ -87,6 +88,21 @@ class DynamicPage extends BaseController{
               $view->with($key, $data->value);
             }
         }
+
+        // Run script to inject important data
+
+        if( !is_null( $this->page->data_source ) ){
+
+            $dataSourceClass = "Fairtrade\\Page\\Data\\". $this->page->data_source;
+
+            if( class_exists( $dataSourceClass) ){
+
+                $dataSource = new $dataSourceClass;
+                $dataSource->run();
+
+            }
+        }
+
         return $view;
     }
 } 
