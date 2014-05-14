@@ -7,6 +7,7 @@
     <meta name="description" content="{{$seo_description or null}}">
     <link href="{{url('plugins/bs/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('css/front/style.css')}}" rel="stylesheet">
+    <link href="{{url('plugins/font-awesome-4.0.3/css/font-awesome.min.css')}}" rel="stylesheet">
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
     @yield("scripts")
 </head>

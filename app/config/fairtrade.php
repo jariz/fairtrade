@@ -1,6 +1,9 @@
 <?php
 
 return array(
+
+    "contact_email" => 'example@email.com',
+
     "admin_nav" => array(
         "Gebruikers" => "dashboard.users",
         "Nieuws" => "dashboard.news",
