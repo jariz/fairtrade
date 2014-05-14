@@ -26,17 +26,17 @@ class Contact extends BaseController{
         $mail = Config::get('fairtrade.contact_email');
 
 // TODO mail fixen
-//        \Mail::send(
-//            "emails.contact", [
-//
-//
-//                "m" => $input['message']
-//            ]
-//            , function(Message $message) use($mail, $input) {
-//                $message->to($mail);
-//                $message->subject($input['subject']);
-//                $message->from("contact@fairtradegemeenten.nl");
-//            });
+        \Mail::send(
+            "emails.contact", [
+
+
+                "m" => $input['message']
+            ]
+            , function(Message $message) use($mail, $input) {
+                $message->to($mail);
+                $message->subject($input['subject']);
+                $message->from("contact@fairtradegemeenten.nl");
+            });
 
         return Redirect::back()->with([
                 'success' => 'Uw bericht is successvol verzonden.'
