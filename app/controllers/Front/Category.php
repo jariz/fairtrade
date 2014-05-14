@@ -8,7 +8,7 @@
 
 class Category extends BaseController
 {
-    protected function test($category, $id)
+    protected function showCompanies($category, $id)
     {
         echo 'test';
         //return \View::make("front.company.registerAccount");

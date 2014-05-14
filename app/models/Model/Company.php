@@ -21,4 +21,9 @@ class Company extends \Eloquent {
         });
     }
 
+    public static function categories()
+    {
+        return $this->hasMany('Category');
+    }
+
 }

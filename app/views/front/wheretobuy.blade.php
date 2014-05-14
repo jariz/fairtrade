@@ -4,7 +4,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHMw_AnGTT2sS9sPgUTXex5BcXgoHtZSI&amp;sensor=false&amp;libraries=places"></script>
-<script src="js/front/javascript.js"></script>
+<script src="{{url('js/front/javascript.js')}}"></script>
 @stop
 
 @section('content')
@@ -27,7 +27,9 @@
 
 <h2>Categori&euml;</h2>
 <ul>
-    <li><a href="{{ URL::route('categorie/test') }}">Categorie naam</a></li>
+    @foreach ($categories as $category)
+       <li><a href=""></a>{{ $category->name }}</li>
+    @endforeach
 </ul>
 
 
