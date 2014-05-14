@@ -42,11 +42,13 @@ class Dashboard extends AdminController {
             $viewcrud->count = $model->count();
             $viewcrud->plural = $meta["plural"];
             $viewcrud->route = $meta["route"];
+            $viewcrud->with = $meta["with"];
 
             $cruds[] = $viewcrud;
         }
 
         return \View::make("admin.dashboard")
-            ->with("cruds", $cruds);
+            ->with("cruds", $cruds)
+            ->with("title", "Dashboard");
     }
 } 

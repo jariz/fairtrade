@@ -25,6 +25,11 @@
     </div>
 </div>
 
+<h2>Categori&euml;</h2>
+<ul>
+    <li><a href="{{ URL::route('categorie/test') }}">Categorie naam</a></li>
+</ul>
+
 
 <h1 style="margin-top: 10px">Alle bedrijven</h1>
 <table id="all_companies">

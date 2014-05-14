@@ -54,7 +54,7 @@
             @if(isset($mailsend))
             <div class="alert alert-success">
                 <h4>E-mail verstuurd</h4>
-                <p>Uw email is successvol gestuurd, in de email kan U een link vinden om uw wachtwoord te resetten</p>z
+                <p>Uw email is successvol gestuurd, in de email kan U een link vinden om uw wachtwoord te resetten</p>
             </div>
             @endif
             <div class="form-group">
