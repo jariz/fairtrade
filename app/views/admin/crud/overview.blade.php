@@ -82,17 +82,17 @@
                     {{$row->updated_formatted}}
                 </td>
                 @endif
-                <td>
+                <td class="overview-actions">
                     @if(!$trash)
                     {{Form::open(array('route'=>$route.'-delete'))}}
                     {{Form::hidden('id', $row->id)}}
-                    <a href="{{URL::route($route.'-edit', array('id'=>$row->id))}}" class="btn btn-sm btn-warning glyphicon glyphicon-edit"></a>
-                    <button type="submit" class="btn btn-danger btn-sm glyphicon glyphicon-trash"></button>
+                    <p><a href="{{URL::route($route.'-edit', array('id'=>$row->id))}}" class="btn btn-link btn-sm"><i class="glyphicon glyphicon-edit"></i> Bewerken</a></p>
+                    <p><button type="submit" class="btn btn-link btn-sm"><i class="glyphicon glyphicon-trash"></i> Verwijderen</button></p>
                     {{Form::close()}}
                     @else
                     {{Form::open(array('route'=>$route.'-dorestore'))}}
                     {{Form::hidden('id', $row->id)}}
-                    <button type="submit" class="btn btn-success btn-sm glyphicon glyphicon-check"></button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-check"></i>Herstellen</button>
                     {{Form::close()}}
                     @endif
                 </td>

@@ -8,7 +8,7 @@ return array(
         "Activiteiten" => "dashboard.concepts",
         "Pagina's" => "dashboard.pages",
         "Bedrijven" => "dashboard.companies",
-        "Categorieen" => "dashboard.categories"
+        "Categorie&euml;n" => "dashboard.categories"
     ),
 
     "crud" => array(

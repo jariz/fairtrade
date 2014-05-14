@@ -72,6 +72,11 @@
                         <option @if($editing && $data[$field['name']] == $option['id']) selected @endif value="{{$option['id']}}">{{$option['title']}}</option>
                     @endforeach
                 </select>
+
+
+            @elseif( $field['type'] === 'color' )
+                <p>Na het kiezen van een kleur, moet dit worden bevestigd door op <strong>kiezen</strong> te klikken</p>
+                {{Form::text($field["name"], $data[$field["name"]], array("class"=>"color-picker", "id"=>$field["name"], "placeholder"=>$name))}}
             @endif
 
         </div>

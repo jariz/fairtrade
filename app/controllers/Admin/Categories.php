@@ -22,8 +22,9 @@ class Categories extends CrudController {
         );
     }
 
+
     protected $model = "\\Model\\Category";
-    protected $singular = "Category";
-    protected $plural = "Categories";
+    protected $singular = "Categorie";
+    protected $plural = "Categorie&euml;n";
     protected $route = "dashboard.categories";
 }
