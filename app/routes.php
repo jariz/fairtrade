@@ -32,7 +32,7 @@ Route::post("dashboard/pages/reorder",["as" => "dashboard.pages-post-reorder", "
 /**
  * FRONT
  */
-Route::get("categorie/{id}/{naam}", array("as" => "category", "uses" => "\\Front\\Category@Test"));
+Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "category", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("bedrijf-aanmelden/", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
 Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));

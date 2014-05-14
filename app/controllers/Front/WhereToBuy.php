@@ -24,13 +24,21 @@ class WhereToBuy extends BaseController
 		}
 	}
 
-	protected function show()
+	protected function show($id, $naam)
 	{
+        if(isset($id))
+        {
+            echo $id;
+        }
+
 		// Query all companies from database
 		$companies = Model\Company::all();
+       // $companies = Model\Company::find(1)->categories;
+        $categories = Model\Category::all();
 		
 		return \View::make("front.wheretobuy")->with(array(
 				'title' => 'Waar te koop',
+                'categories' => $categories,
 				'companies' => $companies,
 			)
 		);

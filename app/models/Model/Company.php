@@ -20,5 +20,4 @@ class Company extends \Eloquent {
                 $company->user_id = \Auth::user()->id;
         });
     }
-
 }
