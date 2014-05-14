@@ -20,7 +20,9 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <?php $r = 0; ?>
                             @foreach($crud->columns as $column => $attributes)
+                            <?php $r++; if($r > 3) continue;?>
                             <th>
                                 {{$column}}
                             </th>
@@ -37,7 +39,9 @@
                         @endif
                         @foreach($crud->data as $row)
                         <tr>
+                            <?php $x=0; ?>
                             @foreach($crud->columns as $column)
+                            <?php $x++; if($x > 3) continue; $with = $crud->with; ?>
                             <td>
                                 @if(isset($column["boolean"]) && $column["boolean"] === true)
                                 @if($row->$column["name"])
@@ -50,12 +54,10 @@
                                 </span>
                                 @endif
                                 @else
-                                <?php $formatted = $column["name"]."_formatted"; ?>
-                                @if($row->$formatted)
-                                {{{$row->$formatted}}}
-                                @else
-                                {{{$row->$column["name"]}}}
+                                @if( @$crud->with != false && array_key_exists( 'property', $column))
+                                {{{$row->$with->$column['property']}}}
                                 @endif
+                                {{{$row->$column["name"]}}}
                                 @endif
                             </td>
                             @endforeach

@@ -117,7 +117,8 @@ class CrudController extends AdminController
             "upload" => $this->upload,
             "timestamps" => $this->timestamps,
             "route" => $this->route,
-            "model " => $this->model
+            "model " => $this->model,
+            "with" => $this->with
         );
     }
 
