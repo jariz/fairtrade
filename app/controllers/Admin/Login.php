@@ -152,6 +152,7 @@ class Login extends \Controller {
             , function(Message $message) use($user) {
                 $message->to($user->email);
                 $message->subject("Wachtwoord reset - Fairtrade Amsterdam");
+                $message->from("amsterdam@fairtradegemeenten.nl");
             });
 
 //            );
