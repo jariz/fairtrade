@@ -47,6 +47,7 @@ class Dashboard extends AdminController {
         }
 
         return \View::make("admin.dashboard")
-            ->with("cruds", $cruds);
+            ->with("cruds", $cruds)
+            ->with("title", "Dashboard");
     }
 } 

@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
             @include('includes.errors')
-            {{Form::open(array('route'=>'dashboard.do-forgot', 'class'=>'form-horizontal form-forgot'))}}
+            {{Form::open(array('route'=>'dashboard-changepwd', 'class'=>'form-horizontal form-forgot'))}}
             <div class="form-group">
                 {{Form::label("email", "E-mail", array('class'=>'col-sm-3 control-label'))}}
                 <div class="col-sm-9 checkbox text-info">

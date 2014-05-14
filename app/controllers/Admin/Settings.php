@@ -5,7 +5,7 @@ use Illuminate\Support\MessageBag;
 
 class Settings extends AdminController {
     public function show() {
-        return \View::make("admin.settings")->with("data", \Auth::user()->toArray());
+        return \View::make("admin.settings")->with("data", \Auth::user()->toArray())->with("title", "Gebruikersinstellingen");
     }
 
     public function run() {
@@ -48,7 +48,7 @@ class Settings extends AdminController {
         }
 
         if($errors->any())
-            return \View::make("admin.settings")->with("data", $data)->with("errors", $errors);
+            return \View::make("admin.settings")->with("data", $data)->with("errors", $errors)->with("title", "Gebruikersinstellingen");
         else {
             $user->save();
             \Auth::logout();

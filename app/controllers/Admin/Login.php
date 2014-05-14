@@ -11,6 +11,7 @@ class Login extends \Controller {
     /**
      * Display the login form.
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @author Jari Zwarts
      */
     public function show() {
         //already logged in? send to dashboard.
@@ -23,6 +24,7 @@ class Login extends \Controller {
     /**
      * Run the actual login.
      * @return array|\Illuminate\View\View
+     * @author Jari Zwarts
      */
     public function run() {
         //we only want the 2 fields we're gonna validate and use to authenticate.
@@ -57,31 +59,47 @@ class Login extends \Controller {
         else return \Redirect::intended("dashboard");
     }
 
+    /**
+     * The action that processes password change requests.
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @author Jari Zwarts
+     */
     public function changePassword() {
         $validator = \Validator::make(
             \Input::only(["password", "id", "reset_code"]),
             [
-                "id" => "required|email|in:users,id",
-                "reset_code" => "required|email|in:users,reset_code",
-                "passsword" => "required"
+                "id" => "required",//|exists:users,id",
+                "reset_code" => "required",//|exists:users,reset_code",
+                "password" => "required"
             ]
         );
 
         if($validator->fails()) {
-            $user = User::find(intval(\Input::get("id")));
+            $user = User::whereId(intval(\Input::get("id")))->whereResetCode(\Input::get("reset_code"))->first();
             if(!$user) {
-                //we don't know what id this user is, so we're just gonna show the login page here.
-                return \View::make("admin.login")->withErrors($validator->errors());
+                return \View::make("admin.nice-error", [
+                    "title" => "Wachtwoord veranderen mislukt",
+                    "message" => $validator->messages()->first()
+                ]);
             } else {
                 return \View::make("admin.forgot")->with("user", $user)->withErrors($validator->errors());
             }
         } else {
             $user = User::findOrFail(intval(\Input::get("id")));
             $user->password = \Hash::make(\Input::get("password"));
-            return \Redirect::route("dashboard.login")->with("relog", true);
+            $user->reset_code = "";
+            $user->save();
+            return \Redirect::route("dashboard.login")->with("relogin", true);
         }
     }
 
+    /**
+     * Display the password change form.
+     * @param $code string The user's reset code which was emailed to him.
+     * @param $id int The user's id.
+     * @return \Illuminate\View\View
+     * @author Jari Zwarts
+     */
     public function forgot($code, $id) {
         try {
             $user = User::whereResetCode($code)->whereId($id)->firstOrFail();
@@ -121,8 +139,8 @@ class Login extends \Controller {
             $user->save();
 
             //build & send mail
-            return \View::make(
-//            \Mail::send(
+//            return \View::make(
+            \Mail::send(
             "emails.forgot", [
                 "link" => \URL::route("dashboard.forgot", [
                         "id" => $user->id,
@@ -131,12 +149,12 @@ class Login extends \Controller {
                 "logo" => url("images/small_logo.png"),
                 "name" => $user->name
             ]
-//            , function(Message $message) use($user) {
-//                $message->to($user->email);
-//                $message->subject("Wachtwoord reset - Fairtrade Amsterdam");
-//            });
+            , function(Message $message) use($user) {
+                $message->to($user->email);
+                $message->subject("Wachtwoord reset - Fairtrade Amsterdam");
+            });
 
-            );
+//            );
 
             return \View::make("admin.login", ["forgot" => true, "mailsend" => true]);
         }
@@ -146,6 +164,7 @@ class Login extends \Controller {
 
     /**
      * Destroy the session and go back to the homepage.
+     * @author Jari Zwarts
      */
     public function destroy($csrf) {
         if($csrf != \Session::token()) \App::abort(403);

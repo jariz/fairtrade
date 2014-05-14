@@ -14,6 +14,7 @@
     <script src="{{url('js/admin.js')}}"></script>
 </head>
 <body>
+@if(Auth::check())
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header container" style="margin: 0 auto;display: block;float: none;"> <!-- TODO deze navbar is gehacked nu, moet weer normaal worden gemaakt -->
@@ -57,7 +58,7 @@
             </div>
         </div>
     </nav>
-
+@endif
     @yield('content')
 </body>
 </html>
