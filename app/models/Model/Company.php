@@ -20,10 +20,4 @@ class Company extends \Eloquent {
                 $company->user_id = \Auth::user()->id;
         });
     }
-
-    public static function categories()
-    {
-        return $this->hasMany('Category');
-    }
-
 }

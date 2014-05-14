@@ -33,7 +33,7 @@ class WhereToBuy extends BaseController
 
 		// Query all companies from database
 		$companies = Model\Company::all();
-        $companies = Model\Company::find(1)->categories;
+       // $companies = Model\Company::find(1)->categories;
         $categories = Model\Category::all();
 		
 		return \View::make("front.wheretobuy")->with(array(
