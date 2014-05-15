@@ -4,6 +4,18 @@ return array(
 
     "contact_email" => 'example@email.com',
 
+    "template" => "kelvin",
+
+    "nav_classes" => array(
+        "orange",
+        "pink",
+        "darkbrown",
+        "green",
+        "blue",
+        "brown",
+        "lightblue"
+    ),
+
     "admin_nav" => array(
         "Gebruikers" => "dashboard.users",
         "Nieuws" => "dashboard.news",
