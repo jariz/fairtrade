@@ -123,7 +123,7 @@ class Company extends BaseController
                         'lng' => $company['lng'],
                     );
                 }
-                return json_encode($company_locations);
+                return $company_locations;
             } else
                 if(Input::get('type') === 'company' && Input::get('id'))
             {
@@ -150,7 +150,7 @@ class Company extends BaseController
                         'business_hours' => $companyObject->business_hours
                     );
                 }
-                return json_encode($company_details);
+                return $company_details;
             }
         }
 	}
