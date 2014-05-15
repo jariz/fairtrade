@@ -1,4 +1,4 @@
-@extends('front.layout')
+@extends("front.templates.{$template}.layout")
 
 @section('content')
     <div class="row">

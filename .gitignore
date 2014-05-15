@@ -20,3 +20,4 @@ public/css/screen.css
 public/css/admin/screen.css
 .vagrant
 app/storage/debugbar/*.json
+concept_bedrijf_header_footer/

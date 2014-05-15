@@ -1,0 +1,54 @@
+
+
+/*###################  BEDRIJVEN / CONCEPTEN #####*/
+
+.content_company{
+    padding-bottom: 20px;
+}
+.content_company .col-md-9,
+.content_company .col-md-3{
+    margin-bottom: 20px;
+}
+#bedrijven .register {
+    color:#de007a;
+}
+#bedrijven .register .input{
+    margin:10px 0;
+}
+#bedrijven .register .input input{
+    border:1px solid #de007a;
+    width:80%;
+    margin:5px 0;
+    padding:5px;
+}
+.uitgelicht .border_horizontal{
+    margin:40px 0;
+}
+.uitgelicht ul {
+    margin:10px 0;
+}
+.uitgelicht ul li{
+    list-style: none;
+    text-align: center;
+}
+.uitgelicht ul li img{
+    margin:10px 0;
+}
+.uitgelicht ul li h2{
+    font-size: 17px;
+    margin:0;
+}
+.uitgelicht ul li h3{
+    font-size: 15px;
+    margin:0;
+    color:#fd9100;
+}
+.nieuw ul{
+    margin:20px 0;
+}
+.nieuw ul li{
+    margin:10px;
+}
+
+
+

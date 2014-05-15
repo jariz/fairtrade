@@ -209,20 +209,29 @@ Alle admin pagina's worden opgeslagen in:
 app/views/admin
 ```
 
-### includes
+Alle pagina's die te maken hebben het met het CRUD systeem in:
+```
+app/views/admin/crud
+```
+
+### Includes
 Alle veel gebruikte views worden opgeslagen in:
 ```
 app/views/includes
 ```
 
-### Modules
-Alle views voor modules worden opgeslagen in:
+### Speciale pagina's
+"Speciale pagina's" (pagina's die hun eigen views hebben in plaats van de standaard dynamische) bevinden zich in:
 ```
-app/views/modules/{model_alias}
+app/views/front/special
 ```
 
-### Templates
-Alle pagina templates zowel voor front-end als admin worden opgeslagen in:
+### Template systeem
+Er kan snel tussen template gewisseld worden met gebruik van het template systeem.
+Alle templates bevinden zich in:
+
 ```
-app/views/templates
+app/front/views/templates
 ```
+
+De template die het systeem gebruikt kan worden verandert in fairtrade.php in de config map.
