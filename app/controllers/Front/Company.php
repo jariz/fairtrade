@@ -118,9 +118,10 @@ class Company extends BaseController
                 foreach($companies as $company)
                 {
                     $company_locations[] = array(
+                    	'id' => $company["id"],
                         'description' => $company['description'],
                         'lat' => $company['lat'],
-                        'lng' => $company['lng'],
+                        'lng' => $company['lng']
                     );
                 }
                 return $company_locations;
