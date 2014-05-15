@@ -154,5 +154,6 @@ class Company extends BaseController
                 return $company_details;
             }
         }
+        return [];
 	}
 }

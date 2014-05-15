@@ -1,3 +1,65 @@
+/* ##################### home #########*/
+
+.sliderWrap{
+    position: relative;
+    height:480px;
+}
+.slideOverlay img,
+.slider img{
+    position: absolute;
+    top:0;
+    max-height: 480px;
+    width:1160px;
+}
+.slideOverlay{
+    z-index:10;
+    top:-1px;
+}
+.bedrijven{
+    height:350px;
+}
+.video{
+    position: absolute;
+    width:450px;
+    height:300px;
+    right:85px;
+    top:85px;
+    z-index:20;
+}
+.video h1{
+    margin-top:0px;
+    font-size: 24px;
+    color: #bf0069;
+    float:right;
+}
+.partner{
+    background: url(../../images/partnerBtn.png) no-repeat;
+    width: 240px;
+    height: 46px;
+    font-size: 18px;
+    margin-top:20px;
+    text-align: center;
+    color: #fff;
+    line-height: 45px;
+    float:right;
+}
+.partner a{
+    color:#fff;
+}
+.partner a:hover{
+    color:#fff;
+}
+iframe{
+    float:right;
+}
+
+
+.textAreaImg{
+    float: right;
+    position: relative;
+    width: 64%;
+    margin-left: 20px;
+}
 
 
 /*###################  BEDRIJVEN / CONCEPTEN #####*/

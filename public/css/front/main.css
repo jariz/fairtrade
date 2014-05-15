@@ -48,6 +48,73 @@ body h2{
     margin-top:13px;
 }
 
+
+h2.title{
+    background: url(../../images/headingBg.png) no-repeat;
+    width: 154px;
+    height: 30px;
+    font-size: 19px;
+    text-align: center;
+    color: #fff;
+    line-height: 28px;
+}
+.col-md-8 h3{
+    font-size:19px;
+    color: #bf0069;
+    line-height: 10px;
+}
+.col-md-4 h3{
+    font-size:19px;
+    color: #bf0069;
+    line-height: 10px;
+}
+.sliderWrap h3{
+    font-size:19px;
+    color: #bf0069;
+    line-height: 10px;
+    float:right;
+}
+.col-md-8 h4{
+    font-size:17px;
+    color: #fd9100;
+    line-height: 10px;
+}
+.col-md-8 h5{
+    font-size:14px;
+    color: #bf0069;
+    line-height: 10px;
+}
+.link{
+    background: url(../../images/linkBg.png) no-repeat;
+    width: 221px;
+    height: 41px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    line-height: 35px;
+}
+.link a{
+    color:#fff;
+}
+.link a:hover{
+    color:#fff;
+}
+.leesmeer{
+    background: url(../../images/readMoreBtn.png) no-repeat;
+    width: 97px;
+    height: 27px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    line-height: 25px;
+}
+.leesmeer a{
+    color:#fff;
+}
+.leesmeer a:hover{
+    color:#fff;
+}
+
 .border_horizontal{
     height:1px;
     margin:0 auto 25px;

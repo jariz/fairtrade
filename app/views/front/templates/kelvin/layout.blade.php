@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{url('css/front/main.css')}}">
+    <link rel="stylesheet" href="{{url('css/front/pages.css')}}">
     <link rel="stylesheet" href="{{url('plugins/bs/bootstrap.front.min.css')}}">
     <link href="{{url('plugins/font-awesome-4.0.3/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
