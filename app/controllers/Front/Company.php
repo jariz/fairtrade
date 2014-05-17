@@ -21,7 +21,6 @@ class Company extends BaseController
 
 	/**
 	 * Controller to apply a new company
-	 *
 	 * @return void
 	 */
 	protected function details()
@@ -97,12 +96,12 @@ class Company extends BaseController
 
     protected function payment()
     {
-
+        // Ideal implementation
     }
 
 	protected function AjaxGetCompanies()
 	{
-		/* Query all companies from database */
+		//Query all companies from database
 		$companyModel = new Model\Company;
 
         if(isset($_GET['type']))
@@ -155,6 +154,5 @@ class Company extends BaseController
                 return json_encode($company_details);
             }
         }
-        //return [];
 	}
 }

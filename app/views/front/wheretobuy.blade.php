@@ -13,7 +13,6 @@
     </div>
     <div class="col-xs-4">
         <form action="" method="" class="form-horizontal" id="add_new_place_form">
-
             <label for="add_place_input" class="col-sm-2 control-label">Zoek</label>
             <div class="col-sm-10">
                 <input type="text" name="place" id="add_place_input" placeholder="Geef een locatie op" class="form-control" autocomplete="off">

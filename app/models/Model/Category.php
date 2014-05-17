@@ -8,8 +8,8 @@ class Category extends \Eloquent {
 	public $timestamps = false;
 	protected $softDelete = false;
 
-    public static function companies()
+    public function companies()
     {
-        return $this->belongsToMany('Company', 'companies_categories', 'category_id', 'company_id');
+        return $this->belongsToMany('Company', 'companies_categories');
     }
 }
