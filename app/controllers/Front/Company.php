@@ -45,42 +45,21 @@ class Company extends BaseController
 		$jsonData = file_get_contents($url);
 		$data = json_decode($jsonData);
 
-		if(isset($data->results[0]->geometry->location)) {
-			$lat = $data->results[0]->geometry->location->lat;
-			$lng = $data->results[0]->geometry->location->lng;
-			$geo_location = $lat .', '. $lng;
-		}
-
-		/* Loop through all fields */
-		$fields = array(
-			'name', 
-			'description', 
-			'url', 
-			'business_hours',
-			'address', 
-			'postal_code', 
-			'city', 
-			'contact_info'
-		);
-
-		/* Add new company to database */
-		foreach($fields as $field)
-		{
-			$company->{$field} = Input::get($field);
-		}
-
-		$company->lat = $lat;
-        $company->lng = $lng;
-
-		$company->save();
-
 		/* Form validation */
 		$rules = array(
-			//'first_name' => 'required',
-			//'last_name' => 'required',
-			//'email' => 'email|required',
-			//'password' => 'required|min:5',
-			//'confirmation' => 'same:password', 
+            'name' => 'required',
+            'description' => 'required',
+            'url' => 'required',
+            'business_hours' => 'required',
+            'address' => 'required',
+            'postal_code' => 'required',
+            'city' => 'required',
+            'contact_info' => 'required',
+			/*'first_name' => 'required',
+			'last_name' => 'required',
+			'email' => 'email|required',
+			'password' => 'required|min:5',
+			'confirmation' => 'same:password',*/
 		);
 
 		$validation = Validator::make($inputs, $rules);
@@ -89,8 +68,34 @@ class Company extends BaseController
 		{
 			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
 			return Redirect::back()->withErrors($validation->messages())->withInput();
+            $messages = $validator->messages();
 		} else{
-			// Store in database
+            /* Loop through all fields */
+            $fields = array(
+                'name',
+                'description',
+                'url',
+                'business_hours',
+                'address',
+                'postal_code',
+                'city',
+                'contact_info'
+            );
+
+            /* Add new company to database */
+            foreach($fields as $field)
+            {
+                $company->{$field} = Input::get($field);
+            }
+
+            if(isset($data->results[0]->geometry->location)) {
+                $company->lat = $data->results[0]->geometry->location->lat;
+                $company->lng = $data->results[0]->geometry->location->lng;
+            }
+
+            $company->save();
+
+            echo 'Whooop dat ass yay!';
 		}
 	}
 

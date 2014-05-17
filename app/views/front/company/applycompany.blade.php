@@ -9,6 +9,8 @@
 @section('content')
 	1: Account aanmaken - <strong>2: Bedrijfsgegevens</strong> - 3: Betalings gegevens
 	<h1>Bedrijf aanmelden</h1>
+	@include('includes.errors')
+
 	{{ Form::open(array('method' => 'post', 'action' => '\\Front\\Company@add', 'files' => true)) }}
         <div class="form-group">
 		    {{ Form::label('name', 'Bedrijfsnaam: ') }}

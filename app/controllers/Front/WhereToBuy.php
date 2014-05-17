@@ -35,8 +35,8 @@ class WhereToBuy extends BaseController
             $companies = Model\Company::all();
         }
 
-        $testCompanies = Model\Category::find(1)->companies;
-        print_r($testCompanies);
+        //$testCompanies = Model\Category::find(1)->companies;
+        //print_r($testCompanies);
 
         $categories = Model\Category::all();
 		
@@ -44,7 +44,6 @@ class WhereToBuy extends BaseController
 				'title' => 'Waar te koop',
                 'categories' => $categories,
 				'companies' => $companies,
-                'testCompanies' => $testCompanies
 			)
 		);
 	}

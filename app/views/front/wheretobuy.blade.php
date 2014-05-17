@@ -2,7 +2,7 @@
 
 @section('scripts')
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHMw_AnGTT2sS9sPgUTXex5BcXgoHtZSI&amp;sensor=false&amp;libraries=places"></script>
-<script src="{{url('js/front/javascript.js')}}"></script>
+    <script src="{{url('js/front/javascript.js')}}"></script>
 @stop
 
 @section('content')

@@ -13,7 +13,7 @@ class CategorySeeder extends \Seeder
 {
     public function run()
     {
-        Category::truncate();
+        //Category::truncate();
 
         Category::create(array(
             "name" => "Supermarkten",
