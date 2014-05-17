@@ -124,12 +124,13 @@ class Company extends BaseController
                         'lng' => $company['lng']
                     );
                 }
-                return $company_locations;
+                return json_encode($company_locations);
             } else
                 if(Input::get('type') === 'company' && Input::get('id'))
             {
                 $companyObject = $companyModel::find(Input::get('id'));
                 $companyFields = Input::get('fields');
+
                 if($companyFields)
                 {
                     $companyFields = explode(',', $companyFields);
@@ -151,9 +152,9 @@ class Company extends BaseController
                         'business_hours' => $companyObject->business_hours
                     );
                 }
-                return $company_details;
+                return json_encode($company_details);
             }
         }
-        return [];
+        //return [];
 	}
 }

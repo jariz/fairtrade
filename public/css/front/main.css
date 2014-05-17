@@ -251,3 +251,8 @@ nav ul{
 .footer .border_horizontal {
     margin-top:20px;
 }
+
+#gmaps{
+    width: 100%;
+    height: 300px;
+}
