@@ -40,11 +40,33 @@ class WhereToBuy extends BaseController
 
         $categories = Model\Category::all();
 		
-		return \View::make("front.wheretobuy")->with(array(
+		return \View::make("front.special.wheretobuy")->with(array(
 				'title' => 'Waar te koop',
                 'categories' => $categories,
 				'companies' => $companies,
 			)
 		);
 	}
+
+    protected function detail($id = null)
+    {
+        if(isset($id))
+        {
+            // Select company with id
+            $company = Model\Company::find($id);
+        } else{
+            // Company does not exist
+        }
+
+        //$testCompanies = Model\Category::find(1)->companies;
+        //print_r($testCompanies);
+
+        $categories = Model\Category::all();
+
+        return \View::make("front.companydetail")->with(array(
+                'title' => 'Bedrijf detail',
+                'company' => $company
+            )
+        );
+    }
 }

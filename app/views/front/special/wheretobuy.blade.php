@@ -45,6 +45,7 @@
         <div class="col-md-12 bedrijvenmaps">
             <h2 class="title">Bedrijven</h2>
             @foreach ($companies as $company)
+            {{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}
                  <a href="{{ $company->url }}">{{ $company->name }}<img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             @endforeach
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>

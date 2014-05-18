@@ -16,7 +16,7 @@ class Company extends BaseController
 {
     protected function registerAccount()
     {
-        return \View::make("front.special.company.registerAccount");
+        return \View::make("front.special.registerAccount");
     }
 
 	/**
@@ -25,8 +25,8 @@ class Company extends BaseController
 	 */
 	protected function details()
 	{
-		return \View::make("front.special.company.applycompany")->with(array(
-			'title' => 'Bedrijf aanmelden'
+		return \View::make("front.special.applycompany")->with(array(
+			'title' => 'Bedrijf aanmelden',
 		));
 	}
 

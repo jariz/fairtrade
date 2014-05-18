@@ -18,11 +18,12 @@ class SpecialPagesSeeder extends \Seeder {
             'Home',
             'News',
             'Events',
-            'Contact'
+            'Contact',
+            'WhereToBuy'
         ];
 
-        foreach( $pages as $page ){
-
+        foreach( $pages as $page )
+        {
             $class      = $namespace.$page;
             $object     = new $class;
             $pageModel  = new \Model\Page;
@@ -33,14 +34,12 @@ class SpecialPagesSeeder extends \Seeder {
                 unset($properties['meta']);
             }
 
-
             foreach($properties as $key => $value){
                 $pageModel->$key = $value;
             }
 
-            $pageModel->meta        = $object->meta();
+            $pageModel->meta = $object->meta();
             $pageModel->save();
-
         }
     }
-} 
+}
