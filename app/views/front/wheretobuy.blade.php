@@ -45,7 +45,7 @@
         <div class="col-md-12 bedrijvenmaps">
             <h2 class="title">Bedrijven</h2>
             @foreach ($companies as $company)
-                {{ $company->name }}
+                 <a href="{{ $company->url }}">{{ $company->name }}<img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             @endforeach
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
