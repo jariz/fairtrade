@@ -10,6 +10,6 @@ class Category extends \Eloquent {
 
     public function companies()
     {
-        return $this->belongsToMany('Company', 'companies_categories');
+        return $this->belongsToMany('Model\Company', 'companies_categories', 'company_id', 'category_id');
     }
 }

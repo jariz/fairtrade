@@ -8,15 +8,13 @@
 
 namespace Testing;
 use \Model\Category;
-
-class CategorySeeder extends \Seeder
-{
+class CategorySeeder extends \Seeder {
     public function run()
     {
-        //Category::truncate();
+        Category::truncate();
 
-        Category::create(array(
-            "name" => "Supermarkten",
-        ));
+        $category = new Category;
+        $category->name = "Supermarkten";
+        $category->save();
     }
 }

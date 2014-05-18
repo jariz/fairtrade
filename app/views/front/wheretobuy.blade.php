@@ -25,7 +25,7 @@
 <h2>Categori&euml;</h2>
 <ul>
     @foreach ($categories as $category)
-       <li><a href=""></a>{{ $category->name }}</li>
+       <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>
     @endforeach
 </ul>
 
