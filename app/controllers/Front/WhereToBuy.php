@@ -10,7 +10,7 @@ namespace Front;
 use Base;
 use Model;
 
-class WhereToBuy extends BaseController 
+class WhereToBuy extends BaseController
 {
 	/**
 	 * Setup the layout used by the controller.
@@ -27,11 +27,14 @@ class WhereToBuy extends BaseController
 
 	protected function show($id = null, $naam = null)
 	{
+        echo 'Whooop!';
         if(isset($id))
         {
            $companies = Model\Category::find($id)->companies;
+            echo 'By ID';
         } else{
             // Query all companies from database
+            echo 'All';
             $companies = Model\Company::all();
         }
 
@@ -39,9 +42,9 @@ class WhereToBuy extends BaseController
         //print_r($testCompanies);
 
         $categories = Model\Category::all();
-		
+
 		return \View::make("front.special.wheretobuy")->with(array(
-				'title' => 'Waar te koop',
+				'title' => 'Waar te koop xxxxxxxxxxx',
                 'categories' => $categories,
 				'companies' => $companies,
 			)

@@ -18,7 +18,7 @@ class UserSeeder extends \Seeder {
         $user->email = 'admin@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "@- Istrator";
-//        $user->ip = "127.0.0.1";
+        //$user->ip = "127.0.0.1";
         $user->reset_code = str_random();
         $user->role_id = 1;
         $user->save();

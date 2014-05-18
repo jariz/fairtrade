@@ -44,9 +44,11 @@
     <div class="row">
         <div class="col-md-12 bedrijvenmaps">
             <h2 class="title">Bedrijven</h2>
-            @foreach ($companies as $company)
-                 <a href="{{ $company->url }}">{{ $company->name }}<img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            @endforeach
+            @if (isset($companies))
+                @foreach ($companies as $company)
+                     <a href="{{ $company->url }}">{{ $company->name }}<img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
+                @endforeach
+            @endif
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             <a href=""><img src="img/deliXl.png" alt="" class="bedrijvenlogo" class="floatLeft"/></a>
@@ -56,9 +58,11 @@
     </div>
 
     <h2>Categori&euml;</h2>
-    <ul>
-        @foreach ($categories as $category)
-           <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>
-        @endforeach
-    </ul>
+    @if (isset($categories))
+        <ul>
+            @foreach ($categories as $category)
+               <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>
+            @endforeach
+        </ul>
+    @endif
 @stop
