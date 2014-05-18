@@ -16,7 +16,7 @@ class Company extends BaseController
 {
     protected function registerAccount()
     {
-        return \View::make("front.company.registerAccount");
+        return \View::make("front.special.company.registerAccount");
     }
 
 	/**
@@ -25,7 +25,7 @@ class Company extends BaseController
 	 */
 	protected function details()
 	{
-		return \View::make("front.company.applycompany")->with(array(
+		return \View::make("front.special.company.applycompany")->with(array(
 			'title' => 'Bedrijf aanmelden'
 		));
 	}
@@ -68,7 +68,6 @@ class Company extends BaseController
 		{
 			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
 			return Redirect::back()->withErrors($validation->messages())->withInput();
-            $messages = $validator->messages();
 		} else{
             /* Loop through all fields */
             $fields = array(
@@ -99,6 +98,46 @@ class Company extends BaseController
 		}
 	}
 
+    protected function registerUser()
+    {
+        $user = new Model\User;
+
+        $inputs = Input::all();
+
+        /* Form validation */
+        $rules = array(
+            'name' => 'required',
+            'email' => 'email|required',
+            'password' => 'required|min:5',
+            'confirmation' => 'same:password',
+        );
+
+        $validation = Validator::make($inputs, $rules);
+
+        if($validation->fails())
+        {
+            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
+            return Redirect::back()->withErrors($validation->messages())->withInput();
+        } else{
+            /* Loop through all fields */
+            $fields = array(
+                'first_name',
+                'last_name',
+                'email',
+                'password',
+            );
+
+            /* Add new user to database */
+            foreach($fields as $field)
+            {
+                $user->{$field} = Input::get($field);
+            }
+
+            echo 'Whoop dat ass!';
+            //$user->save();
+        }
+    }
+
     protected function payment()
     {
         // Ideal implementation
@@ -128,7 +167,7 @@ class Company extends BaseController
                         'lng' => $company['lng']
                     );
                 }
-                return json_encode($company_locations);
+                return $company_locations;
             } else
                 if(Input::get('type') === 'company' && Input::get('id'))
             {
@@ -156,7 +195,7 @@ class Company extends BaseController
                         'business_hours' => $companyObject->business_hours
                     );
                 }
-                return json_encode($company_details);
+                return $company_details;
             }
         }
 	}

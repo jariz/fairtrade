@@ -36,27 +36,20 @@ $(function ()
 	    var geo_location;
 
 	    // Loop through all companies and add them to map
-		$.ajax({
-			type: 'get',
-			dataTpye: 'json',
-			url: 'api/companies',
-			data: 'type=locations',
-			success: function(data)
-			{
-				var obj = jQuery.parseJSON(data);
+        $.get( "api/companies?type=locations", function(data) {
+            var obj = jQuery.parseJSON(data);
 
-				$.each(obj, function(key, value) 
-				{
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(value.lat, value.lng),
-                        map: map,
-                        animation: google.maps.Animation.DROP,
-                        //icon: marker_places
-                    });
-                    infowindow.open(map, marker);
-				});
-			}
-		});
+            $.each(obj, function(key, value)
+            {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(value.lat, value.lng),
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    //icon: marker_places
+                });
+                infowindow.open(map, marker);
+            });
+        });
 
 	    // Suggestions for a new place
 	    var defaultBounds = new google.maps.LatLngBounds(

@@ -29,7 +29,6 @@
     @endforeach
 </ul>
 
-
 <h1 style="margin-top: 10px">Alle bedrijven</h1>
 <table id="all_companies">
     @foreach ($companies as $company)
