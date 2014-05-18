@@ -7,6 +7,7 @@
  */
 
 namespace Front;
+use Base;
 use Model;
 
 class WhereToBuy extends BaseController 
