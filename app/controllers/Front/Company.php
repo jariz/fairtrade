@@ -14,6 +14,12 @@ use Redirect;
 
 class Company extends BaseController 
 {
+    protected function __construct()
+    {
+        header('Access-Control-Allow-Origin: *');
+        echo 'test';
+    }
+
     protected function registerAccount()
     {
         return \View::make("front.special.registerAccount");

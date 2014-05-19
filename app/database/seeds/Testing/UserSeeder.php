@@ -24,6 +24,15 @@ class UserSeeder extends \Seeder {
         $user->save();
 
         $user = new User;
+        $user->email = 'a@aa.nl';
+        $user->password = \Hash::make("admin");
+        $user->name = "@- Istrator";
+        //$user->ip = "127.0.0.1";
+        $user->reset_code = str_random();
+        $user->role_id = 1;
+        $user->save();
+
+        $user = new User;
         $user->email = 'ondernemer@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "Ondernemer";
