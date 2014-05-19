@@ -10,7 +10,7 @@
                     src="//www.youtube.com/embed/OsRFTWLiP9g?list=PL2zniuqMzqkaURTd0uhm9iZqtBDkY7n5Y" frameborder="0"
                     allowfullscreen></iframe>
 
-            <div class="partner"><a href="">Word nu een partner</a></div>
+            <div class="partner"><a href="{{ URL::to('bedrijf-aanmelden') }}">Word nu een partner</a></div>
         </div>
         <div class="col-md-12 slider"><img src="images/slider_visual.jpg" alt=""></div>
         <div class="col-md-12 slideOverlay"><img src="images/slider_overlay.png" alt=""></div>
