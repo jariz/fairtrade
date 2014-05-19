@@ -21,10 +21,17 @@ class Post extends FormattedTimestamps {
     }
 
     public function getImageUrlAttribute(){
+        if( is_null($this->image) || empty( $this->image) ){
+            return URL::asset('images/test/test-news.jpg');
+        }
+
         return URL::asset( $this->image_path . $this->image );
     }
 
     public function getThumbnailUrlAttribute(){
+        if( is_null($this->image) || empty( $this->image) ){
+            return URL::asset('images/test/test-news-thumbnail.jpg');
+        }
 
         $thumbnail = $this->image_path. 't/'. $this->image;
         if( File::exists( $thumbnail )){
