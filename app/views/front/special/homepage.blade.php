@@ -19,33 +19,38 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8" style="min-height:200px">
-        <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
+    <div class="col-md-8">
+<!--        <div class="border_vertical hidden-md hidden-sm hidden-xs" style="height:200px;"></div>-->
 
-        @if($featured)
-        <h2 class="title">Uitgelicht</h2>
+        <div style="min-height: 170px;">
+            @if($featured)
+            <h2 class="title">Uitgelicht</h2>
 
-        <img
-            src="{{$featured->company->logo ? url('uploads/logos/'.$featured->company->logo) : 'http://placehold.it/220x230'}}"
-            alt="" class="floatLeft"/>
-
-
-        <h3>{{{$featured->company->name}}}</h3>
-        <h4>{{{$featured->company->city}}}</h4>
-        <h4>{{{$featured->company->adres}}}</h4>
-        {{$featured->content}}
-        @if($featured->company->website)
-        <div class="link"><a href="{{{$featured->company->website}}}">Ga naar de website</a></div>
-        @endif
+            <img
+                src="{{$featured->company->logo ? url('uploads/logos/'.$featured->company->logo) : 'http://placehold.it/220x230'}}"
+                alt="" class="pull-left giev-padding"/>
 
 
-        <div class="border_horizontal"></div>
-        @endif
+            <h3>{{{$featured->company->name}}}</h3>
+            <h4>{{{$featured->company->city}}}</h4>
+            <h4>{{{$featured->company->adres}}}</h4>
+            {{$featured->content}}
+        </div>
+
+<!--        @if($featured->company->website)-->
+<!--        <div class="link"><a href="{{{$featured->company->website}}}">Ga naar de website</a></div>-->
+<!--        @endif-->
+
+
 
         <h2 class="title">Bedrijven</h2>
-        @foreach($companies as $company)
-        <a href=""><img src="images/albertHeijn.png" alt="" class="floatLeft"/></a>
-        @endforeach
+        <div style="text-align: center">
+            @foreach($companies as $company)
+            <a href=""><img src="images/albertHeijn.png" alt="" class="floatLeft"/></a>
+            @endforeach
+        </div>
+        <div class="border_horizontal" style="top:190px;position: absolute;margin:0;"></div>
+        @endif
     </div>
     <div class="col-md-4">
         <h2 class="title">Nieuws</h2>

@@ -31,7 +31,7 @@ class Home extends Data {
         $this->add("featured", $featured);
 
         //companies
-        $companies = Company::orderBy("created_at")->where("logo", "IS NOT", null)->take(10)->get();
+        $companies = Company::orderBy("created_at")->take(10)->get();
         $this->add("companies", $companies);
     }
 }
