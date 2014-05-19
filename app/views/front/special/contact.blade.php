@@ -49,7 +49,7 @@
                 <div class="form-group">
 
                     <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-envelope"></i> Verzenden</button>
+                        <button type="submit" style="background-color: #de007a;border: 0px;margin-top: 5px;" class="btn btn-primary pull-right"><i class="fa fa-envelope"></i> Verzenden</button>
                     </div>
 
                 </div>

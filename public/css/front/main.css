@@ -6,6 +6,9 @@ body{
 a{
     text-decoration: none !important;
 }
+h4>a {
+    color:#bf0069 !important;
+}
 body h2{
     font-size: 18px;
     color:#bf0069;

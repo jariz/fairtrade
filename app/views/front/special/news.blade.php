@@ -30,7 +30,7 @@
             <div class="border_horizontal"></div>
         </div>
         <div class="sidebar col-md-4">
-            <h2 class="title">Over Fairtrade</h1>
+            <h2 class="title">Over Fairtrade</h2>
             <div class="block">
                 <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
                 <a href="" title=""><img src="img/imgSidebar.jpg" alt="" /></a>

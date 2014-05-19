@@ -9,12 +9,12 @@
 </head>
 <body>
 <div class="container container-login">
-    <img src="{{url('images/logo.png')}}" style="margin-bottom: 20px;">
-    <div class="panel panel-primary panel-login">
+    <div class="panel panel-warning panel-login">
         <div class="panel-heading">
             Fairtrade Amsterdam - Login
         </div>
         <div class="panel-body">
+            <img src="{{url('images/logo.png')}}">
             @if(Session::has("relogin"))
             <div class="alert alert-success">
                 <h4>Log opnieuw in</h4>

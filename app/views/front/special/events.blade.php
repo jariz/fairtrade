@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1>Evenementen</h1>
+            <h2 class="title">Evenementen</h2>
             @if( !isset( $events ) or count($events) === 0 )
                            <p>Er zijn geen evenementen.</p>
                         @else
