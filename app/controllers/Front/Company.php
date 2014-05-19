@@ -92,10 +92,18 @@ class Company extends BaseController
                 $company->lng = $data->results[0]->geometry->location->lng;
             }
 
-            if($company->save())
+            if (Input::hasFile('photo'))
             {
-                return Redirect::to('user/login');
+                Input::file('photo')->move($destinationPath);
+                Input::file('photo')->move($destinationPath, $fileName);
+                $path = Input::file('photo')->getRealPath();
+                echo $path;
             }
+
+            /*if($company->save())
+            {
+                return Redirect::to('bedrijf-aanmelden/bedrijf-aanmelden/betalen');
+            }*/
 		}
 	}
 
@@ -134,7 +142,7 @@ class Company extends BaseController
             $user->password = \Hash::make(Input::get('password'));
             if($user->save())
             {
-                return Redirect::to('user/login');
+                return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
             }
         }
     }

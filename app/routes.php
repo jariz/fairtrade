@@ -2,17 +2,6 @@
 /**
  * ADMIN
  */
-
-/** vvvvv WIES CHECK DIT IS VOOR DIE KLEUREN SHIZZLE IN DE API vvvvv */
-Route::get('api/categories', function(){
-    return Model\Company::with('categories')->find(1)->toJson(); ///  <=========== Daarooo!!
-});
-
-
-/** ^^^^^^^^^^^^^ NEE WIES HET IS DAAR ^^^^^^^^^^^^^^^^^^^^ */
-
-
-
 Route::get("dashboard", array("as" => "dashboard", "uses" => "\\Admin\\Dashboard@show"));
 Route::get("dashboard/login", array("as" => "dashboard.login", "uses" => "\\Admin\\Login@show"));
 Route::get("dashboard/forgot/{code}/{id}", array("as" => "dashboard.forgot", "uses" => "\\Admin\\Login@forgot"));
@@ -56,6 +45,9 @@ Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\New
 Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"]);
 Route::post("add", "\\Front\\Company@add");
 Route::post("registerUser", "\\Front\\Company@registerUser");
+Route::get('api/categories', function(){
+    return Model\Company::with('categories')->find(1)->toJson();
+});
 Route::get("api/companies", "\\Front\\Company@AjaxGetCompanies");
 Route::get("{slug?}/{param1?}/{param2?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);Route::get("api/categories", "\\Front\\Category@AjaxGetCategories");
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

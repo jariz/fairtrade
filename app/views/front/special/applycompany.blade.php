@@ -40,6 +40,10 @@
 		    {{ Form::label('description', 'Beschrijving') }} <br />
 		    {{ Form::textarea('description', NULL, array('class' => 'form-control')) }}
         </div>
+        <div class="form-group">
+		    {{ Form::label('business_hours', 'Openingstijden') }} <br />
+		    {{ Form::textarea('business_hours', NULL, array('class' => 'form-control')) }}
+        </div>
 		<h2>Contact gegevens</h2>
 		<div class="form-group">
 		    {{ Form::label('contact_info', 'Contact informatie:') }} <br />
