@@ -30,10 +30,14 @@ class WhereToBuy extends BaseController
         if(isset($id))
         {
            $companies = Model\Category::find($id)->companies;
+           //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
+           //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
+           /*$companies = Model\Category::with(['companies' => function($query){
+                return $query->where('accepted', '=', 1);
+            }])->find($id);*/
         } else{
             // Query all companies from database
-            $companies = Model\Company::all();
-            //print_r($companies);
+            $companies = Model\Company::where('accepted', '=', 1)->get();
         }
 
         //$testCompanies = Model\Category::find(1)->companies;

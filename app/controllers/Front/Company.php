@@ -162,7 +162,6 @@ class Company extends BaseController
                 {
                     $companyObjectCustom[$companyField] = $companyObject->{$companyField};
                 }
-                $companyObjectCustom['category'] = 'wdaf';
 
                 return $companyObjectCustom;
             } else{
@@ -177,8 +176,6 @@ class Company extends BaseController
                 $companyObject = $companyModel::where('accepted', '=', 1)->get(array('id', 'lat', 'lng'));
             } else{
                 $companyObject = $companyModel::where('accepted', '=', 1)->get();
-
-                $companyObject['category'] = 'wdaf';
             }
             // Get fields specified for all companies
             /*if($companyFields)
@@ -200,7 +197,7 @@ class Company extends BaseController
 
             return $companyObject;
         }
-        
+
         /*if(Input::get('type') === 'company')
         {
             // Get all fields for company with id

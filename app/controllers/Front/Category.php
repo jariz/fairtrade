@@ -12,9 +12,9 @@ class Category extends BaseController
 {
     protected function ajaxGetCategories()
     {
-        if(isset($_GET['id']))
+        if(isset($id))
         {
-            $categories = Model\Category::find($_GET['id'])->companies;
+            $categories = Model\Category::find($id)->companies;
         } else{
             $categories = Model\Category::all();
         }
