@@ -39,6 +39,8 @@ Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front
 Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
 //Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
 
+/* Nieuws detail page */
+Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\NewsController@show"]);
 
 Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"]);
 Route::post("add", "\\Front\\Company@add");
