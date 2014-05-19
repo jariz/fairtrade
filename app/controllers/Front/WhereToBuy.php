@@ -27,14 +27,11 @@ class WhereToBuy extends BaseController
 
 	protected function show($id = null, $naam = null)
 	{
-        echo 'Whooop!';
         if(isset($id))
         {
            $companies = Model\Category::find($id)->companies;
-           echo 'By ID';
         } else{
             // Query all companies from database
-            echo 'All';
             $companies = Model\Company::all();
             //print_r($companies);
         }

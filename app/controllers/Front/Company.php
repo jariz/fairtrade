@@ -121,10 +121,8 @@ class Company extends BaseController
         } else{
             /* Loop through all fields */
             $fields = array(
-                'first_name',
-                'last_name',
+                'name',
                 'email',
-                'password',
             );
 
             /* Add new user to database */
@@ -132,9 +130,11 @@ class Company extends BaseController
             {
                 $user->{$field} = Input::get($field);
             }
-
-            echo 'Whoop dat ass!';
-            //$user->save();
+            $user->password = \Hash::make(Input::get('password'));
+            if($user->save())
+            {
+                return Redirect::to('user/login');
+            }
         }
     }
 

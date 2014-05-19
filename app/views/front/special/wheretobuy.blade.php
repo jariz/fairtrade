@@ -46,7 +46,7 @@
             <h2 class="title">Bedrijven</h2>
             @if (isset($companies))
                 @foreach ($companies as $company)
-                     <a href="{{ $company->url }}">{{ $company->name }}<img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
+                     <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}"><img src="{{ $company->logo }}" class="bedrijvenlogo" alt="{{ $company->name }}" class="floatLeft"/></a>
                 @endforeach
             @endif
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
