@@ -2,6 +2,17 @@
 /**
  * ADMIN
  */
+
+/** vvvvv WIES CHECK DIT IS VOOR DIE KLEUREN SHIZZLE IN DE API vvvvv */
+Route::get('test', function(){
+    return Model\Company::with('categories')->find(1)->toJson(); ///  <=========== Daarooo!!
+});
+
+
+/** ^^^^^^^^^^^^^ NEE WIES HET IS DAAR ^^^^^^^^^^^^^^^^^^^^ */
+
+
+
 Route::get("dashboard", array("as" => "dashboard", "uses" => "\\Admin\\Dashboard@show"));
 Route::get("dashboard/login", array("as" => "dashboard.login", "uses" => "\\Admin\\Login@show"));
 Route::get("dashboard/forgot/{code}/{id}", array("as" => "dashboard.forgot", "uses" => "\\Admin\\Login@forgot"));
