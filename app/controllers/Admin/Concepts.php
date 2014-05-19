@@ -59,7 +59,19 @@ class Concepts extends CrudController {
                     "Ja" => 1,
                     "Nee" => 0
                 )
-            )
+            ),
+
+            "Afbeelding" => [
+                "name" => "image",
+                "type" => "file",
+                "hideInOverview" => true,
+                "uploader" => "Concept",
+                "required" => false,
+                "thumbnail" => [
+                    'width' => 150,
+                    'height' => 150
+                ]
+            ]
         );
 
         if(!\Fairtrade\User::can("dashboard.concepts-approve")) {

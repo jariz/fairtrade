@@ -1,12 +1,13 @@
 <?php
 
 namespace Model;
-
+use URL, Str;
 class Concept extends \Eloquent {
 
 	protected $table = 'concepts';
 	public $timestamps = true;
     protected $softDelete = true;
+    protected $appends = ['link'];
 
     public static function boot() {
         parent::boot();
@@ -25,5 +26,9 @@ class Concept extends \Eloquent {
 
     public function company() {
         return $this->belongsTo('Model\Company', 'company_id', 'id');
+    }
+
+    public function getLinkAttribute(){
+        return URL::route('concept-item', [$this->id, Str::slug($this->title)]);
     }
 }

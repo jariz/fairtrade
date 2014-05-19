@@ -56,11 +56,14 @@ class BaseController extends \Controller {
         $classes = \Config::get("fairtrade.nav_classes");
 
         // Put all the main items in the array
-        $i = -1;
+        $i = 0;
         foreach($menuData as $item){
-            if($i++ > count($classes)) $i = 0;
-            $item["class"] = $classes[$i];
-            $orderd[$item['id']] = $item;
+            if($i > count($classes) - 1 ) $i = 0;
+            
+                $item["class"] = $classes[$i];
+                $orderd[$item['id']] = $item;
+                $i++;
+
         }
 
         // Match all submenu items with the right parent
