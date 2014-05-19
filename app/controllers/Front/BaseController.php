@@ -8,6 +8,7 @@ class BaseController extends \Controller {
     public function __construct(){
 //        parent::__construct();
         View::share("title", "!GEEN TITEL!");
+        View::share("template", \Config::get("fairtrade.template"));
 
         $this->getMenuData();
         // Menu items ophalen
@@ -52,9 +53,13 @@ class BaseController extends \Controller {
 
         $orderd = array();
 
+        $classes = \Config::get("fairtrade.nav_classes");
 
         // Put all the main items in the array
+        $i = -1;
         foreach($menuData as $item){
+            if($i++ > count($classes)) $i = 0;
+            $item["class"] = $classes[$i];
             $orderd[$item['id']] = $item;
         }
 

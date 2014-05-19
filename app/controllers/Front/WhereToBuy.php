@@ -7,9 +7,10 @@
  */
 
 namespace Front;
+use Base;
 use Model;
 
-class WhereToBuy extends BaseController 
+class WhereToBuy extends BaseController
 {
 	/**
 	 * Setup the layout used by the controller.
@@ -24,23 +25,49 @@ class WhereToBuy extends BaseController
 		}
 	}
 
-	protected function show($id, $naam)
+	protected function show($id = null, $naam = null)
 	{
         if(isset($id))
         {
-            echo $id;
+           $companies = Model\Category::find($id)->companies;
+        } else{
+            // Query all companies from database
+            $companies = Model\Company::all();
+            //print_r($companies);
         }
 
-		// Query all companies from database
-		$companies = Model\Company::all();
-       // $companies = Model\Company::find(1)->categories;
+        //$testCompanies = Model\Category::find(1)->companies;
+        //print_r($testCompanies);
+
         $categories = Model\Category::all();
-		
-		return \View::make("front.wheretobuy")->with(array(
-				'title' => 'Waar te koop',
+
+		return \View::make("front.special.wheretobuy")->with(array(
+				'title' => 'Waar te koop xxxxxxxxxxx',
                 'categories' => $categories,
 				'companies' => $companies,
 			)
 		);
 	}
+
+    protected function detail($id = null)
+    {
+        if(isset($id))
+        {
+            // Select company with id
+            $company = Model\Company::find($id);
+        } else{
+            // Company does not exist
+        }
+
+        //$testCompanies = Model\Category::find(1)->companies;
+        //print_r($testCompanies);
+
+        $categories = Model\Category::all();
+
+        return \View::make("front.companydetail")->with(array(
+                'title' => 'Bedrijf detail',
+                'company' => $company
+            )
+        );
+    }
 }

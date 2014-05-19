@@ -1,32 +1,45 @@
-@extends('front.layout')
+@extends("front.templates.{$template}.layout")
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Nieuws</h1>
+   <div class="col-md-12">
+        <div class="newsOverview col-md-8">
+            <h2 class="title">Nieuws</h2>
 
             @if( !isset( $news ) or count($news) === 0 )
                <p>Er zijn geen nieuws berichten</p>
             @else
-            <ul class="media-list">
                 @foreach( $news as $item )
-
-                      <li class="media">
-                        <a class="pull-left" href="#">
-                          <img class="media-object" src="http://lorempixel.com/output/food-q-c-150-150-10.jpg" alt="{{$item->title}}">
-                        </a>
-                        <div class="media-body">
-                          <h4 class="media-heading">{{$item->title}}</h4>
-                          <p class="help-block">{{ $item->intro}}</p>
+                    <div class="newsBlock">
+                        <img src="http://lorempixel.com/output/food-q-c-150-150-10.jpg" alt="" class="floatLeft"/>
+                        <div class="textAreaImg">
+                            <h4><a href="" title="">{{$item->title}}</a></h4>
+                            <p class="date">12-05-2014</p>
+                            <p>{{ $item->intro}}</p>
+                            <a href="" title="Lees meer" class="readMore">Lees meer</a>
                         </div>
-                      </li>
-
+                        <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
+                    </div>
+                    <div class="clear"></div>
                 @endforeach
-                 </ul>
-
                  {{ $news->links('pagination::simple') }}
             @endif
 
+            <a href="" title="" class="nieuwsarchief">Nieuwsarchief</a>
         </div>
-    </div>
+        <div class="col-md-12 visible-md visible-sm visible-xs">
+            <div class="border_horizontal"></div>
+        </div>
+        <div class="sidebar col-md-4">
+            <h2 class="title">Over Fairtrade</h1>
+            <div class="block">
+                <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
+                <a href="" title=""><img src="img/imgSidebar.jpg" alt="" /></a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...
+                </p>
+                <a href="" title="" class="readMore">Lees meer</a>
+            </div>
+        </div>
+   </div>
+   <div class="clear"></div>
 @stop

@@ -32,14 +32,17 @@ Route::post("dashboard/pages/reorder",["as" => "dashboard.pages-post-reorder", "
 /**
  * FRONT
  */
-Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "category", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
-Route::get("bedrijf-aanmelden/", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
+Route::get("waartekoop/bedrijf/{id?}/{bedrijf?}", array("as" => "companydetail", "uses" => "\\Front\\WhereToBuy@detail"));
+Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "wheretobuy.category", "uses" => "\\Front\\WhereToBuy@show"));
+Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
 Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
 //Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
 
 
 Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"]);
 Route::post("add", "\\Front\\Company@add");
+Route::post("registerUser", "\\Front\\Company@registerUser");
 Route::get("api/companies", "\\Front\\Company@AjaxGetCompanies");
+Route::get("api/categories", "\\Front\\Category@AjaxGetCategories");
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

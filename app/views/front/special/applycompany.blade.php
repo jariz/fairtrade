@@ -1,14 +1,16 @@
-@extends('front.layout')
+@extends("front.templates.{$template}.layout")
 
 @section('scripts')
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHMw_AnGTT2sS9sPgUTXex5BcXgoHtZSI&amp;sensor=false&amp;libraries=places"></script>
-<script src="js/front/javascript.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHMw_AnGTT2sS9sPgUTXex5BcXgoHtZSI&amp;sensor=false&amp;libraries=places"></script>
+    <script src="js/front/javascript.js"></script>
 @stop
 
 @section('content')
 	1: Account aanmaken - <strong>2: Bedrijfsgegevens</strong> - 3: Betalings gegevens
 	<h1>Bedrijf aanmelden</h1>
+	@include('includes.errors')
+
 	{{ Form::open(array('method' => 'post', 'action' => '\\Front\\Company@add', 'files' => true)) }}
         <div class="form-group">
 		    {{ Form::label('name', 'Bedrijfsnaam: ') }}

@@ -146,7 +146,7 @@ class Login extends \Controller {
                         "id" => $user->id,
                         "code" => $resetcode
                     ]),
-                "logo" => url("images/small_logo.png"),
+                "logo" => url("images/logo.png"),
                 "name" => $user->name
             ]
             , function(Message $message) use($user) {

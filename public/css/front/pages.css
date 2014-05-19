@@ -1,0 +1,116 @@
+/* ##################### home #########*/
+
+.sliderWrap{
+    position: relative;
+    height:480px;
+}
+.slideOverlay img,
+.slider img{
+    position: absolute;
+    top:0;
+    max-height: 480px;
+    width:1160px;
+}
+.slideOverlay{
+    z-index:10;
+    top:-1px;
+}
+.bedrijven{
+    height:350px;
+}
+.video{
+    position: absolute;
+    width:450px;
+    height:300px;
+    right:85px;
+    top:85px;
+    z-index:20;
+}
+.video h1{
+    margin-top:0px;
+    font-size: 24px;
+    color: #bf0069;
+    float:right;
+}
+.partner{
+    background: url(../../images/partnerBtn.png) no-repeat;
+    width: 240px;
+    height: 46px;
+    font-size: 18px;
+    margin-top:20px;
+    text-align: center;
+    color: #fff;
+    line-height: 45px;
+    float:right;
+}
+.partner a{
+    color:#fff;
+}
+.partner a:hover{
+    color:#fff;
+}
+iframe{
+    float:right;
+}
+
+
+.textAreaImg{
+    float: right;
+    position: relative;
+    width: 64%;
+    margin-left: 20px;
+}
+
+
+/*###################  BEDRIJVEN / CONCEPTEN #####*/
+
+.content_company{
+    padding-bottom: 20px;
+}
+.content_company .col-md-9,
+.content_company .col-md-3{
+    margin-bottom: 20px;
+}
+#bedrijven .register {
+    color:#de007a;
+}
+#bedrijven .register .input{
+    margin:10px 0;
+}
+#bedrijven .register .input input{
+    border:1px solid #de007a;
+    width:80%;
+    margin:5px 0;
+    padding:5px;
+}
+.uitgelicht .border_horizontal{
+    margin:40px 0;
+}
+.uitgelicht ul {
+    margin:10px 0;
+}
+.uitgelicht ul li{
+    list-style: none;
+    text-align: center;
+}
+.uitgelicht ul li img{
+    margin:10px 0;
+}
+.uitgelicht ul li h2{
+    font-size: 17px;
+    margin:0;
+}
+.uitgelicht ul li h3{
+    font-size: 15px;
+    margin:0;
+    color:#fd9100;
+}
+.nieuw ul{
+    margin:20px 0;
+}
+.nieuw ul li{
+    margin:10px;
+}
+
+
+
