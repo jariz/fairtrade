@@ -23,7 +23,7 @@ class DynamicPage extends BaseController{
      * @author Dmitri Chebotarev
      * @return View
      */
-    public function get( $slug = 'home' ){
+    public function get( $slug = 'home', $param1=null, $param2=null){
 
         $this->page = Model\Page::whereSlug( $slug );
 
