@@ -14,13 +14,13 @@
                <div class="col-md-9">
                    <span class="h2Wrap">
                        <span class="h2Left">
-                           <img src="img/h2Left.png" alt="">
+                           <img src="images/h2Left.png" alt="">
                        </span>
                        <h2>
                            Concepten en Bedrijf pagina
                        </h2>
                        <span class="h2Right">
-                           <img src="img/h2Right.png" alt="">
+                           <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
                    <h2>Goed idee? Wacht niet langer en deel hem! deel hem</h2>
@@ -35,13 +35,13 @@
                <div class="col-md-3 register">
                    <span class="h2Wrap">
                        <span class="h2Left">
-                           <img src="img/h2Left.png" alt="">
+                           <img src="images/h2Left.png" alt="">
                        </span>
                        <h2>
                            Inloggen
                        </h2>
                        <span class="h2Right">
-                           <img src="img/h2Right.png" alt="">
+                           <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
                    <div class="input">
@@ -69,13 +69,13 @@
                    <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
                    <span class="h2Wrap">
                        <span class="h2Left">
-                           <img src="img/h2Left.png" alt="">
+                           <img src="images/h2Left.png" alt="">
                        </span>
                        <h2>
                            Uitgelicht
                        </h2>
                        <span class="h2Right">
-                           <img src="img/h2Right.png" alt="">
+                           <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
                        <ul class="list-inline">
@@ -141,13 +141,13 @@
                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-8 nieuw">
                        <span class="h2Wrap">
                        <span class="h2Left">
-                           <img src="img/h2Left.png" alt="">
+                           <img src="images/h2Left.png" alt="">
                        </span>
                        <h2>
                            Nieuw
                        </h2>
                        <span class="h2Right">
-                           <img src="img/h2Right.png" alt="">
+                           <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
                    <ul class="list-inline">
