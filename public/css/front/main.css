@@ -133,6 +133,8 @@ h2.title{
     height:95%;
     position: absolute;
     right:0;
+    /** voor 'realisatie' 'presentatie' eruit gehaald **/
+    display: none;
 }
 
 .header .langBar{

@@ -33,7 +33,7 @@
                </div>
 
                <div class="col-md-3 register">
-                   {{Form::open(['id'=>'form'])}}
+                   {{Form::open(['id'=>'form', 'route'=>'dashboard.do-login'])}}
                        <span class="h2Wrap">
                        <span class="h2Left">
                            <img src="images/h2Left.png" alt="">
@@ -47,11 +47,11 @@
                    </span>
                        <div class="input">
                            Gebruikersnaam<br/>
-                           <input type="text">
+                           <input type="text" name="email">
                        </div>
                        <div class="input">
                            Wachtwoord<br/>
-                           <input type="text" name="">
+                           <input type="password" name="password">
                        </div>
                        <a href="#" class="registerBtn">Registreer</a>
                        <a href="#" onclick="$('#form').submit();" class="loginBtn">Login</a>

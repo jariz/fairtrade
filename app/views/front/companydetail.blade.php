@@ -8,10 +8,10 @@
 @section('content')
     <div class="row">
         <div class="bedrijfprofiel col-md-8">
-            <h2 class="title">{{ $company->name }}</h1>
+            <h2 class="title">{{ $company->name }}</h2>
 
             <div class="newsBlock">
-                <img src="img/imgNews.jpg" alt="" class="floatLeft"/>
+                <img src="{{url('images/bigimg.jpg')}}" alt="" class="floatLeft"/>
                 <div class="textAreaImg">
                     <h4>{{ $company->name }}</h4>
                     <p class="bedrijfSite"><a href="http://{{ $company->url }}">{{ $company->url }}</a></p>
@@ -28,7 +28,7 @@
             <div class="border_horizontal"></div>
         </div>
         <div class="sidebar bedrijfLogo col-md-4">
-            <h2 class="title">Bedrijf</h1>
+            <h2 class="title">Bedrijf</h2>
             @if ($company->logo != '')
                 <div class="block">
                     <img src="{{ asset('uploads/logos/'. $company->logo) }}" alt="{{ $company->name }}">
@@ -36,7 +36,7 @@
             @endif
         </div>
         <div class="sidebar bedrijfContact col-md-4">
-            <h2 class="title">contact</h1>
+            <h2 class="title">contact</h2>
             <div class="block">
                 <h4><a href="" title="">Openings tijden</a></h4>
                 <p>

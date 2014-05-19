@@ -46,7 +46,7 @@
         <h2 class="title">Bedrijven</h2>
         <div style="text-align: center">
             @foreach($companies as $company)
-            <a href="url('bedrijf/'.$company->id)}}"><img src="{{URL::asset('uploads/logos/'.$company->love)}}" alt="" class="floatLeft"/></a>
+            <a href="{{url('waartekoop/bedrijf/'.$company->id)}}"><img src="{{URL::asset('uploads/logos/'.$company->logo)}}" alt="" class="floatLeft"/></a>
             @endforeach
         </div>
         <div class="border_horizontal" style="top:190px;position: absolute;margin:0;"></div>
@@ -61,7 +61,7 @@
             {{$post->content}}
         </p>
 
-        <div class="leesmeer"><a href="">Lees meer</a></div>
+        <div class="leesmeer"><a href="{{$post->link}}">Lees meer</a></div>
         @endforeach
     </div>
 </div>
