@@ -14,11 +14,6 @@ use Redirect;
 
 class Company extends BaseController 
 {
-    public function __construct()
-    {
-        header('Access-Control-Allow-Origin: *');
-    }
-
     protected function registerAccount()
     {
         return \View::make("front.special.registerAccount");
@@ -150,6 +145,8 @@ class Company extends BaseController
 
 	protected function AjaxGetCompanies()
 	{
+        header('Access-Control-Allow-Origin: *');
+
         //Query all companies from database
 		$companyModel = new Model\Company;
         $companyFields = Input::get('fields');
