@@ -34,7 +34,7 @@ $(function () {
         var geo_location;
 
         // Loop through all companies and add them to map
-        $.get("api/companies?type=locations", function (data) {
+        $.get("api/companies", function (data) {
             $.each(data, function (key, value) {
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(value.lat, value.lng),

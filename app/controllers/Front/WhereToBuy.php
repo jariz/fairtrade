@@ -31,11 +31,12 @@ class WhereToBuy extends BaseController
         if(isset($id))
         {
            $companies = Model\Category::find($id)->companies;
-            echo 'By ID';
+           echo 'By ID';
         } else{
             // Query all companies from database
             echo 'All';
             $companies = Model\Company::all();
+            //print_r($companies);
         }
 
         //$testCompanies = Model\Category::find(1)->companies;

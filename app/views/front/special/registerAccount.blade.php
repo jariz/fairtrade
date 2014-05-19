@@ -21,6 +21,10 @@
         {{ Form::password('password', array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
+        {{ Form::label('confirmation', 'Wachtwoord herhalen: ') }}
+        {{ Form::password('confirmation', array('class' => 'form-control')) }}
+    </div>
+    <div class="form-group">
         {{ Form::label('name', 'Naam: ') }}
          {{ Form::text('name', NULL, array('class' => 'form-control')) }}
     </div>

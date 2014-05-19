@@ -109,7 +109,7 @@ class Company extends BaseController
             'name' => 'required',
             'email' => 'email|required',
             'password' => 'required|min:5',
-            'confirmation' => 'same:password',
+            'confirmation' => 'required:same:password',
         );
 
         $validation = Validator::make($inputs, $rules);
@@ -145,58 +145,134 @@ class Company extends BaseController
 
 	protected function AjaxGetCompanies()
 	{
-		//Query all companies from database
+        //Query all companies from database
 		$companyModel = new Model\Company;
+        $companyFields = Input::get('fields');
 
-        if(isset($_GET['type']))
+        // Get all fields for company with id
+        if(Input::get('id'))
         {
-            if($_GET['type'] === 'locations')
+            $companyObject = $companyModel::find(Input::get('id'));
+
+            // Get fields specified for single company
+            if($companyFields)
             {
-                $companies = $companyModel::where('accepted', '=', 1)->get();
-
-                /* Prepare array to return as json object */
-                $company_locations = array();
-
-                /* Add companies to json object */
-                foreach($companies as $company)
+                $companyFields = explode(',', $companyFields);
+                foreach($companyFields as $companyField)
                 {
-                    $company_locations[] = array(
-                    	'id' => $company["id"],
-                        'description' => $company['description'],
-                        'lat' => $company['lat'],
-                        'lng' => $company['lng']
-                    );
+                    $companyObjectCustom[$companyField] = $companyObject->{$companyField};
                 }
-                return $company_locations;
-            } else
-                if(Input::get('type') === 'company' && Input::get('id'))
-            {
-                $companyObject = $companyModel::find(Input::get('id'));
-                $companyFields = Input::get('fields');
+                return $companyObjectCustom;
+            } else{
+                return $companyObject;
+            }
+        } else
 
-                if($companyFields)
+        if(!Input::get('id'))
+        {
+            if($companyFields)
+            {
+                $companyObject = $companyModel::where('accepted', '=', 1)->get(array('id', 'lat', 'lng'));
+            } else{
+                $companyObject = $companyModel::where('accepted', '=', 1)->get();
+            }
+            // Get fields specified for all companies
+            /*if($companyFields)
+            {
+                $companyFields = explode(',', $companyFields);
+                foreach($companyObject as $object)
                 {
-                    $companyFields = explode(',', $companyFields);
+                    $companiesArray[] = 'Test';
                     foreach($companyFields as $companyField)
                     {
-                        $company_details[$companyField] = $companyObject->{$companyField};
+                        $$companyField = $companyField;
+                         //$companyObjectCustom[$companyField] = $companyObject->{$companyField};
                     }
-                } else{
-                    $company_details = array(
-                        'name' => $companyObject->name,
-                        'description' => $companyObject->description,
-                        'logo' => $companyObject->logo,
-                        'address' => $companyObject->address,
-                        'postal_code' => $companyObject->postal_code,
-                        'city' => $companyObject->city,
-                        'lat' => $companyObject->lat,
-                        'lng' => $companyObject->lng,
-                        'contact_info' => $companyObject->contact_info,
-                        'business_hours' => $companyObject->business_hours
-                    );
                 }
-                return $company_details;
-            }
+                //return $companyObjectCustom;
+            } else{
+                return $companyObject;
+            }*/
+
+            return $companyObject;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*if(Input::get('type') === 'company')
+        {
+            // Get all fields for company with id
+            if(Input::get('id'))
+            {
+                $companyObject = $companyModel::find(Input::get('id'));
+                $companyFields = explode(',', $companyFields);
+
+                foreach($companyFields as $companyField)
+                {
+                    $companyObject[$companyField] = $companyObject->{$companyField};
+                }
+                return $companyObject;
+
+
+         /*if(isset($_GET['type']))
+         {
+             if($_GET['type'] === 'locations')
+             {
+                 $companies = $companyModel::where('accepted', '=', 1)->get();
+
+                 // Prepare array to return as json object
+                 $company_locations = array();
+
+                 // Add companies to json object
+                 foreach($companies as $company)
+                 {
+                     $company_locations[] = array(
+                         'id' => $company["id"],
+                         'description' => $company['description'],
+                         'lat' => $company['lat'],
+                         'lng' => $company['lng']
+                     );
+                 }
+                 return $company_locations;
+             } else
+                 if(Input::get('type') === 'company' && Input::get('id'))
+             {
+                 $companyObject = $companyModel::find(Input::get('id'));
+                 $companyFields = Input::get('fields');
+
+                 if($companyFields)
+                 {
+                     $companyFields = explode(',', $companyFields);
+                     foreach($companyFields as $companyField)
+                     {
+                         $company_details[$companyField] = $companyObject->{$companyField};
+                     }
+                 } else{
+                     $company_details = array(
+                         'name' => $companyObject->name,
+                         'description' => $companyObject->description,
+                         'logo' => $companyObject->logo,
+                         'address' => $companyObject->address,
+                         'postal_code' => $companyObject->postal_code,
+                         'city' => $companyObject->city,
+                         'lat' => $companyObject->lat,
+                         'lng' => $companyObject->lng,
+                         'contact_info' => $companyObject->contact_info,
+                         'business_hours' => $companyObject->business_hours
+                     );
+                 }
+                 return $company_details;
+             }
+         }*/
 	}
 }
