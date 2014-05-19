@@ -44,4 +44,5 @@ Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"])
 Route::post("add", "\\Front\\Company@add");
 Route::post("registerUser", "\\Front\\Company@registerUser");
 Route::get("api/companies", "\\Front\\Company@AjaxGetCompanies");
+Route::get("api/categories", "\\Front\\Category@AjaxGetCategories");
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
