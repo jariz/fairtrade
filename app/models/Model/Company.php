@@ -20,4 +20,10 @@ class Company extends \Eloquent {
                 $company->user_id = \Auth::user()->id;
         });
     }
+
+    public function categories(){
+
+        return $this->belongsToMany('Model\Category', 'companies_categories', 'company_idz', 'category_id');
+
+    }
 }

@@ -13,12 +13,14 @@ class Home extends Page{
     public $order = 0;
     public $parent = 0;
     public $show_in_nav = 1;
+    public $data_source = "Home";
 
     protected $meta = [
-        'dynamic' => [
-            'value' => 'Dit is een dynamische value',
-            'type' => 'wysiwyg',
-            'label' => 'Dynamische blok'
-        ]
+        'youtube' => [
+            'value' => 'http://www.youtube.com/embed/OsRFTWLiP9g?list=PL2zniuqMzqkaURTd0uhm9iZqtBDkY7n5Y',
+            'type' => 'text',
+            'label' => 'Youtube embed URL'
+        ],
+
     ];
 }
