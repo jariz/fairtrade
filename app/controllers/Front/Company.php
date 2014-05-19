@@ -9,14 +9,18 @@
 namespace Front;
 use Model;
 use Input;
+use Upload;
 use Validator;
 use Redirect;
 
-class Company extends BaseController 
+class Company extends BaseController
 {
+
     protected function registerAccount()
     {
-        return \View::make("front.special.registerAccount");
+        return \View::make("front.special.registerAccount")->with(array(
+            'title' => 'Account aanmaken',
+        ));
     }
 
 	/**
@@ -55,11 +59,6 @@ class Company extends BaseController
             'postal_code' => 'required',
             'city' => 'required',
             'contact_info' => 'required',
-			/*'first_name' => 'required',
-			'last_name' => 'required',
-			'email' => 'email|required',
-			'password' => 'required|min:5',
-			'confirmation' => 'same:password',*/
 		);
 
 		$validation = Validator::make($inputs, $rules);
@@ -92,17 +91,13 @@ class Company extends BaseController
                 $company->lng = $data->results[0]->geometry->location->lng;
             }
 
-            if (Input::hasFile('photo'))
-            {
-                Input::file('photo')->move($destinationPath);
-                Input::file('photo')->move($destinationPath, $fileName);
-                $path = Input::file('photo')->getRealPath();
-                $company->logo = $path;
-            }
+            //Upload logo
+            $uploader = new \Fairtrade\Upload\Logo('logo');
+            $company->logo = $uploader->getPath() .'.'. $uploader->getFilename();
 
             if($company->save())
             {
-                return Redirect::to('bedrijf-aanmelden/bedrijf-aanmelden/betalen');
+                return Redirect::to('bedrijf-aanmelden/betalen');
             }
 		}
 	}
@@ -150,6 +145,9 @@ class Company extends BaseController
     protected function payment()
     {
         // Ideal implementation
+        return \View::make("front.payment")->with(array(
+            'title' => 'Betalingsgegevens',
+        ));
     }
 
 	protected function AjaxGetCompanies()
