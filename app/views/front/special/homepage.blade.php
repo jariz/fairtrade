@@ -46,7 +46,7 @@
         <h2 class="title">Bedrijven</h2>
         <div style="text-align: center">
             @foreach($companies as $company)
-            <a href=""><img src="images/albertHeijn.png" alt="" class="floatLeft"/></a>
+            <a href="url('bedrijf/'.$company->id)}}"><img src="{{URL::asset('uploads/logos/'.$company->love)}}" alt="" class="floatLeft"/></a>
             @endforeach
         </div>
         <div class="border_horizontal" style="top:190px;position: absolute;margin:0;"></div>

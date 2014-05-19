@@ -33,7 +33,7 @@
             <h2 class="title">Over Fairtrade</h2>
             <div class="block">
                 <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
-                <a href="" title=""><img src="img/imgSidebar.jpg" alt="" /></a>
+                <a href="" title=""><img src="images/imgSidebar.jpg" alt="" /></a>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...
                 </p>

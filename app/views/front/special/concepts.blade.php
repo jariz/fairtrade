@@ -33,7 +33,8 @@
                </div>
 
                <div class="col-md-3 register">
-                   <span class="h2Wrap">
+                   {{Form::open(['id'=>'form'])}}
+                       <span class="h2Wrap">
                        <span class="h2Left">
                            <img src="images/h2Left.png" alt="">
                        </span>
@@ -44,16 +45,17 @@
                            <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
-                   <div class="input">
-                       Gebruikersnaam<br/>
-                       <input type="text">
-                   </div>
-                   <div class="input">
-                       Wachtwoord<br/>
-                       <input type="text">
-                   </div>
-                   <a href="" class="registerBtn">Registreer</a>
-                   <a href="" class="loginBtn">Login</a>
+                       <div class="input">
+                           Gebruikersnaam<br/>
+                           <input type="text">
+                       </div>
+                       <div class="input">
+                           Wachtwoord<br/>
+                           <input type="text" name="">
+                       </div>
+                       <a href="#" class="registerBtn">Registreer</a>
+                       <a href="#" onclick="$('#form').submit();" class="loginBtn">Login</a>
+                   {{Form::close()}}
                </div>
            </div>
 
