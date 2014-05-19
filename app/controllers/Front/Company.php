@@ -14,10 +14,9 @@ use Redirect;
 
 class Company extends BaseController 
 {
-    protected function __construct()
+    public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
-        echo 'test';
     }
 
     protected function registerAccount()

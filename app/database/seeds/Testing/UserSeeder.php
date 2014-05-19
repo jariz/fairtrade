@@ -13,7 +13,6 @@ class UserSeeder extends \Seeder {
 
         User::truncate();
 
-
         $user = new User;
         $user->email = 'admin@fairtrade.org';
         $user->password = \Hash::make("123321");
@@ -36,7 +35,7 @@ class UserSeeder extends \Seeder {
         $user->email = 'ondernemer@fairtrade.org';
         $user->password = \Hash::make("123321");
         $user->name = "Ondernemer";
-//        $user->ip = "127.0.0.1";
+        // $user->ip = "127.0.0.1";
         $user->reset_code = str_random();
         $user->role_id = 2;
         $user->save();
