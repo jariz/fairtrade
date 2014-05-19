@@ -4,7 +4,7 @@
  */
 
 /** vvvvv WIES CHECK DIT IS VOOR DIE KLEUREN SHIZZLE IN DE API vvvvv */
-Route::get('test', function(){
+Route::get('api/categories', function(){
     return Model\Company::with('categories')->find(1)->toJson(); ///  <=========== Daarooo!!
 });
 
@@ -48,7 +48,7 @@ Route::get("waartekoop/bedrijf/{id?}/{bedrijf?}", array("as" => "companydetail",
 Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "wheretobuy.category", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
 Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
-//Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
+Route::get("bedrijf-aanmelden/betalen", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
 
 /* Nieuws detail page */
 Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\NewsController@show"]);

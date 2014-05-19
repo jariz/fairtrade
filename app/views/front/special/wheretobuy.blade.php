@@ -32,6 +32,14 @@
             <div class="form-group">
                 <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
                 <input style="margin-top: 10px;" type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
+                <h2>Categori&euml;</h2>
+                @if (isset($categories))
+                    <ul>
+                        @foreach ($categories as $category)
+                           <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
         <!--
@@ -47,7 +55,12 @@
             @if (isset($companies))
                 @foreach ($companies as $company)
                      <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
-                        <img src="{{ asset('uploads/logos/'. $company->logo) }}" class="bedrijvenlogo" alt="{{ $company->name }}" class="floatLeft"/></a>
+                        @if(isset($company->logo) && $company->logo != '')
+                            <img src="{{ asset('uploads/logos/'. $company->logo) }}" class="bedrijvenlogo" alt="{{ $company->name }}" class="floatLeft"/>
+                        @else
+                            {{ $company->name }}
+                        @endif
+                     </a>
                 @endforeach
             @endif
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
@@ -57,13 +70,4 @@
             <a href=""><img src="http://www.plushensgens.nl/images/Plus-Logo.png" class="bedrijvenlogo" alt="" class="floatLef-->
         </div>
     </div>
-
-    <h2>Categori&euml;</h2>
-    @if (isset($categories))
-        <ul>
-            @foreach ($categories as $category)
-               <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>
-            @endforeach
-        </ul>
-    @endif
 @stop

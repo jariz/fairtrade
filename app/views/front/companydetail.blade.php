@@ -31,7 +31,7 @@
             <h2 class="title">Bedrijf</h1>
             @if ($company->logo != '')
                 <div class="block">
-                    <img src="https://www.google.nl/images/srpr/logo11w.png" alt="">
+                    <img src="{{ asset('uploads/logos/'. $company->logo) }}" alt="{{ $company->name }}">
                 </div>
             @endif
         </div>

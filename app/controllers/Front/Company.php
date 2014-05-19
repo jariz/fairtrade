@@ -92,7 +92,10 @@ class Company extends BaseController
                 $company->lng = $data->results[0]->geometry->location->lng;
             }
 
-            $company->save();
+            if($company->save())
+            {
+                return Redirect::to('user/login');
+            }
 		}
 	}
 
