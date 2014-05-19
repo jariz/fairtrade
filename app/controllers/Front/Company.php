@@ -97,13 +97,13 @@ class Company extends BaseController
                 Input::file('photo')->move($destinationPath);
                 Input::file('photo')->move($destinationPath, $fileName);
                 $path = Input::file('photo')->getRealPath();
-                echo $path;
+                $company->logo = $path;
             }
 
-            /*if($company->save())
+            if($company->save())
             {
                 return Redirect::to('bedrijf-aanmelden/bedrijf-aanmelden/betalen');
-            }*/
+            }
 		}
 	}
 
