@@ -24,7 +24,12 @@ class News extends CrudController {
             "Afbeelding" => array(
                 "hideInOverview" => true,
                 "name" => "image",
+                "uploader" => "News",
                 "type" => "file",
+                "thumbnail" => [
+                  "width" => 150,
+                  "height" => 150
+                ],
                 "rules" => "image"
             )
         );
