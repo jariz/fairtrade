@@ -11,7 +11,7 @@ namespace Fairtrade\Page;
 class WhereToBuy extends Page
 {
     public $title = 'Waar te koop';
-    public $slug = 'waar-te-koop';
+    public $slug = 'waartekoop';
     public $published = 1;
     public $view = 'front.special.wheretobuy';
     public $heading = 'Waar te koop';
