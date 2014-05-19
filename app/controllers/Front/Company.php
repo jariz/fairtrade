@@ -93,8 +93,6 @@ class Company extends BaseController
             }
 
             $company->save();
-
-            echo 'Whooop dat ass yay!';
 		}
 	}
 
@@ -202,19 +200,7 @@ class Company extends BaseController
 
             return $companyObject;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         /*if(Input::get('type') === 'company')
         {
             // Get all fields for company with id
