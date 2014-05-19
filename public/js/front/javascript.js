@@ -3,7 +3,7 @@ $(function () {
         // Settings
         var geocoder = new google.maps.Geocoder();
         var address = 'Amsterdam';
-        //var image = '/proj/travel/usa/imgs/marker.png';
+        //var image = '/imgs/marker.png';
 
         geocoder.geocode({
             "address": address
@@ -23,18 +23,15 @@ $(function () {
         };
 
         var map = new google.maps.Map(document.getElementById("gmaps"), mapProp);
-        var infowindow = new google.maps.InfoWindow(),
-            marker, i;
+        var infowindow = new google.maps.InfoWindow(), marker, i;
 
-        google.maps.event.addListener(map, 'zoom_changed', function () {
+        /*google.maps.event.addListener(map, 'zoom_changed', function () {
             var zoomLevel = map.getZoom();
-            console.log('Zoom: ' + zoomLevel);
-        });
-
-        var geo_location;
+            //console.log('Zoom: ' + zoomLevel);
+        });*/
 
         // Loop through all companies and add them to map
-        $.get("api/companies", function (data) {
+        $.get(base + "api/companies", function (data) {
             $.each(data, function (key, value) {
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(value.lat, value.lng),
@@ -47,25 +44,25 @@ $(function () {
         });
 
         // Suggestions for a new place
-        var defaultBounds = new google.maps.LatLngBounds(
+        /*var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(''),
             new google.maps.LatLng()
-        );
+        );*/
 
-        var options = {
+        /*var options = {
             //bounds: defaultBounds,
             //types: ['establishment']
-        };
+        };*/
 
-        var input = document.getElementById('add_place_input');
+        //var input = document.getElementById('add_place_input');
 
         // Create the autocomplete object.
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
+        //var autocomplete = new google.maps.places.Autocomplete(input, options);
 
         // Move map to searched query
-        google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+        //google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
 
-        function onPlaceChanged() {
+        /*function onPlaceChanged() {
             var place = autocomplete.getPlace();
             if (place.geometry) {
                 map.panTo(place.geometry.location);
@@ -81,6 +78,6 @@ $(function () {
             } else {
                 document.getElementById('autocomplete').placeholder = 'Enter a city';
             }
-        }
+        }*/
     }
 });

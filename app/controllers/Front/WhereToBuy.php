@@ -46,7 +46,7 @@ class WhereToBuy extends BaseController
         $categories = Model\Category::all();
 
 		return \View::make("front.special.wheretobuy")->with(array(
-				'title' => 'Waar te koop xxxxxxxxxxx',
+				'title' => 'Waar te koop',
                 'categories' => $categories,
 				'companies' => $companies,
 			)
