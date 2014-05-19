@@ -10,9 +10,9 @@
             @else
                 @foreach( $news as $item )
                     <div class="newsBlock">
-                        <img src="http://lorempixel.com/output/food-q-c-150-150-10.jpg" alt="" class="floatLeft"/>
+                        <img src="{{$item->thumbnail_url}}" alt="{{$item->title}}" class="floatLeft"/>
                         <div class="textAreaImg">
-                            <h4><a href="" title="">{{$item->title}}</a></h4>
+                            <h4><a href="{{$item->link}}">{{$item->title}}</a></h4>
                             <p class="date">12-05-2014</p>
                             <p>{{ $item->intro}}</p>
                             <a href="" title="Lees meer" class="readMore">Lees meer</a>

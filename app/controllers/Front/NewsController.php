@@ -12,7 +12,7 @@ use Model\Post, View;
 class NewsController extends BaseController {
 
     public function show($id, $title = null){
-        $newsItem = Post::findOrFail($id);
+        $newsItem = Post::orderBy('created_at', 'DESC')->findOrFail($id);
 
         return View::make('front.special.news-item')
                 ->with('item', $newsItem)

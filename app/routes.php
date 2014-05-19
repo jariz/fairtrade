@@ -41,6 +41,7 @@ Route::get("bedrijf-aanmelden/betalen", array("as" => "applyCompany", "uses" => 
 
 /* Nieuws detail page */
 Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\NewsController@show"]);
+Route::get('evenement/{id}/{title?}', ['as' => 'event-item', 'uses' => "\\Front\\EventController@show"]);
 
 Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"]);
 Route::post("add", "\\Front\\Company@add");
