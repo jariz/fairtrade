@@ -80,7 +80,7 @@ h2.title{
 .col-md-8 h4{
     font-size:17px;
     color: #fd9100;
-    line-height: 10px;
+    line-height: 20px;
 }
 .col-md-8 h5{
     font-size:14px;
@@ -134,7 +134,7 @@ h2.title{
     position: absolute;
     right:0;
     /** voor 'realisatie' 'presentatie' eruit gehaald **/
-    display: none;
+    /*display: none;*/
 }
 
 .header .langBar{
@@ -259,5 +259,5 @@ nav ul{
 
 #gmaps{
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
