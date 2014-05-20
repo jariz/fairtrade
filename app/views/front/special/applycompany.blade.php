@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 		    {{ Form::label('category', 'Categorie: ') }}
-		     {{ Form::select('category', array('0' => 'Supermarkt', '1' => 'Cadeau winkel', '1' => 'Test categorie'), NULL, array('class' => 'form-control', 'multiple')) }}
+		    {{ Form::select('category', $categories, NULL, array('class' => 'form-control')) }}
 		</div>
         <div class="form-group">
 		    {{ Form::label('address', 'Straat: ') }}
