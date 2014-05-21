@@ -38,6 +38,7 @@ class BaseController extends \Controller {
         $menuData = Page::select(['id', 'menu_title', 'slug'])
             ->where('parent', '=', 0)
             ->where('show_in_nav', '=', 1)
+            ->wherePublished(1)
             ->orderBy('order', 'ASC')
             ->get()
             ->toArray();
