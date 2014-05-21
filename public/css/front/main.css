@@ -2,6 +2,7 @@ body{
 
     font-family: 'Open Sans', sans-serif !important;
     color:#000;
+    overflow-x: hidden;
 }
 a{
     text-decoration: none !important;
@@ -271,6 +272,9 @@ nav ul{
     height: 300px;
 }
 
+.header.container{
+    margin-top:40px;
+}
 @media (min-width: 910px){
     .container{
         width:100% !important;

@@ -98,10 +98,11 @@ class Company extends BaseController
 
             //Upload logo
             $uploader = new \Fairtrade\Upload\Logo('logo');
-            $company->logo = $uploader->getPath() .'.'. $uploader->getFilename();
+
 
             if($company->save())
             {
+                $company->logo = $uploader->getFilename();
                 // Get id of current company
                 /*$currentCompnayId = $company->id;
 
