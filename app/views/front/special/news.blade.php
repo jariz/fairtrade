@@ -3,6 +3,8 @@
 @section('content')
    <div class="col-md-12">
         <div class="newsOverview col-md-8">
+                                <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
+
             <h2 class="title">Nieuws</h2>
 
             @if( !isset( $news ) or count($news) === 0 )
@@ -17,7 +19,6 @@
                             <p>{{ $item->intro}}</p>
                             <a href="{{$item->link}}" title="Lees meer" class="readMore">Lees meer</a>
                         </div>
-                        <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
                     </div>
                     <div class="clear"></div>
                 @endforeach
@@ -29,6 +30,7 @@
         <div class="col-md-12 visible-md visible-sm visible-xs">
             <div class="border_horizontal"></div>
         </div>
+
         <div class="sidebar col-md-4">
             <h2 class="title">Over Fairtrade</h2>
             <div class="block">
