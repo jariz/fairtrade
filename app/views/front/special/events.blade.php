@@ -2,8 +2,20 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="title">Evenementen</h2>
+        <div class="col-lg-8">
+           <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
+            <span class="h2Wrap">
+                       <span class="h2Left">
+                           <img src="images/h2Left.png" alt="">
+                       </span>
+                       <h2>
+                           Evenementen
+                       </h2>
+                       <span class="h2Right">
+                           <img src="images/h2Right.png" alt="">
+                       </span>
+                   </span>
+
             @if( !isset( $events ) or count($events) === 0 )
                            <p>Er zijn geen evenementen.</p>
                         @else
@@ -15,7 +27,8 @@
                                     <div class="media-body">
                                       <h4 class="media-heading"><a href="{{$item->link}}">{{$item->title}}</a></h4>
                                       <p><i class="fa fa-calendar-o"></i> {{$item->date_formatted}}</p>
-                                      <p class="help-block">{{ $item->intro}}</p>
+                                      <img src="{{$item->thumbnail_url}}" alt="{{$item->title}}" class="floatLeft"/>
+                                      <div class="textAreaimg"><p class="help-block">{{ $item->intro}}</p></div>
                                     </div>
                                   </li>
 
@@ -24,7 +37,32 @@
 
                              {{ $events->links('pagination::simple') }}
                         @endif
-
+        </div>    
+        <div class="col-md-12 visible-md visible-sm visible-xs">
+            <div class="border_horizontal"></div>
+        </div>      
+        <div class="sidebar col-md-4">
+          <div class="col-md-12">
+             <span class="h2Wrap">
+                       <span class="h2Left">
+                           <img src="images/h2Left.png" alt="">
+                       </span>
+                        <h2>
+                           Bekijk afgelopen event
+                        </h2>
+                <span class="h2Right">
+                  <img src="images/h2Right.png" alt="">
+                </span>
+              </span>
+            <div class="block sideContent">
+                <h4><a href="" title="">Fairtrade Fest</a></h4>
+                <a href="" title=""><img src="images/imgSidebar.jpg" alt="" /></a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...
+                </p>
+                <a href="" title="" class="readMore">Lees meer</a>
+            </div>
+          </div>
         </div>
     </div>
 @stop

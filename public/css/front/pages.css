@@ -183,6 +183,8 @@ margin-left: 20px;
 }
 a.nieuwsarchief{
 	color: #de007a;
+	margin:20px 0 0 13px;
+	display: block;
 }
 .block p{
 	margin-top: 15px;
