@@ -17,7 +17,7 @@
                             <h4><a href="{{$item->link}}">{{$item->title}}</a></h4>
                             <p class="date">12-05-2014</p>
                             <p>{{ $item->intro}}</p>
-                            <a href="" title="Lees meer" class="readMore">Lees meer</a>
+                            <a href="{{$item->link}}" title="Lees meer" class="readMore">Lees meer</a>
                         </div>
                     </div>
                     <div class="clear"></div>

@@ -120,6 +120,7 @@ iframe{
 }
 .homeVertical{
 	left:0 !important;
+	right:inherit;
 }
 /* EINDE HOMEPAGE */
 

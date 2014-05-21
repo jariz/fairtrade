@@ -29,8 +29,11 @@ class Company extends BaseController
 	 */
 	protected function details()
 	{
+        $categories = Model\Category::lists('name', 'id');
+
 		return \View::make("front.special.applycompany")->with(array(
 			'title' => 'Bedrijf aanmelden',
+            'categories' => $categories
 		));
 	}
 
@@ -77,7 +80,8 @@ class Company extends BaseController
                 'address',
                 'postal_code',
                 'city',
-                'contact_info'
+                'contact_info',
+                'category'
             );
 
             /* Add new company to database */
@@ -97,6 +101,14 @@ class Company extends BaseController
 
             if($company->save())
             {
+                // Get id of current company
+                /*$currentCompnayId = $company->id;
+
+                foreach(Input::get('category') as $category)
+                {
+                    $category->company_id = $currentCompnayId;
+                    $category->category_id = category->id;
+                }*/
                 return Redirect::to('bedrijf-aanmelden/betalen');
             }
 		}
