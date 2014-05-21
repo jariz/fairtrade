@@ -12,14 +12,17 @@ use Model\Post;
 class News extends Data{
 
     public function run(){
-        // Get All news items
-       $news = Post::wherePublished(1)
-            ->orderBy('created_at')
-            ->paginate(3);
+        $news = Post::wherePublished(1)->orderBy('created_at');
 
+        if(\Input::has("archive")) {
+            $news = $news->paginate(10);
+        } else {
+            $news = $news->take(3)->get();
+        }
 
        // Share data with view
        $this->add('news', $news);
+       $this->add('archive', \Input::has("archive"));
 
     }
 } 

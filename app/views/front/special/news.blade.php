@@ -22,10 +22,14 @@
                     </div>
                     <div class="clear"></div>
                 @endforeach
+                @if($archive)
                  {{ $news->links('pagination::simple') }}
+                @endif
             @endif
 
-            <a href="" title="" class="nieuwsarchief">Nieuwsarchief</a>
+            @if(!$archive)
+            <a href="{{url('nieuws?archive=1')}}" class="nieuwsarchief">Nieuwsarchief</a>
+            @endif
         </div>
         <div class="col-md-12 visible-md visible-sm visible-xs">
             <div class="border_horizontal"></div>
