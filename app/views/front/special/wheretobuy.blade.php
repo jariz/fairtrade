@@ -29,7 +29,7 @@
 
                 <form class="form-inline" role="form" id="add_new_place_form">
                 <div class="form-group">
-                    <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
+                    <input type="text" name="place" id="searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
                     <input style="margin-top: 10px;" type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
                     <h2>Categori&euml;</h2>
                     @if (isset($categories))
