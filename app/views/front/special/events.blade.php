@@ -25,7 +25,7 @@
                                   <li class="media">
 
                                     <div class="media-body">
-                                      <img src="{{$item->thumbnail_url}}" alt="{{$item->title}}" class="floatLeft"/>                                    
+                                      <img src="{{url('images/test/test-news-thumbnail.jpg')}}" alt="{{$item->title}}" class="pull-left" style="margin-right:15px;margin-bottom:15px;"/>
                                       <h4 class="media-heading"><a href="{{$item->link}}">{{$item->title}}</a></h4>
                                       <p><i class="fa fa-calendar-o"></i> {{$item->date_formatted}}</p>
                                       <div class="textAreaimg"><p class="help-block">{{ $item->intro}}</p></div>

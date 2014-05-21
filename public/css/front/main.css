@@ -275,8 +275,14 @@ nav ul{
 .header.container{
     margin-top:40px;
 }
-@media (min-width: 910px){
-    .container{
-        width:100% !important;
+@media (min-width: 1170px){
+    body>.container{
+        width:1170px;
+    }
+}
+
+@media (max-width: 1170px) {
+    body>.container {
+        width: 100% !important;
     }
 }
