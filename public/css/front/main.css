@@ -6,12 +6,21 @@ body{
 a{
     text-decoration: none !important;
 }
+a:hover{
+   color:#bf0069 !important
+}
 h4>a {
     color:#bf0069 !important;
+}
+h4{
+    line-height: normal !important;
 }
 body h2{
     font-size: 18px;
     color:#bf0069;
+}
+.first-child{
+    margin-left: 0;
 }
 .clear{
     clear:both;
@@ -134,7 +143,7 @@ h2.title{
     position: absolute;
     right:0;
     /** voor 'realisatie' 'presentatie' eruit gehaald **/
-    display: none;
+    display: block;
 }
 
 .header .langBar{
@@ -260,4 +269,10 @@ nav ul{
 #gmaps{
     width: 100%;
     height: 300px;
+}
+
+@media (min-width: 910px){
+    .container{
+        width:100% !important;
+    }
 }
