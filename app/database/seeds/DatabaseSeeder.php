@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
         $answer = $this->command->ask("Wil je daar ook testing data bij? Ja/Nee ", false);
         $testing = strtolower($answer) == "ja";
 
+        $this->call("\\System\\CategorySeeder");
         $this->call("\\System\\CompanySeeder");
         $this->call("\\System\\SpecialPagesSeeder");
         $this->call("\\System\\RoleSeeder");
         if ($testing) {
-            $this->call("\\Testing\\CategorySeeder");
             $this->call("\\Testing\\UserSeeder");
             $this->call("\\Testing\\NewsSeeder");
             $this->call("\\Testing\\EventSeeder");

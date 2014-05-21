@@ -12,118 +12,182 @@ use \Model\Company;
 
 class CompanySeeder extends \Seeder
 {
-    private $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     public function run() {
-        $this->letters = str_split($this->letters);
 
         Company::truncate();
 
         $companies = [
-
-            [
-                "name" => "Albert Heijn Nieuwmarkt",
-                "user_id" => 1,
-                "logo" => "albertHeijn.png",
-                "address" => "Nieuwmarkt 18",
-                "city" => "Amsterdam",
-                "postal_code" => "1012 CR",
-                "lat" => "52.3702160",
-                "lng" => "4.8951680",
-                "category" => 3,
-            ],
-            [
-                "name" => "Albert Heijn Prins Hendrikkade",
-                "logo" => "../../images/albertHeijn.png",
-                "address" => "Prins Hendrikkade 20",
-                "city" => "Amsterdam",
-                "postal_code" => "1012 TL",
-                "lat" => "52.3785610",
-                "lng" => "4.8961850",
-                "category" => 3,
-
-            ],
-            [
-                "name" => "Albert Heijn Prins Jodenbreestraat",
-                "logo" => "../../images/albertHeijn.png",
-                "address" => "Jodenbreestraat 21",
-                "city" => "Amsterdam",
-                "postal_code" => "1011 NH",
-                "lat" => "52.3692770",
-                "lng" => "4.9028070",
-                "category" => 3,
-            ],
-            [
-                "name" => "Albert Heijn Prins Jodenbreestraat",
-                "logo" => "../../images/albertHeijn.png",
-                "address" => "Nieuwezijds Voorburgwal 226",
-                "city" => "Amsterdam",
-                "postal_code" => "1012 RR",
-                "lat" => "52.3726670",
-                "lng" => "4.8907350",
-                "category" => 3,
-            ],
-
             [
                 "name" => "AH Food Plaza",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "Nieuwezijds Voorburgwal 226",
                 "city" => "Amsterdam",
                 "postal_code" => "1012 RR",
-                "lat" => "52.3726670",
-                "lng" => "4.8907350",
                 "category" => 3,
             ],
             [
                 "name" => "AH Museumplein",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "van Baerlestraat 33a",
                 "city" => "Amsterdam",
                 "postal_code" => "1071 AP",
-                "lat" => "52.3570290",
-                "lng" => "4.8799090",
                 "category" => 3,
             ],
             [
                 "name" => "AH XL",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "Osdorperplein 469",
                 "city" => "Amsterdam",
                 "postal_code" => "1068 SZ",
-                "lat" => "52.3647730",
-                "lng" => "4.7854590",
                 "category" => 3,
             ],
             [
                 "name" => "Amsterdam Cupcake Company",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "Marco Polostraat 209",
                 "city" => "Amsterdam",
                 "postal_code" => "1057 WK",
-                "lat" => "52.3647730",
-                "lng" => "4.7854590",
                 "category" => 4,
             ],
             [
                 "name" => "Deen Supermarkt",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "Rijnstraat 152",
                 "city" => "Amsterdam",
                 "postal_code" => "1079 HP",
-                "lat" => "52.3432700",
-                "lng" => "4.9060540",
                 "category" => 3,
             ],
             [
                 "name" => "Deen Supermarkt",
-                "logo" => "../../images/albertHeijn.png",
                 "address" => "Nierstraat 16",
                 "city" => "Amsterdam",
                 "postal_code" => "1078 VK",
-                "lat" => "52.3434160",
-                "lng" => "4.8951440",
                 "category" => 3,
-            ]
+            ],
+            [
+                "name" => "Deen Supermarkt",
+                "address" => "Rietwijkerstraat 42-44",
+                "city" => "Amsterdam",
+                "postal_code" => "1059 XB",
+                "category" => 3,
+            ],
+            [
+                "name" => "Frank@Fair",
+                "address" => "Czaar Peterstraat 68",
+                "city" => "Amsterdam",
+                "postal_code" => "1018 PR",
+                "category" => 2,
+            ],
+            [
+                "name" => "Gall & Gall",
+                "address" => "Buitenvelderstelaan 176",
+                "city" => "Amsterdam",
+                "postal_code" => "1081 AC",
+                "category" => 3,
+            ],
+            [
+                "name" => "Jumbo",
+                "address" => "Buitenvelderstelaan 184",
+                "city" => "Amsterdam",
+                "postal_code" => "1081 AC",
+                "category" => 3,
+            ],
+            [
+                "name" => "Marqt Overtoom",
+                "address" => "Overtoom 21",
+                "city" => "Amsterdam",
+                "postal_code" => "1054 HC",
+                "category" => 3,
+            ],
+            [
+                "name" => "Milagros Mundo",
+                "address" => "Postjesweg 23",
+                "city" => "Amsterdam",
+                "postal_code" => "1057 DV",
+                "category" => 2,
+            ],
+            [
+                "name" => "Nukuhiva",
+                "address" => "Haarlemmerstraat 36",
+                "city" => "Amsterdam",
+                "postal_code" => "1013 ES",
+                "category" => 1,
+            ],
+            [
+                "name" => "Plus supermarkt",
+                "address" => "Bezaanjachtplein 291",
+                "city" => "Amsterdam",
+                "postal_code" => "1034 CR",
+                "category" => 3,
+            ],
+            [
+                "name" => "Spar",
+                "address" => "Nieuwe Kerkstraat 65",
+                "city" => "Amsterdam",
+                "postal_code" => "1018 DZ",
+                "category" => 3,
+            ],
+            [
+                "name" => "Spar de Winter",
+                "address" => "Osdorperban 116-122",
+                "city" => "Amsterdam",
+                "postal_code" => "1068 MK",
+                "category" => 3,
+            ],
+            [
+                "name" => "Spar Steur",
+                "address" => "Spaarndammerstraat 544",
+                "city" => "Amsterdam",
+                "postal_code" => "1013 TH",
+                "category" => 3,
+            ],
+            [
+                "name" => "Tony Chocolonely",
+                "address" => "Polonceaukade 12",
+                "city" => "Amsterdam",
+                "postal_code" => "1014 DA",
+                "category" => 4,
+            ],
+            [
+                "name" => "Waarwinkel",
+                "address" => "Bilderdijkstraat 57",
+                "city" => "Amsterdam",
+                "postal_code" => "1053 KM",
+                "category" => 2,
+            ],
+            [
+                "name" => "Wereldwinkel ABAL",
+                "address" => "Ceintuurbaan 266",
+                "city" => "Amsterdam",
+                "postal_code" => "1072 GJ",
+                "category" => 2,
+            ],
+            [
+                "name" => "Koninklijk Instituut voor de Tropen",
+                "address" => "Mauritskade 63",
+                "city" => "Amsterdam",
+                "postal_code" => "1092 AD",
+                "category" => 7,
+            ],
+            [
+                "name" => "M”venpick Hotel Amsterdam City Centre",
+                "address" => "Piet Heinkade 11",
+                "city" => "Amsterdam",
+                "postal_code" => "1019 BR",
+                "category" => 5,
+            ],
+            [
+                "name" => "St. Ignatiusgymnasium",
+                "address" => "De Klencke 4",
+                "city" => "Amsterdam",
+                "postal_code" => "1083 HH",
+                "category" => 8,
+            ],
+            [
+                "name" => "rije Universiteit Amsterdam",
+                "address" => "De Boelelaan 1105",
+                "city" => "Amsterdam",
+                "postal_code" => "1081 HV",
+                "category" => 8,
+            ],
+
+
 
 
 
