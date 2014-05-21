@@ -36,15 +36,20 @@
                        </span>
                    </span>
             @foreach($news as $post)
-            <h3>{{{$post->title}}}</h3>
+            <div class="homeNewsItem">
+                <h3>{{{$post->title}}}</h3>
 
-            <p>
-                {{$post->content}}
-            </p>
+                <p>
+                    {{$post->content}}
+                </p>
 
-            <div class="leesmeer"><a href="{{$post->link}}">Lees meer</a></div>
-            @endforeach
+                <div class="leesmeer"><a href="{{$post->link}}">Lees meer</a></div>
+                @endforeach
+            </div>
         </div>
+    </div>
+    <div class="col-md-12 visible-md visible-sm visible-xs">
+           <div class="border_horizontal"></div>
     </div>
     <div class="col-md-8">
         <div class="border_vertical homeVertical hidden-md hidden-sm hidden-xs"></div>
