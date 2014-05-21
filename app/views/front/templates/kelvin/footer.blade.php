@@ -6,7 +6,7 @@
         <li><a href="{{URL::route('dashboard')}}">Beheer</a></li>
     </ul>
     <ul class="list-inline social">
-        <li class="fb"><a href=""><i class="fa fa-facebook-square"></i></a></li>
-        <li class="twitter"><a href=""><i class="fa fa-twitter-square"></i></a></li>
+        <li class="fb"><a href="https://www.facebook.com/Amsterdamfairtrade"><i class="fa fa-facebook-square"></i></a></li>
+<!--        <li class="twitter"><a href=""><i class="fa fa-twitter-square"></i></a></li>-->
     </ul>
 </div>

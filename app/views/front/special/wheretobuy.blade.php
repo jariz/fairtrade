@@ -13,13 +13,13 @@
             <div class="border_vertical"></div> 
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="images/h2Left.png" alt="">
+                    <img src="{{url('images/h2Left.png')}}" alt="">
                 </span>
                     <h2>
                        In de buurt
                     </h2>
                 <span class="h2Right">
-                   <img src="images/h2Right.png" alt="">
+                   <img src="{{url('images/h2Right.png')}}" alt="">
                 </span>
             </span>
 
@@ -61,13 +61,13 @@
         <div class="col-md-12 bedrijvenmaps">
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="images/h2Left.png" alt="">
+                    <img src="{{url('images/h2Left.png')}}" alt="">
                 </span>
                     <h2>
                        Bedrijven
                     </h2>
                 <span class="h2Right">
-                   <img src="images/h2Right.png" alt="">
+                   <img src="{{url('images/h2Right.png')}}" alt="">
                 </span>
             </span>
             @if (isset($companies))
