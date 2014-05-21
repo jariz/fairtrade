@@ -14,6 +14,7 @@ use Validator;
 use Redirect;
 use Schema;
 use Response;
+use Fairtrade\Map;
 
 class Company extends BaseController
 {
@@ -46,7 +47,9 @@ class Company extends BaseController
 		//dd($inputs);
 
 		$geo_location = '';
-		
+
+        $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
+
 		/* Convert the address to a geo location with the Googele Maps API */
 		$address = str_replace(' ', '%20', Input::get('postal_code') .'%20'. Input::get('address'));
 		$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='. $address .'&sensor=false';
@@ -91,26 +94,17 @@ class Company extends BaseController
                 $company->{$field} = Input::get($field);
             }
 
-            if(isset($data->results[0]->geometry->location)) {
-                $company->lat = $data->results[0]->geometry->location->lat;
-                $company->lng = $data->results[0]->geometry->location->lng;
-            }
+            // Save coordinates
+            $company->lat = $coords['lat'];
+            $company->lng = $coords['lng'];
 
             //Upload logo
             $uploader = new \Fairtrade\Upload\Logo('logo');
 
-
             if($company->save())
             {
                 $company->logo = $uploader->getFilename();
-                // Get id of current company
-                /*$currentCompnayId = $company->id;
 
-                foreach(Input::get('category') as $category)
-                {
-                    $category->company_id = $currentCompnayId;
-                    $category->category_id = category->id;
-                }*/
                 return Redirect::to('bedrijf-aanmelden/betalen');
             }
 		}

@@ -2,30 +2,42 @@
 
 namespace Model;
 
-class Company extends \Eloquent {
+use Fairtrade\Map;
 
-	protected $table = 'companies';
-	public $timestamps = true;
+class Company extends \Eloquent
+{
+
+    protected $table = 'companies';
+    public $timestamps = true;
     protected $softDelete = true;
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
 
-        Company::saving(function($company) {
-            if(is_null($company->accepted))
+        Company::saving(function ($company) {
+            if (is_null($company->accepted))
                 $company->accepted = 0;
+            if (!isset($company->lng) && !isset($company->lng)) {
+                $coords = Map::convertAddress($company->postal_code, $company->address);
+                $company->lat = $coords['lat'];
+                $company->lng = $coords['lng'];
+            }
         });
-        Company::creating(function($company) {
-            if(\Auth::check())
+
+        Company::creating(function ($company) {
+            if (\Auth::check())
                 $company->user_id = \Auth::user()->id;
         });
     }
 
-    public function getIntroAttribute() {
+    public function getIntroAttribute()
+    {
         return \Fairtrade\Util::truncate($this->attributes["description"], 200);
     }
 
-    public function categories(){
+    public function categories()
+    {
 
         return $this->belongsToMany('Model\Category', 'companies_categories', 'company_idz', 'category_id');
 
