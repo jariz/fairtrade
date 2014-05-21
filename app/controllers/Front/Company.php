@@ -12,10 +12,11 @@ use Input;
 use Upload;
 use Validator;
 use Redirect;
+use Schema;
+use Response;
 
 class Company extends BaseController
 {
-
     protected function registerAccount()
     {
         return \View::make("front.special.registerAccount")->with(array(
@@ -164,125 +165,41 @@ class Company extends BaseController
 
 	protected function AjaxGetCompanies()
 	{
-        header('Access-Control-Allow-Origin: *');
-
-        //Query all companies from database
 		$companyModel = new Model\Company;
-        $companyFields = Input::get('fields');
 
-        // Get all fields for company with id
-        if(Input::get('id'))
+        $id = false;
+
+        // Check if id parameter is given
+        if( !is_null(Input::get('id')) )
         {
-            $companyObject = $companyModel::find(Input::get('id'));
-            $companyObject['category'] = 'wdaf';
-            // Get fields specified for single company
-            if($companyFields)
-            {
-                $companyFields = explode(',', $companyFields);
-                foreach($companyFields as $companyField)
-                {
-                    $companyObjectCustom[$companyField] = $companyObject->{$companyField};
-                }
-
-                return $companyObjectCustom;
-            } else{
-                return $companyObject;
-            }
-        } else
-
-        if(!Input::get('id'))
-        {
-            if($companyFields)
-            {
-                $companyObject = $companyModel::where('accepted', '=', 1)->get(array('id', 'lat', 'lng'));
-            } else{
-                $companyObject = $companyModel::where('accepted', '=', 1)->get();
-            }
-            // Get fields specified for all companies
-            /*if($companyFields)
-            {
-                $companyFields = explode(',', $companyFields);
-                foreach($companyObject as $object)
-                {
-                    $companiesArray[] = 'Test';
-                    foreach($companyFields as $companyField)
-                    {
-                        $$companyField = $companyField;
-                         //$companyObjectCustom[$companyField] = $companyObject->{$companyField};
-                    }
-                }
-                //return $companyObjectCustom;
-            } else{
-                return $companyObject;
-            }*/
-
-            return $companyObject;
+            $id = Input::get('id');
         }
 
-        /*if(Input::get('type') === 'company')
-        {
-            // Get all fields for company with id
-            if(Input::get('id'))
-            {
-                $companyObject = $companyModel::find(Input::get('id'));
-                $companyFields = explode(',', $companyFields);
+        // Collect all requested fields
+        $companyFields = explode(',', Input::get('fields') );
 
-                foreach($companyFields as $companyField)
-                {
-                    $companyObject[$companyField] = $companyObject->{$companyField};
-                }
-                return $companyObject;
+        foreach( $companyFields as $key => $field){
+            if( empty( $field ) || !Schema::hasColumn('companies', $field)){
+                unset($companyFields[$key]);
+            }
+        }
 
+        $companyModel::whereAccepted(1);
 
-         /*if(isset($_GET['type']))
-         {
-             if($_GET['type'] === 'locations')
-             {
-                 $companies = $companyModel::where('accepted', '=', 1)->get();
+        if(count( $companyFields) == 0){
+            $companyFields = ['*'];
+        }
 
-                 // Prepare array to return as json object
-                 $company_locations = array();
+        if( $id != false){
+            $result = $companyModel->find($id, $companyFields);
+        }
+        else{
+            $result = $companyModel->get($companyFields);
+        }
 
-                 // Add companies to json object
-                 foreach($companies as $company)
-                 {
-                     $company_locations[] = array(
-                         'id' => $company["id"],
-                         'description' => $company['description'],
-                         'lat' => $company['lat'],
-                         'lng' => $company['lng']
-                     );
-                 }
-                 return $company_locations;
-             } else
-                 if(Input::get('type') === 'company' && Input::get('id'))
-             {
-                 $companyObject = $companyModel::find(Input::get('id'));
-                 $companyFields = Input::get('fields');
-
-                 if($companyFields)
-                 {
-                     $companyFields = explode(',', $companyFields);
-                     foreach($companyFields as $companyField)
-                     {
-                         $company_details[$companyField] = $companyObject->{$companyField};
-                     }
-                 } else{
-                     $company_details = array(
-                         'name' => $companyObject->name,
-                         'description' => $companyObject->description,
-                         'logo' => $companyObject->logo,
-                         'address' => $companyObject->address,
-                         'postal_code' => $companyObject->postal_code,
-                         'city' => $companyObject->city,
-                         'lat' => $companyObject->lat,
-                         'lng' => $companyObject->lng,
-                         'contact_info' => $companyObject->contact_info,
-                         'business_hours' => $companyObject->business_hours
-                     );
-                 }
-                 return $company_details;
-             }
-         }*/
+        return Response::json($result->toArray(), 200, array
+        (
+            'Access-Control-Allow-Origin: *'
+        ));
 	}
 }

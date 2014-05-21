@@ -15,7 +15,7 @@ class News extends Data{
         // Get All news items
        $news = Post::wherePublished(1)
             ->orderBy('created_at')
-            ->paginate(10);
+            ->paginate(3);
 
 
        // Share data with view
