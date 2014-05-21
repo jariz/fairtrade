@@ -7,19 +7,17 @@
  */
 
 namespace Front;
-use Model;
-use Input;
-use Upload;
-use Validator;
-use Redirect;
-use Schema;
-use Response;
-use Fairtrade\Map;
+use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map;
 
 class Company extends BaseController
 {
     protected function registerAccount()
     {
+        if( Session::get('user_registration') != '' )
+        {
+            return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
+        }
+
         return \View::make("front.special.registerAccount")->with(array(
             'title' => 'Account aanmaken',
         ));
@@ -33,6 +31,11 @@ class Company extends BaseController
 	{
         $categories = Model\Category::lists('name', 'id');
 
+        if( !Session::get('user_registration'))
+        {
+            return Redirect::to('bedrijf-aanmelden');
+        }
+
 		return \View::make("front.special.applycompany")->with(array(
 			'title' => 'Bedrijf aanmelden',
             'categories' => $categories
@@ -42,7 +45,6 @@ class Company extends BaseController
 	protected function add()
 	{
 		$company = new Model\Company;
-
 		$inputs = Input::all();
 		//dd($inputs);
 
@@ -145,6 +147,7 @@ class Company extends BaseController
             $user->password = \Hash::make(Input::get('password'));
             if($user->save())
             {
+                Session::put('user_registration', $user->id);
                 return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
             }
         }
