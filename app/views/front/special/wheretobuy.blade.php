@@ -25,20 +25,22 @@
                 <div id="gmaps"></div>
             </div>
 
-<!--        <form class="form-inline" role="form" id="add_new_place_form">-->
-<!--            <div class="form-group">-->
-<!--                <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">-->
-<!--                <input style="margin-top: 10px;" type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">-->
-<!--                <h2>Categori&euml;</h2>-->
-<!--                @if (isset($categories))-->
-<!--                    <ul>-->
-<!--                        @foreach ($categories as $category)-->
-<!--                           <li>{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array()); }}</li>-->
-<!--                        @endforeach-->
-<!--                    </ul>-->
-<!--                @endif-->
-<!--            </div>-->
-<!--        </div>-->
+
+
+                <form class="form-inline" role="form" id="add_new_place_form">
+                <div class="form-group">
+                    <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
+                    <input style="margin-top: 10px;" type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
+                    <h2>Categori&euml;</h2>
+                    @if (isset($categories))
+                        <ul>
+                            @foreach ($categories as $category)
+                                <li style="color:{{ $category->color }}">{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array('style' => 'color: $category->color')); }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
         <!--
         <a href=""><img class="iosapp" src="img/iosapp.png" alt="ios app"></a>
         <a href=""><img class="androidapp" src="img/androidapp.png" alt="ios app"></a>
