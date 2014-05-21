@@ -296,22 +296,38 @@ h3.over{
 	color:#FFF;
 }
 
+@media (max-width: 980px) {
 
-
-
-@media (max-width: 480px) {
-
+    img.bedrijvenlogo {
+     width:19%;
+     height:120px;
+     height:auto;
+ }
+}
+@media (max-width: 850px) {
+	.video{
+		margin:0 auto;
+		float:none;
+		width:80%;
+		text-align: center;
+	}
+	.video h1{
+		text-align: center;
+	}
+	.partner{
+		margin:20px auto 0;
+		float:none;
+	}
     .slider {
      display:none;
      }
     .slider img {
      display:none;
      }
-    .slideOverlay{
-    }
     .slideOverlay img{
     	display:none;
-    }
+    }}
+@media (max-width: 480px) {
      .androidapp{
     	display:inline-block;
      margin-left:12px;
@@ -332,11 +348,4 @@ h3.over{
  }
 }
 
-@media (max-width: 980px) {
 
-    img.bedrijvenlogo {
-     width:19%;
-     height:120px;
-     height:auto;
- }
-}

@@ -48,6 +48,7 @@
             </div>
         </div>
     </div>
+</div>
     <div class="col-md-12 visible-md visible-sm visible-xs">
            <div class="border_horizontal"></div>
     </div>

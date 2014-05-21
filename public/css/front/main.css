@@ -12,7 +12,7 @@ a:hover{
 h4>a {
     color:#bf0069 !important;
 }
-h4{
+h1,h2,h3,h4,h5,h6{
     line-height: normal !important;
 }
 body h2{
@@ -45,12 +45,12 @@ body h2{
 .h2Wrap .h2Left{
     position: absolute;
     left:0;
-    top:8px;
+    top:9px;
 }
 .h2Wrap .h2Right{
     position: absolute;
     right:0;
-    top:7px;
+    top:8px;
 }
 .h2Wrap h2{
     font-size: 18px;
