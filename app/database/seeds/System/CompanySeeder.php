@@ -30,6 +30,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1012 CR",
                 "lat" => "52.3702160",
                 "lng" => "4.8951680",
+                "category" => 3,
             ],
             [
                 "name" => "Albert Heijn Prins Hendrikkade",
@@ -39,6 +40,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1012 TL",
                 "lat" => "52.3785610",
                 "lng" => "4.8961850",
+                "category" => 3,
 
             ],
             [
@@ -49,6 +51,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1011 NH",
                 "lat" => "52.3692770",
                 "lng" => "4.9028070",
+                "category" => 3,
             ],
             [
                 "name" => "Albert Heijn Prins Jodenbreestraat",
@@ -58,6 +61,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1012 RR",
                 "lat" => "52.3726670",
                 "lng" => "4.8907350",
+                "category" => 3,
             ],
 
             [
@@ -68,6 +72,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1012 RR",
                 "lat" => "52.3726670",
                 "lng" => "4.8907350",
+                "category" => 3,
             ],
             [
                 "name" => "AH Museumplein",
@@ -77,6 +82,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1071 AP",
                 "lat" => "52.3570290",
                 "lng" => "4.8799090",
+                "category" => 3,
             ],
             [
                 "name" => "AH XL",
@@ -86,6 +92,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1068 SZ",
                 "lat" => "52.3647730",
                 "lng" => "4.7854590",
+                "category" => 3,
             ],
             [
                 "name" => "Amsterdam Cupcake Company",
@@ -95,6 +102,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1057 WK",
                 "lat" => "52.3647730",
                 "lng" => "4.7854590",
+                "category" => 4,
             ],
             [
                 "name" => "Deen Supermarkt",
@@ -104,6 +112,7 @@ class CompanySeeder extends \Seeder
                 "postal_code" => "1079 HP",
                 "lat" => "52.3432700",
                 "lng" => "4.9060540",
+                "category" => 3,
             ],
             [
                 "name" => "Deen Supermarkt",
@@ -112,7 +121,8 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1078 VK",
                 "lat" => "52.3434160",
-                "lng" => "4.8951440"
+                "lng" => "4.8951440",
+                "category" => 3,
             ]
 
 
@@ -127,6 +137,7 @@ class CompanySeeder extends \Seeder
            foreach($company as $column => $value){
                 $modelCompany->$column = $value;
            }
+
 
            $modelCompany->save();
        }
