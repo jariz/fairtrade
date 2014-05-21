@@ -271,6 +271,9 @@ nav ul{
     height: 300px;
 }
 
+.header.container{
+    margin-top:40px;
+}
 @media (min-width: 910px){
     .container{
         width:100% !important;

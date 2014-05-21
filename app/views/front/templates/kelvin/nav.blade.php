@@ -36,10 +36,7 @@
     <!-- /.container-fluid -->
 </nav>
 <div class="header container visible-sm visible-md visible-lg  hidden-xs">
-    <div class="langBar">
-        <a href="" title="" class="nl">EN</a>
-        <a href="" title="" class="en">NL</a>
-    </div>
+
     <div class="logo col-md-3"><img src="{{url('images/logo.png')}}" alt="Faretrade Gemeente amsterdam"></div>
     <div class="col-md-9 navMain">
         <ul class="list-inline">
