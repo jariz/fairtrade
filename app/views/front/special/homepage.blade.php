@@ -81,7 +81,7 @@
 
                 <h3>{{{$featured->company->name}}}</h3>
                 <h4>{{{$featured->company->city}}}</h4>
-                <h4>{{{$featured->company->adres}}}</h4>
+                <h4>{{{$featured->company->address}}}, {{{$featured->company->postal_code}}}</h4>
                 {{$featured->content}}
             </div>
             <div class="clear"></div>

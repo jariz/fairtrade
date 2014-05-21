@@ -11,8 +11,7 @@ class Event extends FormattedTimestamps {
     protected $appends = ['intro', 'date_formatted', 'link'];
 
     public function getIntroAttribute(){
-        $intro  = substr($this->attributes['description'], 0, 300);
-        return strip_tags($intro);
+        return \Fairtrade\Util::truncate($this->attributes['description'], 300);
     }
 
     public function getDateFormattedAttribute(){

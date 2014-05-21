@@ -21,6 +21,10 @@ class Company extends \Eloquent {
         });
     }
 
+    public function getIntroAttribute() {
+        return \Fairtrade\Util::truncate($this->attributes["description"], 200);
+    }
+
     public function categories(){
 
         return $this->belongsToMany('Model\Category', 'companies_categories', 'company_idz', 'category_id');

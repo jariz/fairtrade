@@ -12,8 +12,7 @@ class Post extends FormattedTimestamps {
     private $image_path = 'uploads/news/';
 
     public function getIntroAttribute(){
-        $intro  = substr($this->attributes['content'], 0, 300);
-        return strip_tags($intro);
+        return \Fairtrade\Util::truncate($this->attributes['content'], 300);
     }
 
     public function getLinkAttribute(){

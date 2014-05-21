@@ -15,7 +15,7 @@
                         <img src="{{$item->thumbnail_url}}" alt="{{$item->title}}" class="floatLeft"/>
                         <div class="textAreaImg">
                             <h4><a href="{{$item->link}}">{{$item->title}}</a></h4>
-                            <p class="date">12-05-2014</p>
+                            <p class="date">{{$item->created_formatted}}</p>
                             <p>{{ $item->intro}}</p>
                             <a href="{{$item->link}}" title="Lees meer" class="readMore">Lees meer</a>
                         </div>
@@ -39,6 +39,7 @@
             <h2 class="title">Over Fairtrade</h2>
             <div class="block">
                 <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
+                @if(
                 <a href="" title=""><img src="images/imgSidebar.jpg" alt="" /></a>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...
