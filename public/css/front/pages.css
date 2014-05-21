@@ -139,7 +139,14 @@ iframe{
 	display:none;
 }
 .iosapp{
-	display:none}
+	display:none
+}
+.bedrijvenmaps a{
+	display:block;
+}
+.buurtWrap{
+	margin:30px 0;
+}
 
 /* EINDE IN DE BUURT PAGINA */
 
@@ -193,6 +200,16 @@ a.nieuwsarchief{
 }
 .newsBlock{
 	padding:20px 0;
+}
+
+.newsItem img{
+	max-height: 200px;
+	width:auto;
+	margin:0 10px 10px 0;
+	float:left;
+}
+.newsItem .newsDetail{
+	float:left;
 }
 
 /* EINDE NIEUWSOVERZICHT */
@@ -328,7 +345,8 @@ h3.over{
      }
     .slideOverlay img{
     	display:none;
-    }}
+    }
+}
 @media (max-width: 480px) {
      .androidapp{
     	display:inline-block;

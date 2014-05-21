@@ -1,16 +1,7 @@
 @extends("front.templates.{$template}.layout")
 
 @section('content')
-
-
-
-               <div class="clear"></div>
-           <div class="border_horizontal"></div>
-           <div class="clear"></div>
-           <div class="spacing">
-
            <div class=" content_company col-md-12">
-            <div class="spacing"></div>
                <div class="col-md-9">
                    <span class="h2Wrap">
                        <span class="h2Left">
@@ -59,15 +50,13 @@
                </div>
            </div>
 
-           </div>
 
                <div class="col-md-12">
                    <div >
                        <div class="border_horizontal"></div>
                    </div>
                </div>
-               <div class="col-lg-12">
-                   <div class="col-lg-5 col-md-12 uitgelicht">
+                  <div class="col-lg-5 col-md-12 uitgelicht">
                    <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
                    <span class="h2Wrap">
                        <span class="h2Left">

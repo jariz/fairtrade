@@ -7,12 +7,21 @@
 
 @section('content')
     <div class="wrapper" data-base="{{ URL::to('/') }}">
-        <div class="border_horizontal"></div>
     </div>
-    <div class="row">
+    <div class="col-md-12 buurtWrap">
         <div class="col-md-3">
-            <div class="border_vertical"></div>
-            <h2 class="title">In de buurt</h2>
+            <div class="border_vertical"></div> 
+            <span class="h2Wrap">
+                <span class="h2Left">
+                    <img src="images/h2Left.png" alt="">
+                </span>
+                    <h2>
+                       In de buurt
+                    </h2>
+                <span class="h2Right">
+                   <img src="images/h2Right.png" alt="">
+                </span>
+            </span>
 
             <h3>Ben jij al Fairtrade?</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
@@ -47,10 +56,20 @@
         -->
 
     </div>
-    <div class="border_horizontal"></div>
-    <div class="row">
+    <div class="col-md-12">
+        <div class="border_horizontal"></div>
         <div class="col-md-12 bedrijvenmaps">
-            <h2 class="title">Bedrijven</h2>
+            <span class="h2Wrap">
+                <span class="h2Left">
+                    <img src="images/h2Left.png" alt="">
+                </span>
+                    <h2>
+                       Bedrijven
+                    </h2>
+                <span class="h2Right">
+                   <img src="images/h2Right.png" alt="">
+                </span>
+            </span>
             @if (isset($companies))
                 @foreach ($companies as $company)
                      <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
