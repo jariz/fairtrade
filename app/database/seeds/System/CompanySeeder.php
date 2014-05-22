@@ -9,6 +9,7 @@
 namespace System;
 use \Fairtrade\IpsumGenerator;
 use \Model\Company;
+use Image;
 
 class CompanySeeder extends \Seeder
 {
@@ -200,6 +201,11 @@ class CompanySeeder extends \Seeder
 
            foreach($company as $column => $value){
                 $modelCompany->$column = $value;
+
+               if($column === 'logo'){
+                   $img = Image::make( public_path().'uploads/logos'.$value );
+                   $img->resize(300, 300)->save( public_path().'uploads/logos/t/'.$value);
+               }
            }
 
 
