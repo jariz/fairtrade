@@ -25,6 +25,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1012 RR",
                 "category" => 3,
+                "logo" => "EYgGsiTsuY33MmsoyCiE7sipgofTdi.png"
             ],
             [
                 "name" => "AH Museumplein",
@@ -32,6 +33,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1071 AP",
                 "category" => 3,
+                "logo" => "EYgGsiTsuY33MmsoyCiE7sipgofTdi.png"
             ],
             [
                 "name" => "AH XL",
@@ -39,6 +41,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1068 SZ",
                 "category" => 3,
+                "logo" => "EYgGsiTsuY33MmsoyCiE7sipgofTdi.png"
             ],
             [
                 "name" => "Amsterdam Cupcake Company",
@@ -46,6 +49,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1057 WK",
                 "category" => 4,
+                "logo" => "EYgGsiTsuY33MmsoyCiE7sipgofTdi.png"
             ],
             [
                 "name" => "Deen Supermarkt",
@@ -53,6 +57,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1079 HP",
                 "category" => 3,
+                "logo" => "deen.jpg"
             ],
             [
                 "name" => "Deen Supermarkt",
@@ -60,6 +65,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1078 VK",
                 "category" => 3,
+                "logo" => "deen.jpg"
             ],
             [
                 "name" => "Deen Supermarkt",
@@ -74,6 +80,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1018 PR",
                 "category" => 2,
+                "logo" => "deen.jpg"
             ],
             [
                 "name" => "Gall & Gall",
