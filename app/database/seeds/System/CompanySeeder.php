@@ -161,7 +161,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1014 DA",
                 "category" => 4,
-                "logo" => "tonychocolonely.jpeg"
+                "logo" => "chocolonely.jpeg"
             ],
             [
                 "name" => "Waarwinkel",
@@ -201,7 +201,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1083 HH",
                 "category" => 8,
-                "logo" => "ignatiusgymnasium.jpeg"
+                "logo" => "ignatiusgymnasium.jpg"
             ],
             [
                 "name" => "Rije Universiteit Amsterdam",
@@ -231,7 +231,7 @@ class CompanySeeder extends \Seeder
                     // Save full size
                      ->save( public_path().'/uploads/logos/'.$value);
                    // Create thumbnail
-                   $img->resize(300, 300)
+                   $img->resize(300, 300, true)
                         ->save( public_path().'/uploads/logos/t/'.$value);
                }
            }
