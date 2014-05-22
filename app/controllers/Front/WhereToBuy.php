@@ -31,7 +31,7 @@ class WhereToBuy extends BaseController
 
         if(isset($id))
         {
-           $companies = Model\Company::where('category', '=', $id)->get();
+           $companies = Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->get();
            $category_id = $id;
            //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
            //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
