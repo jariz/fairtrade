@@ -13,13 +13,13 @@
             <div class="border_vertical"></div> 
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="{{url('images/h2Left.png')}}" alt="">
+                    <img src="images/h2Left.png" alt="">
                 </span>
                     <h2>
                        In de buurt
                     </h2>
                 <span class="h2Right">
-                   <img src="{{url('images/h2Right.png')}}" alt="">
+                   <img src="images/h2Right.png" alt="">
                 </span>
             </span>
 
@@ -38,8 +38,8 @@
 
                 <form class="form-inline" role="form" id="add_new_place_form">
                 <div class="form-group">
-                    <input type="text" name="place" id="searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
-                    <input style="margin-top: 10px;" type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
+                    <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
+                    <input type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
                     <h2>Categori&euml;</h2>
                     @if (isset($categories))
                         <ul>
@@ -61,13 +61,13 @@
         <div class="col-md-12 bedrijvenmaps">
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="{{url('images/h2Left.png')}}" alt="">
+                    <img src="images/h2Left.png" alt="">
                 </span>
                     <h2>
                        Bedrijven
                     </h2>
                 <span class="h2Right">
-                   <img src="{{url('images/h2Right.png')}}" alt="">
+                   <img src="images/h2Right.png" alt="">
                 </span>
             </span>
             @if (isset($companies))
@@ -80,8 +80,6 @@
                         @endif
                      </a>
                 @endforeach
-            @elseif(empty($companies))
-                <p>Er zijn geen bedrijven in deze categorie</p>
             @endif
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>

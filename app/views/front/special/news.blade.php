@@ -36,7 +36,17 @@
         </div>
 
         <div class="sidebar col-md-4">
-            <h2 class="title">Over Fairtrade</h2>
+             <span class="h2Wrap">
+                       <span class="h2Left">
+                           <img src="images/h2Left.png" alt="">
+                       </span>
+                       <h2>
+                           Over Fairtrade
+                       </h2>
+                       <span class="h2Right">
+                           <img src="images/h2Right.png" alt="">
+                       </span>
+                   </span>
             <div class="block">
                 <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
 
