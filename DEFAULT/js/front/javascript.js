@@ -32,7 +32,7 @@
             });
 
             // Loop through all companies and add them to map
-            var api_call = location.origin+"/fairtrade/public/api/companies";
+            var api_call = location.origin+"/api/companies";
             var category_id = $('#gmaps').data('category');
 
             if(category_id != '')
