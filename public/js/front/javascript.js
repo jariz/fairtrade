@@ -32,7 +32,7 @@
             });
 
             // Loop through all companies and add them to map
-            $.get("api/companies", function (data) {
+            $.get(location.origin+"/api/companies", function (data) {
                 $.each(data, function (key, value) {
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(value.lat, value.lng),
