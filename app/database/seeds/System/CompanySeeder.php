@@ -72,6 +72,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1059 XB",
                 "category" => 3,
+                "logo" => "deen.jpg"
             ],
             [
                 "name" => "Frank@Fair",
@@ -79,7 +80,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1018 PR",
                 "category" => 2,
-                "logo" => "deen.jpg"
+                "logo" => "frankfair.jpg"
             ],
             [
                 "name" => "Gall & Gall",
@@ -87,6 +88,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1081 AC",
                 "category" => 3,
+                "logo" => "gallgall.jpg"
             ],
             [
                 "name" => "Jumbo",
@@ -94,6 +96,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1081 AC",
                 "category" => 3,
+                "logo" => "jumbo.gif"
             ],
             [
                 "name" => "Marqt Overtoom",
@@ -101,6 +104,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1054 HC",
                 "category" => 3,
+                "logo" => "marqt.jpg"
             ],
             [
                 "name" => "Milagros Mundo",
@@ -108,6 +112,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1057 DV",
                 "category" => 2,
+                "logo" => "milagros.png"
             ],
             [
                 "name" => "Nukuhiva",
@@ -115,6 +120,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1013 ES",
                 "category" => 1,
+                "logo" => "nukuhiva.jpg"
             ],
             [
                 "name" => "Plus supermarkt",
@@ -122,6 +128,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1034 CR",
                 "category" => 3,
+                "logo" => "plus.png"
             ],
             [
                 "name" => "Spar",
@@ -129,6 +136,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1018 DZ",
                 "category" => 3,
+                "logo" => "spar.png"
             ],
             [
                 "name" => "Spar de Winter",
@@ -136,6 +144,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1068 MK",
                 "category" => 3,
+                "logo" => "spar.png"
             ],
             [
                 "name" => "Spar Steur",
@@ -143,6 +152,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1013 TH",
                 "category" => 3,
+                "logo" => "spar.png"
             ],
             [
                 "name" => "Tony Chocolonely",
@@ -150,6 +160,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1014 DA",
                 "category" => 4,
+                "logo" => "tonychocolonely.jpeg"
             ],
             [
                 "name" => "Waarwinkel",
@@ -157,6 +168,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1053 KM",
                 "category" => 2,
+                "logo" => "waarwinkel.jpg"
             ],
             [
                 "name" => "Wereldwinkel ABAL",
@@ -164,6 +176,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1072 GJ",
                 "category" => 2,
+                "logo" => "wereldwinkel.png"
             ],
             [
                 "name" => "Koninklijk Instituut voor de Tropen",
@@ -171,6 +184,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1092 AD",
                 "category" => 7,
+                "logo" => "tropeninstituut.jpg"
             ],
             [
                 "name" => "M”venpick Hotel Amsterdam City Centre",
@@ -178,6 +192,7 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1019 BR",
                 "category" => 5,
+                "logo" => "Movenpick.jpg"
             ],
             [
                 "name" => "St. Ignatiusgymnasium",
@@ -185,13 +200,15 @@ class CompanySeeder extends \Seeder
                 "city" => "Amsterdam",
                 "postal_code" => "1083 HH",
                 "category" => 8,
+                "logo" => "ignatiusgymnasium.jpeg"
             ],
             [
-                "name" => "rije Universiteit Amsterdam",
+                "name" => "Rije Universiteit Amsterdam",
                 "address" => "De Boelelaan 1105",
                 "city" => "Amsterdam",
                 "postal_code" => "1081 HV",
                 "category" => 8,
+                "logo" => "VUTTO.png"
             ],
 
 
