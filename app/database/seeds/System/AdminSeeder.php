@@ -9,7 +9,7 @@
 namespace System;
 
 
-class AdminSeeder {
+class AdminSeeder extends \Seeder{
     public function run() {
         $user = \Model\User::findOrNew(1);
         $user->email = 'admin@fairtradeamsterdam.nl';
