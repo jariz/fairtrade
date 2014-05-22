@@ -47,12 +47,8 @@ Route::get('concept/{id}/{title?}', ['as' => 'concept-item', 'uses' => "\\Front\
 Route::post('contact', ['as' => 'contact', 'uses' => "Front\\Contact@validate"]);
 Route::post("add", "\\Front\\Company@add");
 Route::post("registerUser", "\\Front\\Company@registerUser");
-Route::get('api/categories', function(){
-    //return Model\Company::with('categories')->find(1)->toJson();
-    //return Model\Company::where('category', '=', Input::get('id'))->get();
-   return $companies = Model\Company::where('category', '=', Input::get('id'))->where('accepted', '=', 1)->get();
-});
-Route::get("api/companies", "\\Front\\Company@AjaxGetCompanies");
+Route::get("api/companies", "\\Front\\Api@companies");
+Route::get("api/categories", "\\Front\\Api@categories");
 Route::get("{slug?}/{param1?}/{param2?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
 //Route::get("api/categories", "\\Front\\Category@AjaxGetCategories");
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
