@@ -1,4 +1,8 @@
-# Project Documentatie
+### Technische Documentatie  
+###### Fairtrade Amsterdam
+
+## Setup  
+Wilt u de site installeren, [zie dan onze installatie gids.](  
 
 ## Composer
 
@@ -80,7 +84,12 @@ public/js
 ```
 ### Stylesheets
 
-Alle Stylesheets die horen bij de core worden opgeslagen in:
+Stylesheets moeten worden gecompiled via [compass](http://compass-style.org).    
+```
+compass compile public
+```
+
+Alle Stylesheets worden opgeslagen in:
 
 ```
 public/css
