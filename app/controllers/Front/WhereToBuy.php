@@ -27,7 +27,7 @@ class WhereToBuy extends BaseController
 
 	protected function show($id = null, $naam = null)
 	{
-        $category_id;
+        $category_id = '';
 
         if(isset($id))
         {
