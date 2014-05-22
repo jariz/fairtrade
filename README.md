@@ -2,7 +2,7 @@
 ###### Fairtrade Amsterdam
 
 ## Setup  
-Wilt u de site installeren, [zie dan onze installatie gids.](  
+Wilt u de site installeren, [zie dan onze installatie gids.](https://github.com/jariz/fairtrade/wiki/Setup)
 
 ## Composer
 
@@ -86,7 +86,7 @@ public/js
 
 Stylesheets moeten worden gecompiled via [compass](http://compass-style.org).    
 ```
-compass compile public
+compass compile DEFAULT
 ```
 
 Alle Stylesheets worden opgeslagen in:
