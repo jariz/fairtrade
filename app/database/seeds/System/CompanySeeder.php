@@ -222,6 +222,7 @@ class CompanySeeder extends \Seeder
 
        foreach($companies as $company){
            $modelCompany = new Company;
+           $modelCompany->accepted = 1;
 
            foreach($company as $column => $value){
                 $modelCompany->$column = $value;
