@@ -34,12 +34,14 @@ class Company extends BaseController
         if( !Session::get('user_registration'))
         {
             return Redirect::to('bedrijf-aanmelden');
+        } else{
+            return \View::make("front.special.applycompany")->with(array(
+                'title' => 'Bedrijf aanmelden',
+                'categories' => $categories
+            ));
         }
 
-		return \View::make("front.special.applycompany")->with(array(
-			'title' => 'Bedrijf aanmelden',
-            'categories' => $categories
-		));
+
 	}
 
 	protected function add()
@@ -95,6 +97,8 @@ class Company extends BaseController
             {
                 $company->{$field} = Input::get($field);
             }
+
+            $company->user_id = Session::get('user_registration');
 
             // Save coordinates
             $company->lat = $coords['lat'];
