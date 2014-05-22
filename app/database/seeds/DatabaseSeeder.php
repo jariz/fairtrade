@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call("\\System\\CompanySeeder");
         $this->call("\\System\\SpecialPagesSeeder");
         $this->call("\\System\\RoleSeeder");
+        $this->call("\\System\\AdminSeeder");
         if ($testing) {
             $this->call("\\Testing\\UserSeeder");
             $this->call("\\Testing\\NewsSeeder");
