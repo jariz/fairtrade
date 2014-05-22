@@ -13,6 +13,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{url('plugins/bs/bootstrap.min.js')}}"></script>
+    <script>
+        var baseurl = "{{ URL::to('/') }}";
+    </script>
     @yield('scripts')
 </head>
 <body id="bedrijven">

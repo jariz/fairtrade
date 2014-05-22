@@ -193,10 +193,10 @@ class Company extends BaseController
         }
 
         if( $id != false){
-            $result = $companyModel->find($id, $companyFields);
+            $result = $companyModel->find($id, $companyFields)->where('accepted', '=', 1);
         }
         else{
-            $result = $companyModel->get($companyFields);
+            $result = $companyModel->get($companyFields)->where('accepted', '=', 1);
         }
 
         return Response::json($result->toArray(), 200, array

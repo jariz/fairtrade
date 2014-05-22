@@ -32,12 +32,12 @@
             });
 
             // Loop through all companies and add them to map
-            var api_call = location.origin+"/api/companies";
+            var api_call = baseurl+"/api/companies";
             var category_id = $('#gmaps').data('category');
 
             if(category_id != '')
             {
-                api_call = location.origin+"/api/categories?id="+category_id;
+                api_call = baseurl+"/api/categories?id="+category_id;
             }
 
             $.get(api_call, function (data) {
