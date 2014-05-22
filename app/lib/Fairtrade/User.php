@@ -36,13 +36,13 @@ class User {
     {
         //sanity check
         if (!\Auth::check()) {
-            \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> Nope. (not logged in?!)");
+//            \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> Nope. (not logged in?!)");
             return false;
         }
 
         //does the cache exist?
         if (count(self::$permissionCache) == 0) {
-            \Debugbar::addMessage("No cache found, filling it...");
+//            \Debugbar::addMessage("No cache found, filling it...");
 
             //get user's role id
             $role_id = \Auth::user()->role_id;
@@ -65,7 +65,7 @@ class User {
         }
 
         $result = in_array($alias, self::$permissionCache);
-        \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> " . ($result ? "Yes" : "Nope"));
+//        \Debugbar::addMessage("[PERMISSIONS] Checking if current user can {$alias} ... >>> " . ($result ? "Yes" : "Nope"));
         return $result;
     }
 
