@@ -1,7 +1,7 @@
 @extends("front.templates.{$template}.layout")
 
 @section('content')
-    <div class="row">
+    <div class="row events">
         <div class="col-lg-8">
            <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
             <span class="h2Wrap">

@@ -55,4 +55,7 @@
             @endforeach
         </ul>
     </div>
+    <div class="clear"></div>
+    <div class="border_horizontal"></div>
+    <div class="clear"></div>
 </div>
