@@ -75,7 +75,7 @@
 
             <div>
                 <img
-                    src="{{$featured->company->logo ? url('uploads/logos/'.$featured->company->logo) : 'http://placehold.it/220x230'}}"
+                    src="{{$featured->company->thumbnail_url ? $featured->company->thumbnail_url : 'http://placehold.it/220x230'}}"
                     alt="" class="pull-left giev-padding"/>
 
 
@@ -179,7 +179,7 @@
         <div>
             @foreach($companies as $company)
             <a href="{{url('waartekoop/bedrijf/'.$company->id)}}"><img
-                    src="{{URL::asset('uploads/logos/'.$company->logo)}}" alt="" class="floatLeft"/></a>
+                    src="{{$company->thumbnail_url}}" alt="" class="floatLeft"/></a>
             @endforeach
         </div>
         @endif

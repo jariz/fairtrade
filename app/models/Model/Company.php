@@ -3,13 +3,15 @@
 namespace Model;
 
 use Fairtrade\Map;
-
+use URL, File;
 class Company extends \Eloquent
 {
 
     protected $table = 'companies';
     public $timestamps = true;
     protected $softDelete = true;
+    protected $appends = [ 'image_url', 'thumbnail_url'];
+    private $image_path = 'uploads/logos/';
 
     public static function boot()
     {
@@ -41,5 +43,22 @@ class Company extends \Eloquent
 
         return $this->belongsToMany('Model\Category', 'companies_categories', 'company_idz', 'category_id');
 
+    }
+
+    public function getImageUrlAttribute(){
+
+
+        return URL::asset( $this->image_path . $this->logo );
+    }
+
+    public function getThumbnailUrlAttribute(){
+
+
+        $thumbnail = $this->image_path. 't/'. $this->logo;
+        if( File::exists( $thumbnail )){
+            return $thumbnail;
+        }
+
+        return URL::asset( $this->image_path . $this->logo );
     }
 }
