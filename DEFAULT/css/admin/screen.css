@@ -1,0 +1,79 @@
+/* line 1, ../../sass/admin/screen.scss */
+.container-login {
+  padding-top: 150px;
+}
+/* line 3, ../../sass/admin/screen.scss */
+.container-login > .panel-login {
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* line 4, ../../sass/admin/screen.scss */
+.container-login > .panel-login img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+/* line 14, ../../sass/admin/screen.scss */
+.container-layout {
+  padding-top: 50px;
+}
+/* line 15, ../../sass/admin/screen.scss */
+.container-layout.moar-padding {
+  margin-top: 60px;
+}
+/* line 19, ../../sass/admin/screen.scss */
+.container-layout h2 {
+  margin-top: 0;
+  margin-left: 20px;
+}
+
+/* line 25, ../../sass/admin/screen.scss */
+table a.btn, .table a.btn {
+  text-decoration: none;
+}
+
+/* line 29, ../../sass/admin/screen.scss */
+.pagination-center {
+  text-align: center;
+}
+
+/* line 33, ../../sass/admin/screen.scss */
+.alert.alert-floating {
+  border-top: 1px solid #727272;
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  bottom: -70px;
+  margin: 0;
+  z-index: 99999;
+  -webkit-transition: bottom 0.15s linear;
+  transition: bottom 0.15s linear;
+}
+/* line 43, ../../sass/admin/screen.scss */
+.alert.alert-floating.in {
+  bottom: 0;
+}
+/* line 47, ../../sass/admin/screen.scss */
+.alert.alert-floating p {
+  margin: 0;
+  display: inline-block;
+  padding: 6px;
+}
+/* line 52, ../../sass/admin/screen.scss */
+.alert.alert-floating form {
+  display: inline-block;
+  float: right;
+}
+
+/* line 58, ../../sass/admin/screen.scss */
+.admin-thumbnail {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+/* line 63, ../../sass/admin/screen.scss */
+.overview-actions {
+  width: 130px;
+  padding: 0 !important;
+}
