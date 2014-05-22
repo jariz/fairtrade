@@ -227,12 +227,12 @@ class CompanySeeder extends \Seeder
                 $modelCompany->$column = $value;
 
                if($column === 'logo'){
-                   $img = Image::make( public_path().'images/logos/'.$value );
+                   $img = Image::make( public_path().'/images/logos/'.$value )
                     // Save full size
-                     ->save( public_path().'uploads/logos/'.$value;
+                     ->save( public_path().'/uploads/logos/'.$value);
                    // Create thumbnail
                    $img->resize(300, 300)
-                        ->save( public_path().'uploads/logos/t/'.$value);
+                        ->save( public_path().'/uploads/logos/t/'.$value);
                }
            }
 
