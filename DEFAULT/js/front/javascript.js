@@ -37,7 +37,7 @@
 
             if(category_id != '')
             {
-                api_call = location.origin+"/fairtrade/public/api/categories?id="+category_id;
+                api_call = location.origin+"/api/categories?id="+category_id;
             }
 
             $.get(api_call, function (data) {
