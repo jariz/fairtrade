@@ -15,7 +15,7 @@
 
     <!-- Open graph metadata -->
     <meta property="og:title" content="{{$title or 'Fairtrade Amsterdam'}}"/>
-    <meta property="og:url" content="http://fairtradeamsterdam.nl/"/>
+    <meta property="og:url" content="{{Request::url()}}"/>
     <meta property="og:image" content="{{url('images/logo.png')}}"/>
     <meta property="og:site_name" content="Fairtrade Amsterdam"/>
     <meta property="og:description" content="Fairtrade Amsterdam gaat Amsterdam Fairtrade maken, doet u mee?"/>
