@@ -32,12 +32,21 @@
             });
 
             // Loop through all companies and add them to map
-            $.get(location.origin+"/api/companies", function (data) {
+            var api_call = location.origin+"/fairtrade/public/api/companies";
+            var category_id = $('#gmaps').data('category');
+
+            if(category_id != '')
+            {
+                api_call = location.origin+"/fairtrade/public/api/categories?id="+category_id;
+            }
+
+            $.get(api_call, function (data) {
                 $.each(data, function (key, value) {
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(value.lat, value.lng),
                         map: map,
                         animation: google.maps.Animation.DROP,
+                        //icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|"),
                         //icon: marker_places
                     });
                     infowindow.open(map, marker);

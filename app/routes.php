@@ -49,7 +49,8 @@ Route::post("add", "\\Front\\Company@add");
 Route::post("registerUser", "\\Front\\Company@registerUser");
 Route::get('api/categories', function(){
     //return Model\Company::with('categories')->find(1)->toJson();
-    return Model\Company::where('category', '=', Input::get('id'))->get();
+    //return Model\Company::where('category', '=', Input::get('id'))->get();
+   return $companies = Model\Company::where('category', '=', Input::get('id'))->get();
 });
 Route::get("api/companies", "\\Front\\Company@AjaxGetCompanies");
 Route::get("{slug?}/{param1?}/{param2?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

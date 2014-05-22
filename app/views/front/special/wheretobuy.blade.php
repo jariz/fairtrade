@@ -31,7 +31,7 @@
 
         <div class="col-md-9">
             <div class="maps">
-                <div id="gmaps"></div>
+                <div id="gmaps" data-category="{{ $category_id }}"></div>
             </div>
 
 

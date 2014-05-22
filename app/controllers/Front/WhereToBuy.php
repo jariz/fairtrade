@@ -27,9 +27,12 @@ class WhereToBuy extends BaseController
 
 	protected function show($id = null, $naam = null)
 	{
+        $category_id;
+
         if(isset($id))
         {
            $companies = Model\Company::where('category', '=', $id)->get();
+           $category_id = $id;
            //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
            //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
            /*$companies = Model\Category::with(['companies' => function($query){
@@ -49,6 +52,7 @@ class WhereToBuy extends BaseController
 				'title' => 'Waar te koop',
                 'categories' => $categories,
 				'companies' => $companies,
+                'category_id' => $category_id
 			)
 		);
 	}
