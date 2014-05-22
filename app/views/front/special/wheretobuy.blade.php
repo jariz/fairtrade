@@ -80,6 +80,8 @@
                         @endif
                      </a>
                 @endforeach
+            @elseif(empty($companies))
+                <p>Er zijn geen bedrijven in deze categorie</p>
             @endif
             <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
             <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
