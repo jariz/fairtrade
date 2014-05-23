@@ -8,6 +8,7 @@
 @section('content')
     <div class="row">
         <div class="bedrijfprofiel col-md-8">
+            <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
             <h2 class="title">{{ $company->name }}</h2>
 
             <div class="newsBlock">
@@ -22,7 +23,7 @@
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
+            
         </div>
         <div class="col-md-12 visible-md visible-sm visible-xs">
             <div class="border_horizontal"></div>
