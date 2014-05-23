@@ -232,7 +232,7 @@ class CompanySeeder extends \Seeder
                     // Save full size
                      ->save( public_path().'/uploads/logos/'.$value);
                    // Create thumbnail
-                   $img->resize(300, 300, true)
+                   $img->resize(150, 150, true)
                         ->save( public_path().'/uploads/logos/t/'.$value);
                }
            }

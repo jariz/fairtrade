@@ -14,6 +14,8 @@ class NewsVarcharToText extends Migration {
 	{
 		Schema::table("news", function(Blueprint $blueprint) {
             $blueprint->dropColumn("content");
+        });
+        Schema::table("news", function(Blueprint $blueprint) {
             $blueprint->text("content");
         });
 	}
@@ -27,6 +29,8 @@ class NewsVarcharToText extends Migration {
 	{
         Schema::table("news", function(Blueprint $blueprint) {
             $blueprint->dropColumn("content");
+        });
+        Schema::table("news", function(Blueprint $blueprint) {
             $blueprint->string("content");
         });
 	}

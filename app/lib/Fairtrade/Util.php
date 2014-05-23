@@ -25,7 +25,7 @@ class Util
      * @return string Trimmed string.
      * @author CakePHP
      */
-    public static function truncate($text, $length = 100, $ending = '...', $exact = true, $considerHtml = false)
+    public static function truncate($text, $length = 100, $ending = '...', $exact = true, $considerHtml = true)
     {
         if ($considerHtml) {
             // if the plain text is shorter than the maximum length, return the whole text

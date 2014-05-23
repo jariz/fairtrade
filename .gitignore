@@ -12,6 +12,7 @@ app/config/database.php
 DEFAULT/uploads/concepts/*
 DEFAULT/uploads/news/*
 DEFAULT/uploads/logos/*
+DEFAULT/uploads/events/*
 _ide_helper.php
 _ide_helper_models.php
 # sass

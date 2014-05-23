@@ -31,7 +31,7 @@ class WhereToBuy extends BaseController
 
         if(isset($id))
         {
-           $companies = Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->get();
+           $companies = Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->paginate(10);
            $category_id = $id;
            //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
            //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
@@ -40,7 +40,7 @@ class WhereToBuy extends BaseController
             }])->find($id);*/
         } else{
             // Query all companies from database
-            $companies = Model\Company::where('accepted', '=', 1)->get();
+            $companies = Model\Company::where('accepted', '=', 1)->paginate(10);
         }
 
         //$testCompanies = Model\Category::find(1)->companies;

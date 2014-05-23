@@ -70,22 +70,31 @@
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
             </span>
+            <div class="row">
             @if (isset($companies))
+                <?php $i = 0; ?>
                 @foreach ($companies as $company)
+                <?php $i++; ?>
+                <div class="col-lg-2">
                      <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
                         @if(isset($company->logo) && $company->logo != '')
-                            <img src="{{ asset('uploads/logos/'. $company->logo) }}" class="bedrijvenlogo" alt="{{ $company->name }}" class="floatLeft"/>
+                            <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" class="" style="margin-right:10px; margin-bottom: 10px"/>
                         @else
                             {{ $company->name }}
                         @endif
                      </a>
+                </div>
+                @if($i > 4)
+                <?php $i = 0; ?>
+                </div>
+                <div class="row">
+                @endif
                 @endforeach
             @endif
-            <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="img/deliXl.png" alt="" class="bedrijvenlogo" class="floatLeft"/></a>
-            <a href=""><img src="http://www.grabbits.nl/foto/Jumbo.gif" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="http://www.plushensgens.nl/images/Plus-Logo.png" class="bedrijvenlogo" alt="" class="floatLef-->
+            </div>
+            <center>
+                {{$companies->links()}}
+            </center>
         </div>
     </div>
 @stop

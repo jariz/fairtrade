@@ -11,13 +11,11 @@ use Model\Concept;
 
 class Concepts extends Data{
     public function run(){
-        // Get All news items
-        $concepts = Concept::orderBy('created_at')
-            ->paginate(10);
-
-
-        // Share data with view
+        $concepts = Concept::orderBy('created_at')->paginate(10);
         $this->add('concepts', $concepts);
+
+        $featured = Concept::whereFeatured(1)->orderByRaw("RAND()")->take(4)->get();
+        $this->add("featured", $featured);
 
     }
 } 

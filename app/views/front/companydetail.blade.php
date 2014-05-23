@@ -9,17 +9,20 @@
     <div class="row">
         <div class="bedrijfprofiel col-md-8">
             <div class="border_vertical hidden-md hidden-sm hidden-xs"></div>
-            <h2 class="title">{{ $company->name }}</h2>
+            <h2>{{ $company->name }}</h2>
 
             <div class="newsBlock">
-                <img src="{{url('images/bigimg.jpg')}}" alt="" class="floatLeft"/>
+                @if($company->photo)
+                <img src="{{url('uploads/companies/'.$company->photo)}}" alt="" class="floatLeft"/>
+                @endif
                 <div class="textAreaImg">
                     <h4>{{ $company->name }}</h4>
-                    <p class="bedrijfSite"><a href="http://{{ $company->url }}">{{ $company->url }}</a></p>
-                    <p>
-                       {{ $company->description }}
-                    </p>
-                    <a href="" title="" class="nieuwsarchief">Terug naar nieuwsoverzicht</a>
+                    @if(!empty($company->url))
+                    <p class="bedrijfSite"><a href="{{ $company->url }}">{{ $company->url }}</a></p>
+                    @endif
+                    <div style="word-wrap: break-word;">
+                        {{ $company->description }}
+                    </div>
                 </div>
             </div>
             <div class="clear"></div>
@@ -37,14 +40,17 @@
             @endif
         </div>
         <div class="sidebar bedrijfContact col-md-4">
-            <h2 class="title">contact</h2>
+            <h2 class="title">Contact</h2>
             <div class="block">
+                @if(!empty($company->business_hours))
                 <h4><a href="" title="">Openings tijden</a></h4>
+                <p>{{$company->business_hours}}</p>
+                @endif
+                <h4>Bedrijfsinformatie</h4>
                 <p>
                     adres : {{ $company->address }} <br />
                     postcode: 1234 AB<br />
-                    stad: {{ $company->city }}<br /><br />
-                    {{ $company->business_hours }}
+                    stad: {{ $company->city }}
                 </p>
             </div>
         </div>
