@@ -13,7 +13,7 @@
 
             <div class="newsBlock">
                 @if($company->photo)
-                <img src="{{url('uploads/companies/'.$company->photo)}}" alt="" class="floatLeft"/>
+                    <img src="{{url('uploads/companies/'.$company->photo)}}" alt="" class="floatLeft"/>
                 @endif
                 <div class="textAreaImg">
                     <h4>{{ $company->name }}</h4>
@@ -26,7 +26,6 @@
                 </div>
             </div>
             <div class="clear"></div>
-            
         </div>
         <div class="col-md-12 visible-md visible-sm visible-xs">
             <div class="border_horizontal"></div>
