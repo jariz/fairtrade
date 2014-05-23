@@ -7,7 +7,7 @@
  */
 
 namespace Front;
-
+use Model;
 
 class Api extends BaseController {
     /**
@@ -49,5 +49,11 @@ class Api extends BaseController {
 
     public function categories() {
         return $this->query(new \Model\Category);
+    }
+
+    public function companiesCategory()
+    {
+        $id = \Input::get('id');
+        return Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->get();
     }
 } 

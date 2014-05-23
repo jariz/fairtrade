@@ -49,6 +49,7 @@ Route::post("add", "\\Front\\Company@add");
 Route::post("registerUser", "\\Front\\Company@registerUser");
 Route::get("api/companies", "\\Front\\Api@companies");
 Route::get("api/categories", "\\Front\\Api@categories");
+Route::get("api/companiesCategory", "\\Front\\Api@companiesCategory");
 Route::get("{slug?}/{param1?}/{param2?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
 //Route::get("api/categories", "\\Front\\Category@AjaxGetCategories");
 Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);

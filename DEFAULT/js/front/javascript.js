@@ -32,12 +32,12 @@
             });
 
             // Loop through all companies and add them to map
-            var api_call = baseurl+"/api/companies";
+            var api_call = baseurl+'/api/companies';
             var category_id = $('#gmaps').data('category');
 
             if(category_id != '')
             {
-                api_call = baseurl+"/api/categories?id="+category_id;
+                api_call = baseurl+'/api/companiesCategory?id='+category_id;
             }
 
             $.get(api_call, function (data) {
@@ -46,8 +46,14 @@
                         position: new google.maps.LatLng(value.lat, value.lng),
                         map: map,
                         animation: google.maps.Animation.DROP,
-                        //icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|"),
+                        id: value.id,
+                        //icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|#CC40DE"),
                         //icon: marker_places
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        console.log(this.id);
+                        window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
                     });
                     infowindow.open(map, marker);
                 });
