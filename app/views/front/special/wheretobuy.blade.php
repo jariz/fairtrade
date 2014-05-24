@@ -13,25 +13,24 @@
             <div class="border_vertical"></div> 
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
+                    <img src="images/h2Left.png" alt="">
                 </span>
                     <h2>
                        In de buurt
                     </h2>
                 <span class="h2Right">
-                   <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
+                   <img src="images/h2Right.png" alt="">
                 </span>
             </span>
 
-            <h3>Ben jij al Fairtrade?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
-            <p> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3>Waar te koop</h3>
+            Fairtrade producten kun je herkennen aan het Max Havelaar keurmerk. Stichting Max Havelaar is de initiator en eigenaar van het Fairtrade keurmerk in Nederland. </p><p>Het keurmerk is in Nederland te vinden op ruim 1.700 producten zoals koffie, thee, chocolade, ijs, bananen, bloemen en wijn die geleverd worden door ruim 140 bedrijven. </p><p>Fairtrade komt wereldwijd ten goede aan ruim 6 miljoen mensen in ontwikkelingslanden. Om armoede aan te pakken en boeren een eerlijke kans op ontwikkeling te geven, zijn er naast strenge sociale- en milieucriteria ook criteria opgenomen over de betaling aan boeren. Zo ontvangen zij minimaal een kostendekkende prijs en een extra premie.
+
         </div>
 
         <div class="col-md-9">
             <div class="maps">
-                <div id="gmaps" data-category="{{ $category_id }}"></div>
+                <div id="gmaps"></div>
             </div>
 
 
@@ -61,13 +60,13 @@
         <div class="col-md-12 bedrijvenmaps">
             <span class="h2Wrap">
                 <span class="h2Left">
-                    <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
+                    <img src="images/h2Left.png" alt="">
                 </span>
                     <h2>
                        Bedrijven
                     </h2>
                 <span class="h2Right">
-                   <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
+                   <img src="images/h2Right.png" alt="">
                 </span>
             </span>
             @if (isset($companies))
