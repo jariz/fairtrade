@@ -9,15 +9,15 @@ Thumbs.db
 app/config/database.php
 *.iml
 .idea/
-public/uploads/concepts/*
-public/uploads/news/*
-public/uploads/logos/*
+DEFAULT/uploads/concepts/*
+DEFAULT/uploads/news/*
+DEFAULT/uploads/logos/*
 _ide_helper.php
 _ide_helper_models.php
 # sass
-public/.sass-cache/
-public/css/screen.css
-public/css/admin/screen.css
+DEFAULT/.sass-cache/
+DEFAULT/css/screen.css
+DEFAULT/css/admin/screen.css
 .vagrant
 app/storage/debugbar/*.json
 concept_bedrijf_header_footer/
