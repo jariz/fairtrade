@@ -6,8 +6,7 @@
 @stop
 
 @section('content')
-    <div class="wrapper" data-base="{{ URL::to('/') }}">
-    </div>
+    <div class="wrapper"></div>
     <div class="col-md-12 buurtWrap">
         <div class="col-md-3">
             <div class="border_vertical"></div> 
@@ -15,7 +14,7 @@
                 <span class="h2Left">
                     <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
                 </span>
-                    <h2> In de buurt</h2>
+                    <h2>In de buurt</h2>
                 <span class="h2Right">
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
@@ -77,7 +76,7 @@
                 <div class="col-lg-2">
                      <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
                         @if(isset($company->logo) && $company->logo != '')
-                            <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" class="" style="margin-right:10px; margin-bottom: 10px"/>
+                            <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" style="margin-right:10px; margin-bottom: 10px" />
                         @else
                             {{ $company->name }}
                         @endif

@@ -13,7 +13,7 @@
 
             <div class="newsBlock">
                 @if($company->photo)
-                    <img src="{{url('uploads/companies/'.$company->photo)}}" alt="" class="floatLeft"/>
+                    <img src="{{ url('uploads/companies/'.$company->photo) }}" alt="" class="floatLeft"/>
                 @endif
                 <div class="textAreaImg">
                     <h4>{{ $company->name }}</h4>
@@ -35,7 +35,7 @@
             <h2 class="title">Bedrijf</h2>
             @if ($company->logo != '')
                 <div class="block">
-                    <img src="{{ asset('uploads/logos/'. $company->logo) }}" alt="{{ $company->name }}">
+                    <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" />
                 </div>
             @endif
         </div>
@@ -44,9 +44,9 @@
             <div class="block">
                 <h4>Bedrijfsinformatie</h4>
                 <p>
-                    adres : {{ $company->address }} <br />
-                    postcode: 1234 AB<br />
-                    stad: {{ $company->city }}
+                    Adres: {{ $company->address }} <br />
+                    Postcode: {{ $company->postal_code }}<br />
+                    Stad: {{ $company->city }}
                 </p>
                @if(!empty($company->business_hours))
                    <h4>Openings tijden</h4>
