@@ -5,7 +5,7 @@
         @else
             <div class="col-sm-2"></div>
         @endif
-        <div class="col-sm-10">
+        <div class="col-sm-10 @if($field['type'] == 'checkbox') checkbox @endif ">
             @if($field["type"] == "text")
             {{Form::text($field["name"], $data[$field["name"]], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
             @elseif($field["type"] == "password")
@@ -61,10 +61,10 @@
                 </div>
             @elseif($field['type'] === 'checkbox')
                 <?php $checked = ( $data[ $field['name'] ] == 1) ? true : false ?>
-               {{ Form::checkbox($field['name'], 1, $checked) }}
+               {{ Form::checkbox($field['name'], 1, $checked, ['style'=>'margin-left: -4px;']) }}
 
             @elseif($editing && $field['type'] == 'json')
-                <h2>{{$name}}</h2>
+                <legend style="padding-top:15px;">{{$name}}</legend>
 
             @elseif($field['type'] == 'select')
                 <select name="{{$field['name']}}" class="form-control">

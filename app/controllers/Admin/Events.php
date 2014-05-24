@@ -20,10 +20,22 @@ class Events extends CrudController {
                 "type" => "text",
                 "rules" => "required"
             ),
+            "Afbeelding" => array(
+                "name" => "image",
+                "type" => "file",
+                "hideInOverview" => true,
+                "rules" => "",
+                "uploader" => "Event",
+                "required" => false,
+                "thumbnail" => [
+                    'width' => 150,
+                    'height' => 150
+                ]
+            ),
             "Datum" => array(
                 "name" => "date",
                 "type" => "date",
-                "rules" => "required|date"
+                "rules" => "required"
             )
         );
     }

@@ -13,11 +13,11 @@ class Pages extends CrudController {
     protected function getFields() {
 
 
-        $data = Page::select(['id', 'title'])
-            ->get()
-            ->toArray();
-
-        array_unshift($data, ['id' => 0, "title" => 'geen']);
+//        $data = Page::select(['id', 'title'])
+//            ->get()
+//            ->toArray();
+//
+//        array_unshift($data, ['id' => 0, "title" => 'geen']);
 
 
 
@@ -65,14 +65,14 @@ class Pages extends CrudController {
                 "hideInOverview" => true
             ],
 
-            "Tonen onder" => [
-                "name" => "parent",
-                "type" => "select",
-                "hideInOverview" => true,
-                "options" => $data
-            ],
+//            "Tonen onder" => [
+//                "name" => "parent",
+//                "type" => "select",
+//                "hideInOverview" => true,
+//                "options" => $data
+//            ],
 
-            "Aanpasbare gedeelte" => [
+            "Pagina-specifieke opties" => [
                 "name" => "meta",
                 "type" => "json",
                 "rules" => "",
@@ -109,6 +109,18 @@ class Pages extends CrudController {
         }
 
         return \Response::json(['success' => 1]);
+    }
+
+    public function delete()
+    {
+        $id = intval(\Input::get("id"));
+        $entry = Page::findOrFail($id);
+        if($entry->special) return \View::make("admin.nice-error", [
+            "title" => "Kan speciale pagina niet verwijderen",
+            "message" => "Dit is een systeempagina en kan daarom niet worden verwijderd."
+        ]);
+
+        return parent::delete();
     }
 
     protected $model = "\\Model\\Page";

@@ -105,60 +105,26 @@
                        </span>
                    </span>
             </span>
-            <ul class="list-inline">
-                <li class="first-child">
-                    <ul>
-                        <li class="image">
-                            <img src="http://placehold.it/158x106" alt="">
-                        </li>
-                        <li>
-                            <h2>Dinner & co</h2>
-                        </li>
-                        <li>
-                            <h3>Fairtrade wijn cursus</h3>
-                        </li>
-                    </ul>
-                </li>
+            <ul class="list-inline">|
+                @foreach($featureds as $item)
                 <li>
-                    <ul>
-                        <li>
-                            <img src="http://placehold.it/158x106" alt="">
-                        </li>
-                        <li>
-                            <h2>Dinner & co</h2>
-                        </li>
-                        <li>
-                            <h3>Fairtrade wijn cursus</h3>
-                        </li>
-                    </ul>
+                    <a href="{{$item->link}}">
+                        <ul>
+                            @if(!empty($item->image))
+                            <li class="image">
+                                <img src="http://placehold.it/158x106" alt="">
+                            </li>
+                            @endif
+                            <li>
+                                <h2>{{\Fairtrade\Util::truncate($item->company->name, 20)}}</h2>
+                            </li>
+                            <li>
+                                <h3>{{\Fairtrade\Util::truncate($item->title, 20)}}</h3>
+                            </li>
+                        </ul>
+                    </a>
                 </li>
-
-                <li>
-                    <ul>
-                        <li class="image">
-                            <img src="http://placehold.it/158x106" alt="">
-                        </li>
-                        <li>
-                            <h2>Dinner & co</h2>
-                        </li>
-                        <li>
-                            <h3>Fairtrade wijn cursus</h3>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <ul>
-                        <li>
-                            <img src="http://placehold.it/158x106" alt="">
-                        </li>
-                        <li>
-                            <h2>Dinner & co</h2>
-                        </li>
-                        <li>
-                            <h3>Fairtrade wijn cursus</h3>
-                        </li>
-                    </ul>
-                </li>
+                @endforeach
             </ul>
             <div class="border_horizontal"></div>
         </div>

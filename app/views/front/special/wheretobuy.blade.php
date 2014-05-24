@@ -6,8 +6,7 @@
 @stop
 
 @section('content')
-    <div class="wrapper" data-base="{{ URL::to('/') }}">
-    </div>
+    <div class="wrapper"></div>
     <div class="col-md-12 buurtWrap">
         <div class="col-md-3">
             <div class="border_vertical"></div> 
@@ -15,18 +14,21 @@
                 <span class="h2Left">
                     <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
                 </span>
-                    <h2>
-                       In de buurt
-                    </h2>
+                    <h2>In de buurt</h2>
                 <span class="h2Right">
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
             </span>
 
             <h3>Ben jij al Fairtrade?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
-            <p> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Ben jij bewust van Fairtrade bij jou in de buurt?
+            Welke winkels bij jou in de buurt doen aan
+            het verkoop van Fairtrade-producten?</p>
+
+            <p>Met behulp van de kaart kan jij op zoek naar de
+            Fairtrade-winkels bij jou om de hoek.</p>
+
+            <p> Ga opzoek naar Fairtrade bij jou in de buurt! </p>
         </div>
 
         <div class="col-md-9">
@@ -34,27 +36,25 @@
                 <div id="gmaps" data-category="{{ $category_id }}"></div>
             </div>
 
-
-
-                <form class="form-inline" role="form" id="add_new_place_form">
-                <div class="form-group">
-                    <input type="text" name="place" id="add_place_input searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
+            <div class="form-group">
+                <form class="form-inline" role="form">
+                    <input type="text" name="place" id="searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
                     <input type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
-                    <h2>Categori&euml;</h2>
-                    @if (isset($categories))
-                        <ul>
-                            @foreach ($categories as $category)
-                                <li style="color:{{ $category->color }}">{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array('style' => 'color: $category->color')); }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
+                </form>
+                <h2>Categori&euml;</h2>
+                @if (isset($categories))
+                    <ul>
+                        @foreach ($categories as $category)
+                            <li style="color:{{ $category->color }}">{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array('style' => 'color: $category->color')); }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
+        </div>
         <!--
         <a href=""><img class="iosapp" src="img/iosapp.png" alt="ios app"></a>
         <a href=""><img class="androidapp" src="img/androidapp.png" alt="ios app"></a>
         -->
-
     </div>
     <div class="col-md-12">
         <div class="border_horizontal"></div>
@@ -63,29 +63,34 @@
                 <span class="h2Left">
                     <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
                 </span>
-                    <h2>
-                       Bedrijven
-                    </h2>
+                <h2>Bedrijven</h2>
                 <span class="h2Right">
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
             </span>
+            <div class="row">
             @if (isset($companies))
+                <?php $i = 0; ?>
                 @foreach ($companies as $company)
+                <?php $i++; ?>
+                <div class="col-lg-2">
                      <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
                         @if(isset($company->logo) && $company->logo != '')
-                            <img src="{{ asset('uploads/logos/'. $company->logo) }}" class="bedrijvenlogo" alt="{{ $company->name }}" class="floatLeft"/>
+                            <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" style="margin-right:10px; margin-bottom: 10px" />
                         @else
                             {{ $company->name }}
                         @endif
                      </a>
+                </div>
+                @if($i > 4)
+                <?php $i = 0; ?>
+                </div>
+                <div class="row">
+                @endif
                 @endforeach
             @endif
-            <!--<a href=""><img src="img/albertHeijn.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="img/wereldWinkel.png" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="img/deliXl.png" alt="" class="bedrijvenlogo" class="floatLeft"/></a>
-            <a href=""><img src="http://www.grabbits.nl/foto/Jumbo.gif" class="bedrijvenlogo" alt="" class="floatLeft"/></a>
-            <a href=""><img src="http://www.plushensgens.nl/images/Plus-Logo.png" class="bedrijvenlogo" alt="" class="floatLef-->
+            </div>
+            <center>{{ $companies->links() }}</center>
         </div>
     </div>
 @stop

@@ -40,8 +40,6 @@ class Company extends BaseController
                 'categories' => $categories
             ));
         }
-
-
 	}
 
 	protected function add()
@@ -164,44 +162,4 @@ class Company extends BaseController
             'title' => 'Betalingsgegevens',
         ));
     }
-
-	protected function AjaxGetCompanies()
-	{
-		$companyModel = new Model\Company;
-
-        $id = false;
-
-        // Check if id parameter is given
-        if( !is_null(Input::get('id')) )
-        {
-            $id = Input::get('id');
-        }
-
-        // Collect all requested fields
-        $companyFields = explode(',', Input::get('fields') );
-
-        foreach( $companyFields as $key => $field){
-            if( empty( $field ) || !Schema::hasColumn('companies', $field)){
-                unset($companyFields[$key]);
-            }
-        }
-
-        $companyModel::whereAccepted(1);
-
-        if(count( $companyFields) == 0){
-            $companyFields = ['*'];
-        }
-
-        if( $id != false){
-            $result = $companyModel->find($id, $companyFields)->where('accepted', '=', 1);
-        }
-        else{
-            $result = $companyModel->get($companyFields);
-        }
-
-        return Response::json($result->toArray(), 200, array
-        (
-            'Access-Control-Allow-Origin: *'
-        ));
-	}
 }
