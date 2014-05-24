@@ -22,9 +22,14 @@
             </span>
 
             <h3>Ben jij al Fairtrade?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
-            <p> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Ben jij bewust van Fairtrade bij jou in de buurt?
+            Welke winkels bij jou in de buurt doen aan
+            het verkoop van Fairtrade-producten?</p>
+
+            <p>Met behulp van de kaart kan jij op zoek naar de
+            Fairtrade-winkels bij jou om de hoek.</p>
+
+            <p> Ga opzoek naar Fairtrade bij jou in de buurt! </p>
         </div>
 
         <div class="col-md-9">
@@ -51,7 +56,6 @@
         <a href=""><img class="iosapp" src="img/iosapp.png" alt="ios app"></a>
         <a href=""><img class="androidapp" src="img/androidapp.png" alt="ios app"></a>
         -->
-
     </div>
     <div class="col-md-12">
         <div class="border_horizontal"></div>
@@ -60,9 +64,7 @@
                 <span class="h2Left">
                     <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
                 </span>
-                    <h2>
-                       Bedrijven
-                    </h2>
+                <h2>Bedrijven</h2>
                 <span class="h2Right">
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
@@ -89,9 +91,7 @@
                 @endforeach
             @endif
             </div>
-            <center>
-                {{$companies->links()}}
-            </center>
+            <center>{{ $companies->links() }}</center>
         </div>
     </div>
 @stop

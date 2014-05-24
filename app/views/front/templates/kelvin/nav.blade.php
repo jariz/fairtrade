@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url()}}"><img src="{{url('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand" href="{{ URL::to('/') }}"><img src="{{url('images/logo.png')}}" alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse " id="navigation">
@@ -37,7 +37,7 @@
 </nav>
 <div class="header container visible-sm visible-md visible-lg  hidden-xs">
 
-    <div class="logo col-md-3"><img src="{{url('images/logo.png')}}" alt="Faretrade Gemeente amsterdam"></div>
+    <div class="logo col-md-3"><a href="{{ URL::to('/') }}"><img src="{{url('images/logo.png')}}" alt="Faretrade Gemeente amsterdam"></a></div>
     <div class="col-md-9 navMain">
         <ul class="list-inline">
             @foreach($menuData as $menuItem)

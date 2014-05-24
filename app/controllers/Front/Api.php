@@ -51,6 +51,9 @@ class Api extends BaseController {
         return $this->query(new \Model\Category);
     }
 
+    /*
+     * Get all companies from category with given id
+     */
     public function companiesCategory()
     {
         $id = \Input::get('id');

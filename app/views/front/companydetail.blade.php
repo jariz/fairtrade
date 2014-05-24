@@ -22,6 +22,7 @@
                     @endif
                     <div style="word-wrap: break-word;">
                         {{ $company->description }}
+                        <a href="{{ URL::route('wheretobuy') }}" title="" class="nieuwsarchief">Terug naar bedrijven overzicht</a>
                     </div>
                 </div>
             </div>
@@ -41,16 +42,16 @@
         <div class="sidebar bedrijfContact col-md-4">
             <h2 class="title">Contact</h2>
             <div class="block">
-                @if(!empty($company->business_hours))
-                <h4><a href="" title="">Openings tijden</a></h4>
-                <p>{{$company->business_hours}}</p>
-                @endif
                 <h4>Bedrijfsinformatie</h4>
                 <p>
                     adres : {{ $company->address }} <br />
                     postcode: 1234 AB<br />
                     stad: {{ $company->city }}
                 </p>
+               @if(!empty($company->business_hours))
+                   <h4>Openings tijden</h4>
+                   <p>{{ $company->business_hours }}</p>
+               @endif
             </div>
         </div>
     </div>
