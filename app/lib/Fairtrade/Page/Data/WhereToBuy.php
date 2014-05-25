@@ -12,6 +12,9 @@ use Model;
 
 class WhereToBuy extends Data{
 
+    private $query_heading = 'Alle fairtrade bedrijven';
+    private $filterd = false;
+
     public function run( $params = null ){
 
         $category_id = '';
@@ -36,6 +39,13 @@ class WhereToBuy extends Data{
         {
             $companies = Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->paginate(10);
             $category_id = $id;
+            $category = Model\Category::find($id);
+
+            if( $category->exists() ){
+                $this->query_heading = 'Alle bedrijven onder de categorie <strong>'.$category->name.'</strong>';
+                $this->filterd = true;
+                $this->add('category', $category);
+            }
             //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
             //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
             /*$companies = Model\Category::with(['companies' => function($query){
@@ -54,6 +64,8 @@ class WhereToBuy extends Data{
         $this->add('categories', $categories);
         $this->add('companies', $companies);
         $this->add('category_id', $category_id);
+        $this->add('query_heading', $this->query_heading);
+        $this->add('filterd', $this->filterd);
     }
 
     protected function detail ( $params )
