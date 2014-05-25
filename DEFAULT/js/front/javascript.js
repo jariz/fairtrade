@@ -55,7 +55,18 @@
                     });
 
                     var infowindow = new google.maps.InfoWindow({
-                        content: '<h3>'+ value.name +'</h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
+//                        content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
+                        content: '<div class="media">\
+                            <a class="pull-left" href="#">\
+                                <img class="media-object" src="'+value.thumbnail_url+'" alt="...">\
+                                </a>\
+                                <div class="media-body">\
+                                    <h4 class="media-heading">'+ value.name +'</h4>\
+                                    <p class="help-block">'+value.address+'</p>\
+                                    <p><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
+                                </div>\
+                            </div>'
+
                     });
 
                     infowindows.push(infowindow);
