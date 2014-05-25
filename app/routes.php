@@ -37,8 +37,8 @@ Route::post('hide-popup', ['as' => 'hide-popup', 'uses' => "\\Front\\BaseControl
 //Route::get("waartekoop/bedrijf/{id?}/{bedrijf?}", array("as" => "companydetail", "uses" => "\\Front\\WhereToBuy@detail"));
 //Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "wheretobuy.category", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
-Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
-Route::get("bedrijf-aanmelden/betalen", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "companyDetails", "uses" => "\\Front\\Company@details"));
+Route::get("bedrijf-aanmelden/betalen", array("as" => "payment", "uses" => "\\Front\\Company@payment"));
 
 /* Nieuws detail page */
 Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\NewsController@show"]);

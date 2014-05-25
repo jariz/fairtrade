@@ -13,20 +13,19 @@ class Company extends BaseController
 {
     protected function registerAccount()
     {
-        if( Session::get('user_registration') != '' )
+        if( $this->checkStep(1) )
         {
             return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
+        } else{
+            return \View::make("front.special.registerAccount")->with(array(
+                'title' => 'Account aanmaken',
+            ));
         }
-
-        return \View::make("front.special.registerAccount")->with(array(
-            'title' => 'Account aanmaken',
-        ));
     }
 
     protected function registerUser()
     {
         $user = new Model\User;
-
         $inputs = Input::all();
 
         /* Form validation */
@@ -41,7 +40,6 @@ class Company extends BaseController
 
         if($validation->fails())
         {
-            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
             return Redirect::back()->withErrors($validation->messages())->withInput();
         } else{
             /* Loop through all fields */
@@ -51,16 +49,21 @@ class Company extends BaseController
             );
 
             /* Add new user to database */
-            foreach($fields as $field)
-            {
+            foreach($fields as $field) {
                 $user->{$field} = Input::get($field);
             }
 
             $user->password = \Hash::make(Input::get('password'));
 
-            if($user->save())
-            {
-                Session::put('user_registration', $user->id);
+            if($user->save()) {
+                // Create session to identify this step has been done
+                $session_details = array(
+                    'current_step' => 1,
+                    'next_step' => 2,
+                    'user_id' => $user->id,
+                    'company_id' => ''
+                );
+                Session::put('user_registration', $session_details);
                 return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
             }
         }
@@ -72,12 +75,16 @@ class Company extends BaseController
 	 */
 	protected function details()
 	{
-        $categories = Model\Category::lists('name', 'id');
+        $session = Session::get('user_registration');
+        print_r($session);
 
-        if( !Session::get('user_registration'))
+        if( !$this->checkStep(1) )
         {
-            return Redirect::to('bedrijf-aanmelden');
-        } else{
+            return Redirect::route('applyCompany');
+        }
+        else{
+            $categories = Model\Category::lists('name', 'id');
+
             return \View::make("front.special.applycompany")->with(array(
                 'title' => 'Bedrijf aanmelden',
                 'categories' => $categories
@@ -89,17 +96,6 @@ class Company extends BaseController
 	{
 		$company = new Model\Company;
 		$inputs = Input::all();
-		//dd($inputs);
-
-		$geo_location = '';
-
-        $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
-
-		/* Convert the address to a geo location with the Googele Maps API */
-		$address = str_replace(' ', '%20', Input::get('postal_code') .'%20'. Input::get('address'));
-		$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='. $address .'&sensor=false';
-		$jsonData = file_get_contents($url);
-		$data = json_decode($jsonData);
 
 		/* Form validation */
 		$rules = array(
@@ -142,27 +138,30 @@ class Company extends BaseController
             $company->user_id = Session::get('user_registration');
 
             // Save coordinates
+            $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
             $company->lat = $coords['lat'];
             $company->lng = $coords['lng'];
 
             //Upload logo
-            $uploader = new \Fairtrade\Upload\Logo('logo');
-            $photoUploader = new \Fairtrade\Upload\Photo('photo');
-
+            //$uploader = new \Fairtrade\Upload\Logo('logo');
+            //$photoUploader = new \Fairtrade\Upload\Photo('photo');
             if($company->save())
             {
-                $company->logo = $uploader->getFilename();
-                $company->photo = $photoUploader->getFilename();
+                die('test');
+                //$company->logo = $uploader->getFilename();
+                //$company->photo = $photoUploader->getFilename();
 
+                $session = Session::get('user_registration');
                 // Set session to check on in final step
                 $session_details = array(
-                    'step' => 2,
-                    'user_id' => 'user id here',
-                    'company_id' => $company->id
+                    'current_step' => 2,
+                    'next_step' => 3,
+                    'user_id' => $session['user_id'],
+                    'company_id' => $company->id,
                 );
                 Session::put('user_registration', $session_details);
 
-                return Redirect::to('bedrijf-aanmelden/betalen');
+                return Redirect::route('payment');
             }
 		}
 	}
@@ -172,11 +171,51 @@ class Company extends BaseController
      */
     protected function payment()
     {
-        print_r(Session::get('user_registration'));
+        // Check if this step can be performed
+        if( $this->checkStep(3) )
+        {
+            $session = Session::get('user_registration');
+            print_r($session);
 
-        // Ideal implementation
-        return \View::make("front.payment")->with(array(
-            'title' => 'Betalingsgegevens',
-        ));
+            // Mail to company who signed up
+            $mail = Config::get('fairtrade.contact_email');
+
+            \Mail::send(
+                "emails.thankCompany", [
+                    "company" => Model\Company::where('user_id', '=', $session['user_id']),
+                    "user" => Model\User::where('id', '=', $session['user_id'])
+                ]
+                , function(Message $message) use($mail) {
+                    $message->to($mail);
+                    $message->subject('Bedankt voor het aanmelden van uw bedrijf');
+                    $message->from("contact@fairtradegemeenten.nl");
+                }
+            );
+
+            // Mail to Fairtrade Amsterdam to notify the new signup
+
+
+
+
+            // Ideal implementation
+            return \View::make("front.payment")->with(array(
+                'title' => 'Betalingsgegevens',
+            ));
+        } else{
+            return Redirect::route('companyDetails');
+        }
+    }
+
+    // Check what step should be visible
+    protected function checkStep($step)
+    {
+        $session = Session::get('user_registration');
+
+        if($step + 1 === $session['next_step'])
+        {
+            return true;
+        } else{
+            return false;
+        }
     }
 }

@@ -6,7 +6,6 @@ use Fairtrade\Map;
 use URL, File;
 class Company extends \Eloquent
 {
-
     protected $table = 'companies';
     public $timestamps = true;
     protected $softDelete = true;
@@ -18,8 +17,12 @@ class Company extends \Eloquent
         parent::boot();
 
         Company::saving(function ($company) {
+
             if (is_null($company->accepted))
+            {
                 $company->accepted = 0;
+            }
+
             if (!isset($company->lng) && !isset($company->lng)) {
                 $coords = Map::convertAddress($company->postal_code, $company->address);
                 $company->lat = $coords['lat'];
@@ -40,21 +43,18 @@ class Company extends \Eloquent
 
     public function categories()
     {
-
         return $this->belongsToMany('Model\Category', 'companies_categories', 'company_idz', 'category_id');
-
     }
 
-    public function getImageUrlAttribute(){
-
-
+    public function getImageUrlAttribute()
+    {
         return URL::asset( $this->image_path . $this->logo );
     }
 
-    public function getThumbnailUrlAttribute(){
-
-
+    public function getThumbnailUrlAttribute()
+    {
         $thumbnail = $this->image_path. 't/'. $this->logo;
+
         if( File::exists( $thumbnail )){
             return URL::asset($thumbnail);
         }
