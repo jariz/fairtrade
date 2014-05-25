@@ -104,7 +104,10 @@ return array(
         "title" => "Titel",
         "location" => "Locatie",
         "date" => "Datum",
-        "url" => "Website"
+        "url" => "Website",
+        "subject" => "Onderwerp",
+        "message" => "Bericht"
+
     ),
 
 );
