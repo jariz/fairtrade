@@ -11,7 +11,7 @@ use Model\Concept, View;
 
 class ConceptController extends BaseController{
     public function show($id, $title = null){
-        $concept = Concept::findOrFail($id);
+        $concept = Concept::with('company')->findOrFail($id);
 
         return View::make('front.special.concept-item')
                 ->with('title', $concept->title)
