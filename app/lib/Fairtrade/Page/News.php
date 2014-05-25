@@ -16,11 +16,20 @@ class News extends Page{
     public $data_source = 'News';
 
     protected $meta = [
-        'dynamic' => [
-            'value' => 'Dit is een dynamische value',
+        'sidebar_heading' => [
+            'value' => 'Horeca grootste uitdaging',
+            'type' => 'text',
+            'label' => 'Zijbalk titel'
+        ],
+
+        'sidebar_description' => [
+            'value' => 'Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...',
             'type' => 'wysiwyg',
-            'label' => 'Dynamische blok'
-        ]
+            'label' => 'Zijbalk tekst'
+        ],
+
+
+
     ];
 
 
