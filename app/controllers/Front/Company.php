@@ -23,6 +23,49 @@ class Company extends BaseController
         ));
     }
 
+    protected function registerUser()
+    {
+        $user = new Model\User;
+
+        $inputs = Input::all();
+
+        /* Form validation */
+        $rules = array(
+            'name' => 'required',
+            'email' => 'email|required',
+            'password' => 'required|min:5',
+            'confirmation' => 'required:same:password',
+        );
+
+        $validation = Validator::make($inputs, $rules);
+
+        if($validation->fails())
+        {
+            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
+            return Redirect::back()->withErrors($validation->messages())->withInput();
+        } else{
+            /* Loop through all fields */
+            $fields = array(
+                'name',
+                'email',
+            );
+
+            /* Add new user to database */
+            foreach($fields as $field)
+            {
+                $user->{$field} = Input::get($field);
+            }
+
+            $user->password = \Hash::make(Input::get('password'));
+
+            if($user->save())
+            {
+                Session::put('user_registration', $user->id);
+                return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
+            }
+        }
+    }
+
 	/**
 	 * Controller to apply a new company
 	 * @return void
@@ -77,7 +120,7 @@ class Company extends BaseController
 			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
 			return Redirect::back()->withErrors($validation->messages())->withInput();
 		} else{
-            /* Loop through all fields */
+            /* Prepare all fields to add to database */
             $fields = array(
                 'name',
                 'description',
@@ -111,54 +154,26 @@ class Company extends BaseController
                 $company->logo = $uploader->getFilename();
                 $company->photo = $photoUploader->getFilename();
 
+                // Set session to check on in final step
+                $session_details = array(
+                    'step' => 2,
+                    'user_id' => 'user id here',
+                    'company_id' => $company->id
+                );
+                Session::put('user_registration', $session_details);
+
                 return Redirect::to('bedrijf-aanmelden/betalen');
             }
 		}
 	}
 
-    protected function registerUser()
-    {
-        $user = new Model\User;
-
-        $inputs = Input::all();
-
-        /* Form validation */
-        $rules = array(
-            'name' => 'required',
-            'email' => 'email|required',
-            'password' => 'required|min:5',
-            'confirmation' => 'required:same:password',
-        );
-
-        $validation = Validator::make($inputs, $rules);
-
-        if($validation->fails())
-        {
-            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
-            return Redirect::back()->withErrors($validation->messages())->withInput();
-        } else{
-            /* Loop through all fields */
-            $fields = array(
-                'name',
-                'email',
-            );
-
-            /* Add new user to database */
-            foreach($fields as $field)
-            {
-                $user->{$field} = Input::get($field);
-            }
-            $user->password = \Hash::make(Input::get('password'));
-            if($user->save())
-            {
-                Session::put('user_registration', $user->id);
-                return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
-            }
-        }
-    }
-
+    /*
+     * Final step of company registration process
+     */
     protected function payment()
     {
+        print_r(Session::get('user_registration'));
+
         // Ideal implementation
         return \View::make("front.payment")->with(array(
             'title' => 'Betalingsgegevens',
