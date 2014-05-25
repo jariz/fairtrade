@@ -10,7 +10,7 @@ class Company extends \Eloquent
     protected $table = 'companies';
     public $timestamps = true;
     protected $softDelete = true;
-    protected $appends = ['link', 'image_url', 'thumbnail_url'];
+    protected $appends = ['image_url', 'thumbnail_url'];
     private $image_path = 'uploads/logos/';
 
     public static function boot()
