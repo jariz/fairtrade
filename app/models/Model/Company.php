@@ -10,7 +10,7 @@ class Company extends \Eloquent
     protected $table = 'companies';
     public $timestamps = true;
     protected $softDelete = true;
-    protected $appends = [ 'image_url', 'thumbnail_url'];
+    protected $appends = ['link', 'image_url', 'thumbnail_url'];
     private $image_path = 'uploads/logos/';
 
     public static function boot()
@@ -56,9 +56,9 @@ class Company extends \Eloquent
 
         $thumbnail = $this->image_path. 't/'. $this->logo;
         if( File::exists( $thumbnail )){
-            return $thumbnail;
+            return URL::asset($thumbnail);
         }
 
-        return 'lol';
+        return URL::asset( $this->image_path . $this->logo );
     }
 }
