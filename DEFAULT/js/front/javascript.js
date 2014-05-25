@@ -1,5 +1,7 @@
 (function($) {
     $(function () {
+        var infowindows = [];
+
         if ($('#gmaps').length != 0) {
             // Settings
             var geocoder = new google.maps.Geocoder();
@@ -42,6 +44,7 @@
 
             $.get(api_call, function (data) {
                 $.each(data, function (key, value) {
+
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(value.lat, value.lng),
                         map: map,
@@ -51,13 +54,29 @@
                         //icon: marker_places
                     });
 
-                    google.maps.event.addListener(marker, 'click', function() {
-                        console.log(this.id);
-                        window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
+                    var infowindow = new google.maps.InfoWindow({
+                        content: '<h3>'+ value.name +'</h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
                     });
-                    infowindow.open(map, marker);
+
+                    infowindows.push(infowindow);
+                    hideInfoWindows(infowindows);
+
+                    google.maps.event.addListener(marker, 'click', function()
+                    {
+                        hideInfoWindows(infowindows);
+                        //console.log(this.id);
+                       // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
+                        infowindow.open(map,marker);
+                    });
+                    //infowindow.open(map, marker);
                 });
             });
+
+            function hideInfoWindows(infowindows) {
+                for (var i=0;i<infowindows.length;i++) {
+                    infowindows[i].close();
+                }
+            }
 
             // Suggestions for a new place
             var defaultBounds = new google.maps.LatLngBounds(
