@@ -20,6 +20,10 @@
 		    {{ Form::label('logo', 'Logo: ') }}
 		    {{ Form::file('logo', NULL, array('class' => 'form-control')) }}
 		</div>
+        <div class="form-group">
+		    {{ Form::label('photo', 'Header afbeelding: ') }}
+		    {{ Form::file('photo', NULL, array('class' => 'form-control')) }}
+		</div>
 		<div class="form-group">
 		    {{ Form::label('category', 'Categorie: ') }}
 		    {{ Form::select('category', $categories, NULL, array('class' => 'form-control')) }}

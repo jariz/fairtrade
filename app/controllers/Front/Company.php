@@ -104,10 +104,12 @@ class Company extends BaseController
 
             //Upload logo
             $uploader = new \Fairtrade\Upload\Logo('logo');
+            $photoUploader = new \Fairtrade\Upload\Photo('photo');
 
             if($company->save())
             {
                 $company->logo = $uploader->getFilename();
+                $company->photo = $photoUploader->getFilename();
 
                 return Redirect::to('bedrijf-aanmelden/betalen');
             }
