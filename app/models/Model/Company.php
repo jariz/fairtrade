@@ -59,6 +59,6 @@ class Company extends \Eloquent
             return $thumbnail;
         }
 
-        return URL::asset( $this->image_path . $this->logo );
+        return 'lol';
     }
 }

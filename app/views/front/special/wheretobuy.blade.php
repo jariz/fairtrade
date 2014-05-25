@@ -20,15 +20,8 @@
                 </span>
             </span>
 
-            <h3>Ben jij al Fairtrade?</h3>
-            <p>Ben jij bewust van Fairtrade bij jou in de buurt?
-            Welke winkels bij jou in de buurt doen aan
-            het verkoop van Fairtrade-producten?</p>
-
-            <p>Met behulp van de kaart kan jij op zoek naar de
-            Fairtrade-winkels bij jou om de hoek.</p>
-
-            <p> Ga opzoek naar Fairtrade bij jou in de buurt! </p>
+            <h3>{{$heading or null}}</h3>
+           {{$description or null}}
         </div>
 
         <div class="col-md-9">
@@ -45,7 +38,7 @@
                 @if (isset($categories))
                     <ul>
                         @foreach ($categories as $category)
-                            <li style="color:{{ $category->color }}">{{ link_to_route('wheretobuy.category', $category->name, $parameters = array('id' => $category->id), $attributes = array('style' => 'color: $category->color')); }}</li>
+                            <li style="color:{{ $category->color }}"><a href="{{ URL::to($page->slug.'/categorie/'.$category->id); }}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
                 @endif
@@ -74,7 +67,7 @@
                 @foreach ($companies as $company)
                 <?php $i++; ?>
                 <div class="col-lg-2">
-                     <a href="{{ URL::route('companydetail', $parameters = array('id' => $company->id), $absolute = true ) }}">
+                     <a href="{{ URL::to($page->slug.'/bedrijf/'. $company->id)  }}">
                         @if(isset($company->logo) && $company->logo != '')
                             <img src="{{ asset('uploads/logos/t/'. $company->logo) }}" alt="{{ $company->name }}" style="margin-right:10px; margin-bottom: 10px" />
                         @else

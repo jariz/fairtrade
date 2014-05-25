@@ -19,12 +19,22 @@ class WhereToBuy extends Page
     public $order = 100;
     public $parent = 0;
     public $show_in_nav = 1;
+    public $data_source = 'WhereToBuy';
 
     protected $meta = [
-        'dynamic' => [
-            'value' => 'Dit is een dynamische value',
+        'heading' => [
+            'value' => 'Ben jij al Fairtrade?',
+            'type' => 'text',
+            'label' => 'Titel'
+        ],
+
+        'description' => [
+            'value' => '<p>Ben jij bewust van Fairtrade bij jou in de buurt? Welke winkels bij jou in de buurt doen aan het verkoop van Fairtrade-producten?</p>
+<p>Met behulp van de kaart kan jij op zoek naar de Fairtrade-winkels bij jou om de hoek.</p>
+<p>Ga opzoek naar Fairtrade bij jou in de buurt!</p>',
             'type' => 'wysiwyg',
-            'label' => 'Dynamische blok'
-        ]
+            'label' => 'Uitleg tekst'
+        ],
+
     ];
 }
