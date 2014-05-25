@@ -25,15 +25,33 @@
         </div>
 
         <div class="col-md-9">
+            <h1><i class="fa fa-map-marker"></i> {{$query_heading}}</h1>
+
             <div class="maps">
                 <div id="gmaps" data-category="{{ $category_id }}"></div>
             </div>
+             @if( $filterd )
+                <div class="alert alert-info alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <strong>Let op!</strong> de resultaten op de kaart zijn gefilterd op categorie.
+                  <p><a href="{{URL::to($page->slug)}}" class="btn btn-default">Alle bedrijven weergeven</a></p>
+                </div>
+             @endif
 
-            <div class="form-group">
-                <form class="form-inline" role="form">
-                    <input type="text" name="place" id="searchform" placeholder="Zoekbalk" class="form-control" autocomplete="off">
-                    <input type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
+
+                <form role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-10 col-md-10 col-lg-10">
+                                <input type="text" name="place" id="searchform" placeholder="Zoek op adres of bedrijfsnaam" class="form-control" autocomplete="off">
+                            </div>
+                            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                                <input type="submit" value="Zoeken" class="btn btn-warning" id="add_place_button">
+                            </div>
+                        </div>
+                    </div>
                 </form>
+            <div class="form-group">
                 <h2>Categori&euml;</h2>
                 @if (isset($categories))
                     <ul>
@@ -61,6 +79,9 @@
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>
             </span>
+            @if( $filterd)
+                <p>Alle bedrijven die vallen onder de categrie <strong>{{$category->name}}</strong></p>
+            @endif
             <div class="row">
             @if (isset($companies))
                 <?php $i = 0; ?>
