@@ -71,7 +71,7 @@
                                <ul>
                                    @if(!empty($item->image))
                                    <li class="image">
-                                       <img src="{{url('uploads/concepts/'.$item->image)}}" alt="">
+                                       <img src="{{url('uploads/concepts/t/'.$item->image)}}" alt="">
                                    </li>
                                    @endif
                                    <li>

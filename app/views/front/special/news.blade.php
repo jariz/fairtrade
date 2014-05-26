@@ -52,7 +52,7 @@
 
                 <a href="" title=""><img src="images/imgSidebar.jpg" alt="" /></a>
                     {{$sidebar_description or null}}
-                <a href="" title="" class="readMore">Lees meer</a>
+                <a href="{{url('over-fairtrade')}}" title="" class="readMore">Lees meer</a>
             </div>
         </div>
    </div>

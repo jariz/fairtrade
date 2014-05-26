@@ -26,18 +26,18 @@ class Home extends Data {
         $this->add("news", $news);
 
         //featured concept
-        $featured = Concept::whereFeatured(1)->orderByRaw("RAND()")->first();
+        $featured = Concept::whereFeatured(1)->whereAccepted(1)->orderByRaw("RAND()")->first();
         if($featured) {
             $featured->content = Util::truncate($featured->content);
             $this->add("featured", $featured);
         }
 
         //featured concepts
-        $featureds = Concept::whereFeatured(1)->orderByRaw("RAND()")->take(4)->get();
+        $featureds = Concept::whereFeatured(1)->whereAccepted(1)->orderByRaw("RAND()")->take(4)->get();
         $this->add("featureds", $featureds);
 
         //companies
-        $companies = Company::orderBy("created_at")->take(4)->get();
+        $companies = Company::orderBy("created_at")->whereAccepted(1)->take(4)->get();
         $this->add("companies", $companies);
     }
 }

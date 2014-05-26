@@ -82,16 +82,14 @@
                 <h3>{{{$featured->company->name}}}</h3>
                 <h4>{{{$featured->company->city}}}</h4>
                 <h4>{{{$featured->company->address}}}, {{{$featured->company->postal_code}}}</h4>
-                {{$featured->content}}
+                <div style="display: inline-block;" class="leesmeer"><a href="{{$featured->link}}">Lees meer</a></div>
             </div>
             <div class="clear"></div>
             <div class="border_horizontal"></div>
 
+            @endif
         </div>
 
-        <!--        @if($featured->company->website)-->
-        <!--        <div class="link"><a href="{{{$featured->company->website}}}">Ga naar de website</a></div>-->
-        <!--        @endif-->
         <div class="uitgelicht uitgelichtHome col-md-12">
                    <span class="h2Wrap">
                        <span class="h2Left">
@@ -112,7 +110,7 @@
                         <ul>
                             @if(!empty($item->image))
                             <li class="image">
-                                <img src="{{url('uploads/concepts/'.$item->image)}}" alt="">
+                                <img src="{{url('uploads/concepts/t/'.$item->image)}}" alt="">
                             </li>
                             @endif
                             <li>
@@ -148,7 +146,6 @@
                     src="{{$company->thumbnail_url}}" alt="" class="floatLeft"/></a>
             @endforeach
         </div>
-        @endif
     </div>
 </div>
 @stop
