@@ -178,7 +178,7 @@ class Company extends BaseController
             // Mail to company who signed up
             $mail = Config::get('fairtrade.contact_email');
             $company = Model\Company::where('id', '=', $session['company_id'])->first();
-            $user = Model\User::where('id', '=', $session['user_id'])->first()
+            $user = Model\User::where('id', '=', $session['user_id'])->first();
 
             \Mail::send(
                 "emails.thankCompany", [
@@ -196,7 +196,7 @@ class Company extends BaseController
             \Mail::send(
                 "emails.newApplication", [
                     "company" => Model\Company::where('user_id', '=', $session['user_id'])->first(),
-                    "user" => Model\User::where('id', '=', $session['user_id'])->first();
+                    "user" => Model\User::where('id', '=', $session['user_id'])->first()
                 ]
                 , function(Message $message) use($mail) {
                     $message->to($mail);
