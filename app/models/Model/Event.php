@@ -1,7 +1,7 @@
 <?php
 
 namespace Model;
-use URL, Str;
+use URL, Str, DateTime;
 
 class Event extends FormattedTimestamps {
 
@@ -15,12 +15,17 @@ class Event extends FormattedTimestamps {
     }
 
     public function getDateFormattedAttribute(){
-        return \Fairtrade\Date::input( $this->attributes['created_at'] )
+        return \Fairtrade\Date::input( $this->attributes['date'] )
             ->forHuman();
     }
 
     public function getLinkAttribute(){
         return URL::route('event-item', [$this->id, Str::slug($this->title)]);
+    }
+
+    public function scopeActive($query){
+        $now =  new DateTime('today');
+        return $query->where( 'date', '>=', $now );
     }
 
 }

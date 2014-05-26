@@ -7,16 +7,24 @@
  */
 
 namespace Front;
-use Model\Event, View;
+use Model\Event, View, DateTime;
 
 class EventController extends BaseController {
 
     public function show($id, $title = null){
-        $eventItem = Event::orderBy('date', 'DESC')->findOrFail($id);
+        $active = false;
+
+        $eventItem = Event::findOrFail($id);
+        $now =  new DateTime('today');
+
+        if( new DateTime($eventItem->date) >= $now->modify('+1 day') ){
+            $active = true;
+        }
 
         return View::make('front.special.event-item')
             ->with('item', $eventItem)
-            ->with('title', $eventItem->title);
+            ->with('title', $eventItem->title)
+            ->with('active', $active);
     }
 
 } 
