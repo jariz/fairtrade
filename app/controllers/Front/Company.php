@@ -53,6 +53,7 @@ class Company extends BaseController
                 $user->{$field} = Input::get($field);
             }
 
+            $user->role_id = 2;
             $user->password = \Hash::make(Input::get('password'));
 
             if($user->save()) {
