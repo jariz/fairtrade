@@ -48,7 +48,8 @@ class Users extends CrudController {
                 "name" => "role_id",
                 "type" => "select",
                 "options" => $roles,
-                "rules" => "required|in:".$in
+                "rules" => "required|in:".$in,
+                "property" => "name"
             )
         );
     }
@@ -57,4 +58,5 @@ class Users extends CrudController {
     protected $singular = "Gebruiker";
     protected $plural = "Gebruikers";
     protected $route = "dashboard.users";
+    protected $with = "role";
 } 

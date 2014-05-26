@@ -105,7 +105,7 @@
                        </span>
                    </span>
             </span>
-            <ul class="list-inline">|
+            <ul class="list-inline">
                 @foreach($featureds as $item)
                 <li>
                     <a href="{{$item->link}}">
