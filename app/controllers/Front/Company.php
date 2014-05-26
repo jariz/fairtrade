@@ -76,7 +76,6 @@ class Company extends BaseController
 	protected function details()
 	{
         $session = Session::get('user_registration');
-        print_r($session);
 
         if( !$this->checkStep(1) )
         {
@@ -147,7 +146,6 @@ class Company extends BaseController
             //$photoUploader = new \Fairtrade\Upload\Photo('photo');
             if($company->save())
             {
-                die('test');
                 //$company->logo = $uploader->getFilename();
                 //$company->photo = $photoUploader->getFilename();
 
@@ -175,7 +173,6 @@ class Company extends BaseController
         if( $this->checkStep(3) )
         {
             $session = Session::get('user_registration');
-            print_r($session);
 
             // Mail to company who signed up
             $mail = Config::get('fairtrade.contact_email');
