@@ -11,7 +11,7 @@ namespace System;
 
 class AdminSeeder extends \Seeder{
     public function run() {
-        User::truncate();
+        \Model\User::truncate();
 
         $user = new \Model\User;
         $user->email = 'admin@fairtradeamsterdam.nl';
