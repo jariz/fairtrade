@@ -20,6 +20,12 @@ class Events extends CrudController {
                 "type" => "text",
                 "rules" => "required"
             ),
+            "Inhoud" => array(
+                "name" => "description",
+                "type" => "wysiwyg",
+                "rules" => "",
+                "hideInOverview" => true
+            ),
             "Afbeelding" => array(
                 "name" => "image",
                 "type" => "file",
