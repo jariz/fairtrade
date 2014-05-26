@@ -2,7 +2,7 @@
 <div class="footer container">
     <div class="border_horizontal"></div>
     <ul class="list-inline voorwaarden">
-        <li><a href="">Voorwaarden</a></li>
+        <li><a href="{{URL::to('voorwaarden')}}">Voorwaarden</a></li>
         <li><a href="{{URL::route('dashboard')}}">Beheer</a></li>
     </ul>
     <ul class="list-inline social">
