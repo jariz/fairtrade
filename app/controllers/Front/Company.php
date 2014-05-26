@@ -196,7 +196,7 @@ class Company extends BaseController
             \Mail::send(
                 "emails.newApplication", [
                     "company" => Model\Company::where('user_id', '=', $session['user_id'])->first(),
-                    "user" => Model\User::where('id', '=', $session['user_id'])->first()
+                    "user" => Model\User::where('id', '=', $session['user_id'])->first();
                 ]
                 , function(Message $message) use($mail) {
                     $message->to($mail);
