@@ -80,7 +80,7 @@
                 </span>
             </span>
             @if( $filterd)
-                <p>Alle bedrijven die vallen onder de categrie <strong>{{$category->name}}</strong></p>
+                <p>Alle bedrijven die vallen onder de categrie <strong>{{$categoryz->name}}</strong></p>
             @endif
             <div class="row">
             @if (isset($companies))

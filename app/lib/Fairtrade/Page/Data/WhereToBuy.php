@@ -39,12 +39,14 @@ class WhereToBuy extends Data{
         {
             $companies = Model\Company::where('category', '=', $id)->where('accepted', '=', 1)->paginate(10);
             $category_id = $id;
-            $category = Model\Category::find($id);
+            $category = Model\Category::find($category_id);
 
             if( $category->exists() ){
                 $this->query_heading = 'Alle bedrijven onder de categorie <strong>'.$category->name.'</strong>';
                 $this->filterd = true;
-                $this->add('category', $category);
+
+//                dd($category);
+                $this->add('categoryz', $category);
             }
             //$companies = Model\Category::with('companies')->where('accepted', '=', 1)->find($id);
             //$companies = Model\Company::with('categories')->where('accepted', '=', 1)->find($id);
