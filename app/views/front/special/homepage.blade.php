@@ -11,7 +11,7 @@
 
                 <div class="video-container">
                     <iframe width="375" height="211"
-                            src="//www.youtube.com/embed/OsRFTWLiP9g?$list=PL2zniuqMzqkaURTd0uhm9iZqtBDkY7n5Y"
+                            src="{{$youtube_video}}"
                             frameborder="0"
                             allowfullscreen></iframe>
                 </div>
