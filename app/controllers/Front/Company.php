@@ -7,7 +7,7 @@
  */
 
 namespace Front;
-use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map;
+use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map, Mail, Config, Illuminate\Mail\Message;;
 
 class Company extends BaseController
 {
@@ -93,6 +93,7 @@ class Company extends BaseController
 
 	protected function add()
 	{
+        $session = Session::get('user_registration');
 		$company = new Model\Company;
 		$inputs = Input::all();
 
@@ -110,7 +111,7 @@ class Company extends BaseController
 
 		$validation = Validator::make($inputs, $rules);
 
-		if($validation->fails())
+		if( $validation->fails() )
 		{
 			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
 			return Redirect::back()->withErrors($validation->messages())->withInput();
@@ -134,7 +135,7 @@ class Company extends BaseController
                 $company->{$field} = Input::get($field);
             }
 
-            $company->user_id = Session::get('user_registration');
+            //$company->user_id = Session::get('user_registration');
 
             // Save coordinates
             $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
@@ -149,7 +150,6 @@ class Company extends BaseController
                 //$company->logo = $uploader->getFilename();
                 //$company->photo = $photoUploader->getFilename();
 
-                $session = Session::get('user_registration');
                 // Set session to check on in final step
                 $session_details = array(
                     'current_step' => 2,
@@ -157,6 +157,7 @@ class Company extends BaseController
                     'user_id' => $session['user_id'],
                     'company_id' => $company->id,
                 );
+
                 Session::put('user_registration', $session_details);
 
                 return Redirect::route('payment');
@@ -170,29 +171,39 @@ class Company extends BaseController
     protected function payment()
     {
         // Check if this step can be performed
-        if( $this->checkStep(3) )
+        if( $this->checkStep(2) )
         {
             $session = Session::get('user_registration');
 
             // Mail to company who signed up
             $mail = Config::get('fairtrade.contact_email');
+            $company = Model\Company::where('id', '=', $session['company_id'])->first();
+            $user = Model\User::where('id', '=', $session['user_id'])->first()
 
             \Mail::send(
                 "emails.thankCompany", [
-                    "company" => Model\Company::where('user_id', '=', $session['user_id']),
-                    "user" => Model\User::where('id', '=', $session['user_id'])
+                    "company" => $company,
+                    "user" => $user
                 ]
                 , function(Message $message) use($mail) {
-                    $message->to($mail);
+                    $message->to($user->email);
                     $message->subject('Bedankt voor het aanmelden van uw bedrijf');
-                    $message->from("contact@fairtradegemeenten.nl");
+                    $message->from($mail);
                 }
             );
 
             // Mail to Fairtrade Amsterdam to notify the new signup
-
-
-
+            \Mail::send(
+                "emails.newApplication", [
+                    "company" => Model\Company::where('user_id', '=', $session['user_id'])->first(),
+                    "user" => Model\User::where('id', '=', $session['user_id'])->first()
+                ]
+                , function(Message $message) use($mail) {
+                    $message->to($mail);
+                    $message->subject('Er is een nieuwe aanvraag');
+                    $message->from($mail);
+                }
+            );
 
             // Ideal implementation
             return \View::make("front.payment")->with(array(
