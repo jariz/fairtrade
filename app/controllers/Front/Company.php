@@ -185,7 +185,7 @@ class Company extends BaseController
                     "company" => $company,
                     "user" => $user
                 ]
-                , function(Message $message) use($mail) {
+                , function(Message $message) use($mail, $user, $company) {
                     $message->to($user->email);
                     $message->subject('Bedankt voor het aanmelden van uw bedrijf');
                     $message->from($mail);
@@ -195,10 +195,10 @@ class Company extends BaseController
             // Mail to Fairtrade Amsterdam to notify the new signup
             \Mail::send(
                 "emails.newApplication", [
-                    "company" => Model\Company::where('user_id', '=', $session['user_id'])->first(),
-                    "user" => Model\User::where('id', '=', $session['user_id'])->first()
+                    "company" => $company,
+                    "user" => $user
                 ]
-                , function(Message $message) use($mail) {
+                , function(Message $message) use($mail, $user, $company) {
                     $message->to($mail);
                     $message->subject('Er is een nieuwe aanvraag');
                     $message->from($mail);
