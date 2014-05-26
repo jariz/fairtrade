@@ -71,9 +71,11 @@ class WhereToBuy extends Data{
     protected function detail ( $params )
     {
         // Kijken over een id is meegegeven
-        if( !array_key_exists(1, $params) && is_int($params[1]) ){
+
+        if( !array_key_exists(1, $params) ){
             return $this->notFound();
         }
+//        dd($params);
 
         $company = Model\Company::find( $params[1] );
 
