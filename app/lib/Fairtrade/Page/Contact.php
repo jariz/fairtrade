@@ -10,7 +10,7 @@ class Contact extends Page{
     public $view = 'front.special.contact';
     public $heading = 'Contact';
     public $menu_title = 'Contact';
-    public $order = 3;
+    public $order = 4;
     public $parent = 0;
     public $show_in_nav = 1;
 

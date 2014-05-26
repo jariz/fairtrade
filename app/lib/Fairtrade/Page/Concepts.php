@@ -16,7 +16,7 @@ class Concepts extends Page{
     public $view = 'front.special.concepts';
     public $heading = 'Activiteiten';
     public $menu_title = 'Activiteiten';
-    public $order = 4;
+    public $order = 5;
     public $parent = 0;
     public $show_in_nav = 1;
     public $data_source = "Concepts";

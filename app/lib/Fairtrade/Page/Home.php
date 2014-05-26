@@ -17,7 +17,7 @@ class Home extends Page{
 
     protected $meta = [
         'youtube_video' => [
-            'value' => '//www.youtube.com/embed/OsRFTWLiP9g',
+            'value' => '//www.youtube.com/embed/g6sv_2ji_CM',
             'type' => 'text',
             'label' => 'Youtube embed URL'
         ],

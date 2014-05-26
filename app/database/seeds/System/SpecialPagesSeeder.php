@@ -20,7 +20,8 @@ class SpecialPagesSeeder extends \Seeder {
             'Events',
             'Contact',
             'WhereToBuy',
-            'Concepts'
+            'Concepts',
+            'OverFairtrade'
         ];
 
         foreach( $pages as $page )

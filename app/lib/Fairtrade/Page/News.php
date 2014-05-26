@@ -10,7 +10,7 @@ class News extends Page{
     public $view = 'front.special.news';
     public $heading = 'Nieuws';
     public $menu_title = 'Nieuws';
-    public $order = 1;
+    public $order = 2;
     public $parent = 0;
     public $show_in_nav = 1;
     public $data_source = 'News';

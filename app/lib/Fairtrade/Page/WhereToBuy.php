@@ -16,7 +16,7 @@ class WhereToBuy extends Page
     public $view = 'front.special.wheretobuy';
     public $heading = 'Waar te koop';
     public $menu_title = 'Waar te koop';
-    public $order = 100;
+    public $order = 6;
     public $parent = 0;
     public $show_in_nav = 1;
     public $data_source = 'WhereToBuy';
