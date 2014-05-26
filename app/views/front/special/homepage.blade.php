@@ -60,7 +60,7 @@
     <div class="col-md-8">
         <div class="border_vertical homeVertical hidden-md hidden-sm hidden-xs"></div>
         <div class="col-md-12" style="min-height: 170px;">
-            @if($featured)
+            @if(isset($featured))
              <span class="h2Wrap">
                        <span class="h2Left">
                            <img src="images/h2Left.png" alt="">
@@ -112,7 +112,7 @@
                         <ul>
                             @if(!empty($item->image))
                             <li class="image">
-                                <img src="http://placehold.it/158x106" alt="">
+                                <img src="{{url('uploads/concepts/'.$item->image)}}" alt="">
                             </li>
                             @endif
                             <li>

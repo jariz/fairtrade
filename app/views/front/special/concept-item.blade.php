@@ -5,7 +5,7 @@
                 <div class="col-lg-8">
 
                     @if(!empty($item->image))
-                    <img src="{{$item->image}}" class="img-thumbnail float-left" style="margin-right:15px; margin-bottom: 15px;">
+                    <img src="{{url('uploads/concepts/'.$item->image)}}" class="img-thumbnail float-left" style="margin-right:15px; margin-bottom: 15px;">
                     @endif
                         <h1 class="media-heading">{{$item->title}}</h1>
 

@@ -39,7 +39,7 @@
                            Wachtwoord<br/>
                            <input type="password" name="password">
                        </div>
-                       <a href="#" class="registerBtn">Registreer</a>
+                       <a href="{{url('bedrijf-aanmelden')}}" class="registerBtn">Registreer</a>
                        <a href="#" onclick="$('#form').submit();" class="loginBtn">Login</a>
                    {{Form::close()}}
                </div>
@@ -71,7 +71,7 @@
                                <ul>
                                    @if(!empty($item->image))
                                    <li class="image">
-                                       <img src="http://placehold.it/158x106" alt="">
+                                       <img src="{{url('uploads/concepts/'.$item->image)}}" alt="">
                                    </li>
                                    @endif
                                    <li>

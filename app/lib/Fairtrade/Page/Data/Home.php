@@ -27,8 +27,10 @@ class Home extends Data {
 
         //featured concept
         $featured = Concept::whereFeatured(1)->orderByRaw("RAND()")->first();
-        $featured->content = Util::truncate($featured->content);
-        $this->add("featured", $featured);
+        if($featured) {
+            $featured->content = Util::truncate($featured->content);
+            $this->add("featured", $featured);
+        }
 
         //featured concepts
         $featureds = Concept::whereFeatured(1)->orderByRaw("RAND()")->take(4)->get();
