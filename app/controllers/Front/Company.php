@@ -33,7 +33,7 @@ class Company extends BaseController
             'name' => 'required',
             'email' => 'email|required',
             'password' => 'required|min:5',
-            'confirmation' => 'required:same:password',
+            'confirmation' => 'required|same:password',
         );
 
         $validation = Validator::make($inputs, $rules);
