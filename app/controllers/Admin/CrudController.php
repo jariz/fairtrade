@@ -8,6 +8,7 @@
 
 namespace Admin;
 use Illuminate\Support\MessageBag;
+use Fairtrade\Date;
 
 /**
  * Class CrudController
@@ -432,6 +433,10 @@ class CrudController extends AdminController
                         } else {
                             $input[$name] = $upload->getFilename();
                         }
+                        break;
+                    case 'date':
+                        // Makes sure date is correctly formatted before inserting into DB
+                        $input[ $name ] = Date::input( $input[ $name ])->forDatabase();
                         break;
                 }
 

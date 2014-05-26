@@ -144,4 +144,9 @@ class Date{
 		return $return;
 	}
 
+    public function forFrontEnd(){
+        $object = $this->createDateObject( self::FORMAT_DB );
+        return $object->format( self::FORMAT_USER );
+    }
+
 }
