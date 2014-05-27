@@ -1,6 +1,8 @@
 @extends('admin.layout')
 
 @section('content')
+
+
 <div class="container container-layout moar-padding">
     <div class="pull-right">
         {{Form::open(['class'=>'row', 'method' => 'get', 'route' => $route])}}
@@ -22,7 +24,12 @@
         <li @if(!$trash) class="active" @endif ><a href="{{URL::route($route)}}"><i class="glyphicon glyphicon-list"></i> Overzicht</a></li>
         <li @if($trash) class="active" @endif ><a href="{{URL::route($route.'-trash')}}"><i class="glyphicon glyphicon-trash"></i> Prullenbak</a></li>
     </ul>
-
+    @if( Session::has('error') )
+          <div class="alert alert-warning alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <i class="fa fa-exclamation-triangle"></i> {{Session::get('error')}}
+          </div>
+        @endif
     <table class="table table-striped">
         <thead>
         <tr>

@@ -455,8 +455,17 @@ class CrudController extends AdminController
      */
     public function delete() {
         $model = $this->model;
+
+
         $id = intval(\Input::get("id"));
         $entry = $model::findOrFail($id);
+
+        /* Make sure the user can't delete his own account */
+        if( $model === '\Model\User' && \Auth::user()->id === $entry->id ){
+            return \Redirect::back()
+                ->with('error', 'U kan niet uw eigen account verwijderen');
+        }
+
         $entry->delete();
         return \Redirect::back()->with("restore_id", $entry->id);
     }
@@ -468,6 +477,8 @@ class CrudController extends AdminController
      */
     public function restore() {
         $model = $this->model;
+
+
         /* @var $model \Eloquent */
         $id = intval(\Input::get("id"));
         $entry = $model::onlyTrashed()->findOrFail($id);
