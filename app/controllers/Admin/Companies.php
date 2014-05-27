@@ -1,6 +1,7 @@
 <?php
 
 namespace Admin;
+use Model\Category;
 use Model\Company;
 
 /**
@@ -10,6 +11,12 @@ use Model\Company;
  */
 class Companies extends CrudController {
     protected function getFields() {
+
+        $categories = [];
+        foreach( Category::orderBy('name')->get() as $category){
+            $categories[] = ['id' => $category->id, 'title' => $category->name];
+        }
+
         $arr = array(
             "Naam" => array(
                 "name" => "name",
@@ -83,7 +90,15 @@ class Companies extends CrudController {
                     "Ja" => 1,
                     "Nee" => 0
                 )
-            )
+            ),
+
+            'Categorie' => [
+                'name' => 'category',
+                'type' => 'select',
+                'options' => $categories,
+                'property' => 'name'
+
+            ]
         );
 
         if(!\Fairtrade\User::can("dashboard.companies-approve")) {
@@ -147,6 +162,7 @@ class Companies extends CrudController {
 
     protected $model = "\\Model\\Company";
     protected $upload = "\\Fairtrade\\Upload\\Logo";
+    protected $with = 'linkedCategory';
     protected $singular = "Bedrijf";
     protected $plural = "Bedrijven";
     protected $route = "dashboard.companies";

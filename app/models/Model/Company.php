@@ -61,4 +61,8 @@ class Company extends \Eloquent
 
         return URL::asset( $this->image_path . $this->logo );
     }
+
+    public function linkedCategory(){
+        return $this->belongsTo('Model\Category', 'category', 'id');
+    }
 }
