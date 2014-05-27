@@ -15,7 +15,6 @@ class Company extends \Eloquent
     public static function boot()
     {
         parent::boot();
-
         Company::saving(function ($company) {
 
             if (is_null($company->accepted))
@@ -23,11 +22,9 @@ class Company extends \Eloquent
                 $company->accepted = 0;
             }
 
-            if (!isset($company->lng) && !isset($company->lng)) {
-                $coords = Map::convertAddress($company->postal_code, $company->address);
-                $company->lat = $coords['lat'];
-                $company->lng = $coords['lng'];
-            }
+            $coords = Map::convertAddress($company->postal_code, $company->address);
+            $company->lat = $coords['lat'];
+            $company->lng = $coords['lng'];
         });
 
         Company::creating(function ($company) {
