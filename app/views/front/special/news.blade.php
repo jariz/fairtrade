@@ -23,7 +23,7 @@
                     <div class="clear"></div>
                 @endforeach
                 @if($archive)
-                 {{ $news->links('pagination::simple') }}
+                 {{ $news->appends(['archive' => 1])->links('pagination::simple') }}
                 @endif
             @endif
 
