@@ -83,8 +83,8 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
-    public function getRoleIdFormattedAttribute() {
-        return Role::find($this->role_id)->name;
+    public function role() {
+        return $this->belongsTo('Model\Role', 'role_id', 'id');
     }
 
 }

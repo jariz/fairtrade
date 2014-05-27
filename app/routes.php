@@ -33,12 +33,12 @@ Route::post("dashboard/pages/reorder",["as" => "dashboard.pages-post-reorder", "
  * FRONT
  */
 Route::post('hide-popup', ['as' => 'hide-popup', 'uses' => "\\Front\\BaseController@hidePopup"]);
-Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
-Route::get("waartekoop/bedrijf/{id?}/{bedrijf?}", array("as" => "companydetail", "uses" => "\\Front\\WhereToBuy@detail"));
-Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "wheretobuy.category", "uses" => "\\Front\\WhereToBuy@show"));
+//Route::get("waartekoop", array("as" => "wheretobuy", "uses" => "\\Front\\WhereToBuy@show"));
+//Route::get("waartekoop/bedrijf/{id?}/{bedrijf?}", array("as" => "companydetail", "uses" => "\\Front\\WhereToBuy@detail"));
+//Route::get("waartekoop/categorie/{id?}/{name?}", array("as" => "wheretobuy.category", "uses" => "\\Front\\WhereToBuy@show"));
 Route::get("bedrijf-aanmelden", array("as" => "applyCompany", "uses" => "\\Front\\Company@registerAccount"));
-Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "applyCompany", "uses" => "\\Front\\Company@details"));
-Route::get("bedrijf-aanmelden/betalen", array("as" => "applyCompany", "uses" => "\\Front\\Company@payment"));
+Route::get("bedrijf-aanmelden/bedrijfsgegevens", array("as" => "companyDetails", "uses" => "\\Front\\Company@details"));
+Route::get("bedrijf-aanmelden/betalen", array("as" => "payment", "uses" => "\\Front\\Company@payment"));
 
 /* Nieuws detail page */
 Route::get('nieuws/{id}/{title?}', ['as' => 'news-item', 'uses' => "\\Front\\NewsController@show"]);
@@ -53,5 +53,5 @@ Route::get("api/companies", "\\Front\\Api@companies");
 Route::get("api/categories", "\\Front\\Api@categories");
 Route::get("api/companiesCategory", "\\Front\\Api@companiesCategory");
 
-Route::get("{slug?}/{param1?}/{param2?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
-Route::get("{slug?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get']);
+Route::get("{slug?}/{params?}", ['as' => 'dynamic-page', 'uses' => 'Front\DynamicPage@get'])
+    ->where('params', '(.*)');

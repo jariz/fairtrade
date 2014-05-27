@@ -11,7 +11,7 @@ use Model\Concept;
 
 class Concepts extends Data{
     public function run(){
-        $concepts = Concept::orderBy('created_at')->paginate(10);
+        $concepts = Concept::orderBy('created_at')->paginate(12);
         $this->add('concepts', $concepts);
 
         $featured = Concept::whereFeatured(1)->orderByRaw("RAND()")->take(4)->get();

@@ -16,8 +16,8 @@ class Home extends Page{
     public $data_source = "Home";
 
     protected $meta = [
-        'youtube' => [
-            'value' => 'http://www.youtube.com/embed/OsRFTWLiP9g?list=PL2zniuqMzqkaURTd0uhm9iZqtBDkY7n5Y',
+        'youtube_video' => [
+            'value' => '//www.youtube.com/embed/g6sv_2ji_CM',
             'type' => 'text',
             'label' => 'Youtube embed URL'
         ],

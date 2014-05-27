@@ -48,13 +48,11 @@
                        </span>
                    </span>
             <div class="block">
-                <h4><a href="" title="">Horeca grootste uitdaging</a></h4>
+                <h4><a href="" title="">{{$sidebar_heading or null}}</a></h4>
 
                 <a href="" title=""><img src="images/imgSidebar.jpg" alt="" /></a>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur a. Duis tristique iaculis rhoncus.ec tincidunt fermentum. Vestibulum ante ...
-                </p>
-                <a href="" title="" class="readMore">Lees meer</a>
+                    {{$sidebar_description or null}}
+                <a href="{{url('over-fairtrade')}}" title="" class="readMore">Lees meer</a>
             </div>
         </div>
    </div>

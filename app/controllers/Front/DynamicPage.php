@@ -19,13 +19,26 @@ class DynamicPage extends BaseController{
     private $page;
 
     /**
+     * Holds optional URL parameters
+     * @author Dmitri Chebotarev
+     * @var $params
+     */
+    private $params = null;
+
+    /**
      * @param string $slug - The slug of the current page, must exist in pages table
      * @author Dmitri Chebotarev
      * @return View
      */
-    public function get( $slug = 'home', $param1=null, $param2=null){
+    public function get( $slug = 'home', $params = null){
 
         $this->page = Model\Page::whereSlug( $slug );
+
+
+        if( !is_null( $params ) ){
+            $this->params = array_filter( explode('/', $params) );
+
+        }
 
         if( !$this->page->exists() ){
             return $this->notFound();
@@ -74,6 +87,34 @@ class DynamicPage extends BaseController{
             return $this->notFound();
         }
 
+
+
+        // Run script to inject important data
+
+        if( !is_null( $this->page->data_source ) ){
+
+            $dataSourceClass = "Fairtrade\\Page\\Data\\". $this->page->data_source;
+
+            if( class_exists( $dataSourceClass) ){
+
+                $dataSource = new $dataSourceClass( $this->page );
+                $dataSource->run( $this->params );
+
+
+                // Check if 404 is triggerd
+                if( !$dataSource->exists() ){
+                    return App::abort(404);
+                }
+
+                if( $dataSource->hasCustomView() ){
+                    $this->page->view = $dataSource->getCustomView();
+                }
+
+
+
+            }
+        }
+
         $view = View::make( $this->page->view )
             ->with('title', $this->page->title)
             ->with('seo_description', $this->page->seo_description);
@@ -85,21 +126,7 @@ class DynamicPage extends BaseController{
         if( !is_null($metaData) ){
 
             foreach($metaData as $key => $data ){
-              $view->with($key, $data->value);
-            }
-        }
-
-        // Run script to inject important data
-
-        if( !is_null( $this->page->data_source ) ){
-
-            $dataSourceClass = "Fairtrade\\Page\\Data\\". $this->page->data_source;
-
-            if( class_exists( $dataSourceClass) ){
-
-                $dataSource = new $dataSourceClass;
-                $dataSource->run();
-
+                $view->with($key, $data->value);
             }
         }
 

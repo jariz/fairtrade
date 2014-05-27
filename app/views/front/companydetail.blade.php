@@ -22,7 +22,7 @@
                     @endif
                     <div style="word-wrap: break-word;">
                         {{ $company->description }}
-                        <a href="{{ URL::route('wheretobuy') }}" title="" class="nieuwsarchief">Terug naar bedrijven overzicht</a>
+                        <a href="{{ URL::to($page->slug) }}" title="" class="nieuwsarchief">Terug naar bedrijven overzicht</a>
                     </div>
                 </div>
             </div>

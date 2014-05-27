@@ -11,8 +11,6 @@ use \Model\User;
 class UserSeeder extends \Seeder {
     public function run() {
 
-        User::truncate();
-
         $user = new User;
         $user->email = 'a@aa.nl';
         $user->password = \Hash::make("admin");

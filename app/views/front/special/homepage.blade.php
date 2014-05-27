@@ -11,7 +11,7 @@
 
                 <div class="video-container">
                     <iframe width="375" height="211"
-                            src="//www.youtube.com/embed/OsRFTWLiP9g?$list=PL2zniuqMzqkaURTd0uhm9iZqtBDkY7n5Y"
+                            src="{{$youtube_video}}"
                             frameborder="0"
                             allowfullscreen></iframe>
                 </div>
@@ -60,7 +60,7 @@
     <div class="col-md-8">
         <div class="border_vertical homeVertical hidden-md hidden-sm hidden-xs"></div>
         <div class="col-md-12" style="min-height: 170px;">
-            @if($featured)
+            @if(isset($featured))
              <span class="h2Wrap">
                        <span class="h2Left">
                            <img src="images/h2Left.png" alt="">
@@ -82,16 +82,14 @@
                 <h3>{{{$featured->company->name}}}</h3>
                 <h4>{{{$featured->company->city}}}</h4>
                 <h4>{{{$featured->company->address}}}, {{{$featured->company->postal_code}}}</h4>
-                {{$featured->content}}
+                <div style="display: inline-block;" class="leesmeer"><a href="{{$featured->link}}">Lees meer</a></div>
             </div>
             <div class="clear"></div>
             <div class="border_horizontal"></div>
 
+            @endif
         </div>
 
-        <!--        @if($featured->company->website)-->
-        <!--        <div class="link"><a href="{{{$featured->company->website}}}">Ga naar de website</a></div>-->
-        <!--        @endif-->
         <div class="uitgelicht uitgelichtHome col-md-12">
                    <span class="h2Wrap">
                        <span class="h2Left">
@@ -105,14 +103,14 @@
                        </span>
                    </span>
             </span>
-            <ul class="list-inline">|
+            <ul class="list-inline">
                 @foreach($featureds as $item)
                 <li>
                     <a href="{{$item->link}}">
                         <ul>
                             @if(!empty($item->image))
                             <li class="image">
-                                <img src="http://placehold.it/158x106" alt="">
+                                <img src="{{url('uploads/concepts/t/'.$item->image)}}" alt="">
                             </li>
                             @endif
                             <li>
@@ -148,7 +146,6 @@
                     src="{{$company->thumbnail_url}}" alt="" class="floatLeft"/></a>
             @endforeach
         </div>
-        @endif
     </div>
 </div>
 @stop

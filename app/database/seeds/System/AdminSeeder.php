@@ -11,6 +11,8 @@ namespace System;
 
 class AdminSeeder extends \Seeder{
     public function run() {
+        \Model\User::truncate();
+
         $user = new \Model\User;
         $user->email = 'admin@fairtradeamsterdam.nl';
         $user->password = \Hash::make("123321");

@@ -7,20 +7,67 @@
  */
 
 namespace Front;
-use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map;
+use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map, Mail, Config, Illuminate\Mail\Message;;
 
 class Company extends BaseController
 {
     protected function registerAccount()
     {
-        if( Session::get('user_registration') != '' )
+        if( $this->checkStep(1) )
         {
             return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
+        } else{
+            return \View::make("front.special.registerAccount")->with(array(
+                'title' => 'Account aanmaken',
+            ));
         }
+    }
 
-        return \View::make("front.special.registerAccount")->with(array(
-            'title' => 'Account aanmaken',
-        ));
+    protected function registerUser()
+    {
+        $user = new Model\User;
+        $inputs = Input::all();
+
+        /* Form validation */
+        $rules = array(
+            'name' => 'required',
+            'email' => 'email|required',
+            'password' => 'required|min:5',
+            'confirmation' => 'required|same:password',
+        );
+
+        $validation = Validator::make($inputs, $rules);
+
+        if($validation->fails())
+        {
+            return Redirect::back()->withErrors($validation->messages())->withInput();
+        } else{
+            /* Loop through all fields */
+            $fields = array(
+                'name',
+                'email',
+            );
+
+            /* Add new user to database */
+            foreach($fields as $field) {
+                $user->{$field} = Input::get($field);
+            }
+
+            $user->role_id = 2;
+            $user->password = \Hash::make(Input::get('password'));
+
+            if($user->save()) {
+                // Create session to identify this step has been done
+                $session_details = array(
+                    'current_step' => 1,
+                    'next_step' => 2,
+                    'user_id' => $user->id,
+                    'company_id' => ''
+                );
+                Session::put('user_registration', $session_details);
+                return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
+            }
+        }
     }
 
 	/**
@@ -29,12 +76,15 @@ class Company extends BaseController
 	 */
 	protected function details()
 	{
-        $categories = Model\Category::lists('name', 'id');
+        $session = Session::get('user_registration');
 
-        if( !Session::get('user_registration'))
+        if( !$this->checkStep(1) )
         {
-            return Redirect::to('bedrijf-aanmelden');
-        } else{
+            return Redirect::route('applyCompany');
+        }
+        else{
+            $categories = Model\Category::lists('name', 'id');
+
             return \View::make("front.special.applycompany")->with(array(
                 'title' => 'Bedrijf aanmelden',
                 'categories' => $categories
@@ -44,19 +94,9 @@ class Company extends BaseController
 
 	protected function add()
 	{
+        $session = Session::get('user_registration');
 		$company = new Model\Company;
 		$inputs = Input::all();
-		//dd($inputs);
-
-		$geo_location = '';
-
-        $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
-
-		/* Convert the address to a geo location with the Googele Maps API */
-		$address = str_replace(' ', '%20', Input::get('postal_code') .'%20'. Input::get('address'));
-		$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='. $address .'&sensor=false';
-		$jsonData = file_get_contents($url);
-		$data = json_decode($jsonData);
 
 		/* Form validation */
 		$rules = array(
@@ -72,12 +112,12 @@ class Company extends BaseController
 
 		$validation = Validator::make($inputs, $rules);
 
-		if($validation->fails())
+		if( $validation->fails() )
 		{
 			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
 			return Redirect::back()->withErrors($validation->messages())->withInput();
 		} else{
-            /* Loop through all fields */
+            /* Prepare all fields to add to database */
             $fields = array(
                 'name',
                 'description',
@@ -96,70 +136,95 @@ class Company extends BaseController
                 $company->{$field} = Input::get($field);
             }
 
-            $company->user_id = Session::get('user_registration');
+            //$company->user_id = Session::get('user_registration');
 
             // Save coordinates
+            $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
             $company->lat = $coords['lat'];
             $company->lng = $coords['lng'];
 
             //Upload logo
-            $uploader = new \Fairtrade\Upload\Logo('logo');
-
+            //$uploader = new \Fairtrade\Upload\Logo('logo');
+            //$photoUploader = new \Fairtrade\Upload\Photo('photo');
             if($company->save())
             {
-                $company->logo = $uploader->getFilename();
+                //$company->logo = $uploader->getFilename();
+                //$company->photo = $photoUploader->getFilename();
 
-                return Redirect::to('bedrijf-aanmelden/betalen');
+                // Set session to check on in final step
+                $session_details = array(
+                    'current_step' => 2,
+                    'next_step' => 3,
+                    'user_id' => $session['user_id'],
+                    'company_id' => $company->id,
+                );
+
+                Session::put('user_registration', $session_details);
+
+                return Redirect::route('payment');
             }
 		}
 	}
 
-    protected function registerUser()
+    /*
+     * Final step of company registration process
+     */
+    protected function payment()
     {
-        $user = new Model\User;
-
-        $inputs = Input::all();
-
-        /* Form validation */
-        $rules = array(
-            'name' => 'required',
-            'email' => 'email|required',
-            'password' => 'required|min:5',
-            'confirmation' => 'required:same:password',
-        );
-
-        $validation = Validator::make($inputs, $rules);
-
-        if($validation->fails())
+        // Check if this step can be performed
+        if( $this->checkStep(2) )
         {
-            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
-            return Redirect::back()->withErrors($validation->messages())->withInput();
-        } else{
-            /* Loop through all fields */
-            $fields = array(
-                'name',
-                'email',
+            $session = Session::get('user_registration');
+
+            // Mail to company who signed up
+            $mail = Config::get('fairtrade.contact_email');
+            $company = Model\Company::where('id', '=', $session['company_id'])->first();
+            $user = Model\User::where('id', '=', $session['user_id'])->first();
+
+            \Mail::send(
+                "emails.thankCompany", [
+                    "company" => $company,
+                    "user" => $user
+                ]
+                , function(Message $message) use($mail, $user, $company) {
+                    $message->to($user->email);
+                    $message->subject('Bedankt voor het aanmelden van uw bedrijf');
+                    $message->from($mail);
+                }
             );
 
-            /* Add new user to database */
-            foreach($fields as $field)
-            {
-                $user->{$field} = Input::get($field);
-            }
-            $user->password = \Hash::make(Input::get('password'));
-            if($user->save())
-            {
-                Session::put('user_registration', $user->id);
-                return Redirect::to('bedrijf-aanmelden/bedrijfsgegevens');
-            }
+            // Mail to Fairtrade Amsterdam to notify the new signup
+            \Mail::send(
+                "emails.newApplication", [
+                    "company" => $company,
+                    "user" => $user
+                ]
+                , function(Message $message) use($mail, $user, $company) {
+                    $message->to($mail);
+                    $message->subject('Er is een nieuwe aanvraag');
+                    $message->from($mail);
+                }
+            );
+
+            // Ideal implementation
+            return \View::make("front.payment")->with(array(
+                'title' => 'Betalingsgegevens',
+            ));
+        } else{
+            return Redirect::route('companyDetails');
         }
     }
 
-    protected function payment()
+    // Check what step should be visible
+    protected function checkStep($step)
     {
-        // Ideal implementation
-        return \View::make("front.payment")->with(array(
-            'title' => 'Betalingsgegevens',
-        ));
+        $session = Session::get('user_registration');
+
+        if($step + 1 === $session['next_step'])
+        {
+            return true;
+        } else{
+            return false;
+        }
     }
 }

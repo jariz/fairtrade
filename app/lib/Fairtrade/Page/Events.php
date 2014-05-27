@@ -10,7 +10,7 @@ class Events extends Page{
     public $view = 'front.special.events';
     public $heading = 'Evenementen';
     public $menu_title = 'Evenementen';
-    public $order = 2;
+    public $order = 3;
     public $parent = 0;
     public $show_in_nav = 1;
     public $data_source = 'Events';

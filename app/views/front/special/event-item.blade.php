@@ -6,7 +6,12 @@
 
 
                     <h1 class="media-heading">{{$item->title}}</h1>
-
+                    @if( !$active )
+                        <div class="alert alert-warning alert-dismissable">
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                          <strong>Let op!</strong> dit evenement is helaas al geweest.
+                        </div>
+                    @endif
                     <div class="panel panel-default">
                       <div class="panel-heading">Info over dit evenement</div>
                       <div class="panel-body">

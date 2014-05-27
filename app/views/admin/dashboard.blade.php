@@ -54,10 +54,13 @@
                                 </span>
                                 @endif
                                 @else
-                                @if( @$crud->with != false && array_key_exists( 'property', $column))
+                                @if( $with != false && array_key_exists( 'property', $column))
                                 {{{$row->$with->$column['property']}}}
-                                @endif
+                                @elseif($column["type"] == "color")
+                                <div style="width:20px;height:20px;border:2px solid black; border-radius:3px;background-color: {{$row->$column["name"]}}"></div>
+                                @else
                                 {{{$row->$column["name"]}}}
+                                @endif
                                 @endif
                             </td>
                             @endforeach

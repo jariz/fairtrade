@@ -14,13 +14,8 @@
                            <img src="images/h2Right.png" alt="">
                        </span>
                    </span>
-                   <h2>Goed idee? Wacht niet langer en deel hem! deel hem</h2>
-                   <p>
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, cumque, at aliquam odio perferendis quidem error ducimus doloribus eius placeat quis ut aliquid quo nihil alias ullam ipsam numquam. Quas!
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, cumque, at aliquam odio perferendis quidem error ducimus doloribus eius placeat quis ut aliquid quo nihil alias ullam ipsam numquam. Quas!
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, cumque, at aliquam odio perferendis quidem error ducimus doloribus eius placeat quis ut aliquid quo nihil alias ullam ipsam numquam. Quas!
-
-                   </p>
+                   <h2>{{$heading or null}}</h2>
+                   {{$description or null}}
                </div>
 
                <div class="col-md-3 register">
@@ -44,7 +39,7 @@
                            Wachtwoord<br/>
                            <input type="password" name="password">
                        </div>
-                       <a href="#" class="registerBtn">Registreer</a>
+                       <a href="{{url('bedrijf-aanmelden')}}" class="registerBtn">Registreer</a>
                        <a href="#" onclick="$('#form').submit();" class="loginBtn">Login</a>
                    {{Form::close()}}
                </div>
@@ -76,7 +71,7 @@
                                <ul>
                                    @if(!empty($item->image))
                                    <li class="image">
-                                       <img src="http://placehold.it/158x106" alt="">
+                                       <img src="{{url('uploads/concepts/t/'.$item->image)}}" alt="">
                                    </li>
                                    @endif
                                    <li>
