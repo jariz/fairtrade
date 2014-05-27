@@ -2,12 +2,13 @@ body{
 
     font-family: 'Open Sans', sans-serif !important;
     color:#000;
+    overflow-x: hidden;
 }
 a{
     text-decoration: none !important;
 }
-a:hover{
-   color:#bf0069 !important
+body a:hover{
+   color:#bf0069;
 }
 h4>a {
     color:#bf0069 !important;
@@ -244,6 +245,35 @@ nav ul{
 .navMain ul li a.lightblue{
     background:url(../../images/midLightblue.png) no-repeat center 23px;
 }
+
+.navMain ul li a.orange:hover, 
+.navMain ul li a.orange.activePage{
+    color:#ff8f32;
+}
+.navMain ul li a.pink:hover,
+.navMain ul li a.pink.activePage{
+    color:#e30077;
+}
+.navMain ul li a.darkbrown:hover,
+.navMain ul li a.darkbrown.activePage{
+    color:#53341e; 
+}
+.navMain ul li a.green:hover,
+.navMain ul li a.green.activePage{
+    color:#698e2b;
+}
+.navMain ul li a.blue:hover,
+.navMain ul li a.blue.activePage{
+    color:#00838b;
+}
+.navMain ul li a.brown:hover,
+.navMain ul li a.brown.activePage{
+    color:#642714;
+}
+.navMain ul li a.lightblue:hover,
+.navMain ul li a.lightblue.activePage{
+    color:#5f9aa9;
+}
 .footer a{
     color:#000;
 }
@@ -284,10 +314,4 @@ nav ul{
     body>.container {
         width: 100% !important;
     }
-}
-
-/** FIX horizontal scrollbar */
-.row.sliderWrap{
-     margin-left:15px;
-     margin-right: 15px;
 }
