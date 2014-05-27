@@ -16,7 +16,7 @@ class CategorySeeder extends \Seeder {
         $data = [
 
             [
-                'name' => "Kleding,fashion & textiel",
+                'name' => "Kleding, mode & textiel",
                 'color' => "#fd9100"
             ],
             [
@@ -24,11 +24,11 @@ class CategorySeeder extends \Seeder {
                 'color' => "#de007a"
             ],
             [
-                'name' => "Supermarkt, food & dranken",
+                'name' => "Supermarkt",
                 'color' => "#52351a"
             ],
             [
-                'name' => "Overigen food",
+                'name' => "Overigen eten en drinken",
                 'color' =>  "#6b8f00"
             ],
             [
@@ -36,7 +36,7 @@ class CategorySeeder extends \Seeder {
                 'color' =>  "#00828c"
             ],
             [
-                'name' => "Overigen non-food",
+                'name' => "Overigen",
                 'color' =>  "#62280f"
             ],
 
