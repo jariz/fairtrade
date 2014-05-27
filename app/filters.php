@@ -22,6 +22,10 @@ App::after(function($request, $response)
 	//
 });
 
+App::error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+    return App::make('Front\Error')->notFound();
+});
+
 App::missing(function(){
     return App::make('Front\Error')->notFound();
 });
