@@ -97,7 +97,8 @@ class RoleSeeder extends \Seeder {
             "dashboard.{$route}-delete",
             "dashboard.{$route}-doedit",
             "dashboard.{$route}-dorestore",
-            "dashboard.{$route}-trash"
+            "dashboard.{$route}-trash",
+            "dashboard.{$route}-perm-delete"
         );
     }
 } 

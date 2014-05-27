@@ -97,6 +97,11 @@
                     {{Form::hidden('id', $row->id)}}
                     <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-check"></i>Herstellen</button>
                     {{Form::close()}}
+
+                    {{Form::open(array('route'=>$route.'-perm-delete'))}}
+                    {{Form::hidden('id', $row->id)}}
+                    <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-check"></i>Verwijderen</button>
+                    {{Form::close()}}
                     @endif
                 </td>
             </tr>

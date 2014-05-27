@@ -22,6 +22,7 @@ foreach($crudControllers as $route => $controller) {
     Route::post("dashboard/{$route}/edit", array("as" => "dashboard.{$route}-doedit", "uses" => "{$controller}@edit", "before"=>"haspermission"));
     Route::post("dashboard/{$route}/restore", array("as" => "dashboard.{$route}-dorestore", "uses" => "{$controller}@restore", "before"=>"haspermission"));
     Route::get("dashboard/{$route}/trash", array("as" => "dashboard.{$route}-trash", "uses" => "{$controller}@trash", "before"=>"haspermission"));
+    Route::post("dashboard/{$route}/perm-delete", array("as" => "dashboard.{$route}-perm-delete", "uses" => "{$controller}@permDelete", "before"=>"haspermission"));
 }
 
 Route::post("dashboard/companies/approve", array("as" => "dashboard.companies-approve", "uses" => "\\Admin\\Companies@approve", "before" => "haspermission"));

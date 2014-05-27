@@ -474,4 +474,13 @@ class CrudController extends AdminController
         $entry->restore();
         return \Redirect::back();
     }
+
+
+    public function permDelete(){
+        $model = $this->model;
+        $id = intval(\Input::get('id') );
+        $entry = $model::onlyTrashed()->findOrFail($id);
+        $entry->forceDelete();
+        return \Redirect::back();
+    }
 }
