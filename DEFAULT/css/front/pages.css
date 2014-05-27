@@ -66,13 +66,13 @@ width:1160px;
  margin: 0px 0 10px!important;
   }
 .slider img {
- width:100%;
+  max-width:97%;
  }
 .slideOverlay{
 }
 .slideOverlay img{
-	width:100%;
- margin-top:-10px;
+	max-width:97%;
+ 	margin-top:-10px;
 }
 
 .bedrijven{
