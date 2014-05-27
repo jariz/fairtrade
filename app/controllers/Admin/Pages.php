@@ -130,4 +130,5 @@ class Pages extends CrudController {
     protected $reorder = true;
     protected $parentElements = true;
     protected $timestamps = true;
+    protected $orderBy = ['order', 'ASC'];
 } 

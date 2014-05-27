@@ -151,4 +151,5 @@ class Concepts extends CrudController {
     protected $plural = "Activiteiten";
     protected $route = "dashboard.concepts";
     protected $with = "company";
+    protected $orderBy = ['created_at', 'DESC'];
 }

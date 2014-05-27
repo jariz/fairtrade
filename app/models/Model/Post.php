@@ -11,6 +11,13 @@ class Post extends FormattedTimestamps {
     protected $appends = ['intro', 'link', 'image_url', 'thumbnail_url'];
     private $image_path = 'uploads/news/';
 
+    public static function boot(){
+        static::saving(function($item){
+            if(is_null($item->published))
+                $item->published = 0;
+        });
+    }
+
     public function getIntroAttribute(){
         return \Fairtrade\Util::truncate($this->attributes['content'], 300);
     }

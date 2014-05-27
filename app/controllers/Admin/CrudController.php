@@ -178,10 +178,15 @@ class CrudController extends AdminController
         if ($this->with)
             $data->with($this->with);
 
+        if( isset($this->orderBy) && is_array($this->orderBy ) ){
+          $data = $data->orderBy( $this->orderBy[0], $this->orderBy[1]);
+        }
 
         //trash?
         if ($trash)
             $data = $data->onlyTrashed();
+
+
 
         //force query to give unique results
         $data = $data->distinct()

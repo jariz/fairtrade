@@ -50,4 +50,5 @@ class Events extends CrudController {
     protected $singular = "Evenement";
     protected $plural = "Evenementen";
     protected $route = "dashboard.events";
+    protected $orderBy = ['created_at', 'DESC'];
 }

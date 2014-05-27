@@ -166,4 +166,5 @@ class Companies extends CrudController {
     protected $singular = "Bedrijf";
     protected $plural = "Bedrijven";
     protected $route = "dashboard.companies";
+    protected $orderBy = ['created_at', 'DESC'];
 }
