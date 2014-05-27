@@ -71,6 +71,15 @@
 
 @include('front.templates.kelvin.nav')
 <div class="container">
+@if( Auth::guest() && !Request::is('/') && !Request::is('home') )
+<div class="panel panel-default">
+  <div class="panel-body text-center">
+    <p>Heeft u een eigen onderneming? Wordt vandaag nog partner, en geef boeren in Afrika hoop!</p>
+
+    <p><a id="partner-btn" href="{{URL::route('applyCompany')}}" class="btn btn-success">Partner worden <i class="fa fa-users"></i></a></p>
+  </div>
+</div>
+@endif
     @yield('content')
 </div>
 @include('front.templates.kelvin.footer')

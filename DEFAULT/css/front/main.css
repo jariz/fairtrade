@@ -301,6 +301,10 @@ nav ul{
     height: 300px;
 }
 
+#partner-btn{
+    margin-left:10px;
+}
+
 .header.container{
     margin-top:40px;
 }
