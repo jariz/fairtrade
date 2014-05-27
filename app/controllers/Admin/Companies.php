@@ -56,10 +56,10 @@ class Companies extends CrudController {
                 "hideInOverview" => true,
                 "rules" => "",
                 "uploader" => "Logo",
-                "required" => false,
+                "required" => true,
                 "thumbnail" => [
-                    'width' => 300,
-                    'height' => 300
+                    'width' => 150,
+                    'height' => 150
                 ]
             ),
 
@@ -70,8 +70,8 @@ class Companies extends CrudController {
                 "uploader" => "Company",
                 "required" => false,
                 "thumbnail" => [
-                    'width' => 100,
-                    'height' => 100
+                    'width' => 600,
+                    'height' => 200
                 ]
             ],
 

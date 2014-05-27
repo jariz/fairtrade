@@ -46,12 +46,12 @@ body h2{
 .h2Wrap .h2Left{
     position: absolute;
     left:0;
-    top:9px;
+    top:6px;
 }
 .h2Wrap .h2Right{
     position: absolute;
     right:0;
-    top:8px;
+    top:5px;
 }
 .h2Wrap h2{
     font-size: 18px;
@@ -211,7 +211,7 @@ nav ul{
 .navMain ul li a .overlayLeft{
     position: absolute;
     left:0;
-    bottom:6px;
+    bottom:4px;
     display:block;
     height:11px;
     width:19px;
@@ -219,7 +219,7 @@ nav ul{
 .navMain ul li a .overlayRight{
     position: absolute;
     right:-5px;
-    bottom:6px;
+    bottom:5px;
     display:block;
     height:11px;
     width:22px;

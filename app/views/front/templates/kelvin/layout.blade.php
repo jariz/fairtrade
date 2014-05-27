@@ -24,11 +24,51 @@
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{url('plugins/bs/bootstrap.min.js')}}"></script>
     <script>
+
+
         var baseurl = "{{ URL::to('/') }}";
+
+        @if( $popup )
+        (function($){
+        $(function(){
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+                $('#app-popup').modal();
+
+                // Makes sure the popup won't be show again next time
+                $.ajax({
+                    url: baseurl+'/hide-popup',
+                    type: 'POST'
+                });
+            }
+        });
+        })(jQuery);
+        @endif
     </script>
     @yield('scripts')
 </head>
 <body id="bedrijven">
+
+<div id="app-popup" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Hallo mobiele gebruiker!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Ons systeem heeft gedecteerd dat u onze site bezoekt via uw mobiele telefoon. Wij hebben een speciale applicatie ontwikkeld voor mobiele telefoons </p>
+        <p>Deze applicatie is te vinden via de volgende link: </p>
+        <div class="well well-sm">m.fairtradeamsterdam.nl</div>
+        <p><strong>Let op: </strong> Deze melding wordt niet nogmaals weergeven</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+        <a href="http://m.fairtradeamsterdam.nl/" type="button" class="btn btn-primary">Open de app</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 @include('front.templates.kelvin.nav')
 <div class="container">
     @yield('content')

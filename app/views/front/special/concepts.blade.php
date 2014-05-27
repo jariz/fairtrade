@@ -8,7 +8,7 @@
                            <img src="images/h2Left.png" alt="">
                        </span>
                        <h2>
-                           Concepten en Bedrijf pagina
+                           Activiteiten
                        </h2>
                        <span class="h2Right">
                            <img src="images/h2Right.png" alt="">
@@ -70,60 +70,25 @@
                        </span>
                    </span>
                        <ul class="list-inline">
+                           @foreach($featured as $item)
                            <li>
+                               <a href="{{$item->link}}">
                                <ul>
+                                   @if(!empty($item->image))
                                    <li class="image">
                                        <img src="http://placehold.it/158x106" alt="">
                                    </li>
+                                   @endif
                                    <li>
-                                       <h2>Dinner & co</h2>
+                                       <h2>{{\Fairtrade\Util::truncate($item->company->name, 20)}}</h2>
                                    </li>
                                    <li>
-                                       <h3>Fairtrade wijn cursus</h3>
+                                       <h3>{{\Fairtrade\Util::truncate($item->title, 20)}}</h3>
                                    </li>
                                </ul>
+                               </a>
                            </li>
-                           <li>
-                               <ul>
-                                   <li>
-                                       <img src="http://placehold.it/158x106" alt="">
-                                   </li>
-                                   <li>
-                                       <h2>Dinner & co</h2>
-                                   </li>
-                                   <li>
-                                       <h3>Fairtrade wijn cursus</h3>
-                                   </li>
-                               </ul>
-                           </li>
-                       </ul>
-                        <ul class="list-inline">
-                           <li>
-                               <ul>
-                                   <li class="image">
-                                       <img src="http://placehold.it/158x106" alt="">
-                                   </li>
-                                   <li>
-                                       <h2>Dinner & co</h2>
-                                   </li>
-                                   <li>
-                                       <h3>Fairtrade wijn cursus</h3>
-                                   </li>
-                               </ul>
-                           </li>
-                           <li>
-                               <ul>
-                                   <li>
-                                       <img src="http://placehold.it/158x106" alt="">
-                                   </li>
-                                   <li>
-                                       <h2>Dinner & co</h2>
-                                   </li>
-                                   <li>
-                                       <h3>Fairtrade wijn cursus</h3>
-                                   </li>
-                               </ul>
-                           </li>
+                           @endforeach
                        </ul>
                    </div>
                    <div class="col-md-12 visible-md visible-sm visible-xs">
@@ -143,11 +108,13 @@
                    </span>
                    <ul class="list-inline">
                    @foreach($concepts as $item)
+                       @if(!empty($item->image))
                        <li>
                            <a href="{{$item->link}}">
-                               <img src="http://placehold.it/119x91" alt="">
+                               <img src="{{url('uploads/concepts/t/'.$item->image)}}" alt="">
                            </a>
                        </li>
+                       @endif
                        @endforeach
                    </ul>
                </div>

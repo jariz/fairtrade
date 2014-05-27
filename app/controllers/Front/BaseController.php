@@ -1,7 +1,7 @@
 <?php
 
 namespace Front;
-use View;
+use View, Session, Request;
 use Model\Page;
 class BaseController extends \Controller {
 
@@ -9,7 +9,8 @@ class BaseController extends \Controller {
 //        parent::__construct();
         View::share("title", "!GEEN TITEL!");
         View::share("template", \Config::get("fairtrade.template"));
-
+//        Session::forget('popup');
+        $this->checkForPopup();
         $this->getMenuData();
         // Menu items ophalen
 
@@ -83,6 +84,26 @@ class BaseController extends \Controller {
 
         View::share('menuData', $orderd);
     }
+
+    public function checkForPopup(){
+
+        if( Session::has('popup') ){
+           View::share('popup', false);
+        } else{
+            View::share('popup', true);
+        }
+
+    }
+
+    /**
+     * Make sure the popup will not be shown again
+     */
+    public function hidePopup(){
+
+        if( Request::ajax() )
+            Session::put( 'popup', false );
+    }
+
 
 
 }

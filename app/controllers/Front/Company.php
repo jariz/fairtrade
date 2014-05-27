@@ -40,8 +40,6 @@ class Company extends BaseController
                 'categories' => $categories
             ));
         }
-
-
 	}
 
 	protected function add()

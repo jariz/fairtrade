@@ -30,8 +30,12 @@ class Home extends Data {
         $featured->content = Util::truncate($featured->content);
         $this->add("featured", $featured);
 
+        //featured concepts
+        $featureds = Concept::whereFeatured(1)->orderByRaw("RAND()")->take(4)->get();
+        $this->add("featureds", $featureds);
+
         //companies
-        $companies = Company::orderBy("created_at")->take(10)->get();
+        $companies = Company::orderBy("created_at")->take(4)->get();
         $this->add("companies", $companies);
     }
 }
