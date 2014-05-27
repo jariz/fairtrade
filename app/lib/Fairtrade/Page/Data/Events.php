@@ -15,7 +15,7 @@ class Events extends Data{
     public function run(){
 
         $events = Event::active()
-            ->orderBy('created_at')
+            ->orderBy('date')
             ->paginate(3);
 
         $this->add('events', $events);

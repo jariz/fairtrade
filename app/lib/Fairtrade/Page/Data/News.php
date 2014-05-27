@@ -12,7 +12,7 @@ use Model\Post;
 class News extends Data{
 
     public function run(){
-        $news = Post::wherePublished(1)->orderBy('created_at');
+        $news = Post::wherePublished(1)->orderBy('created_at', 'DESC');
 
         if(\Input::has("archive")) {
             $news = $news->paginate(10);
