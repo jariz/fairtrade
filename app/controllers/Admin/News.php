@@ -31,7 +31,13 @@ class News extends CrudController {
                   "height" => 150
                 ],
                 "rules" => "image"
-            )
+            ),
+
+            'Gepubliceerd' => [
+                'name' => 'published',
+                'type' => 'checkbox',
+                "boolean" => true
+            ]
         );
     }
 
