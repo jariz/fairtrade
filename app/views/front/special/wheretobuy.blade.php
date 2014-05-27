@@ -67,7 +67,7 @@
         <a href=""><img class="androidapp" src="img/androidapp.png" alt="ios app"></a>
         -->
     </div>
-    <div class="col-md-12">
+    <div id="bedrijven-lijst" class="col-md-12">
         <div class="border_horizontal"></div>
         <div class="col-md-12 bedrijvenmaps">
             <span class="h2Wrap">
@@ -104,7 +104,7 @@
                 @endforeach
             @endif
             </div>
-            <center>{{ $companies->links() }}</center>
+            <center>{{ $companies->fragment('bedrijven-lijst')->links() }}</center>
         </div>
     </div>
 @stop
