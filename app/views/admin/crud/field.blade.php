@@ -7,19 +7,19 @@
         @endif
         <div class="col-sm-10 @if($field['type'] == 'checkbox') checkbox @endif ">
             @if($field["type"] == "text")
-            {{Form::text($field["name"], $data[$field["name"]], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
+            {{Form::text($field["name"],  Input::old($field['name'], $data[$field["name"]]), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
             @elseif($field["type"] == "password")
             {{Form::password($field["name"], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
             @if(!is_null($id))<span class="text-info">Laat dit veld leeg om het wachtwoord niet te veranderen</span>@endif
             @elseif($field["type"] == "radio")
             @foreach($field["options"] as $option => $value)
             <p>
-            {{Form::radio($field["name"], $value, $data[$field["name"]] == $value, array("id"=>$field["name"]."_".$value))}}
+            {{Form::radio($field["name"], $value,  Input::old($field['name'], $data[$field["name"]] == $value), array("id"=>$field["name"]."_".$value))}}
             {{Form::label($field["name"]."_".$value, $option)}}
             </p>
             @endforeach
             @elseif($field["type"] == "wysiwyg")
-            {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"ckeditor"))}}
+            {{Form::textarea($field["name"],  Input::old($field['name'], $data[$field["name"]]), array("class"=>"ckeditor"))}}
             @elseif($field["type"] == "textarea")
             {{Form::textarea($field["name"], Input::old($field['name'], $data[$field["name"]]), array("class"=>"form-control"))}}
             @elseif($field["type"] == "file")
@@ -51,16 +51,16 @@
 
             @elseif($field["type"] == "date")
             <div class='input-group datepicker' data-date-format="DD-MM-YYYY HH:MM:SS">
-                {{Form::text($field["name"], \Fairtrade\Date::input($data[$field["name"]])->forFrontEnd(), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
+                {{Form::text($field["name"],  Input::old($field['name'], \Fairtrade\Date::input($data[$field["name"]])->forFrontEnd()), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
             </div>
             @elseif($field['type'] === 'text-with-prepend')
                 <div class="input-group">
                   <span class="input-group-addon">{{$field['prepend']}}</span>
-                  {{Form::text($field["name"], $data[$field["name"]], array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
+                  {{Form::text($field["name"],  Input::old($field['name'], $data[$field["name"]]), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
                 </div>
             @elseif($field['type'] === 'checkbox')
-                <?php $checked = ( $data[ $field['name'] ] == 1) ? true : false ?>
+                <?php $checked = (  Input::old($field['name'], $data[ $field['name'] ] ) == 1) ? true : false ?>
                {{ Form::checkbox($field['name'], 1, $checked, ['style'=>'margin-left: -4px;']) }}
 
             @elseif($editing && $field['type'] == 'json')
@@ -69,14 +69,14 @@
             @elseif($field['type'] == 'select')
                 <select name="{{$field['name']}}" class="form-control">
                     @foreach($field['options'] as $option)
-                        <option @if($editing && $data[$field['name']] == $option['id']) selected @endif value="{{$option['id']}}">{{$option['title']}}</option>
+                        <option @if(Input::old($field['name'], $data[$field['name']]) == $option['id']) selected @endif value="{{$option['id']}}">{{$option['title']}}</option>
                     @endforeach
                 </select>
 
 
             @elseif( $field['type'] === 'color' )
                 <p>Na het kiezen van een kleur, moet dit worden bevestigd door op <strong>kiezen</strong> te klikken</p>
-                {{Form::text($field["name"], $data[$field["name"]], array("class"=>"color-picker", "id"=>$field["name"], "placeholder"=>$name))}}
+                {{Form::text($field["name"],  Input::old($field['name'], $data[$field["name"]]), array("class"=>"color-picker", "id"=>$field["name"], "placeholder"=>$name))}}
             @endif
 
         </div>

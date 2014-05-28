@@ -371,6 +371,7 @@ class CrudController extends AdminController
         $validator = \Validator::make($input, $rules);
 
         if ($validator->fails()) {
+            \Input::flash();
             \View::share("errors", $validator->errors());
             return $this->showEdit(\Input::get("id"));
         } else {
