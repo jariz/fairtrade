@@ -50,9 +50,9 @@
 
 
             @elseif($field["type"] == "date")
-            <div class='input-group datepicker' data-date-format="DD-MM-YYYY HH:MM:SS">
+            <div class='datepicker' data-date-format="DD-MM-YYYY HH:MM:SS">
                 {{Form::text($field["name"],  Input::old($field['name'], \Fairtrade\Date::input($data[$field["name"]])->forFrontEnd()), array("class"=>"form-control", "id"=>$field["name"], "placeholder"=>$name))}}
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+
             </div>
             @elseif($field['type'] === 'text-with-prepend')
                 <div class="input-group">
