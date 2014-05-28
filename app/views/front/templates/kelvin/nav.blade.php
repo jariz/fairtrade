@@ -37,12 +37,12 @@
 </nav>
 <div class="header container visible-sm visible-md visible-lg  hidden-xs">
 
-    <div class="logo col-md-3"><a href="{{ URL::to('/') }}"><img src="{{url('images/logo.png')}}" alt="Faretrade Gemeente amsterdam"></a></div>
+    <div class="logo col-md-3"><a href="{{ URL::to('/') }}"><img src="{{url('images/logo.png')}}" alt="Fairtrade Gemeente amsterdam"></a></div>
     <div class="col-md-9 navMain">
         <ul class="list-inline">
             @foreach($menuData as $menuItem)
             <li>
-                <a href="{{URL::to($menuItem['slug'])}}" title="Home" class="{{$menuItem['class']}}">
+                <a href="{{URL::to($menuItem['slug'])}}" title="Home" class="{{$menuItem['class']}} @if(Request::is($menuItem['slug'])) activePage @endif">
                                 <span class="overlayLeft">
                                     <img src="{{url('images/overlay_left.png')}}" alt="">
                                 </span>
