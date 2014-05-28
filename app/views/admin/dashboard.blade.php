@@ -4,7 +4,7 @@
 <div class="container container-layout">
     <div class="page-header">
         <h1>Overzicht
-            <small>kort overzicht van alle systeem functies</small>
+            <small>kort overzicht van alle systeemfuncties</small>
         </h1>
     </div>
     <div class="row">

@@ -72,7 +72,7 @@ class Pages extends CrudController {
 //                "options" => $data
 //            ],
 
-            "Pagina-specifieke opties" => [
+            "Paginaspecifieke opties" => [
                 "name" => "meta",
                 "type" => "json",
                 "rules" => "",

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container container-layout moar-padding">
 
-        <h2>{{$plural}} heordenen</h2>
+        <h2>{{$plural}} herordenen</h2>
         <div class="form-group">
             <a class="btn btn-primary" href="{{URL::route('dashboard.pages')}}"><i class="fa fa-arrow-left"></i> Terug naar overzicht</a>
             <button data-toggle="tooltip" data-placement="right" title="De wijzigingen zijn opgeslagen." data-func="save" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Opslaan</button>

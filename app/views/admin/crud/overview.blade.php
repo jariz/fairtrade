@@ -123,7 +123,7 @@
 @if(\Session::has("restore_id"))
 <div class="alert alert-danger alert-floating">
     <div class="container">
-        <p><i class="glyphicon glyphicon-warning-sign"></i> U heeft een {{strtolower($singular)}} verwijdert</p>
+        <p><i class="glyphicon glyphicon-warning-sign"></i> U heeft een {{strtolower($singular)}} verwijderd</p>
         {{Form::open(['route'=>$route.'-dorestore'])}}
         {{Form::hidden('id', Session::get("restore_id"))}}
         {{Form::submit('Ongedaan maken', ['class'=>'btn btn-success pull-right btn-sm'])}}
