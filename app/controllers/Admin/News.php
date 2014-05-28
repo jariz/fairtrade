@@ -15,6 +15,12 @@ class News extends CrudController {
                 "type" => "text",
                 "rules" => "required"
             ),
+            "Intro" => [
+                'name' => 'intro',
+                'type' => 'textarea',
+                'rules' => 'required|max:300',
+                "hideInOverview" => true
+            ],
             "Inhoud" => array(
                 "name" => "content",
                 "type" => "wysiwyg",

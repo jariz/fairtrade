@@ -15,6 +15,12 @@ class Events extends CrudController {
                 "type" => "text",
                 "rules" => "required"
             ),
+            "Intro" => [
+                'name' => 'intro',
+                'type' => 'textarea',
+                'rules' => 'required|max:300',
+                "hideInOverview" => true
+            ],
             "Locatie" => array(
                 "name" => "location",
                 "type" => "text",

@@ -18,12 +18,8 @@ class Home extends Data {
     public function run() {
         //news
         $posts = Post::take(2)->get();
-        $news = [];
-        foreach($posts as $post) {
-            $post->content = Util::truncate($post->content, 200);
-            $news[] = $post;
-        }
-        $this->add("news", $news);
+
+        $this->add("news", $posts);
 
         //featured concept
         $featured = Concept::whereFeatured(1)->whereAccepted(1)->orderByRaw("RAND()")->first();

@@ -45,7 +45,7 @@
                 <h3>{{{$post->title}}}</h3>
 
                 <p>
-                    {{$post->content}}
+                    {{$post->intro}}
                 </p>
 
                 <div class="leesmeer"><a href="{{$post->link}}">Lees meer</a></div>

@@ -21,7 +21,7 @@
             @elseif($field["type"] == "wysiwyg")
             {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"ckeditor"))}}
             @elseif($field["type"] == "textarea")
-            {{Form::textarea($field["name"], $data[$field["name"]], array("class"=>"form-control"))}}
+            {{Form::textarea($field["name"], Input::old($field['name'], $data[$field["name"]]), array("class"=>"form-control"))}}
             @elseif($field["type"] == "file")
              @if($editing && !empty($data[$field['name']]) )
 

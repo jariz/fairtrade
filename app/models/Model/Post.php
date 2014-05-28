@@ -8,7 +8,7 @@ class Post extends FormattedTimestamps {
 	protected $table = 'news';
 	public $timestamps = true;
     protected $softDelete = true;
-    protected $appends = ['intro', 'link', 'image_url', 'thumbnail_url'];
+    protected $appends = ['link', 'image_url', 'thumbnail_url'];
     private $image_path = 'uploads/news/';
 
     public static function boot(){
@@ -16,10 +16,6 @@ class Post extends FormattedTimestamps {
             if(is_null($item->published))
                 $item->published = 0;
         });
-    }
-
-    public function getIntroAttribute(){
-        return \Fairtrade\Util::truncate($this->attributes['content'], 300);
     }
 
     public function getLinkAttribute(){

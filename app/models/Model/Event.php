@@ -8,11 +8,8 @@ class Event extends FormattedTimestamps {
 	protected $table = 'events';
 	public $timestamps = true;
     protected $softDelete = true;
-    protected $appends = ['intro', 'date_formatted', 'link'];
+    protected $appends = ['date_formatted', 'link'];
 
-    public function getIntroAttribute(){
-        return \Fairtrade\Util::truncate($this->attributes['description'], 300);
-    }
 
     public function getDateFormattedAttribute(){
         return \Fairtrade\Date::input( $this->attributes['date'] )
