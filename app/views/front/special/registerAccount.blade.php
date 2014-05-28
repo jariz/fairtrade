@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-	<strong>1: Account aanmaken</strong> - 2: Bedrijfsgegevens - 3: Betalings gegevens
+	<strong>1: Account aanmaken</strong> - 2: Bedrijfsgegevens - 3: Aanmelden afronden
 <h1>Account aanmaken</h1>
 @include('includes.errors')
 

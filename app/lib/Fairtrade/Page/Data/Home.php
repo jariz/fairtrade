@@ -37,7 +37,7 @@ class Home extends Data {
         $this->add("featureds", $featureds);
 
         //companies
-        $companies = Company::orderBy("created_at")->whereAccepted(1)->take(4)->get();
+        $companies = Company::whereAccepted(1)->orderByRaw("RAND()")->take(4)->get();
         $this->add("companies", $companies);
     }
 }

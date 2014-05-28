@@ -136,7 +136,7 @@ class Company extends BaseController
                 $company->{$field} = Input::get($field);
             }
 
-            //$company->user_id = Session::get('user_registration');
+            $company->user_id = $session['user_id'];
 
             // Save coordinates
             $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
@@ -180,10 +180,12 @@ class Company extends BaseController
             $mail = Config::get('fairtrade.contact_email');
             $company = Model\Company::where('id', '=', $session['company_id'])->first();
             $user = Model\User::where('id', '=', $session['user_id'])->first();
+            $category = Model\Category::where('id', '=', $company->id)->first();
 
             \Mail::send(
                 "emails.thankCompany", [
                     "company" => $company,
+                    "category" => $category->name,
                     "user" => $user
                 ]
                 , function(Message $message) use($mail, $user, $company) {

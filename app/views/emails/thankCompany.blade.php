@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td>Adres:</td>
-                <td>{{ $company->street }}</td>
+                <td>{{ $company->address }}</td>
             </tr>
             <tr>
                 <td></td>
@@ -33,10 +33,10 @@
             </tr>
             <tr>
                 <td>Categorie</td>
-                <td>{{ $company->category }}</td>
+                <td>{{ $category->name }}</td>
             </tr>
         </table>
-
+        <br />
         <p>Met vriendelijke groet,</p>
 
         <b>Team Fairtrade Amsterdam</b>
