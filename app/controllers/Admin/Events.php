@@ -47,7 +47,7 @@ class Events extends CrudController {
             "Datum" => array(
                 "name" => "date",
                 "type" => "date",
-                "rules" => "required"
+                "rules" => "required|datepicker_format"
             )
         );
     }

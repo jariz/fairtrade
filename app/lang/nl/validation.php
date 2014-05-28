@@ -68,6 +68,7 @@ return array(
     ),
     "unique"         => ":attribute is al in gebruik.",
     "url"            => ":attribute is geen geldige URL.",
+    "datepicker_format" => ':attribute is geen geldige datumformaat',
 
     /*
     |--------------------------------------------------------------------------

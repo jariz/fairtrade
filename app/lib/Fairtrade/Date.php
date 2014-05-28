@@ -153,4 +153,9 @@ class Date{
         return NULL;
     }
 
+
+    public static function validInputDateFormat( $string ){
+       return is_object( \DateTime::createFromFormat(self::FORMAT_USER, $string ) );
+    }
+
 }
