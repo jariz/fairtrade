@@ -10,6 +10,7 @@ namespace System;
 use \Fairtrade\IpsumGenerator;
 use \Model\Company;
 use Image;
+use File;
 
 class CompanySeeder extends \Seeder
 {
@@ -362,8 +363,14 @@ class CompanySeeder extends \Seeder
                     // Save full size
                      ->save( public_path().'/uploads/logos/'.$value);
                    // Create thumbnail
+
+                   $thumbnail_path =  public_path().'/uploads/logos/t/';
+                   if( !File::isDirectory($thumbnail_path)){
+                       File::makeDirectory($thumbnail_path);
+                   }
+
                    $img->resize(150, 150, true)
-                        ->save( public_path().'/uploads/logos/t/'.$value);
+                        ->save($thumbnail_path.$value);
                }
            }
 

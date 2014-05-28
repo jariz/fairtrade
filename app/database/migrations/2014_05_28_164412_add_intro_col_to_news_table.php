@@ -25,7 +25,7 @@ class AddIntroColToNewsTable extends Migration {
 	public function down()
 	{
 		Schema::table('news', function($table){
-            $table->dropColum('intro');
+            $table->dropColumn('intro');
         });
 	}
 
