@@ -8,8 +8,6 @@
 
 @section('content')
 	1: Account aanmaken - 2: Bedrijfsgegevens - <strong>3: Betalings gegevens</strong>
-<h1>Account aanmaken</h1>
-@include('includes.errors')
-
-IDeal hier!!
+    <h1>Account aanmaken</h1>
+    <p>Bedankt voor het aanmelden van uw bedrijf, wij zullen uw aanmelding beoordelen.<p>
 @stop

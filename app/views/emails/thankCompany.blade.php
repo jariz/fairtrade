@@ -33,10 +33,10 @@
             </tr>
             <tr>
                 <td>Categorie</td>
-                <td>{{ $company->category }}</td>
+                <td>{{ $category }}</td>
             </tr>
         </table>
-
+        <br />
         <p>Met vriendelijke groet,</p>
 
         <b>Team Fairtrade Amsterdam</b>
