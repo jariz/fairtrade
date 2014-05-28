@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td>Adres:</td>
-                <td>{{ $company->street }}</td>
+                <td>{{ $company->address }}</td>
             </tr>
             <tr>
                 <td></td>
