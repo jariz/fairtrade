@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>Categorie</td>
-                <td>{{ $category }}</td>
+                <td>{{ $category->name }}</td>
             </tr>
         </table>
         <br />
