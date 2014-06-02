@@ -32,7 +32,7 @@ class Concepts extends CrudController {
             "Inhoud" => array(
                 "name" => "content",
                 "type" => "wysiwyg",
-                "rules" => "",
+                "rules" => "required",
                 "hideInOverview" => true
             ),
             "Bedrijf" => array(
