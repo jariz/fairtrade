@@ -13,12 +13,12 @@ class Events extends CrudController {
             "Titel" => array(
                 "name" => "title",
                 "type" => "text",
-                "rules" => "required"
+                "rules" => "required|max:255"
             ),
             "Intro" => [
                 'name' => 'intro',
                 'type' => 'textarea',
-                'rules' => 'required|max:300',
+                'rules' => 'max:300',
                 "hideInOverview" => true
             ],
             "Locatie" => array(
@@ -28,7 +28,7 @@ class Events extends CrudController {
             ),
             "Inhoud" => array(
                 "name" => "description",
-                "type" => "wysiwyg",
+                "type" => "required|wysiwyg",
                 "rules" => "",
                 "hideInOverview" => true
             ),
