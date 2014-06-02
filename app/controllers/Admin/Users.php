@@ -36,7 +36,7 @@ class Users extends CrudController {
             "Wachtwoord" => array(
                 "name" => "password",
                 "type" => "password",
-                "rules" => "",
+                "rules" => "required|min:3",
                 "hideInOverview" => true
             ),
             "Naam" => array(
