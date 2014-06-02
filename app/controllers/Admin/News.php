@@ -24,7 +24,7 @@ class News extends CrudController {
             "Inhoud" => array(
                 "name" => "content",
                 "type" => "wysiwyg",
-                "rules" => "",
+                "rules" => "required",
                 "hideInOverview" => true
             ),
             "Afbeelding" => array(
