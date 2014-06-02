@@ -13,7 +13,7 @@ class News extends CrudController {
             "Titel" => array(
                 "name" => "title",
                 "type" => "text",
-                "rules" => "required"
+                "rules" => "required|max:255"
             ),
             "Intro" => [
                 'name' => 'intro',
