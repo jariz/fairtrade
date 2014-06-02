@@ -31,7 +31,7 @@ class Users extends CrudController {
             "E-mail" => array(
                 "name" => "email",
                 "type" => "text",
-                "rules" => "required|email"
+                "rules" => "required|email|unique:users,email"
             ),
             "Wachtwoord" => array(
                 "name" => "password",
