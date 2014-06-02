@@ -180,7 +180,7 @@ class Company extends BaseController
             $mail = Config::get('fairtrade.contact_email');
             $company = Model\Company::where('id', '=', $session['company_id'])->first();
             $user = Model\User::where('id', '=', $session['user_id'])->first();
-            
+
             $category = Model\Category::where('id', '=', $company->category)->first();
 
             if (!is_null($category)) {
