@@ -175,7 +175,6 @@ class Company extends BaseController
         if( $this->checkStep(2) )
         {
             $session = Session::get('user_registration');
-            print($session);
 
             // Mail to company who signed up
             $mail = Config::get('fairtrade.contact_email');
