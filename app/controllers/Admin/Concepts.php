@@ -27,7 +27,7 @@ class Concepts extends CrudController {
             "Titel" => array(
                 "name" => "title",
                 "type" => "text",
-                "rules" => "required"
+                "rules" => "required|max:255"
             ),
             "Inhoud" => array(
                 "name" => "content",
