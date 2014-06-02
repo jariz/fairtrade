@@ -7,7 +7,7 @@
  */
 
 namespace Front;
-use Model, Input, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map, Mail, Config, Illuminate\Mail\Message;;
+use Model, Input, HTML, Upload, Validator, Redirect, Schema, Response, Session, Fairtrade\Map, Mail, Config, Illuminate\Mail\Message;;
 
 class Company extends BaseController
 {
@@ -50,7 +50,7 @@ class Company extends BaseController
 
             /* Add new user to database */
             foreach($fields as $field) {
-                $user->{$field} = Input::get($field);
+                $user->{$field} = HTML::entities(Input::get($field));
             }
 
             $user->role_id = 2;
@@ -133,13 +133,13 @@ class Company extends BaseController
             /* Add new company to database */
             foreach($fields as $field)
             {
-                $company->{$field} = Input::get($field);
+                $company->{$field} = HTML::entities(Input::get($field));
             }
 
             $company->user_id = $session['user_id'];
 
             // Save coordinates
-            $coords = Map::convertAddress(Input::get('postal_code'), Input::get('address'));
+            $coords = Map::convertAddress(HTML::entities(Input::get('postal_code')), HTML::entities(Input::get('address')));
             $company->lat = $coords['lat'];
             $company->lng = $coords['lng'];
 
