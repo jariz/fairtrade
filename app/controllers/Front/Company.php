@@ -175,17 +175,24 @@ class Company extends BaseController
         if( $this->checkStep(2) )
         {
             $session = Session::get('user_registration');
+            print($session);
 
             // Mail to company who signed up
             $mail = Config::get('fairtrade.contact_email');
             $company = Model\Company::where('id', '=', $session['company_id'])->first();
             $user = Model\User::where('id', '=', $session['user_id'])->first();
-            $category = Model\Category::where('id', '=', $company->id)->first();
+            $category = Model\Category::where('id', '=', $company->category_id)->first();
+
+            if (!is_null($category)) {
+                $categoryName = 'Geen categorie';
+            } else{
+                $categoryName = $category->name;
+            }
 
             \Mail::send(
                 "emails.thankCompany", [
                     "company" => $company,
-                    "category" => $category->name,
+                    "category" => $categoryName,
                     "user" => $user
                 ]
                 , function(Message $message) use($mail, $user, $company) {

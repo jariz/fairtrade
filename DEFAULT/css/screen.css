@@ -69,7 +69,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 8, ../sass/screen.scss */
 #gmaps {
-  background: red;
+  line-height:normal;
   width: 100%;
   height: 300px;
+}
+
+
+#gmaps div{
+    line-height:1.35;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.gm-style-iw{
+    height: 100% !important;
+    overflow: hidden !important;
 }

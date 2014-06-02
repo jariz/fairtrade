@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     $(function () {
         var infowindows = [];
 
@@ -26,7 +26,8 @@
             };
 
             var map = new google.maps.Map(document.getElementById("gmaps"), mapProp);
-            var infowindow = new google.maps.InfoWindow(), marker, i;
+            var infowindow = new google.maps.InfoWindow(),
+                marker, i;
 
             google.maps.event.addListener(map, 'zoom_changed', function () {
                 var zoomLevel = map.getZoom();
@@ -34,12 +35,11 @@
             });
 
             // Loop through all companies and add them to map
-            var api_call = baseurl+'/api/companies';
+            var api_call = baseurl + '/api/companies';
             var category_id = $('#gmaps').data('category');
 
-            if(category_id != '')
-            {
-                api_call = baseurl+'/api/companiesCategory?id='+category_id;
+            if (category_id != '') {
+                api_call = baseurl + '/api/companiesCategory?id=' + category_id;
             }
 
             $.get(api_call, function (data) {
@@ -54,37 +54,42 @@
                         //icon: marker_places
                     });
 
-                    var infowindow = new google.maps.InfoWindow({
-//                        content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
-                        content: '<div class="media">\
-                            <a class="pull-left" href="#">\
-                                <img class="media-object" src="'+value.thumbnail_url+'" alt="...">\
-                                </a>\
-                                <div class="media-body">\
-                                    <h4 class="media-heading">'+ value.name +'</h4>\
-                                    <p class="help-block">'+value.address+'</p>\
-                                    <p><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
-                                </div>\
-                            </div>'
+                    $('<img src="' + value.thumbnail_url + '"/>').load(function () {
+                        var image_width = this.width;
+                        var image_height = this.height;
 
-                    });
+                        console.log(image_width);
 
-                    infowindows.push(infowindow);
-                    hideInfoWindows(infowindows);
+                        var infowindow = new google.maps.InfoWindow({
+                            // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
+                            content: '\
+                                <div class="media" style="width: 100%; line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
+                                    <div class="pull-left" style="width: '+ image_width +'px; overflow: auto; display: inline-block;">\
+                                        <img class="media-object" src="' + value.thumbnail_url + '" alt="...">\
+                                    </div>\
+                                    <div class="media-body" >\
+                                        <h2 class="media-heading">' + value.name + '</h2>\
+                                        <p class="help-block">' + value.address + '</p>\
+                                        <p><a href="' + baseurl + '/waartekoop/bedrijf/' + this.id + '" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
+                                    </div>\
+                                </div>',
+                        });
 
-                    google.maps.event.addListener(marker, 'click', function()
-                    {
+                        infowindows.push(infowindow);
                         hideInfoWindows(infowindows);
-                        //console.log(this.id);
-                       // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
-                        infowindow.open(map,marker);
+
+                        google.maps.event.addListener(marker, 'click', function () {
+                            hideInfoWindows(infowindows);
+                            // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
+                            infowindow.open(map, marker);
+                        });
+
                     });
-                    //infowindow.open(map, marker);
                 });
             });
 
             function hideInfoWindows(infowindows) {
-                for (var i=0;i<infowindows.length;i++) {
+                for (var i = 0; i < infowindows.length; i++) {
                     infowindows[i].close();
                 }
             }

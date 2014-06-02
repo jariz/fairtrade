@@ -74,23 +74,19 @@ class WhereToBuy extends Data{
     {
         // Kijken over een id is meegegeven
 
-        if( !array_key_exists(1, $params) ){
+        /*if( !array_key_exists(1, $params) ){
             return $this->notFound();
-        }
+        }*/
 //        dd($params);
 
-        $company = Model\Company::find( $params[1] );
+        $company = Model\Company::findOrFail( $params[1] );
 
         if( !$company->exists() )
             return $this->notFound();
 
         $this->setCustomView( 'front.companydetail' );
 
-
-
         $this->add('title', 'Bedrijf detail' );
         $this->add('company', $company);
-
     }
-
 } 
