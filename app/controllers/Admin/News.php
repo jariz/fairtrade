@@ -18,7 +18,7 @@ class News extends CrudController {
             "Intro" => [
                 'name' => 'intro',
                 'type' => 'textarea',
-                'rules' => 'required|max:300',
+                'rules' => 'max:300',
                 "hideInOverview" => true
             ],
             "Inhoud" => array(
