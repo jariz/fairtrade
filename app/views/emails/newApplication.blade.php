@@ -2,6 +2,6 @@
 <html>
     <head></head>
     <body>
-        <p>Er is een nieuwe aanmelding, u kunt deze <a href="/companies/edit/{{ $company->id }}">hier</a> accepteren of afwijzen.</p>
+        <p>Een nieuw bedrijf heeft zich aangemeld, u kunt deze inschrijving bekijken via: <a href="{{ URL::to(dashboard/companies/edit/'. $company->id); }}">hier</a> om deze vervolgens te accepteren of afwijzen.</p>
     </body>
 </html>

@@ -14,7 +14,7 @@
                 <span class="h2Left">
                     <img src="{{ URL::asset("images/h2Left.png") }}" alt="">
                 </span>
-                    <h2>In de buurt</h2>
+                <h2>In de buurt</h2>
                 <span class="h2Right">
                    <img src="{{ URL::asset("images/h2Right.png") }}" alt="">
                 </span>

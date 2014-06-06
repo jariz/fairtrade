@@ -26,12 +26,21 @@
             };
 
             var map = new google.maps.Map(document.getElementById("gmaps"), mapProp);
-            var infowindow = new google.maps.InfoWindow(),
-                marker, i;
+            //var infowindow = new google.maps.InfoWindow(), marker, i;
 
             google.maps.event.addListener(map, 'zoom_changed', function () {
                 var zoomLevel = map.getZoom();
-                console.log('Zoom: ' + zoomLevel);
+                //console.log('Zoom: ' + zoomLevel);
+            });
+
+            // prepare categories array
+            var api_call = baseurl + '/api/categories';
+            var categories = [];
+
+            $.get(api_call, function (data){
+                $.each(data, function (key, value){
+                    categories[value.id] = value.color;
+                });
             });
 
             // Loop through all companies and add them to map
@@ -42,48 +51,47 @@
                 api_call = baseurl + '/api/companiesCategory?id=' + category_id;
             }
 
+            // Get all companies from api and add them to the map
             $.get(api_call, function (data) {
                 $.each(data, function (key, value) {
 
+                    // Add marker
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(value.lat, value.lng),
                         map: map,
                         animation: google.maps.Animation.DROP,
                         id: value.id,
-                        //icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|#CC40DE"),
-                        //icon: marker_places
+                        icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|"+ categories[value.category].substring(1),
                     });
 
-                    $('<img src="' + value.thumbnail_url + '"/>').load(function () {
-                        var image_width = this.width;
-                        var image_height = this.height;
+                    // Check if company has a logo
+                    if (value.thumbnail_url != '') {
+                        var thumb_nail = '<img class="media-object" src="' + value.thumbnail_url + '" alt="...">';
+                    }
 
-                        console.log(image_width);
+                    // Add infowindow to marker
+                    var infowindow = new google.maps.InfoWindow({
+                        // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
+                        content: '\
+                            <div class="media" style="width: 100%; line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
+                                <div class="pull-left" style="overflow: auto; display: inline-block;">\
+                                ' + thumb_nail + '\
+                                </div>\
+                                <div class="media-body" >\
+                                    <h2 class="media-heading">' + value.name + '</h2>\
+                                    <p class="help-block">' + value.address + '</p>\
+                                    <p><a href="' + baseurl + '/waartekoop/bedrijf/' + this.id + '" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
+                                </div>\
+                            </div>',
+                    });
 
-                        var infowindow = new google.maps.InfoWindow({
-                            // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
-                            content: '\
-                                <div class="media" style="width: 100%; line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
-                                    <div class="pull-left" style="width: '+ image_width +'px; overflow: auto; display: inline-block;">\
-                                        <img class="media-object" src="' + value.thumbnail_url + '" alt="...">\
-                                    </div>\
-                                    <div class="media-body" >\
-                                        <h2 class="media-heading">' + value.name + '</h2>\
-                                        <p class="help-block">' + value.address + '</p>\
-                                        <p><a href="' + baseurl + '/waartekoop/bedrijf/' + this.id + '" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
-                                    </div>\
-                                </div>',
-                        });
+                    infowindows.push(infowindow);
+                    hideInfoWindows(infowindows);
 
-                        infowindows.push(infowindow);
+                    google.maps.event.addListener(marker, 'click', function () {
                         hideInfoWindows(infowindows);
-
-                        google.maps.event.addListener(marker, 'click', function () {
-                            hideInfoWindows(infowindows);
-                            // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
-                            infowindow.open(map, marker);
-                        });
-
+                        // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
+                        infowindow.open(map, marker);
                     });
                 });
             });
