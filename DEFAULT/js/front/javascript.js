@@ -1,6 +1,7 @@
 (function ($) {
     $(function () {
         var infowindows = [];
+        var info_img_width = [];
 
         if ($('#gmaps').length != 0) {
             // Settings
@@ -65,34 +66,47 @@
                     });
 
                     // Check if company has a logo
-                    if (value.thumbnail_url != '') {
-                        var thumb_nail = '<img class="media-object" src="' + value.thumbnail_url + '" alt="...">';
-                    }
+                    var thumb_nail = '';
+                    if (value.logo) {
+                        // Get  width of logo
+                        var tmpImg = new Image();
+                        tmpImg.src = value.thumbnail_url;
 
-                    // Add infowindow to marker
-                    var infowindow = new google.maps.InfoWindow({
-                        // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
-                        content: '\
-                            <div class="media" style="width: 100%; line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
-                                <div class="pull-left" style="overflow: auto; display: inline-block;">\
+                        $(tmpImg).on('load',function(){
+                            orgWidth = tmpImg.width;
+                            info_img_width[value.id] = orgWidth
+                            thumb_nail = '<img class="media-object" src="' + value.thumbnail_url + '" alt="..." style="width:'+ info_img_width[value.id] +'px;">';
+
+                            // Add infowindow to marker
+                            var infowindow = new google.maps.InfoWindow({
+                                // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
+                                content: '\
+                            <div class="media"">\
+                                <div class="pull-left" style="width:'+ info_img_width[value.id] +'px;">\
                                 ' + thumb_nail + '\
                                 </div>\
-                                <div class="media-body" >\
+                                <div class="media-body" style="overflow: auto; ">\
                                     <h2 class="media-heading">' + value.name + '</h2>\
                                     <p class="help-block">' + value.address + '</p>\
                                     <p><a href="' + baseurl + '/waartekoop/bedrijf/' + this.id + '" class="btn btn-primary">Bedrijf bekijken <i class="fa fa-arrow-right"></i></a></p>\
                                 </div>\
                             </div>',
-                    });
+                            });
 
-                    infowindows.push(infowindow);
-                    hideInfoWindows(infowindows);
+                            infowindows.push(infowindow);
+                            hideInfoWindows(infowindows);
 
-                    google.maps.event.addListener(marker, 'click', function () {
-                        hideInfoWindows(infowindows);
-                        // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
-                        infowindow.open(map, marker);
-                    });
+                            google.maps.event.addListener(marker, 'click', function () {
+                                hideInfoWindows(infowindows);
+                                // window.location.href = baseurl+'/waartekoop/bedrijf/'+this.id;
+                                infowindow.open(map, marker);
+                            });
+
+
+                        });
+                    }
+
+
                 });
             });
 
