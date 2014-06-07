@@ -74,7 +74,7 @@
                     var infowindow = new google.maps.InfoWindow({
                         // content: '<h3></h3><a href="'+ baseurl+'/waartekoop/bedrijf/'+this.id +'" class="btn btn-warning">Meer informatie</a>',
                         content: '\
-                            <div class="media" style="line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
+                            \<div class="media" style="width: 100%; line-height: normal; white-space: nowrap; overflow: auto; display: inline-block">\
                                 <div class="pull-left" style="">\
                                 ' + thumb_nail + '\
                                 </div>\
