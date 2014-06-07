@@ -31,7 +31,7 @@ class Company extends BaseController
         /* Form validation */
         $rules = array(
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:users,email',
             'password' => 'required|min:5',
             'confirmation' => 'required|same:password',
         );
@@ -70,12 +70,12 @@ class Company extends BaseController
         }
     }
 
-	/**
-	 * Controller to apply a new company
-	 * @return void
-	 */
-	protected function details()
-	{
+    /**
+     * Controller to apply a new company
+     * @return void
+     */
+    protected function details()
+    {
         $session = Session::get('user_registration');
 
         if( !$this->checkStep(1) )
@@ -90,16 +90,16 @@ class Company extends BaseController
                 'categories' => $categories
             ));
         }
-	}
+    }
 
-	protected function add()
-	{
+    protected function add()
+    {
         $session = Session::get('user_registration');
-		$company = new Model\Company;
-		$inputs = Input::all();
+        $company = new Model\Company;
+        $inputs = Input::all();
 
-		/* Form validation */
-		$rules = array(
+        /* Form validation */
+        $rules = array(
             'name' => 'required',
             'description' => 'required',
             'url' => 'required',
@@ -108,15 +108,15 @@ class Company extends BaseController
             'postal_code' => 'required',
             'city' => 'required',
             'contact_info' => 'required',
-		);
+        );
 
-		$validation = Validator::make($inputs, $rules);
+        $validation = Validator::make($inputs, $rules);
 
-		if( $validation->fails() )
-		{
-			//return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
-			return Redirect::back()->withErrors($validation->messages())->withInput();
-		} else{
+        if( $validation->fails() )
+        {
+            //return Redirect::to('bedrijf-aanmelden')->with_errors($validation->errors);
+            return Redirect::back()->withErrors($validation->messages())->withInput();
+        } else{
             /* Prepare all fields to add to database */
             $fields = array(
                 'name',
@@ -163,8 +163,8 @@ class Company extends BaseController
 
                 return Redirect::route('payment');
             }
-		}
-	}
+        }
+    }
 
     /*
      * Final step of company registration process
